@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+/* ==========================================================================
+   CSS Variables & Design Tokens (per AGENTS.md guidelines)
+   ========================================================================== */
+:root {
+    /* Fonts */
+    --font-main: 'DM Sans', sans-serif; 
+    
+    /* Brand Colors */
+    --primary-color: #3B71FE;
+    --primary-hover: #2655d4;
+
+    --heading-color: #232323;
+    --secondary-text: #6c757d;
+    --secondary-hover: #5c636a;
+
+    --text-main: #232323;
+    --text-secondary: #5E6D77;
+    --border-light: #EAEAEA;
+    --hero-overlay: rgba(0, 0, 0, 0.55);
+
+    /* Dark Card Colors (matching provided image) */
+    /* --dark-card-bg: #171922; */
+    --dark-card-bg: #343a40;
+    --dark-card-border: rgba(255, 255, 255, 0.08);
+    --dark-card-banner: #232733;
+    --dark-card-avatar: #101217;
+    --dark-card-avatar-border: #232733;
+    --dark-card-btn-bg: #242936;
+    --dark-card-btn-border: #353c4e;
+    
+    /* Shadows */
+    --shadow-card: 0 15px 40px rgba(0, 0, 0, 0.18);
+    --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.15);
+    --shadow-dark-card: 0 16px 35px rgba(0, 0, 0, 0.3);
+    
+    /* Font Weights */
+    --font-weight-regular: 400; 
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-heavy: 800;
+}
+
+/* Base Font */
+* {
+    font-family: var(--font-main);
+}
+
+/* Primary Theme Overrides */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: var(--font-weight-semibold);
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+}
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+/* Hero Section Background */
+.hero-section,
+.elementor-element-6c6f2387 {
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), 
+                url('https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    min-height: 65vh;
+}
+
+/* Search Form Responsive Divider */
+@media (min-width: 992px) {
+    .border-end-lg {
+        border-right: 1px solid var(--border-light) !important;
+    }
+}
+@media (max-width: 991.98px) {
+    .border-bottom-md {
+        border-bottom: 1px solid var(--border-light) !important;
+    }
+}
+
+/* Custom Interactive Cursor & Animations */
+.cursor-pointer {
+    cursor: pointer;
+}
+.tour-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tour-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover) !important;
+}
+
+/* Spacing for Section Directly Following Overlapping Search Bar */
+.section-after-hero {
+    padding-top: 90px !important;
+}
+@media (max-width: 991.98px) {
+    .section-after-hero {
+        padding-top: 220px !important;
+    }
+}
+
+/* ==========================================
+   TOP DESTINATIONS MARQUEE (Top Places)
+========================================== */
+.top-destinations-section {
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.destination-marquee {
+    width: 100%;
+    overflow: hidden;
+}
+
+.destination-track {
+    display: flex;
+    width: max-content;
+    animation: destinationScroll 40s linear infinite;
+}
+
+.destination-group {
+    flex-shrink: 0;
+}
+
+.destination-card {
+    flex: 0 0 220px;
+    width: 220px;
+}
+
+.destination-img {
+    width: 172px;
+    height: 172px;
+    background: var(--border-light);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.destination-img img {
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.destination-card a:hover .destination-img img {
+    transform: scale(1.08);
+}
+
+.destination-card a:hover .destination-img {
+    box-shadow: var(--shadow-hover);
+}
+
+@keyframes destinationScroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.destination-marquee:hover .destination-track {
+    animation-play-state: paused;
+}
+
+@media (max-width: 991px) {
+    .destination-card {
+        flex-basis: 190px;
+        width: 190px;
+    }
+    .destination-img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 575px) {
+    .destination-card {
+        flex-basis: 165px;
+        width: 165px;
+    }
+    .destination-img {
+        width: 125px;
+        height: 125px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .destination-track {
+        animation: none;
+    }
+}
+
+/* ==========================================
+   FEATURED TOUR CARDS (Dark Modern Card UI)
+========================================== */
+.tour-dark-card {
+    background-color: var(--dark-card-bg);
+    border: 1px solid var(--dark-card-border);
+    border-radius: 24px;
+    padding: 14px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.tour-dark-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-dark-card);
+    border-color: rgba(255, 193, 7, 0.35);
+}
+.tour-dark-card .card-banner {
+    border-radius: 18px;
+    height: 195px;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--dark-card-banner);
+}
+.tour-dark-card .card-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.tour-dark-card:hover .card-banner img {
+    transform: scale(1.06);
+}
+.tour-dark-card .avatar-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background-color: var(--dark-card-avatar);
+    border: 2px solid var(--dark-card-avatar-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -24px;
+    position: relative;
+    z-index: 2;
+}
+.tour-dark-card .btn-card-action {
+    background-color: var(--dark-card-btn-bg);
+    border: 1px solid var(--dark-card-btn-border);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+    border-radius: 50px;
+    padding: 5px 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.tour-dark-card .btn-card-action:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+}
+.tour-filter-btn {
+    border-radius: 50px;
+    font-weight: var(--font-weight-semibold);
+    font-size: 13.5px;
+    padding: 8px 18px;
+    transition: all 0.2s ease;
+    border: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    color: #4a5568;
+}
+.tour-filter-btn:hover {
+    background-color: #f7fafc;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.tour-filter-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(59, 113, 254, 0.3);
+}
