@@ -1,15 +1,15 @@
 <?php
 /**
  * Local Sightseeing Car Rental Fleet Component
- * Modern Dark Card UI matching Featured Tour design
+ * Clean & Minimalist Modern Card UI
  */
 $carImgDir = 'assets/images/cars/';
 
 $localCars = [
     [
+        'tag' => 'HATCHBACK',
         'title' => 'Economy Car',
         'model' => 'WagonR, Celerio or similar',
-        'handle' => 'localhatchback',
         'desc' => 'Budget-friendly option for city monument visits, shopping, and railway/airport transfers.',
         'image' => $carImgDir . 'economy-car.webp',
         'capacity' => '4 Seater',
@@ -20,9 +20,9 @@ $localCars = [
         'wa_text' => 'Hello TajMahalTour, I want to book Economy Car for Local Sightseeing Tour.'
     ],
     [
+        'tag' => 'SEDAN',
         'title' => 'Standard Sedan',
         'model' => 'Dzire, Etios or similar',
-        'handle' => 'localsedan',
         'desc' => 'Comfortable and smooth AC sedan with ample boot space for full-day Agra city sightseeing.',
         'image' => $carImgDir . 'standard-sedan-car.webp',
         'capacity' => '4 Seater',
@@ -33,9 +33,9 @@ $localCars = [
         'wa_text' => 'Hello TajMahalTour, I want to book Standard Sedan for Local Sightseeing Tour.'
     ],
     [
+        'tag' => 'PREMIUM SUV',
         'title' => 'SUV / Innova Crysta',
         'model' => 'Innova Crysta, Ertiga',
-        'handle' => 'localsuv',
         'desc' => 'Spacious executive SUV with plush captain seats, perfect for families and premium city comfort.',
         'image' => $carImgDir . 'suv-innova.webp',
         'capacity' => '6–7 Seater',
@@ -46,9 +46,9 @@ $localCars = [
         'wa_text' => 'Hello TajMahalTour, I want to book SUV Innova Crysta for Local Sightseeing Tour.'
     ],
     [
+        'tag' => 'GROUP COACH',
         'title' => 'Luxury Tempo Traveller',
         'model' => 'Force Luxury 12–16 Seater',
-        'handle' => 'localtempo',
         'desc' => 'High-roof luxury group van with individual AC vents, ideal for group excursions and events.',
         'image' => $carImgDir . 'tempo-traveller.webp',
         'capacity' => '12–16 Seater',
@@ -61,7 +61,7 @@ $localCars = [
 ];
 ?>
 
-<!-- Local Sightseeing Fleet Section (Featured Tour Style Dark Card UI) -->
+<!-- Local Sightseeing Fleet Section (Clean & Minimalist Modern Card UI) -->
 <section class="py-5 bg-light position-relative" id="local-fleet">
     <div class="container py-4">
 
@@ -85,88 +85,64 @@ $localCars = [
                     $waUrl = 'https://wa.me/918800722606?text=' . urlencode($car['wa_text']);
                 ?>
                 <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="tour-dark-card h-100 d-flex flex-column justify-content-between">
+                    <div class="modern-card h-100 d-flex flex-column justify-content-between">
                         
                         <div>
                             <!-- Top Media Banner -->
-                            <div class="card-banner shadow-sm d-flex align-items-center justify-content-center p-3 position-relative" style="background: radial-gradient(circle at center, rgba(255,255,255,0.06) 0%, rgba(15,23,42,0.85) 100%);">
-                                <span class="badge bg-success bg-opacity-90 position-absolute top-0 end-0 m-3 px-2 py-1 rounded-pill small fw-medium">
+                            <div class="modern-card-media d-flex align-items-center justify-content-center p-3" style="height: 180px; background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);">
+                                <span class="modern-card-badge">
+                                    <?php echo htmlspecialchars($car['tag']); ?>
+                                </span>
+                                <span class="modern-card-status">
                                     <i class="bi bi-circle-fill me-1" style="font-size: 6px;"></i>Available
                                 </span>
                                 <img 
                                     src="<?php echo htmlspecialchars($car['image']); ?>" 
                                     alt="<?php echo htmlspecialchars($car['title']); ?>" 
                                     class="img-fluid"
-                                    style="max-height: 135px; width: auto; object-fit: contain;"
+                                    style="max-height: 125px; width: auto; object-fit: contain;"
                                     loading="lazy"
                                 >
                             </div>
 
-                            <!-- Avatar & Profile Row -->
-                            <div class="px-2">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <div class="avatar-box shadow">
-                                        <i class="bi bi-car-front-fill text-warning fs-5"></i>
-                                    </div>
-                                    <span class="badge bg-secondary bg-opacity-25 text-white-50 border border-secondary border-opacity-25 rounded-pill px-2.5 py-1 small">
-                                        <?php echo htmlspecialchars($car['model']); ?>
-                                    </span>
-                                </div>
+                            <!-- Content Body -->
+                            <div class="modern-card-body">
+                                <h6 class="modern-card-title mb-1"><?php echo htmlspecialchars($car['title']); ?></h6>
+                                <span class="text-secondary small d-block mb-2"><?php echo htmlspecialchars($car['model']); ?></span>
 
-                                <!-- Title & Handle -->
-                                <div class="mb-2">
-                                    <h5 class="text-white fw-bold mb-0 text-truncate" title="<?php echo htmlspecialchars($car['title']); ?>">
-                                        <?php echo htmlspecialchars($car['title']); ?>
-                                        <i class="bi bi-patch-check-fill text-warning ms-1 small" title="Verified Fleet"></i>
-                                    </h5>
-                                    <span class="text-secondary small fw-medium">
-                                        @<?php echo htmlspecialchars($car['handle']); ?>
-                                    </span>
-                                </div>
-
-                                <!-- Description -->
-                                <div class="text-white-50 small mb-3" style="line-height: 1.5; min-height: 42px;">
+                                <p class="text-secondary small mb-2 line-clamp-2" style="font-size: 13px; line-height: 1.4; min-height: 36px;">
                                     <?php echo htmlspecialchars($car['desc']); ?>
-                                </div>
+                                </p>
 
-                                <!-- Specs Grid Inside Card -->
-                                <div class="row g-2 p-2 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 mb-3 text-white-50 small">
-                                    <div class="col-6 d-flex align-items-center gap-2">
-                                        <i class="bi bi-people-fill text-warning"></i>
-                                        <div>
-                                            <div class="text-secondary" style="font-size: 10px;">SEATS</div>
-                                            <span class="text-white fw-semibold small"><?php echo htmlspecialchars($car['capacity']); ?></span>
-                                        </div>
+                                <!-- Specs Row (Managed with row g-2 & text-truncate) -->
+                                <div class="row g-2 py-2 border-top border-light-subtle text-secondary small my-1">
+                                    <div class="col-6 d-flex align-items-center gap-2 min-w-0">
+                                        <i class="bi bi-people-fill text-primary flex-shrink-0"></i>
+                                        <span class="fw-medium text-dark text-truncate" title="<?php echo htmlspecialchars($car['capacity']); ?>"><?php echo htmlspecialchars($car['capacity']); ?></span>
                                     </div>
-                                    <div class="col-6 d-flex align-items-center gap-2">
-                                        <i class="bi bi-snow text-info"></i>
-                                        <div>
-                                            <div class="text-secondary" style="font-size: 10px;">CLIMATE</div>
-                                            <span class="text-white fw-semibold small"><?php echo htmlspecialchars($car['climate']); ?></span>
-                                        </div>
+                                    <div class="col-6 d-flex align-items-center gap-2 min-w-0">
+                                        <i class="bi bi-snow text-primary flex-shrink-0"></i>
+                                        <span class="fw-medium text-dark text-truncate" title="<?php echo htmlspecialchars($car['climate']); ?>"><?php echo htmlspecialchars($car['climate']); ?></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Footer Price & Booking CTA -->
-                        <div class="px-2 pt-2 border-top border-secondary border-opacity-25">
-                            <div class="d-flex align-items-center justify-content-between mb-1">
+                        <!-- Card Footer -->
+                        <div class="modern-card-footer">
+                            <div class="d-flex align-items-center justify-content-between mb-1.5">
                                 <div>
-                                    <span class="text-secondary small d-block" style="font-size: 11px;">Fares from</span>
-                                    <div class="d-flex align-items-baseline gap-1">
-                                        <span class="text-warning fw-bold fs-5"><?php echo htmlspecialchars($car['fare']); ?></span>
-                                        <span class="text-secondary small"><?php echo htmlspecialchars($car['unit']); ?></span>
-                                    </div>
+                                    <span class="text-secondary d-block" style="font-size: 11px;">Starting from</span>
+                                    <span class="text-primary fw-bold fs-4 lh-1 d-block"><?php echo htmlspecialchars($car['fare']); ?></span>
+                                    <span class="text-secondary small d-block mt-1" style="font-size: 11.5px;"><?php echo htmlspecialchars($car['unit']); ?></span>
                                 </div>
 
                                 <a 
                                     href="<?php echo htmlspecialchars($waUrl); ?>" 
                                     target="_blank" 
-                                    class="btn btn-warning btn-sm rounded-pill fw-bold px-3 py-1.5 shadow-sm d-inline-flex align-items-center gap-1.5"
+                                    class="btn btn-primary btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-1.5 shadow-sm"
                                 >
-                                    <i class="bi bi-whatsapp"></i>
-                                    <span>Book Now</span>
+                                    <span>Book</span>
                                 </a>
                             </div>
 

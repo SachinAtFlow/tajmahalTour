@@ -12,6 +12,10 @@ require_once 'components/why-us.php';
 require_once 'components/safetyVarified.php';
 require_once 'components/about.php';
 require_once 'components/testimonials.php';
+require_once 'components/whyUs.php';
 require_once 'components/booking.php';
+require_once 'components/faq.php';
+require_once 'components/blog.php';
+require_once 'components/cta.php';
 require_once 'includes/footer.php';
 ?>

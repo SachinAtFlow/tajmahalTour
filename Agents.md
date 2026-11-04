@@ -30,3 +30,17 @@
 ## 5. Code Efficiency & Best Practices
 - **Write Minimal & Efficient Code:** Always write the most concise, readable, and efficient code possible. Avoid writing unnecessary wrapper functions, redundant markup, or bloated logic.
 - **Suggest Best Practices:** Always suggest standard industry best practices for security (like input validation and PDO/prepared statements for database operations), scalability, and performance optimization when writing or refactoring code.
+
+## 6. Brand Name vs Scope Domain (Taj Mahal Tour Scope Rule)
+- **CRITICAL:** The project/brand name is "Taj Mahal" (or contains "Taj Mahal"), but the business scope spans across all of **North India & neighboring regions** (Delhi, Rajasthan, Gujarat, Punjab, Nepal, Himachal Pradesh, Uttar Pradesh, and Uttarakhand).
+- **DO NOT ASSUME AGRA-ONLY FOCUS:** Never restrict generated content, sample cards, tour itineraries, destination lists, or landing pages exclusively to Agra, the Taj Mahal monument, or Uttar Pradesh unless explicitly requested.
+- **DIVERSITY IN EXAMPLES:** Whenever generating dynamic content, mock data, destination grids, package listings, or hero sections:
+  - Provide a balanced mix of destinations across all covered regions (e.g., Jaipur/Rajasthan, Shimla/Himachal, Kathamandu/Nepal, Golden Temple/Punjab, Rann of Kutch/Gujarat, Rishikesh/Uttarakhand).
+  - Treat "Taj Mahal" purely as a **Brand Identity/Logo Name**, NOT as the regional scope of the website.
+
+  ## 7. Mandatory Unique IDs for Layout Sections
+- **ALWAYS** assign a unique and descriptive `id` attribute to every new main HTML `<section>`, `<header>`, `<footer>`, or major container element created.
+- **Naming Convention for IDs:** 
+  - Keep IDs simple, lowercase, and relevant to the section's content (e.g., `<section id="hero-banner">`, `<section id="tour-packages">`, `<section id="testimonials">`).
+  - Use kebab-case (hyphen separated) for multi-word IDs (e.g., `id="contact-form"`, not `id="contactForm"` or `id="contact_form"`).
+- **Purpose:** This ensures smooth smooth-scroll navigation, deep-linking, and clean JavaScript targeting across components.

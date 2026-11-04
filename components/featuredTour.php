@@ -38,19 +38,20 @@
     }
     ?>
 
-    <!-- Featured Tours Section (Modern Dark Card UI) -->
+    <!-- Featured Tours Section (Clean & Minimalist Modern Card UI) -->
     <section class="py-5 bg-light" id="featured-tours">
         <div class="container py-4">
             
             <!-- Header & Category Filter Tabs -->
             <div class="d-flex flex-column mb-5 gap-3">
                 <div>
-                    <span class="text-warning text-uppercase fw-bold small letter-spacing-1 d-block mb-1">
-                        Popular Tours
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-semibold mb-2">
+                        <i class="bi bi-compass-fill me-1"></i> POPULAR TOURS
                     </span>
                     <h2 class="display-6 fw-bold text-dark mb-0">
                         North India Bestseller Packages
                     </h2>
+                    <p class="text-secondary small mt-1 mb-0">Handpicked guided journeys designed for comfort, luxury, and authentic cultural exploration.</p>
                 </div>
 
                 <!-- Filter Tabs -->
@@ -79,84 +80,69 @@
                             $imageSrc = getTourImageFallback($tour['image'] ?? '');
                             $iconClass = getTourBootstrapIcon($tour['icon'] ?? 'compass');
                             $tagText = $tour['tag'] ?? 'TOUR';
-                            $handle = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $tagText));
                         ?>
                         
                         <div class="col-12 col-sm-6 col-lg-3 tour-card-col" 
                             data-category="<?= htmlspecialchars($category); ?>" 
                             data-featured="<?= $isFeatured; ?>">
                             
-                            <!-- Modern Dark Card (matching provided UI reference) -->
-                            <div class="tour-dark-card h-100 d-flex flex-column justify-content-between">
+                            <!-- Clean & Minimalist Modern Card -->
+                            <div class="modern-card h-100 d-flex flex-column justify-content-between">
                                 
                                 <div>
-                                    <!-- Top Media Banner -->
-                                    <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="d-block text-decoration-none">
-                                        <div class="card-banner shadow-sm">
-                                            <img src="<?= htmlspecialchars($imageSrc); ?>" alt="<?= htmlspecialchars($tour['title'] ?? ''); ?>" loading="lazy">
-                                        </div>
+                                    <!-- Media Banner -->
+                                    <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="modern-card-media d-block text-decoration-none" style="height: 185px;">
+                                        <span class="modern-card-badge">
+                                            <?= htmlspecialchars($tagText); ?>
+                                        </span>
+                                        
+                                        <img 
+                                            src="<?= htmlspecialchars($imageSrc); ?>" 
+                                            alt="<?= htmlspecialchars($tour['title'] ?? ''); ?>" 
+                                            class="w-100 h-100 object-fit-cover" 
+                                            loading="lazy"
+                                        >
                                     </a>
 
-                                    <!-- Avatar & Profile Row -->
-                                    <div class="px-2">
-                                        <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <div class="d-flex align-items-center gap-2">
-                                                <!-- Icon Box Badge -->
-                                                <div class="avatar-box shadow">
-                                                    <i class="bi <?= $iconClass; ?> text-warning fs-5"></i>
-                                                </div>
-                                            </div>
-                                            <!-- Follow / Action Pill Button -->
-                                            <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="btn-card-action">
-                                                Explore
-                                            </a>
-                                        </div>
+                                    <!-- Content Body -->
+                                    <div class="modern-card-body">
+                                        <!-- Title -->
+                                        <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="text-decoration-none">
+                                            <h6 class="modern-card-title text-truncate" title="<?= htmlspecialchars($tour['title'] ?? ''); ?>">
+                                                <?= htmlspecialchars($tour['title'] ?? ''); ?>
+                                            </h6>
+                                        </a>
 
-                                        <!-- Title & Handle -->
-                                        <div class="mb-2">
-                                            <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="text-decoration-none">
-                                                <h5 class="text-white fw-bold mb-0 text-truncate" title="<?= htmlspecialchars($tour['title'] ?? ''); ?>">
-                                                    <?= htmlspecialchars($tour['title'] ?? ''); ?>
-                                                    <i class="bi bi-patch-check-fill text-warning ms-1 small" title="Verified Tour"></i>
-                                                </h5>
-                                            </a>
-                                            <span class="text-secondary small fw-medium">
-                                                @<?= htmlspecialchars($handle); ?>
-                                            </span>
-                                        </div>
-
-                                        <!-- Description / Subtitle -->
-                                        <div class="text-white-50 small mb-3" style="line-height: 1.5; min-height: 42px;">
+                                        <!-- Subtitle -->
+                                        <p class="text-secondary small mb-2 line-clamp-2" style="font-size: 13px; line-height: 1.4; min-height: 36px;">
                                             <?= strip_tags($tour['subtitle'] ?? '', '<span><b><strong>'); ?>
+                                        </p>
+
+                                        <!-- Specs Row (Managed with row g-2 & text-truncate) -->
+                                        <div class="row g-2 py-2 border-top border-light-subtle text-secondary small my-1">
+                                            <div class="col-6 d-flex align-items-center gap-2 min-w-0">
+                                                <i class="bi bi-clock-history text-primary flex-shrink-0"></i>
+                                                <span class="fw-medium text-dark text-truncate" title="<?= htmlspecialchars($tour['duration'] ?? ''); ?>"><?= htmlspecialchars($tour['duration'] ?? ''); ?></span>
+                                            </div>
+                                            <div class="col-6 d-flex align-items-center gap-2 min-w-0">
+                                                <i class="bi bi-shield-check text-primary flex-shrink-0"></i>
+                                                <span class="fw-medium text-dark text-truncate" title="<?= htmlspecialchars($tour['type'] ?? ''); ?>"><?= htmlspecialchars($tour['type'] ?? ''); ?></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Footer Stats & Link -->
-                                <div class="px-2 pt-2 border-top border-secondary border-opacity-25">
-                                    <!-- Stats Row -->
-                                    <div class="d-flex align-items-center gap-3 text-white-50 small mb-2">
-                                        <div>
-                                            <span class="text-white fw-bold"><?= htmlspecialchars($tour['duration'] ?? ''); ?></span>
-                                            <span class="text-secondary small ms-1">Duration</span>
-                                        </div>
-                                        <div>
-                                            <span class="text-white fw-bold"><?= htmlspecialchars($tour['type'] ?? ''); ?></span>
-                                            <span class="text-secondary small ms-1">Type</span>
-                                        </div>
+                                <!-- Card Footer with Action Button -->
+                                <div class="modern-card-footer d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <span class="text-secondary d-block" style="font-size: 10.5px;">Starting from</span>
+                                        <span class="text-primary fw-bold" style="font-size: 15px;">Best Rates</span>
                                     </div>
-
-                                    <!-- Link Action -->
-                                    <div class="d-flex align-items-center justify-content-between pt-1">
-                                        <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="text-secondary text-decoration-none small d-inline-flex align-items-center">
-                                            <i class="bi bi-link-45deg text-warning fs-5 me-1"></i>
-                                            <span class="text-truncate" style="max-width: 140px;"><?= htmlspecialchars($tour['tag'] ?? 'tajmahaltour'); ?>.in</span>
-                                        </a>
-                                        <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="text-warning text-decoration-none small fw-semibold">
-                                            Details <i class="bi bi-arrow-up-right small"></i>
-                                        </a>
+                                    <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="btn btn-primary btn-sm rounded-pill px-3 py-1.5 fw-semibold d-inline-flex align-items-center gap-1 shadow-sm">
+                                        <span>Explore</span>
+                                        <i class="bi bi-arrow-right small"></i>
+                                    </a>
                                     </div>
-                                </div>
 
                             </div>
                         </div>
@@ -245,4 +231,3 @@
         }
     })();
     </script>
-

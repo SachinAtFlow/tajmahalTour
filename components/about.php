@@ -41,15 +41,7 @@
                     </div>
 
                     <!-- Floating 12+ Years Experience Badge -->
-                    <div class="position-absolute bottom-0 start-0 m-3 p-3 bg-primary text-white rounded-4 shadow-lg border border-3 border-white d-inline-flex align-items-center gap-3">
-                        <div class="bg-white bg-opacity-25 rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                            <i class="bi bi-award-fill fs-4 text-white"></i>
-                        </div>
-                        <div>
-                            <div class="fw-bold fs-5 lh-1">12+ Years</div>
-                            <small class="text-white-50">Excellence in North India Travel</small>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
