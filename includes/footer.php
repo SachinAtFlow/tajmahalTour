@@ -23,10 +23,10 @@
                 <h6 class="text-white fw-semibold mb-3">Quick Links</h6>
                 <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
                     <li><a href="index.php" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Home</a></li>
-                    <li><a href="#about-us" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> About Us</a></li>
+                    <li><a href="aboutUs.php" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> About Us</a></li>
                     <li><a href="#featured-tours" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Tour Packages</a></li>
                     <li><a href="#why-us" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Why Choose Us</a></li>
-                    <li><a href="#contact" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Contact Us</a></li>
+                    <li><a href="contactUs.php" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Contact Us</a></li>
                 </ul>
             </div>
 

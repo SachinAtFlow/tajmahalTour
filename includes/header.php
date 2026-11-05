@@ -95,7 +95,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
 
                 <!-- About Us -->
                 <li class="nav-item">
-                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#about-us">
+                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'aboutUs.php') ? 'active text-primary' : 'text-dark'; ?>" href="aboutUs.php">
                         About
                     </a>
                 </li>
@@ -173,27 +173,21 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
                     </ul>
                 </li>
 
-                <!-- Why Us -->
-                <li class="nav-item">
-                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#why-us">
-                        Why Us
-                    </a>
-                </li>
-
-                <!-- Reviews -->
-                <li class="nav-item">
-                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#testimonials">
-                        Reviews
-                    </a>
-                </li>
+               
 
                 <!-- Contact -->
                 <li class="nav-item">
-                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#contact">
+                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'contactUs.php') ? 'active text-primary' : 'text-dark'; ?>" href="contactUs.php">
                         Contact
                     </a>
                 </li>
 
+                <!-- Payment -->
+                <li class="nav-item">
+                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="payment.php">
+                        Payment
+                    </a>
+                </li>
             </ul>
         </div>
 
@@ -233,7 +227,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
         </a>
 
         <!-- About Us -->
-        <a href="#about-us" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
+        <a href="aboutUs.php" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
             <span>About Us</span>
         </a>
 
@@ -314,7 +308,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
         </a>
 
         <!-- Contact Us -->
-        <a href="<?php echo $homePrefix; ?>#contact" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
+        <a href="contactUs.php" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
             <span>Contact Us</span>
         </a>
     </div>
