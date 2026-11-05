@@ -11,7 +11,7 @@ $localCars = [
         'title' => 'Economy Car',
         'model' => 'WagonR, Celerio or similar',
         'desc' => 'Budget-friendly option for city monument visits, shopping, and railway/airport transfers.',
-        'image' => $carImgDir . 'economy-car.webp',
+        'image' => $carImgDir . 'economy-car.png',
         'capacity' => '4 Seater',
         'climate' => 'AC Hatchback',
         'fare' => '₹2,000',
@@ -24,7 +24,7 @@ $localCars = [
         'title' => 'Standard Sedan',
         'model' => 'Dzire, Etios or similar',
         'desc' => 'Comfortable and smooth AC sedan with ample boot space for full-day Agra city sightseeing.',
-        'image' => $carImgDir . 'standard-sedan-car.webp',
+        'image' => $carImgDir . 'standard-sedan-car.png',
         'capacity' => '4 Seater',
         'climate' => 'AC Sedan',
         'fare' => '₹2,200',
@@ -37,7 +37,7 @@ $localCars = [
         'title' => 'SUV / Innova Crysta',
         'model' => 'Innova Crysta, Ertiga',
         'desc' => 'Spacious executive SUV with plush captain seats, perfect for families and premium city comfort.',
-        'image' => $carImgDir . 'suv-innova.webp',
+        'image' => $carImgDir . 'suv-innova.png',
         'capacity' => '6–7 Seater',
         'climate' => 'Dual AC SUV',
         'fare' => '₹3,200',
@@ -50,7 +50,7 @@ $localCars = [
         'title' => 'Luxury Tempo Traveller',
         'model' => 'Force Luxury 12–16 Seater',
         'desc' => 'High-roof luxury group van with individual AC vents, ideal for group excursions and events.',
-        'image' => $carImgDir . 'tempo-traveller.webp',
+        'image' => $carImgDir . 'tempo-traveller.png',
         'capacity' => '12–16 Seater',
         'climate' => 'High AC Coach',
         'fare' => '₹5,500',
@@ -116,11 +116,11 @@ $localCars = [
 
                                 <!-- Specs Row (Managed with row g-2 & text-truncate) -->
                                 <div class="row g-2 py-2 border-top border-light-subtle text-secondary small my-1">
-                                    <div class="col-6 d-flex align-items-center gap-1.5 min-w-0">
+                                    <div class="col-6 d-flex align-items-center gap-2 min-w-0">
                                         <i class="bi bi-people-fill text-primary flex-shrink-0"></i>
                                         <span class="fw-medium text-dark text-truncate" title="<?php echo htmlspecialchars($car['capacity']); ?>"><?php echo htmlspecialchars($car['capacity']); ?></span>
                                     </div>
-                                    <div class="col-6 d-flex align-items-center gap-1.5 min-w-0">
+                                    <div class="col-6 d-flex align-items-center gap-2 min-w-0">
                                         <i class="bi bi-snow text-primary flex-shrink-0"></i>
                                         <span class="fw-medium text-dark text-truncate" title="<?php echo htmlspecialchars($car['climate']); ?>"><?php echo htmlspecialchars($car['climate']); ?></span>
                                     </div>

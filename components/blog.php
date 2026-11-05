@@ -40,60 +40,69 @@ require_once __DIR__ . '/../data/blogData.php';
                         $postLink = htmlspecialchars($post['link'] ?? '#booking');
                     ?>
                     <div class="col-12 col-sm-6 col-lg-3">
-                        <article class="tour-bestseller-card">
+                        <div class="dark-tour-card">
                             
-                            <!-- 1. Image -->
-                            <a href="<?= $postLink; ?>" class="tour-bestseller-media" tabindex="-1" aria-hidden="true">
-                                <img 
-                                    src="<?= htmlspecialchars($post['image']); ?>" 
-                                    alt="<?= htmlspecialchars($post['title']); ?>" 
-                                    loading="lazy"
-                                >
-                            </a>
-
-                            <!-- Content Body (Seamlessly below image, zero jitter) -->
-                            <div class="tour-bestseller-body p-3">
-                                <div>
-                                    <!-- 2. Tag / Category -->
-                                    <span class="text-uppercase text-secondary fw-semibold d-block mb-1" style="font-size: 11px; letter-spacing: 0.05em;">
+                            <!-- Top Media Area with Floating Tag & Seamless Bottom Fade -->
+                            <div class="dark-tour-media">
+                                
+                                <!-- Floating Tag Badge (Top-Left) -->
+                                <?php if (!empty($tag)): ?>
+                                    <span class="position-absolute top-0 start-0 m-3 z-3 badge rounded-pill bg-dark bg-opacity-75 text-white border border-light border-opacity-25 px-3 py-2 fw-semibold shadow-sm d-inline-flex align-items-center" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-size: 11px; letter-spacing: 0.05em;">
                                         <?= $tag; ?>
                                     </span>
+                                <?php endif; ?>
 
-                                    <!-- 3. Title -->
-                                    <h6 class="fw-bold text-dark mb-1 text-truncate" title="<?= htmlspecialchars($post['title']); ?>" style="font-size: 0.98rem; line-height: 1.35;">
-                                        <a href="<?= $postLink; ?>" class="text-dark text-decoration-none">
-                                            <?= htmlspecialchars($post['title']); ?>
-                                        </a>
-                                    </h6>
-
-                                    <!-- 4. Subtitle / Description (with orange keyword highlight) -->
-                                    <p class="small text-secondary mb-2 text-truncate" style="font-size: 12.5px; line-height: 1.4;">
-                                        <?= $post['subtitle'] ?? htmlspecialchars($post['description'] ?? ''); ?>
-                                    </p>
-
-                                    <!-- 5. Published Date & 6. Read Time -->
-                                    <div class="d-flex align-items-center gap-3 pt-2 border-top border-light-subtle text-secondary small" style="font-size: 11.5px;">
-                                        <span class="d-inline-flex align-items-center gap-1 min-w-0 text-truncate">
-                                            <i class="bi bi-calendar3 opacity-75"></i>
-                                            <span><?= htmlspecialchars($post['date']); ?></span>
-                                        </span>
-                                        <span class="d-inline-flex align-items-center gap-1 min-w-0 text-truncate">
-                                            <i class="bi bi-clock opacity-75"></i>
-                                            <span><?= htmlspecialchars($post['read_time']); ?></span>
-                                        </span>
-                                    </div>
-
-                                    <!-- 7. Action Link (Read Article) -->
-                                    <div class="pt-2 mt-1">
-                                        <a href="<?= $postLink; ?>" class="text-dark fw-bold text-decoration-none small d-inline-flex align-items-center gap-1 hover-primary" style="font-size: 12px;">
-                                            <span>Read article</span>
-                                            <i class="bi bi-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                <a href="<?= $postLink; ?>" tabindex="-1" aria-hidden="true" class="d-block w-100 h-100">
+                                    <img 
+                                        src="<?= htmlspecialchars($post['image']); ?>" 
+                                        alt="<?= htmlspecialchars($post['title'] ?? ''); ?>" 
+                                        loading="lazy"
+                                    >
+                                </a>
+                                <!-- Seamless Bottom Gradient Fade into Card Body -->
+                                <div class="dark-tour-fade"></div>
                             </div>
 
-                        </article>
+                            <!-- Card Content Body -->
+                            <div class="dark-tour-body">
+                                <div>
+                                    <!-- Title -->
+                                    <div class="d-flex align-items-start justify-content-between gap-2 mb-1">
+                                        <h5 class="dark-tour-title text-truncate-2">
+                                            <a href="<?= $postLink; ?>" title="<?= htmlspecialchars($post['title'] ?? ''); ?>">
+                                                <?= htmlspecialchars($post['title'] ?? ''); ?>
+                                            </a>
+                                        </h5>
+                                    </div>
+
+                                    <!-- 2-Line Subtitle / Description -->
+                                    <p class="dark-tour-desc">
+                                        <?= htmlspecialchars($post['description'] ?? ''); ?>
+                                    </p>
+
+                                    <!-- Spec Pill Badges Row (Single Row with flex-nowrap & text-nowrap) -->
+                                    <div class="dark-tour-pills d-flex align-items-center flex-nowrap gap-2 mb-3">
+                                        <!-- Date Pill -->
+                                        <span class="dark-tour-pill text-nowrap">
+                                            <i class="bi bi-calendar3 opacity-75"></i>
+                                            <span><?= htmlspecialchars($post['date'] ?? ''); ?></span>
+                                        </span>
+                                        <!-- Read Time Pill -->
+                                        <span class="dark-tour-pill text-nowrap">
+                                            <i class="bi bi-clock opacity-75"></i>
+                                            <span><?= htmlspecialchars($post['read_time'] ?? ''); ?></span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Solid White "Read article" Full-Width CTA Button -->
+                                <a href="<?= $postLink; ?>" class="btn-dark-tour-cta">
+                                    Read article
+                                </a>
+
+                            </div>
+
+                        </div>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>

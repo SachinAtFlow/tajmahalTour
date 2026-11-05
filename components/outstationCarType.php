@@ -11,7 +11,7 @@ $outstationCars = [
         'title' => 'Economy Car',
         'model' => 'WagonR, Celerio or similar',
         'desc' => 'Budget-friendly hatchback option for Agra, Mathura, and short outstation trips.',
-        'image' => $carImgDir . 'economy-car.webp',
+        'image' => $carImgDir . 'economy-car.png',
         'capacity' => '4 Seater',
         'climate' => 'AC Hatchback',
         'fare' => '₹3,000',
@@ -24,7 +24,7 @@ $outstationCars = [
         'title' => 'Standard Sedan',
         'model' => 'Dzire, Etios or similar',
         'desc' => 'Most popular sedan with spacious boot, highway comfort, and smooth long-distance drive.',
-        'image' => $carImgDir . 'standard-sedan-car.webp',
+        'image' => $carImgDir . 'standard-sedan-car.png',
         'capacity' => '4 Seater',
         'climate' => 'AC Sedan',
         'fare' => '₹3,500',
@@ -37,7 +37,7 @@ $outstationCars = [
         'title' => 'SUV / Innova Crysta',
         'model' => 'Innova Crysta, Ertiga',
         'desc' => 'Top-tier luxury SUV offering maximum legroom, captain seats, and mountain readiness.',
-        'image' => $carImgDir . 'suv-innova.webp',
+        'image' => $carImgDir . 'suv-innova.png',
         'capacity' => '6–7 Seater',
         'climate' => 'Dual AC SUV',
         'fare' => '₹5,000',
@@ -50,7 +50,7 @@ $outstationCars = [
         'title' => 'Luxury Tempo Traveller',
         'model' => 'Force Luxury 12–16 Seater',
         'desc' => 'Spacious executive group coach with pushback seats and high roof for family road trips.',
-        'image' => $carImgDir . 'tempo-traveller.webp',
+        'image' => $carImgDir . 'tempo-traveller.png',
         'capacity' => '12–16 Seater',
         'climate' => 'High AC Coach',
         'fare' => '₹7,500',
@@ -116,11 +116,11 @@ $outstationCars = [
 
                                 <!-- Specs Row (Managed with row g-2 & text-truncate) -->
                                 <div class="row g-2 py-2 border-top border-light-subtle text-secondary small my-1">
-                                    <div class="col-6 d-flex align-items-center gap-1.5 min-w-0">
+                                    <div class="col-6 d-flex align-items-center gap-2 min-w-0">
                                         <i class="bi bi-people-fill text-primary flex-shrink-0"></i>
                                         <span class="fw-medium text-dark text-truncate" title="<?php echo htmlspecialchars($car['capacity']); ?>"><?php echo htmlspecialchars($car['capacity']); ?></span>
                                     </div>
-                                    <div class="col-6 d-flex align-items-center gap-1.5 min-w-0">
+                                    <div class="col-6 d-flex align-items-center gap-2 min-w-0">
                                         <i class="bi bi-snow text-primary flex-shrink-0"></i>
                                         <span class="fw-medium text-dark text-truncate" title="<?php echo htmlspecialchars($car['climate']); ?>"><?php echo htmlspecialchars($car['climate']); ?></span>
                                     </div>
