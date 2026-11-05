@@ -24,7 +24,7 @@ $safetyFeatures = [
 ?>
 
 <!-- Driver Safety & Standards Section -->
-<section class="py-5 bg-white" id="safety-standards">
+<section class="py-5 bg-white" id="safety-verified">
     <div class="container py-4">
         <div class="row g-4 g-xl-5 align-items-stretch">
 
@@ -48,8 +48,8 @@ $safetyFeatures = [
                 <div class="row g-3 g-md-4">
                     <?php foreach ($safetyFeatures as $item): ?>
                         <div class="col-sm-6">
-                            <div class="card h-100 border border-light-subtle rounded-4 p-4 shadow-sm safety-card bg-white">
-                                <div class="safety-icon-box rounded-3 bg-primary bg-opacity-10 text-primary d-inline-flex align-items-center justify-content-center mb-3">
+                            <div class="card h-100 border border-light-subtle rounded-4 p-4 shadow-xs hover-lift bg-white">
+                                <div class="rounded-3 bg-primary bg-opacity-10 text-primary d-inline-flex align-items-center justify-content-center mb-3" style="width: 48px; height: 48px;">
                                     <i class="bi <?php echo htmlspecialchars($item['icon']); ?> fs-4"></i>
                                 </div>
                                 <h5 class="fw-bold text-dark mb-2">

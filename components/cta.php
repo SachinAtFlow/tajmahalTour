@@ -33,7 +33,7 @@
             <div class="cta-banner-glow"></div>
             <div class="cta-banner-glow-2"></div>
 
-            <div class="cta-content position-relative">
+            <div class="position-relative z-1">
                 
                 <!-- Pill Badge -->
                 <span class="badge bg-white text-primary border border-primary border-opacity-25 px-3 py-2 rounded-pill fw-semibold mb-3 d-inline-flex align-items-center gap-1.5 shadow-xs">
@@ -52,7 +52,7 @@
 
                 <!-- Action CTA Buttons -->
                 <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 mb-4">
-                    <a href="#booking" class="btn btn-cta-primary rounded-pill px-4 py-3 d-inline-flex align-items-center gap-2">
+                    <a href="#booking" class="btn btn-primary rounded-pill px-4 py-3 fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
                         <span>Book Your Tour Now</span>
                         <i class="bi bi-arrow-right"></i>
                     </a>
@@ -60,7 +60,7 @@
                     <a 
                         href="https://wa.me/918800722606?text=Hello%20TajMahalTour,%20I%20want%20to%20plan%20my%20Agra%20trip." 
                         target="_blank" 
-                        class="btn btn-cta-secondary rounded-pill px-4 py-3 d-inline-flex align-items-center gap-2"
+                        class="btn btn-light border border-primary border-opacity-25 text-dark rounded-pill px-4 py-3 fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
                     >
                         <i class="bi bi-whatsapp text-success"></i>
                         <span>Talk to Travel Expert</span>

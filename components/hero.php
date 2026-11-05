@@ -1,5 +1,5 @@
 <!-- Hero Section (Elementor Structure with 50% Overlapping Banner Search Form) -->
-<section class="elementor-section elementor-top-section elementor-element elementor-element-6c6f2387 elementor-section-boxed elementor-section-height-default elementor-section-height-default hero-section text-white d-flex align-items-center position-relative py-5" data-id="6c6f2387" data-element_type="section" data-e-type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<section id="hero-banner" class="elementor-section elementor-top-section elementor-element elementor-element-6c6f2387 elementor-section-boxed elementor-section-height-default elementor-section-height-default hero-section text-white d-flex align-items-center position-relative py-5" data-id="6c6f2387" data-element_type="section" data-e-type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
     <div class="container text-center py-5 my-auto">
         
         <!-- Heading Container -->

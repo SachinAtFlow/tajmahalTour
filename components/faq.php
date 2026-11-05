@@ -27,14 +27,14 @@ require_once __DIR__ . '/../data/faqData.php';
         <div class="row justify-content-center">
             <div class="col-lg-9 col-xl-8">
                 
-                <div class="accordion faq-accordion" id="travelFaqAccordion">
+                <div class="accordion" id="travelFaqAccordion">
                     <?php if (!empty($faqData)): ?>
                         <?php foreach ($faqData as $faq): ?>
                             <?php $isFirst = ($faq['id'] === 1); ?>
-                            <div class="accordion-item shadow-sm">
+                            <div class="accordion-item shadow-xs border border-light-subtle rounded-4 mb-3 overflow-hidden bg-white">
                                 <h3 class="accordion-header" id="faqHeading<?php echo $faq['id']; ?>">
                                     <button 
-                                        class="accordion-button <?php echo $isFirst ? '' : 'collapsed'; ?>" 
+                                        class="accordion-button fw-semibold px-4 py-3 bg-white text-dark shadow-none rounded-4 <?php echo $isFirst ? '' : 'collapsed'; ?>" 
                                         type="button" 
                                         data-bs-toggle="collapse" 
                                         data-bs-target="#faqCollapse<?php echo $faq['id']; ?>" 
@@ -50,7 +50,7 @@ require_once __DIR__ . '/../data/faqData.php';
                                     aria-labelledby="faqHeading<?php echo $faq['id']; ?>" 
                                     data-bs-parent="#travelFaqAccordion"
                                 >
-                                    <div class="accordion-body">
+                                    <div class="accordion-body px-4 pt-2 pb-4 text-secondary lh-base">
                                         <?php echo htmlspecialchars($faq['answer']); ?>
                                     </div>
                                 </div>

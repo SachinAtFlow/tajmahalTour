@@ -31,72 +31,66 @@ require_once __DIR__ . '/../data/blogData.php';
             </div>
         </div>
 
-        <!-- Dynamic Blog Cards Grid (Supports n-number of cards) -->
+        <!-- Dynamic Blog Cards Grid (Matching Featured Tour Card UI) -->
         <div class="row g-4">
             <?php if (!empty($blogPosts)): ?>
                 <?php foreach ($blogPosts as $post): ?>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                        <article class="blog-card shadow-xs">
+                    <?php 
+                        $tag = htmlspecialchars($post['tag'] ?? strtoupper($post['category'] ?? 'TRAVEL GUIDE'));
+                        $postLink = htmlspecialchars($post['link'] ?? '#booking');
+                    ?>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <article class="tour-bestseller-card">
                             
-                            <!-- Card Thumbnail Media & Category Badge -->
-                            <div class="blog-card-media">
-                                <a href="<?php echo htmlspecialchars($post['link']); ?>" tabindex="-1" aria-hidden="true">
-                                    <img 
-                                        src="<?php echo htmlspecialchars($post['image']); ?>" 
-                                        alt="<?php echo htmlspecialchars($post['title']); ?>" 
-                                        loading="lazy"
-                                    >
-                                </a>
-                                <?php if (!empty($post['category'])): ?>
-                                    <span class="blog-card-badge">
-                                        <?php echo htmlspecialchars($post['category']); ?>
-                                    </span>
-                                <?php endif; ?>
-                            </div>
+                            <!-- 1. Image -->
+                            <a href="<?= $postLink; ?>" class="tour-bestseller-media" tabindex="-1" aria-hidden="true">
+                                <img 
+                                    src="<?= htmlspecialchars($post['image']); ?>" 
+                                    alt="<?= htmlspecialchars($post['title']); ?>" 
+                                    loading="lazy"
+                                >
+                            </a>
 
-                            <!-- Card Content Body -->
-                            <div class="blog-card-body">
-                                
-                                <!-- Meta Information: Date & Reading Time -->
-                                <div class="d-flex align-items-center gap-2 text-secondary small mb-2">
-                                    <span class="d-inline-flex align-items-center gap-1">
-                                        <i class="bi bi-calendar3 text-primary"></i>
-                                        <span><?php echo htmlspecialchars($post['date']); ?></span>
+                            <!-- Content Body (Seamlessly below image, zero jitter) -->
+                            <div class="tour-bestseller-body p-3">
+                                <div>
+                                    <!-- 2. Tag / Category -->
+                                    <span class="text-uppercase text-secondary fw-semibold d-block mb-1" style="font-size: 11px; letter-spacing: 0.05em;">
+                                        <?= $tag; ?>
                                     </span>
-                                    <span class="text-muted opacity-50">&bull;</span>
-                                    <span class="d-inline-flex align-items-center gap-1">
-                                        <i class="bi bi-clock text-primary"></i>
-                                        <span><?php echo htmlspecialchars($post['read_time']); ?></span>
-                                    </span>
+
+                                    <!-- 3. Title -->
+                                    <h6 class="fw-bold text-dark mb-1 text-truncate" title="<?= htmlspecialchars($post['title']); ?>" style="font-size: 0.98rem; line-height: 1.35;">
+                                        <a href="<?= $postLink; ?>" class="text-dark text-decoration-none">
+                                            <?= htmlspecialchars($post['title']); ?>
+                                        </a>
+                                    </h6>
+
+                                    <!-- 4. Subtitle / Description (with orange keyword highlight) -->
+                                    <p class="small text-secondary mb-2 text-truncate" style="font-size: 12.5px; line-height: 1.4;">
+                                        <?= $post['subtitle'] ?? htmlspecialchars($post['description'] ?? ''); ?>
+                                    </p>
+
+                                    <!-- 5. Published Date & 6. Read Time -->
+                                    <div class="d-flex align-items-center gap-3 pt-2 border-top border-light-subtle text-secondary small" style="font-size: 11.5px;">
+                                        <span class="d-inline-flex align-items-center gap-1 min-w-0 text-truncate">
+                                            <i class="bi bi-calendar3 opacity-75"></i>
+                                            <span><?= htmlspecialchars($post['date']); ?></span>
+                                        </span>
+                                        <span class="d-inline-flex align-items-center gap-1 min-w-0 text-truncate">
+                                            <i class="bi bi-clock opacity-75"></i>
+                                            <span><?= htmlspecialchars($post['read_time']); ?></span>
+                                        </span>
+                                    </div>
+
+                                    <!-- 7. Action Link (Read Article) -->
+                                    <div class="pt-2 mt-1">
+                                        <a href="<?= $postLink; ?>" class="text-dark fw-bold text-decoration-none small d-inline-flex align-items-center gap-1 hover-primary" style="font-size: 12px;">
+                                            <span>Read article</span>
+                                            <i class="bi bi-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
-
-                                <!-- Blog Title -->
-                                <h3 class="blog-card-title mb-2 line-clamp-2">
-                                    <a href="<?php echo htmlspecialchars($post['link']); ?>" class="text-decoration-none text-reset">
-                                        <?php echo htmlspecialchars($post['title']); ?>
-                                    </a>
-                                </h3>
-
-                                <!-- Short Excerpt / Description -->
-                                <p class="text-secondary small mb-4 line-clamp-2 flex-grow-1">
-                                    <?php echo htmlspecialchars($post['description']); ?>
-                                </p>
-
-                                <!-- Footer Action Button -->
-                                <div class="pt-3 border-top border-light-subtle d-flex align-items-center justify-content-between">
-                                    <a 
-                                        href="<?php echo htmlspecialchars($post['link']); ?>" 
-                                        class="btn btn-outline-primary btn-sm rounded-pill px-3 py-1.5 fw-semibold d-inline-flex align-items-center gap-1 text-nowrap"
-                                        aria-label="Read full article: <?php echo htmlspecialchars($post['title']); ?>"
-                                    >
-                                        <span>Read Article</span>
-                                        <i class="bi bi-arrow-right"></i>
-                                    </a>
-                                    <span class="text-muted small">
-                                        <i class="bi bi-bookmark text-secondary opacity-75"></i>
-                                    </span>
-                                </div>
-
                             </div>
 
                         </article>

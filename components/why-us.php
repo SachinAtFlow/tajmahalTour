@@ -9,7 +9,7 @@
 
         <div class="row g-4">
             <div class="col-md-6 col-lg-3">
-                <div class="card border-0 shadow-sm h-100 p-4 text-center rounded-4 tour-card">
+                <div class="card border border-light-subtle shadow-xs h-100 p-4 text-center rounded-4 hover-lift">
                     <div class="mx-auto mb-3 bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
                         <i class="bi bi-person-badge-fill fs-2"></i>
                     </div>
@@ -19,7 +19,7 @@
             </div>
 
             <div class="col-md-6 col-lg-3">
-                <div class="card border-0 shadow-sm h-100 p-4 text-center rounded-4 tour-card">
+                <div class="card border border-light-subtle shadow-xs h-100 p-4 text-center rounded-4 hover-lift">
                     <div class="mx-auto mb-3 bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
                         <i class="bi bi-shield-check fs-2"></i>
                     </div>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="col-md-6 col-lg-3">
-                <div class="card border-0 shadow-sm h-100 p-4 text-center rounded-4 tour-card">
+                <div class="card border border-light-subtle shadow-xs h-100 p-4 text-center rounded-4 hover-lift">
                     <div class="mx-auto mb-3 bg-warning bg-opacity-10 text-warning rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
                         <i class="bi bi-car-front-fill fs-2"></i>
                     </div>
@@ -39,7 +39,7 @@
             </div>
 
             <div class="col-md-6 col-lg-3">
-                <div class="card border-0 shadow-sm h-100 p-4 text-center rounded-4 tour-card">
+                <div class="card border border-light-subtle shadow-xs h-100 p-4 text-center rounded-4 hover-lift">
                     <div class="mx-auto mb-3 bg-danger bg-opacity-10 text-danger rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
                         <i class="bi bi-arrow-repeat fs-2"></i>
                     </div>

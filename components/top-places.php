@@ -52,7 +52,7 @@ $destinations = [
 ?>
 
 <!-- Top Destinations Section (Infinite Marquee) -->
-<section class="top-destinations-section section-after-hero py-5">
+<section class="bg-white overflow-hidden section-after-hero py-5" id="top-destinations">
     <div class="container-fluid px-4">
 
         <!-- SECTION HEADING -->
@@ -63,17 +63,17 @@ $destinations = [
         </div>
 
         <!-- INFINITE MARQUEE -->
-        <div class="destination-marquee">
+        <div class="w-100 overflow-hidden destination-marquee">
             <div class="destination-track">
 
                 <!-- FIRST GROUP -->
-                <div class="destination-group d-flex align-items-start">
+                <div class="d-flex align-items-start flex-shrink-0 destination-group">
                     <?php foreach ($destinations as $destination): ?>
                         <div class="destination-card text-center px-3">
                             <a href="<?php echo htmlspecialchars($destination['link']); ?>" class="text-decoration-none">
                                 
                                 <!-- CIRCLE IMAGE -->
-                                <div class="destination-img rounded-circle overflow-hidden mx-auto mb-3 shadow-sm">
+                                <div class="destination-img rounded-circle overflow-hidden mx-auto mb-3 shadow-sm bg-light">
                                     <img
                                         src="<?php echo htmlspecialchars($destination['image']); ?>"
                                         alt="<?php echo htmlspecialchars($destination['name']); ?>"
@@ -98,13 +98,13 @@ $destinations = [
                 </div>
 
                 <!-- DUPLICATE GROUP FOR INFINITE LOOP -->
-                <div class="destination-group d-flex align-items-start" aria-hidden="true">
+                <div class="d-flex align-items-start flex-shrink-0 destination-group" aria-hidden="true">
                     <?php foreach ($destinations as $destination): ?>
                         <div class="destination-card text-center px-3">
                             <a href="<?php echo htmlspecialchars($destination['link']); ?>" class="text-decoration-none" tabindex="-1">
                                 
                                 <!-- CIRCLE IMAGE -->
-                                <div class="destination-img rounded-circle overflow-hidden mx-auto mb-3 shadow-sm">
+                                <div class="destination-img rounded-circle overflow-hidden mx-auto mb-3 shadow-sm bg-light">
                                     <img
                                         src="<?php echo htmlspecialchars($destination['image']); ?>"
                                         alt=""

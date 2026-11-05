@@ -85,17 +85,17 @@ require_once __DIR__ . '/../data/testimonialData.php';
 
                                             <!-- Navigation Buttons (Bootstrap Buttons) -->
                                             <div class="d-flex gap-2">
-                                                <button type="button" class="btn btn-outline-secondary rounded-circle d-inline-flex align-items-center justify-content-center p-0 testimonial-nav-btn testimonial-btn-prev" aria-label="Previous Slide">
+                                                <button type="button" class="btn btn-outline-primary rounded-circle d-inline-flex align-items-center justify-content-center p-0 testimonial-btn-prev shadow-xs" style="width: 42px; height: 42px;" aria-label="Previous Slide">
                                                     <i class="bi bi-chevron-left"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-outline-secondary rounded-circle d-inline-flex align-items-center justify-content-center p-0 testimonial-nav-btn testimonial-btn-next" aria-label="Next Slide">
+                                                <button type="button" class="btn btn-outline-primary rounded-circle d-inline-flex align-items-center justify-content-center p-0 testimonial-btn-next shadow-xs" style="width: 42px; height: 42px;" aria-label="Next Slide">
                                                     <i class="bi bi-chevron-right"></i>
                                                 </button>
                                             </div>
                                         </div>
 
                                         <!-- Pagination Bullets -->
-                                        <div class="testimonial-pagination"></div>
+                                        <div class="testimonial-pagination d-flex align-items-center gap-2 mt-4"></div>
 
                                     </div>
                                 </div>

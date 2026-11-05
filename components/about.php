@@ -1,5 +1,5 @@
 <!-- About Us Section -->
-<section class="py-5 bg-white position-relative" id="about">
+<section class="py-5 bg-white position-relative" id="about-us">
     <div class="container py-lg-4">
         <div class="row align-items-center g-4 g-lg-5">
             
@@ -9,11 +9,12 @@
                     <div class="row g-3">
                         <!-- Tall Main Heritage Photo -->
                         <div class="col-7">
-                            <div class="h-100 rounded-4 overflow-hidden shadow-sm about-gallery-img">
+                            <div class="h-100 rounded-4 overflow-hidden shadow-sm hover-lift">
                                 <img 
                                     src="assets/images/uttarPradesh/tajmahal.avif" 
                                     alt="Taj Mahal Agra Tour" 
-                                    class="img-fluid w-100 about-img-tall object-fit-cover"
+                                    class="img-fluid w-100 object-fit-cover"
+                                    style="min-height: 380px; height: 100%;"
                                     loading="lazy"
                                 >
                             </div>
@@ -21,19 +22,21 @@
 
                         <!-- Stacked Photos (Car Service & Rajasthan Tour) -->
                         <div class="col-5 d-flex flex-column gap-3">
-                            <div class="rounded-4 overflow-hidden shadow-sm about-gallery-img">
+                            <div class="rounded-4 overflow-hidden shadow-sm hover-lift">
                                 <img 
                                     src="assets/images/others/driving.avif" 
                                     alt="Premium Car Rental Chauffeur" 
-                                    class="img-fluid w-100 about-img-stacked object-fit-cover"
+                                    class="img-fluid w-100 object-fit-cover"
+                                    style="height: 182px;"
                                     loading="lazy"
                                 >
                             </div>
-                            <div class="rounded-4 overflow-hidden shadow-sm about-gallery-img">
+                            <div class="rounded-4 overflow-hidden shadow-sm hover-lift">
                                 <img 
                                     src="assets/images/rajasthan/jaipur.avif" 
                                     alt="Customized Rajasthan Tour" 
-                                    class="img-fluid w-100 about-img-stacked object-fit-cover"
+                                    class="img-fluid w-100 object-fit-cover"
+                                    style="height: 182px;"
                                     loading="lazy"
                                 >
                             </div>

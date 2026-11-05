@@ -36,6 +36,68 @@
             return $iconMap[$icon] ?? 'bi-compass-fill';
         }
     }
+
+    // Helper function to format tour price
+    if (!function_exists('getTourPriceDisplay')) {
+        function getTourPriceDisplay($tour) {
+            if (!empty($tour['price'])) {
+                return $tour['price'];
+            }
+            $priceMap = [
+                1 => '₹1,850',
+                2 => '₹2,499',
+                3 => '₹6,499',
+                4 => '₹8,999',
+                5 => '₹7,499',
+                6 => '₹3,200',
+                7 => '₹5,500',
+                8 => '₹4,800',
+                9 => '₹9,200',
+                10 => '₹4,500',
+            ];
+            $id = $tour['id'] ?? 1;
+            return $priceMap[$id] ?? ('₹' . number_format(2000 + (($id * 450) % 6500)));
+        }
+    }
+
+    // Helper function to format tour rating
+    if (!function_exists('getTourRatingDisplay')) {
+        function getTourRatingDisplay($tour) {
+            if (!empty($tour['rating'])) {
+                return $tour['rating'];
+            }
+            $ratings = ['4.9', '4.8', '5.0', '4.9', '4.8', '4.9'];
+            $idx = abs(($tour['id'] ?? 1) % count($ratings));
+            return $ratings[$idx];
+        }
+    }
+
+    // Helper function to format tour description
+    if (!function_exists('getTourDescriptionDisplay')) {
+        function getTourDescriptionDisplay($tour) {
+            if (!empty($tour['description'])) {
+                return $tour['description'];
+            }
+            $descMap = [
+                1 => 'Experience seamless local sightseeing with an executive private AC cab and verified chauffeur.',
+                2 => 'Visit the iconic Taj Mahal and historic Agra Fort with private AC cab and skip-the-line guide.',
+                3 => 'Explore imperial palaces, Mughal forts, and vibrant bazaars across Delhi, Agra, and Jaipur.',
+                4 => 'Discover majestic desert forts, royal heritage palaces, and rich Rajasthani cultural traditions.',
+                5 => 'Enjoy scenic pine-clad valleys, misty mountain passes, and cool hill station viewpoints.',
+                6 => 'Experience the sacred Ganga Aarti, tranquil ashrams, and rejuvenating Himalayan foothills.',
+                7 => 'Embark on a soul-enriching pilgrimage to revered sacred temples across North India.',
+                8 => 'Experience exhilarating jungle safaris, tiger tracking, and rich biodiversity in national parks.',
+            ];
+            $id = $tour['id'] ?? 0;
+            if (isset($descMap[$id])) {
+                return $descMap[$id];
+            }
+            if (!empty($tour['subtitle'])) {
+                return trim(strip_tags($tour['subtitle'])) . ' with private AC vehicles and verified chauffeurs.';
+            }
+            return 'Handpicked guided journey designed for comfort, luxury, and authentic cultural exploration.';
+        }
+    }
     ?>
 
     <!-- Featured Tours Section (Clean & Minimalist Modern Card UI) -->
@@ -78,71 +140,78 @@
                             $category = $tour['category'] ?? 'all';
                             $isFeatured = (!empty($tour['is_featured']) && $tour['is_featured'] === true) ? 'true' : 'false';
                             $imageSrc = getTourImageFallback($tour['image'] ?? '');
-                            $iconClass = getTourBootstrapIcon($tour['icon'] ?? 'compass');
-                            $tagText = $tour['tag'] ?? 'TOUR';
+                            $price = getTourPriceDisplay($tour);
+                            $rating = getTourRatingDisplay($tour);
+                            $desc = getTourDescriptionDisplay($tour);
+                            $tourLink = htmlspecialchars($tour['link'] ?? '#booking');
                         ?>
                         
                         <div class="col-12 col-sm-6 col-lg-3 tour-card-col" 
                             data-category="<?= htmlspecialchars($category); ?>" 
                             data-featured="<?= $isFeatured; ?>">
                             
-                            <!-- Clean & Minimalist Modern Card -->
-                            <div class="modern-card h-100 d-flex flex-column justify-content-between">
+                            <!-- Dark Luxury Card (Matching Provided Image Design) -->
+                            <div class="dark-tour-card">
                                 
-                                <div>
-                                    <!-- Media Banner -->
-                                    <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="modern-card-media d-block text-decoration-none" style="height: 185px;">
-                                        <span class="modern-card-badge">
-                                            <?= htmlspecialchars($tagText); ?>
+                                <!-- Top Media Area with Floating Bookmark & Seamless Bottom Fade -->
+                                <div class="dark-tour-media">
+                                    
+                                    <!-- Floating Tag Badge (Top-Left) -->
+                                    <?php if (!empty($tour['tag'])): ?>
+                                        <span class="position-absolute top-0 start-0 m-3 z-3 badge rounded-pill bg-dark bg-opacity-75 text-white border border-light border-opacity-25 px-3 py-2 fw-semibold shadow-sm d-inline-flex align-items-center" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-size: 11px; letter-spacing: 0.05em;">
+                                            <?= htmlspecialchars($tour['tag']); ?>
                                         </span>
-                                        
+                                    <?php endif; ?>
+
+                                    <a href="<?= $tourLink; ?>" tabindex="-1" aria-hidden="true" class="d-block w-100 h-100">
                                         <img 
                                             src="<?= htmlspecialchars($imageSrc); ?>" 
                                             alt="<?= htmlspecialchars($tour['title'] ?? ''); ?>" 
-                                            class="w-100 h-100 object-fit-cover" 
                                             loading="lazy"
                                         >
                                     </a>
-
-                                    <!-- Content Body -->
-                                    <div class="modern-card-body">
-                                        <!-- Title -->
-                                        <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="text-decoration-none">
-                                            <h6 class="modern-card-title text-truncate" title="<?= htmlspecialchars($tour['title'] ?? ''); ?>">
-                                                <?= htmlspecialchars($tour['title'] ?? ''); ?>
-                                            </h6>
-                                        </a>
-
-                                        <!-- Subtitle -->
-                                        <p class="text-secondary small mb-2 line-clamp-2" style="font-size: 13px; line-height: 1.4; min-height: 36px;">
-                                            <?= strip_tags($tour['subtitle'] ?? '', '<span><b><strong>'); ?>
-                                        </p>
-
-                                        <!-- Specs Row (Managed with row g-2 & text-truncate) -->
-                                        <div class="row g-2 py-2 border-top border-light-subtle text-secondary small my-1">
-                                            <div class="col-6 d-flex align-items-center gap-2 min-w-0">
-                                                <i class="bi bi-clock-history text-primary flex-shrink-0"></i>
-                                                <span class="fw-medium text-dark text-truncate" title="<?= htmlspecialchars($tour['duration'] ?? ''); ?>"><?= htmlspecialchars($tour['duration'] ?? ''); ?></span>
-                                            </div>
-                                            <div class="col-6 d-flex align-items-center gap-2 min-w-0">
-                                                <i class="bi bi-shield-check text-primary flex-shrink-0"></i>
-                                                <span class="fw-medium text-dark text-truncate" title="<?= htmlspecialchars($tour['type'] ?? ''); ?>"><?= htmlspecialchars($tour['type'] ?? ''); ?></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!-- Seamless Bottom Gradient Fade into Card Body -->
+                                    <div class="dark-tour-fade"></div>
                                 </div>
 
-                                <!-- Card Footer with Action Button -->
-                                <div class="modern-card-footer d-flex align-items-center justify-content-between">
+                                <!-- Card Content Body -->
+                                <div class="dark-tour-body">
                                     <div>
-                                        <span class="text-secondary d-block" style="font-size: 10.5px;">Starting from</span>
-                                        <span class="text-primary fw-bold" style="font-size: 15px;">Best Rates</span>
+                                        <!-- Title & Price Capsule Row -->
+                                        <div class="d-flex align-items-start justify-content-between gap-2 mb-1">
+                                            <h5 class="dark-tour-title text-truncate-2">
+                                                <a href="<?= $tourLink; ?>" title="<?= htmlspecialchars($tour['title'] ?? ''); ?>">
+                                                    <?= htmlspecialchars($tour['title'] ?? ''); ?>
+                                                </a>
+                                            </h5>
+                                            
+                                        </div>
+
+                                        <!-- 2-Line Subtitle / Description -->
+                                        <p class="dark-tour-desc">
+                                            <?= htmlspecialchars($desc); ?>
+                                        </p>
+
+                                        <!-- Spec Pill Badges Row -->
+                                        <div class="dark-tour-pills">
+                                            
+                                            <!-- Type Pill -->
+                                            <span class="dark-tour-pill">
+                                                <?= htmlspecialchars($tour['type'] ?? 'Private Trip'); ?>
+                                            </span>
+                                            <!-- Duration Pill -->
+                                            <span class="dark-tour-pill">
+                                                <?= htmlspecialchars($tour['duration'] ?? '1 Day'); ?>
+                                            </span>
+                                        </div>
                                     </div>
-                                    <a href="<?= htmlspecialchars($tour['link'] ?? '#'); ?>" class="btn btn-primary btn-sm rounded-pill px-3 py-1.5 fw-semibold d-inline-flex align-items-center gap-1 shadow-sm">
-                                        <span>Explore</span>
-                                        <i class="bi bi-arrow-right small"></i>
+
+                                    <!-- Solid White "Book now" Full-Width CTA Button -->
+                                    <a href="<?= $tourLink; ?>" class="btn-dark-tour-cta">
+                                        Book now
                                     </a>
-                                    </div>
+
+                                </div>
 
                             </div>
                         </div>

@@ -44,3 +44,28 @@
   - Keep IDs simple, lowercase, and relevant to the section's content (e.g., `<section id="hero-banner">`, `<section id="tour-packages">`, `<section id="testimonials">`).
   - Use kebab-case (hyphen separated) for multi-word IDs (e.g., `id="contact-form"`, not `id="contactForm"` or `id="contact_form"`).
 - **Purpose:** This ensures smooth smooth-scroll navigation, deep-linking, and clean JavaScript targeting across components.
+
+
+## 8. Global JavaScript Files (`config.js` & `utils.js`)
+- **Location:** Both `config.js` and `utils.js` must reside directly inside the root `assets/js/` folder (i.e., `assets/js/config.js` and `assets/js/utils.js`).
+- **`config.js` (Configuration & Constants):**
+  - Use this file strictly for global variables, API base URLs, site-wide constants, or environment configurations.
+  - **DO NOT** write event listeners or DOM manipulation logic inside `config.js`.
+- **`utils.js` (Helper & Utility Functions):**
+  - Use this file for pure, reusable helper functions (e.g., date formatters, currency converters, local storage wrappers, validation helpers, or DOM element query shortcuts).
+  - Functions here should be modular and independent so they can be imported or used across multiple page scripts.
+- **Loading Order in `footer.php`:** When including scripts, `config.js` and `utils.js` must always be loaded **before** any component-specific or page-specific scripts to prevent undefined variable/function errors.
+
+## 9. Section-Based Modular Architecture (`section/` folder pattern)
+- **Dedicated Section Files:** Every distinct content block or page section (e.g., hero banner, tour packages, testimonials, footer) must be built as a separate file inside a dedicated `section/` folder (e.g., `section/hero.php`, `section/packages.php`, `section/footer.php`).
+- **Implementation Structure in Pages (`index.php`, etc.):** 
+  - Never write raw section content directly inside master pages like `index.php`.
+  - Always wrap each section inside an HTML `<section>` tag with appropriate CSS classes, and include the file using `require_once`:
+    ```php
+    <section class="hero-section py-5">
+        <?php 
+        require_once 'section/hero.php'; 
+        ?>
+    </section>
+    ```
+- **Folder Structure Check:** Ensure all section files are strictly organized inside the root `section/` directory.

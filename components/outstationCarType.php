@@ -62,7 +62,7 @@ $outstationCars = [
 ?>
 
 <!-- Outstation Fleet Section (Clean & Minimalist Modern Card UI) -->
-<section class="py-5 bg-light position-relative" id="outstation-fleet">
+<section class="py-5 bg-light position-relative" id="outstation-car-rental">
     <div class="container py-4">
 
         <!-- Section Header -->
@@ -85,15 +85,15 @@ $outstationCars = [
                     $waUrl = 'https://wa.me/918800722606?text=' . urlencode($car['wa_text']);
                 ?>
                 <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="modern-card h-100 d-flex flex-column justify-content-between">
+                    <div class="card h-100 border border-light-subtle rounded-4 overflow-hidden shadow-xs hover-lift d-flex flex-column justify-content-between bg-white">
                         
                         <div>
                             <!-- Top Media Banner -->
-                            <div class="modern-card-media d-flex align-items-center justify-content-center p-3" style="height: 180px; background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);">
-                                <span class="modern-card-badge">
+                            <div class="position-relative overflow-hidden d-flex align-items-center justify-content-center p-3" style="height: 180px; background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);">
+                                <span class="badge bg-white text-dark rounded-pill shadow-xs position-absolute top-0 start-0 m-3 px-2.5 py-1 fw-bold" style="font-size: 11px;">
                                     <?php echo htmlspecialchars($car['tag']); ?>
                                 </span>
-                                <span class="modern-card-status">
+                                <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 rounded-pill position-absolute top-0 end-0 m-3 px-2.5 py-1 fw-semibold" style="font-size: 11px;">
                                     <i class="bi bi-circle-fill me-1" style="font-size: 6px;"></i>Available
                                 </span>
                                 <img 
@@ -106,8 +106,8 @@ $outstationCars = [
                             </div>
 
                             <!-- Content Body -->
-                            <div class="modern-card-body">
-                                <h6 class="modern-card-title mb-1"><?php echo htmlspecialchars($car['title']); ?></h6>
+                            <div class="card-body p-3 pb-2 d-flex flex-column justify-content-between flex-grow-1">
+                                <h6 class="fw-bold fs-6 mb-1 text-dark"><?php echo htmlspecialchars($car['title']); ?></h6>
                                 <span class="text-secondary small d-block mb-2"><?php echo htmlspecialchars($car['model']); ?></span>
 
                                 <p class="text-secondary small mb-2 line-clamp-2" style="font-size: 13px; line-height: 1.4; min-height: 36px;">
@@ -129,7 +129,7 @@ $outstationCars = [
                         </div>
 
                         <!-- Card Footer -->
-                        <div class="modern-card-footer">
+                        <div class="px-3 pt-2 pb-3 border-top border-light-subtle">
                             <div class="d-flex align-items-center justify-content-between mb-1.5">
                                 <div>
                                     <span class="text-secondary d-block" style="font-size: 11px;">Starting from</span>

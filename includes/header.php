@@ -14,7 +14,8 @@ if (file_exists($headerNavDataPath)) {
 
 $currentPage = basename($_SERVER['PHP_SELF'] ?? '');
 $isHomeActive = ($currentPage === 'index.php' || $currentPage === '');
-$bookNowUrl = '#booking';
+$bookNowUrl = $isHomeActive ? '#booking' : 'index.php#booking';
+$homePrefix = $isHomeActive ? '' : 'index.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,14 +95,14 @@ $bookNowUrl = '#booking';
 
                 <!-- About Us -->
                 <li class="nav-item">
-                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="#about">
+                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#about-us">
                         About
                     </a>
                 </li>
 
                 <!-- Car Rental Multi-Level Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-dark fw-semibold px-2 px-xl-3" href="#booking" role="button">
+                    <a class="nav-link dropdown-toggle text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#booking" role="button">
                         Car Rental
                     </a>
                     <ul class="dropdown-menu shadow-sm border-0 rounded-3 py-2">
@@ -142,7 +143,7 @@ $bookNowUrl = '#booking';
 
                 <!-- Tour Packages Multi-Level Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-dark fw-semibold px-2 px-xl-3" href="#featured-tours" role="button">
+                    <a class="nav-link dropdown-toggle text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#featured-tours" role="button">
                         Tour Packages
                     </a>
                     <ul class="dropdown-menu shadow-sm border-0 rounded-3 py-2">
@@ -174,21 +175,21 @@ $bookNowUrl = '#booking';
 
                 <!-- Why Us -->
                 <li class="nav-item">
-                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="#why-us">
+                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#why-us">
                         Why Us
                     </a>
                 </li>
 
                 <!-- Reviews -->
                 <li class="nav-item">
-                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="#testimonials">
+                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#testimonials">
                         Reviews
                     </a>
                 </li>
 
                 <!-- Contact -->
                 <li class="nav-item">
-                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="#contact">
+                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#contact">
                         Contact
                     </a>
                 </li>
@@ -232,7 +233,7 @@ $bookNowUrl = '#booking';
         </a>
 
         <!-- About Us -->
-        <a href="#about" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
+        <a href="#about-us" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
             <span>About Us</span>
         </a>
 
@@ -303,17 +304,17 @@ $bookNowUrl = '#booking';
         </div>
 
         <!-- Why Us -->
-        <a href="#why-us" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
+        <a href="<?php echo $homePrefix; ?>#why-us" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
             <span>Why Choose Us</span>
         </a>
 
         <!-- Reviews -->
-        <a href="#testimonials" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
+        <a href="<?php echo $homePrefix; ?>#testimonials" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
             <span>Reviews</span>
         </a>
 
         <!-- Contact Us -->
-        <a href="#contact" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
+        <a href="<?php echo $homePrefix; ?>#contact" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
             <span>Contact Us</span>
         </a>
     </div>

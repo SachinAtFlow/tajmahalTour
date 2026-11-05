@@ -1,5 +1,5 @@
 <!-- Footer Section -->
-<footer class="bg-dark text-white-50 pt-5 pb-3 mt-5">
+<footer id="site-footer" class="bg-dark text-white-50 pt-5 pb-3 mt-5">
     <div class="container">
         <div class="row g-4">
             <!-- About Us Column -->
@@ -23,8 +23,8 @@
                 <h6 class="text-white fw-semibold mb-3">Quick Links</h6>
                 <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
                     <li><a href="index.php" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Home</a></li>
-                    <li><a href="#about" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> About Us</a></li>
-                    <li><a href="#tours" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Tour Packages</a></li>
+                    <li><a href="#about-us" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> About Us</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Tour Packages</a></li>
                     <li><a href="#why-us" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Why Choose Us</a></li>
                     <li><a href="#contact" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Contact Us</a></li>
                 </ul>
@@ -34,11 +34,11 @@
             <div class="col-lg-3 col-md-6">
                 <h6 class="text-white fw-semibold mb-3">Popular Tours</h6>
                 <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
-                    <li><a href="#tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Sunrise Taj Mahal Tour</a></li>
-                    <li><a href="#tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Same Day Agra Tour by Car</a></li>
-                    <li><a href="#tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Agra Tour by Gatimaan Express</a></li>
-                    <li><a href="#tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Agra Fort & Mehtab Bagh Tour</a></li>
-                    <li><a href="#tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Golden Triangle 3 Days Tour</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Sunrise Taj Mahal Tour</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Same Day Agra Tour by Car</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Agra Tour by Gatimaan Express</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Agra Fort & Mehtab Bagh Tour</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Golden Triangle 3 Days Tour</a></li>
                 </ul>
             </div>
 
@@ -74,9 +74,8 @@
                 &copy; <?php echo date('Y'); ?> <strong class="text-white">TajMahalTour</strong>. All Rights Reserved.
             </div>
             <div class="col-md-6 text-center text-md-end">
-                <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
-                <a href="#" class="text-white-50 text-decoration-none me-3">Terms of Service</a>
-                <a href="#" class="text-white-50 text-decoration-none">Sitemap</a>
+                <a href="privacy-policy.php" class="text-white-50 text-decoration-none me-3 hover-white">Privacy Policy</a>
+                <a href="terms-conditions.php" class="text-white-50 text-decoration-none me-3 hover-white">Terms &amp; Conditions</a>
             </div>
         </div>
     </div>

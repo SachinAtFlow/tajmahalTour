@@ -49,10 +49,10 @@ $whyUsFeatures = [
         <div class="row g-4">
             <?php foreach ($whyUsFeatures as $feature): ?>
                 <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="why-feature-card h-100 p-4 text-center d-flex flex-column align-items-center justify-content-start shadow-sm">
+                    <div class="card h-100 p-4 text-center d-flex flex-column align-items-center justify-content-start border border-light-subtle rounded-4 shadow-xs hover-lift bg-white">
                         
                         <!-- Feature Icon Box -->
-                        <div class="why-feature-icon d-flex align-items-center justify-content-center mb-4">
+                        <div class="rounded-4 bg-primary bg-opacity-10 text-primary d-inline-flex align-items-center justify-content-center mb-4" style="width: 64px; height: 64px;">
                             <i class="bi <?php echo htmlspecialchars($feature['icon']); ?> fs-2"></i>
                         </div>
 
