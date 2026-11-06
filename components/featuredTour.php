@@ -184,7 +184,7 @@
                                                     <?= htmlspecialchars($tour['title'] ?? ''); ?>
                                                 </a>
                                             </h5>
-                                            
+                                                
                                         </div>
 
                                         <!-- 2-Line Subtitle / Description -->
@@ -241,9 +241,6 @@
             const stateNameHolder = document.getElementById('state-name-holder');
 
             if (!filterButtons.length || !tourCards.length) return;
-
-            // Default "All" filter call
-            filterCards('all', 'All');
 
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {

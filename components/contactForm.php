@@ -114,22 +114,22 @@
                             <h5 class="fw-bold text-dark mb-0">Agra Operations Hub</h5>
                             <span class="text-secondary small">Near Taj Mahal East Gate</span>
                         </div>
-                        <a href="https://maps.google.com/?q=Taj+Mahal+Agra" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Krishna%20Nagar%2C%20New%20Delhi%2C%20Delhi%20110051" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm rounded-pill px-3">
                             Open in Maps
                         </a>
                     </div>
                     <div class="rounded-4 overflow-hidden border border-light-subtle shadow-xs" style="height: 310px;">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14197.864386761008!2d78.03218731535496!3d27.1751448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39747121d702ff6d%3A0xdd2ae4803f767dde!2sTaj%20Mahal!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Taj Mahal Tour Agra Office Location"
-                        ></iframe>
-                    </div>
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500!2d77.0!3d28.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x...%3A0x...!2s...!" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Taj Mahal Tour Agra Office Location">
+    </iframe>
+</div>
                 </div>
 
                 <!-- Fast Direct Contact Card -->
@@ -142,11 +142,11 @@
                         Speak directly with our senior reservation desk or start an immediate WhatsApp chat for instant driver assignment.
                     </p>
                     <div class="d-flex flex-wrap gap-2">
-                        <a href="https://wa.me/918800722606?text=Hi%2C+I+need+urgent+cab%2Ftour+booking." class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-1.5 shadow-xs">
+                        <a href="https://wa.me/918800722606?text=Hi%2C+I+need+urgent+cab%2Ftour+booking." class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-xs">
                             <i class="bi bi-whatsapp"></i>
                             <span>WhatsApp: +91 8800722606</span>
                         </a>
-                        <a href="tel:+919876543210" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-1.5">
+                        <a href="tel:+919876543210" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2">
                             <i class="bi bi-telephone"></i>
                             <span>Call: +91 98765 43210</span>
                         </a>

@@ -5,7 +5,10 @@
  */
 
 // Load Navigation Data
-$headerNavDataPath = __DIR__ . '/../data/headerNavigationData.php';
+$headerNavDataPath = __DIR__ . '/../data/navigationData.php';
+if (!file_exists($headerNavDataPath)) {
+    $headerNavDataPath = __DIR__ . '/../data/headerNavigationData.php';
+}
 $carNavMenu = [];
 $tourNavMenu = [];
 if (file_exists($headerNavDataPath)) {
@@ -102,7 +105,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
 
                 <!-- Car Rental Multi-Level Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#booking" role="button">
+                    <a class="nav-link dropdown-toggle fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'carRentalLocation.php' || $currentPage === 'carRental.php') ? 'active text-primary' : 'text-dark'; ?>" href="carRentalLocation.php" role="button">
                         Car Rental
                     </a>
                     <ul class="dropdown-menu shadow-sm border-0 rounded-3 py-2">
@@ -143,7 +146,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
 
                 <!-- Tour Packages Multi-Level Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-dark fw-semibold px-2 px-xl-3" href="<?php echo $homePrefix; ?>#featured-tours" role="button">
+                    <a class="nav-link dropdown-toggle fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'tourPackage.php') ? 'active text-primary' : 'text-dark'; ?>" href="tourPackage.php" role="button">
                         Tour Packages
                     </a>
                     <ul class="dropdown-menu shadow-sm border-0 rounded-3 py-2">
@@ -238,7 +241,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
                 <i class="bi bi-chevron-down accordion-chevron small text-muted"></i>
             </button>
             <div class="accordion-content d-none ps-3 pe-2 py-2 bg-light rounded-3 mb-2 border">
-                <a href="#booking" class="d-block text-primary fw-bold small text-decoration-none mb-2">
+                <a href="carRentalLocation.php" class="d-block text-primary fw-bold small text-decoration-none mb-2">
                     Explore All Vehicles &rarr;
                 </a>
                 <?php if (!empty($carNavMenu)): ?>
@@ -274,24 +277,30 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
                 <i class="bi bi-chevron-down accordion-chevron small text-muted"></i>
             </button>
             <div class="accordion-content d-none ps-3 pe-2 py-2 bg-light rounded-3 mb-2 border">
-                <a href="#featured-tours" class="d-block text-primary fw-bold small text-decoration-none mb-2">
+                <a href="tourPackage.php" class="d-block text-primary fw-bold small text-decoration-none mb-2">
                     Explore All Packages &rarr;
                 </a>
                 <?php if (!empty($tourNavMenu)): ?>
                     <?php foreach ($tourNavMenu as $tCat): ?>
-                        <div class="mobile-accordion mb-1">
-                            <button type="button" class="mobile-accordion-toggle w-100 btn btn-sm text-start d-flex align-items-center justify-content-between px-2 py-1 text-dark fw-semibold border-0 shadow-none">
-                                <span><?php echo htmlspecialchars($tCat['title']); ?></span>
-                                <i class="bi bi-chevron-down accordion-chevron small text-muted"></i>
-                            </button>
-                            <div class="accordion-content d-none ps-3 py-1 border-start border-2 border-primary ms-2 mb-1">
-                                <?php foreach ($tCat['sub'] as $subTour): ?>
-                                    <a href="<?php echo htmlspecialchars($subTour['link']); ?>" class="d-block py-1 text-secondary text-decoration-none small">
-                                        &bull; <?php echo htmlspecialchars($subTour['name']); ?>
-                                    </a>
-                                <?php endforeach; ?>
+                        <?php if (!empty($tCat['sub'])): ?>
+                            <div class="mobile-accordion mb-1">
+                                <button type="button" class="mobile-accordion-toggle w-100 btn btn-sm text-start d-flex align-items-center justify-content-between px-2 py-1 text-dark fw-semibold border-0 shadow-none">
+                                    <span><?php echo htmlspecialchars($tCat['title']); ?></span>
+                                    <i class="bi bi-chevron-down accordion-chevron small text-muted"></i>
+                                </button>
+                                <div class="accordion-content d-none ps-3 py-1 border-start border-2 border-primary ms-2 mb-1">
+                                    <?php foreach ($tCat['sub'] as $subTour): ?>
+                                        <a href="<?php echo htmlspecialchars($subTour['link']); ?>" class="d-block py-1 text-secondary text-decoration-none small">
+                                            &bull; <?php echo htmlspecialchars($subTour['name']); ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
-                        </div>
+                        <?php else: ?>
+                            <a href="<?php echo htmlspecialchars($tCat['link']); ?>" class="d-block py-1 text-secondary text-decoration-none small px-2">
+                                <?php echo htmlspecialchars($tCat['title']); ?>
+                            </a>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>

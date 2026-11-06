@@ -27,23 +27,67 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Level 2 Submenus (Flyout Right)
+        // Level 2 Submenus (Flyout Right with Smart Viewport Alignment)
         document.querySelectorAll('.dropdown-submenu').forEach(sub => {
             const subMenu = sub.querySelector('.dropdown-submenu-menu');
             let subTimer = null;
 
+            function positionSubmenu() {
+                if (!subMenu) return;
+
+                // Reset styles to default top-aligned
+                subMenu.style.top = '0px';
+                subMenu.style.bottom = 'auto';
+                subMenu.style.left = '100%';
+                subMenu.style.right = 'auto';
+
+                sub.classList.add('show');
+                subMenu.classList.add('show');
+
+                const subRect = subMenu.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                const windowWidth = window.innerWidth;
+
+                // If submenu goes beyond the viewport bottom, align its bottom edge with the current option
+                if (subRect.bottom > windowHeight - 16) {
+                    subMenu.style.top = 'auto';
+                    subMenu.style.bottom = '0px';
+                }
+
+                // If submenu overflows right side of screen, flip to the left
+                if (subRect.right > windowWidth - 16) {
+                    subMenu.style.left = 'auto';
+                    subMenu.style.right = '100%';
+                }
+            }
+
             sub.addEventListener('mouseenter', () => {
                 if (subTimer) clearTimeout(subTimer);
-                sub.classList.add('show');
-                if (subMenu) subMenu.classList.add('show');
+                positionSubmenu();
             });
 
             sub.addEventListener('mouseleave', () => {
                 subTimer = setTimeout(() => {
                     sub.classList.remove('show');
-                    if (subMenu) subMenu.classList.remove('show');
-                }, 200);
+                    if (subMenu) {
+                        subMenu.classList.remove('show');
+                        subMenu.style.top = '';
+                        subMenu.style.bottom = '';
+                        subMenu.style.left = '';
+                        subMenu.style.right = '';
+                    }
+                }, 180);
             });
+
+            // Click handling for desktop click interactions
+            const toggleLink = sub.querySelector(':scope > a');
+            if (toggleLink && subMenu) {
+                toggleLink.addEventListener('click', (e) => {
+                    if (window.innerWidth >= 992) {
+                        positionSubmenu();
+                    }
+                });
+            }
         });
     }
 
