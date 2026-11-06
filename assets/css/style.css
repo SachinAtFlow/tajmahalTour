@@ -870,35 +870,14 @@ html, body {
     overflow: hidden !important;
     contain: paint;
     max-width: 100vw;
-    background: radial-gradient(circle at 50% 45%, #1e293b 0%, #0f172a 65%, #090d16 100%);
+    background: #ffffff;
     padding: 4.5rem 0 3.5rem;
 }
 
-/* Ambient Colorful Glows matching reference screenshot */
-.tour-categories-showcase::before {
-    content: '';
-    position: absolute;
-    top: 20%;
-    left: 15%;
-    width: 380px;
-    height: 380px;
-    background: radial-gradient(circle, rgba(59, 113, 254, 0.18) 0%, transparent 70%);
-    filter: blur(60px);
-    pointer-events: none;
-    z-index: 1;
-}
-
+/* On white background, hide dark ambient glows */
+.tour-categories-showcase::before,
 .tour-categories-showcase::after {
-    content: '';
-    position: absolute;
-    bottom: 15%;
-    right: 15%;
-    width: 420px;
-    height: 420px;
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
-    filter: blur(70px);
-    pointer-events: none;
-    z-index: 1;
+    display: none !important;
 }
 
 .category-coverflow-swiper {
@@ -917,7 +896,7 @@ html, body {
     overflow: hidden;
     position: relative;
     text-decoration: none;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12), inset 0 0 0 1px rgba(15, 23, 42, 0.08);
     transition: opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
     display: block;
     background-color: #0f172a;
@@ -940,15 +919,15 @@ html, body {
 }
 
 .category-coverflow-swiper .swiper-slide:not(.swiper-slide-active) {
-    opacity: 0.55;
-    filter: brightness(0.75);
+    opacity: 0.6;
+    filter: brightness(0.85);
     cursor: pointer;
 }
 
 .category-coverflow-swiper .swiper-slide-active {
     opacity: 1;
     filter: brightness(1);
-    box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.75), 0 0 40px rgba(59, 113, 254, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    box-shadow: 0 25px 50px -10px rgba(15, 23, 42, 0.25), 0 10px 20px -5px rgba(59, 113, 254, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 /* Eliminate Swiper default 3D slide shadow artifacts completely */
@@ -995,7 +974,7 @@ html, body {
 .cat-swiper-pagination .swiper-pagination-bullet {
     width: 8px;
     height: 8px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #94a3b8;
     opacity: 0.5;
     transition: all 0.3s ease;
 }

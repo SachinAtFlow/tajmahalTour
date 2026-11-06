@@ -74,7 +74,7 @@ $categoryMeta = [
 ];
 ?>
 
-<!-- Zero-artifact Inline Styles for 3D Coverflow -->
+<!-- Zero-artifact Inline Styles for 3D Coverflow on White Background -->
 <style>
 /* Prevent horizontal window scrollbar flash during 3D transform */
 html, body {
@@ -87,6 +87,7 @@ html, body {
     overflow: hidden !important;
     contain: paint !important;
     max-width: 100vw !important;
+    background-color: #ffffff !important;
 }
 
 #navbar-tour-categories .category-coverflow-swiper {
@@ -118,33 +119,49 @@ html, body {
     -webkit-user-drag: none !important;
     pointer-events: none !important;
 }
+
+/* High contrast pagination on white background */
+#navbar-tour-categories .cat-swiper-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #94a3b8 !important;
+    opacity: 0.45;
+    transition: all 0.3s ease;
+}
+
+#navbar-tour-categories .cat-swiper-pagination .swiper-pagination-bullet-active {
+    width: 26px;
+    border-radius: 20px;
+    background-color: var(--primary-color) !important;
+    opacity: 1;
+}
 </style>
 
 <!-- Navbar Level 1 Tour Categories 3D Coverflow Section -->
-<section class="tour-categories-showcase position-relative" id="navbar-tour-categories">
+<section class="tour-categories-showcase bg-white position-relative py-5" id="navbar-tour-categories">
     <div class="container position-relative z-2 mb-2">
         
-        <!-- Section Header (Dark Premium Aesthetic) -->
+        <!-- Section Header (Clean High-Contrast on White Background) -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
             <div>
-                <span class="badge bg-primary bg-opacity-20 text-white border border-primary border-opacity-30 px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-1.5">
-                    <i class="bi bi-compass-fill text-primary"></i>
+                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-1.5">
+                    <i class="bi bi-compass-fill"></i>
                     <span>SIGNATURE CIRCUITS</span>
                 </span>
-                <h2 class="display-6 fw-bold text-white mb-2">
+                <h2 class="display-6 fw-bold text-dark mb-2">
                     Explore By Tour Category
                 </h2>
-                <p class="text-white-50 mb-0" style="max-width: 620px;">
+                <p class="text-secondary mb-0" style="max-width: 620px;">
                     Browse our handpicked North India tour circuits. Swipe and click any category to view curated itineraries.
                 </p>
             </div>
 
             <!-- Custom Navigation Control Buttons -->
             <div class="d-flex align-items-center gap-2 flex-shrink-0">
-                <button type="button" id="catSwiperPrev" class="btn btn-outline-light text-white rounded-circle d-flex align-items-center justify-content-center shadow-sm border-secondary border-opacity-50" style="width: 46px; height: 46px;" aria-label="Previous category">
+                <button type="button" id="catSwiperPrev" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center shadow-xs" style="width: 44px; height: 44px;" aria-label="Previous category">
                     <i class="bi bi-chevron-left fs-6"></i>
                 </button>
-                <button type="button" id="catSwiperNext" class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 46px; height: 46px;" aria-label="Next category">
+                <button type="button" id="catSwiperNext" class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-xs" style="width: 44px; height: 44px;" aria-label="Next category">
                     <i class="bi bi-chevron-right fs-6"></i>
                 </button>
             </div>

@@ -8,7 +8,7 @@ require_once 'includes/header.php';
     <?php require_once 'components/tourPackageHero.php'; ?>
 
     <!-- 2. Navbar Level 1 Categories 3D Showcase (Swiper Coverflow) -->
-    <?php require_once 'components/tourCategoriesCoverflow.php'; ?>
+    <?php require_once 'components/attraction.php'; ?>
 
     <!-- 3. Interactive Tour Packages Showcase with Regional Filter Tabs -->
     <?php require_once 'components/featuredTour.php'; ?>
