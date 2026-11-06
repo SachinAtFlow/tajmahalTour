@@ -66,9 +66,9 @@
                         </div>
                     </div>
 
-                    <!-- CTA Button (Vibrant Orange Pill Matching Reference Design) -->
+                    <!-- CTA Button (More about us page link) -->
                     <div>
-                        <a href="#booking" class="btn btn-primary d-inline-flex align-items-center gap-2">
+                        <a href="<?= function_exists('theme_url') ? theme_url('aboutUs.php') : 'aboutUs.php'; ?>" class="btn btn-primary d-inline-flex align-items-center gap-2">
                             <span>More about</span>
                             <i class="bi bi-arrow-right"></i>
                         </a>
@@ -81,16 +81,16 @@
                         
                         <!-- Base Background Heritage Photo -->
                         <img 
-                            src="assets/images/uttarPradesh/tajmahal.avif" 
-                            alt="Taj Mahal Tour Agra" 
+                            src="<?= function_exists('theme_url') ? theme_url('assets/images/uttarPradesh/tajmahal.avif') : 'assets/images/uttarPradesh/tajmahal.avif'; ?>" 
+                            alt="Taj Mahal Agra Heritage Monument Tour" 
                             class="about-img-base"
                             loading="lazy"
                         >
 
                         <!-- Overlapping Rotated Foreground Photo -->
                         <img 
-                            src="assets/images/others/driving.avif" 
-                            alt="Travel Experience" 
+                            src="<?= function_exists('theme_url') ? theme_url('assets/images/others/driving.avif') : 'assets/images/others/driving.avif'; ?>" 
+                            alt="Private AC Chauffeur Road Trip Experience" 
                             class="about-img-rotated"
                             loading="lazy"
                         >

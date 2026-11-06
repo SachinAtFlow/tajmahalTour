@@ -52,7 +52,7 @@
 
                 <!-- Action CTA Buttons -->
                 <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 mb-4">
-                    <a href="#booking" class="btn btn-primary rounded-pill px-4 py-3 fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
+                    <a href="<?= function_exists('theme_url') ? theme_url('index.php#booking') : 'index.php#booking'; ?>" class="btn btn-primary rounded-pill px-4 py-3 fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
                         <span>Book Your Tour Now</span>
                         <i class="bi bi-arrow-right"></i>
                     </a>

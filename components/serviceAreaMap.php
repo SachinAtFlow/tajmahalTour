@@ -13,7 +13,7 @@ $exploreRegions = [
     [
         'name'  => 'Rajasthan',
         'tag'   => 'Jaipur, Udaipur & Palaces',
-        'image' => 'assets/images/rajasthan/jaipur.avif',
+        'image' => 'assets/images/rajasthan/rajasthan.avif',
         'link'  => 'tourPackageDetail.php?tour=rajasthan'
     ],
     [
@@ -37,7 +37,7 @@ $exploreRegions = [
     [
         'name'  => 'Gujarat',
         'tag'   => 'Rann of Kutch & Heritage',
-        'image' => 'assets/images/gujrat/gujrat-ropeway.avif',
+        'image' => 'assets/images/gujrat/gujrat.avif',
         'link'  => 'tourPackageDetail.php?tour=gujarat'
     ],
     [
@@ -88,8 +88,8 @@ $exploreRegions = [
                     <a href="<?= htmlspecialchars($region['link']); ?>" class="region-image-card" title="Explore <?= htmlspecialchars($region['name']); ?>">
                         <!-- Background Image -->
                         <img 
-                            src="<?= htmlspecialchars($region['image']); ?>" 
-                            alt="<?= htmlspecialchars($region['name']); ?>" 
+                            src="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($region['image']) : $region['image']); ?>" 
+                            alt="Explore <?= htmlspecialchars($region['name']); ?> tour destinations" 
                             loading="lazy"
                         >
                         <!-- Dark Gradient Overlay -->
@@ -109,8 +109,8 @@ $exploreRegions = [
                     <a href="<?= htmlspecialchars($region['link']); ?>" class="region-image-card" tabindex="-1" title="Explore <?= htmlspecialchars($region['name']); ?>">
                         <!-- Background Image -->
                         <img 
-                            src="<?= htmlspecialchars($region['image']); ?>" 
-                            alt="" 
+                            src="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($region['image']) : $region['image']); ?>" 
+                            alt="Explore <?= htmlspecialchars($region['name']); ?> tour destinations" 
                             loading="lazy"
                         >
                         <!-- Dark Gradient Overlay -->

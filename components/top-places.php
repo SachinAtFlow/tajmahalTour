@@ -1,52 +1,66 @@
 <?php
+if (!function_exists('getDestinationTourCount')) {
+    function getDestinationTourCount($folder) {
+        $dataFile = __DIR__ . '/../' . $folder . '/data.php';
+        if (file_exists($dataFile)) {
+            $tours = [];
+            include $dataFile;
+            if (!empty($tours) && is_array($tours)) {
+                return count($tours) . ' Tours';
+            }
+        }
+        return '5 Tours';
+    }
+}
+
 $destinations = [
     [
         'name' => 'Delhi',
-        'count' => '12 Tours',
+        'count' => getDestinationTourCount('samedaytour'),
         'image' => 'assets/images/delhi/indiaGate.avif',
-        'link' => 'tourPackageDetail.php?tour=delhi-tour'
+        'link' => 'samedaytour/index.php'
     ],
     [
         'name' => 'Uttar Pradesh',
-        'count' => '18 Tours',
+        'count' => getDestinationTourCount('uttarpradeshtour'),
         'image' => 'assets/images/uttarPradesh/tajmahal.avif',
-        'link' => 'tourPackageDetail.php?tour=uttar-pradesh'
+        'link' => 'uttarpradeshtour/index.php'
     ],
     [
         'name' => 'Himachal',
-        'count' => '14 Tours',
+        'count' => getDestinationTourCount('himachaltour'),
         'image' => 'assets/images/himachal/himachal.avif',
-        'link' => 'himachaltours/himachalholidays.html'
+        'link' => 'himachaltour/index.php'
     ],
     [
         'name' => 'Rajasthan',
-        'count' => '16 Tours',      
-        'image' => 'assets/images/rajasthan/jaipur.avif',
-        'link' => 'tourPackageDetail.php?tour=rajasthan'
+        'count' => getDestinationTourCount('rajasthantour'),
+        'image' => 'assets/images/rajasthan/rajasthan.avif',
+        'link' => 'rajasthantour/index.php'
     ],
     [
         'name' => 'Punjab',
-        'count' => '7 Tours',
+        'count' => getDestinationTourCount('punjabtour'),
         'image' => 'assets/images/punjab/goldenTemple.avif',
-        'link' => 'tourPackageDetail.php?tour=punjab'
+        'link' => 'punjabtour/index.php'
     ],
     [
         'name' => 'Uttarakhand',
-        'count' => '10 Tours',
+        'count' => getDestinationTourCount('uttarakhandtour'),
         'image' => 'assets/images/uttrakhand/uttrakhand.avif',
-        'link' => 'tourPackageDetail.php?tour=uttarakhand'
+        'link' => 'uttarakhandtour/index.php'
     ],
     [
         'name' => 'Gujarat',
-        'count' => '9 Tours',
-        'image' => 'assets/images/gujrat/gujrat-ropeway.avif',
-        'link' => 'tourPackageDetail.php?tour=gujarat'
+        'count' => getDestinationTourCount('gujarattour'),
+        'image' => 'assets/images/gujrat/gujrat.avif',
+        'link' => 'gujarattour/index.php'
     ],
     [
         'name' => 'Nepal',
-        'count' => '8 Tours',
+        'count' => getDestinationTourCount('nepaltour'),
         'image' => 'assets/images/nepal/nepal.avif',
-        'link' => 'tourPackageDetail.php?tour=nepal'
+        'link' => 'nepaltour/index.php'
     ]
 ];
 ?>
@@ -69,14 +83,18 @@ $destinations = [
                 <!-- FIRST GROUP -->
                 <div class="d-flex align-items-start flex-shrink-0 destination-group">
                     <?php foreach ($destinations as $destination): ?>
+                        <?php 
+                            $destLink = function_exists('theme_url') ? theme_url($destination['link']) : $destination['link'];
+                            $destImg = function_exists('theme_url') ? theme_url($destination['image']) : $destination['image'];
+                        ?>
                         <div class="destination-card text-center px-3">
-                            <a href="<?php echo htmlspecialchars($destination['link']); ?>" class="text-decoration-none">
+                            <a href="<?php echo htmlspecialchars($destLink); ?>" class="text-decoration-none">
                                 
                                 <!-- CIRCLE IMAGE -->
                                 <div class="destination-img rounded-circle overflow-hidden mx-auto mb-3 shadow-sm bg-light">
                                     <img
-                                        src="<?php echo htmlspecialchars($destination['image']); ?>"
-                                        alt="<?php echo htmlspecialchars($destination['name']); ?>"
+                                        src="<?php echo htmlspecialchars($destImg); ?>"
+                                        alt="<?php echo htmlspecialchars($destination['name'] . ' Tour Destination'); ?>"
                                         class="img-fluid w-100 h-100 object-fit-cover"
                                         loading="lazy"
                                     >
@@ -100,14 +118,18 @@ $destinations = [
                 <!-- DUPLICATE GROUP FOR INFINITE LOOP -->
                 <div class="d-flex align-items-start flex-shrink-0 destination-group" aria-hidden="true">
                     <?php foreach ($destinations as $destination): ?>
+                        <?php 
+                            $destLink = function_exists('theme_url') ? theme_url($destination['link']) : $destination['link'];
+                            $destImg = function_exists('theme_url') ? theme_url($destination['image']) : $destination['image'];
+                        ?>
                         <div class="destination-card text-center px-3">
-                            <a href="<?php echo htmlspecialchars($destination['link']); ?>" class="text-decoration-none" tabindex="-1">
+                            <a href="<?php echo htmlspecialchars($destLink); ?>" class="text-decoration-none" tabindex="-1">
                                 
                                 <!-- CIRCLE IMAGE -->
                                 <div class="destination-img rounded-circle overflow-hidden mx-auto mb-3 shadow-sm bg-light">
                                     <img
-                                        src="<?php echo htmlspecialchars($destination['image']); ?>"
-                                        alt=""
+                                        src="<?php echo htmlspecialchars($destImg); ?>"
+                                        alt="<?php echo htmlspecialchars($destination['name'] . ' Tour Destination'); ?>"
                                         class="img-fluid w-100 h-100 object-fit-cover"
                                         loading="lazy"
                                     >

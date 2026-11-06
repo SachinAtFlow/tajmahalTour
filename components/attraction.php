@@ -1,77 +1,38 @@
 <?php
 /**
- * Navbar Level 1 Tour Categories 3D Coverflow Showcase Component
- * Displays all Level 1 tour categories from navigationData.php in a modern 3D card carousel.
+ * Dynamic 3D Coverflow Attraction / Tour Category Showcase Component
+ * File: components/attraction.php
+ * 
+ * Supports dynamic configuration per section & page:
+ * - $attraction_key         : Key from data/attractionData.php ('tourCategories', 'popularAttractions', etc.)
+ * - $attraction_eyebrow     : Custom badge eyebrow text (e.g., 'SIGNATURE CIRCUITS')
+ * - $attraction_icon        : Custom badge icon (e.g., 'bi bi-compass-fill')
+ * - $attraction_title       : Custom section main title (e.g., 'Explore By Tour Category')
+ * - $attraction_description : Custom section description paragraph
+ * - $attraction_items       : Direct array of custom items [ ['title'=>..., 'subtitle'=>..., 'image'=>..., 'link'=>..., 'category'=>...] ]
+ * - $attraction_id          : Custom section HTML id (e.g., 'navbar-tour-categories')
  */
-require_once __DIR__ . '/../data/navigationData.php';
 
-$categoryMeta = [
-    'Same Day Tour' => [
-        'subtitle' => 'Agra, Delhi, Mathura & Jaipur Excursions',
-        'image' => 'assets/images/uttarPradesh/tajmahal.avif',
-        'category' => 'same-day',
-    ],
-    'Tour Package' => [
-        'subtitle' => 'Taj Mahal & Agra Guided Packages',
-        'image' => 'assets/images/uttarPradesh/tajmahal.avif',
-        'category' => 'uttar-pradesh',
-    ],
-    'Golden Triangle Tour' => [
-        'subtitle' => 'Delhi • Agra • Jaipur Classic Circuit',
-        'image' => 'assets/images/rajasthan/jaipur.avif',
-        'category' => 'all',
-    ],
-    'Rajasthan Tour' => [
-        'subtitle' => 'Jaipur, Udaipur, Jodhpur & Desert Camps',
-        'image' => 'assets/images/rajasthan/jaipur.avif',
-        'category' => 'rajasthan',
-    ],
-    'Himachal Tour' => [
-        'subtitle' => 'Shimla, Manali & Solang Valley Vistas',
-        'image' => 'assets/images/himachal/himachal.avif',
-        'category' => 'himachal',
-    ],
-    'Uttarakhand Tour' => [
-        'subtitle' => 'Rishikesh, Mussoorie, Nainital & Auli',
-        'image' => 'assets/images/uttrakhand/uttrakhand.avif',
-        'category' => 'uttarakhand',
-    ],
-    'Punjab Tour' => [
-        'subtitle' => 'Amritsar, Golden Temple & Wagah Border',
-        'image' => 'assets/images/punjab/goldenTemple.avif',
-        'category' => 'punjab',
-    ],
-    'Uttar Pradesh Tour' => [
-        'subtitle' => 'Taj Mahal, Varanasi Ghats & Ayodhya',
-        'image' => 'assets/images/uttarPradesh/tajmahal.avif',
-        'category' => 'uttar-pradesh',
-    ],
-    'Gujarat Tour' => [
-        'subtitle' => 'Rann of Kutch, Somnath & Dwarka',
-        'image' => 'assets/images/gujrat/gujrat-ropeway.avif',
-        'category' => 'gujarat',
-    ],
-    'Nepal Tour' => [
-        'subtitle' => 'Kathmandu, Pokhara & Everest Flights',
-        'image' => 'assets/images/nepal/nepal.avif',
-        'category' => 'nepal',
-    ],
-    'Spiritual Tour' => [
-        'subtitle' => 'Char Dham, Kashi Vishwanath & Temple Trails',
-        'image' => 'assets/images/uttrakhand/uttrakhand.avif',
-        'category' => 'spiritual',
-    ],
-    'Wildlife Tour' => [
-        'subtitle' => 'Corbett, Ranthambore & Tiger Reserves',
-        'image' => 'assets/images/rajasthan/jaipur.avif',
-        'category' => 'wildlife',
-    ],
-    'Weekend Tour' => [
-        'subtitle' => 'Quick 2–3 Days Escapes from Delhi NCR',
-        'image' => 'assets/images/delhi/indiaGate.avif',
-        'category' => 'weekend',
-    ],
-];
+require_once __DIR__ . '/../data/attractionData.php';
+
+// 1. Resolve Dataset Defaults
+$active_dataset_key = $attraction_key ?? 'tourCategories';
+$default_dataset = getAttractionData($active_dataset_key);
+
+// 2. Resolve Configurable Content (Page overrides take precedence)
+$resolved_eyebrow     = $attraction_eyebrow     ?? ($default_dataset['eyebrow'] ?? 'SIGNATURE CIRCUITS');
+$resolved_icon        = $attraction_icon        ?? ($default_dataset['icon'] ?? 'bi bi-compass-fill');
+$resolved_title       = $attraction_title       ?? ($default_dataset['title'] ?? 'Explore By Tour Category');
+$resolved_description = $attraction_description ?? ($default_dataset['description'] ?? 'Browse our handpicked North India tour circuits.');
+$resolved_items       = $attraction_items       ?? ($default_dataset['items'] ?? []);
+
+// 3. Unique Instance Identifier (allows multiple carousels on the same or different pages)
+$instance_id   = 'attraction_' . substr(md5(uniqid((string)mt_rand(), true)), 0, 8);
+$section_id    = !empty($attraction_id) ? $attraction_id : 'showcase-' . $instance_id;
+$prev_btn_id   = 'prev-' . $instance_id;
+$next_btn_id   = 'next-' . $instance_id;
+$swiper_id     = 'swiper-' . $instance_id;
+$pagination_id = 'pagination-' . $instance_id;
 ?>
 
 <!-- Zero-artifact Inline Styles for 3D Coverflow on White Background -->
@@ -83,22 +44,22 @@ html, body {
     max-width: 100vw !important;
 }
 
-#navbar-tour-categories {
+#<?= $section_id; ?> {
     overflow: hidden !important;
     contain: paint !important;
     max-width: 100vw !important;
     background-color: #ffffff !important;
 }
 
-#navbar-tour-categories .category-coverflow-swiper {
+#<?= $section_id; ?> .category-coverflow-swiper {
     overflow: hidden !important;
     contain: paint !important;
 }
 
 /* Eliminate all Swiper coverflow slide shadow elements & borders */
-#navbar-tour-categories [class*="swiper-slide-shadow"],
-#navbar-tour-categories .swiper-slide-shadow-left,
-#navbar-tour-categories .swiper-slide-shadow-right {
+#<?= $section_id; ?> [class*="swiper-slide-shadow"],
+#<?= $section_id; ?> .swiper-slide-shadow-left,
+#<?= $section_id; ?> .swiper-slide-shadow-right {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
@@ -107,21 +68,21 @@ html, body {
     pointer-events: none !important;
 }
 
-#navbar-tour-categories .swiper-slide a {
+#<?= $section_id; ?> .swiper-slide a {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
     -webkit-tap-highlight-color: transparent !important;
 }
 
-#navbar-tour-categories .swiper-slide img {
+#<?= $section_id; ?> .swiper-slide img {
     user-select: none !important;
     -webkit-user-drag: none !important;
     pointer-events: none !important;
 }
 
 /* High contrast pagination on white background */
-#navbar-tour-categories .cat-swiper-pagination .swiper-pagination-bullet {
+#<?= $section_id; ?> .cat-swiper-pagination .swiper-pagination-bullet {
     width: 8px;
     height: 8px;
     background-color: #94a3b8 !important;
@@ -129,7 +90,7 @@ html, body {
     transition: all 0.3s ease;
 }
 
-#navbar-tour-categories .cat-swiper-pagination .swiper-pagination-bullet-active {
+#<?= $section_id; ?> .cat-swiper-pagination .swiper-pagination-bullet-active {
     width: 26px;
     border-radius: 20px;
     background-color: var(--primary-color) !important;
@@ -137,31 +98,37 @@ html, body {
 }
 </style>
 
-<!-- Navbar Level 1 Tour Categories 3D Coverflow Section -->
-<section class="tour-categories-showcase bg-white position-relative py-5" id="navbar-tour-categories">
+<!-- Attraction 3D Coverflow Section -->
+<section class="tour-categories-showcase bg-white position-relative py-5" id="<?= htmlspecialchars($section_id); ?>">
     <div class="container position-relative z-2 mb-2">
         
         <!-- Section Header (Clean High-Contrast on White Background) -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
             <div>
-                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-1.5">
-                    <i class="bi bi-compass-fill"></i>
-                    <span>SIGNATURE CIRCUITS</span>
-                </span>
+                <?php if (!empty($resolved_eyebrow)): ?>
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-1.5">
+                        <i class="<?= htmlspecialchars($resolved_icon); ?>"></i>
+                        <span><?= htmlspecialchars($resolved_eyebrow); ?></span>
+                    </span>
+                <?php endif; ?>
+                
                 <h2 class="display-6 fw-bold text-dark mb-2">
-                    Explore By Tour Category
+                    <?= htmlspecialchars($resolved_title); ?>
                 </h2>
-                <p class="text-secondary mb-0" style="max-width: 620px;">
-                    Browse our handpicked North India tour circuits. Swipe and click any category to view curated itineraries.
-                </p>
+                
+                <?php if (!empty($resolved_description)): ?>
+                    <p class="text-secondary mb-0" style="max-width: 620px;">
+                        <?= htmlspecialchars($resolved_description); ?>
+                    </p>
+                <?php endif; ?>
             </div>
 
             <!-- Custom Navigation Control Buttons -->
             <div class="d-flex align-items-center gap-2 flex-shrink-0">
-                <button type="button" id="catSwiperPrev" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center shadow-xs" style="width: 44px; height: 44px;" aria-label="Previous category">
+                <button type="button" id="<?= $prev_btn_id; ?>" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center shadow-xs" style="width: 44px; height: 44px;" aria-label="Previous card">
                     <i class="bi bi-chevron-left fs-6"></i>
                 </button>
-                <button type="button" id="catSwiperNext" class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-xs" style="width: 44px; height: 44px;" aria-label="Next category">
+                <button type="button" id="<?= $next_btn_id; ?>" class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center shadow-xs" style="width: 44px; height: 44px;" aria-label="Next card">
                     <i class="bi bi-chevron-right fs-6"></i>
                 </button>
             </div>
@@ -171,30 +138,28 @@ html, body {
 
     <!-- 3D Coverflow Carousel Container -->
     <div class="w-100 position-relative" style="overflow: hidden !important; contain: paint; max-width: 100vw;">
-        <div class="swiper category-coverflow-swiper">
+        <div class="swiper category-coverflow-swiper" id="<?= $swiper_id; ?>">
             <div class="swiper-wrapper">
-                <?php if (!empty($tourNavMenu)): ?>
-                    <?php foreach ($tourNavMenu as $item): ?>
+                <?php if (!empty($resolved_items)): ?>
+                    <?php foreach ($resolved_items as $item): ?>
                         <?php
-                            $title = $item['title'];
-                            $meta = $categoryMeta[$title] ?? [
-                                'subtitle' => 'Handcrafted Holiday Tour Packages',
-                                'image' => 'assets/images/uttarPradesh/tajmahal.avif',
-                                'category' => 'all',
-                            ];
-                            $categoryKey = $meta['category'] ?? 'all';
+                            $card_title    = $item['title'] ?? '';
+                            $card_subtitle = $item['subtitle'] ?? '';
+                            $card_image    = $item['image'] ?? 'assets/images/uttarPradesh/tajmahal.avif';
+                            $card_link     = $item['link'] ?? '#';
+                            $card_category = $item['category'] ?? 'all';
                         ?>
                         <div class="swiper-slide">
                             <a 
-                                href="<?= htmlspecialchars($item['link']); ?>" 
+                                href="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($card_link) : $card_link); ?>" 
                                 class="w-100 h-100 d-block position-relative text-decoration-none" 
-                                data-category="<?= htmlspecialchars($categoryKey); ?>"
-                                title="<?= htmlspecialchars($title); ?>"
+                                data-category="<?= htmlspecialchars($card_category); ?>"
+                                title="<?= htmlspecialchars($card_title); ?>"
                             >
                                 <!-- Background Image -->
                                 <img 
-                                    src="<?= htmlspecialchars($meta['image']); ?>" 
-                                    alt="<?= htmlspecialchars($title); ?>" 
+                                    src="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($card_image) : $card_image); ?>" 
+                                    alt="<?= htmlspecialchars(!empty($card_title) ? $card_title . ' - Destination Tour' : 'Attraction Tour'); ?>" 
                                     loading="lazy"
                                     draggable="false"
                                 >
@@ -205,10 +170,10 @@ html, body {
                                 <!-- Card Content at Bottom (Matching User Reference Image) -->
                                 <div class="position-absolute bottom-0 start-0 end-0 p-4 z-2">
                                     <h3 class="text-white fw-bold fs-4 mb-1 lh-sm">
-                                        <?= htmlspecialchars($title); ?>
+                                        <?= htmlspecialchars($card_title); ?>
                                     </h3>
                                     <p class="text-white text-opacity-75 small mb-0 fw-medium">
-                                        <?= htmlspecialchars($meta['subtitle']); ?>
+                                        <?= htmlspecialchars($card_subtitle); ?>
                                     </p>
                                 </div>
                             </a>
@@ -218,21 +183,21 @@ html, body {
             </div>
 
             <!-- Pagination Dots -->
-            <div class="cat-swiper-pagination text-center mt-3"></div>
+            <div class="cat-swiper-pagination <?= $pagination_id; ?> text-center mt-3"></div>
         </div>
     </div>
 </section>
 
-<!-- Robust Swiper Coverflow Controller -->
+<!-- Robust Swiper Coverflow Controller for this Instance -->
 <script>
 (function() {
-    function initCategoryCoverflow() {
-        const swiperEl = document.querySelector('.category-coverflow-swiper');
+    function initCoverflow_<?= str_replace('-', '_', $instance_id); ?>() {
+        const swiperEl = document.getElementById('<?= $swiper_id; ?>');
         if (!swiperEl) return;
 
         // If Swiper CDN hasn't loaded yet, retry in 100ms
         if (typeof Swiper === 'undefined') {
-            setTimeout(initCategoryCoverflow, 100);
+            setTimeout(initCoverflow_<?= str_replace('-', '_', $instance_id); ?>, 100);
             return;
         }
 
@@ -246,16 +211,17 @@ html, body {
             shadows.forEach(function(el) { el.remove(); });
         }
 
-        const catSwiper = new Swiper(swiperEl, {
+        const coverflowSwiper = new Swiper(swiperEl, {
             effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 'auto',
             initialSlide: 1,
-            loop: true,
+            loop: <?= count($resolved_items) > 3 ? 'true' : 'false'; ?>,
             speed: 600,
-            slideToClickedSlide: true,
-            preventClicks: false,
+            slideToClickedSlide: false,
+            preventClicks: true,
+            preventClicksPropagation: false,
             autoplay: {
                 delay: 3800,
                 disableOnInteraction: false,
@@ -269,11 +235,11 @@ html, body {
                 slideShadows: false,
             },
             navigation: {
-                nextEl: '#catSwiperNext',
-                prevEl: '#catSwiperPrev',
+                nextEl: '#<?= $next_btn_id; ?>',
+                prevEl: '#<?= $prev_btn_id; ?>',
             },
             pagination: {
-                el: '.cat-swiper-pagination',
+                el: '.<?= $pagination_id; ?>',
                 clickable: true,
             },
             breakpoints: {
@@ -315,38 +281,48 @@ html, body {
             }
         });
 
-        // Click Handler: Clicking the active center card triggers smooth category filter
-        swiperEl.querySelectorAll('.swiper-slide').forEach(slide => {
-            slide.addEventListener('click', function(e) {
-                if (slide.classList.contains('swiper-slide-active')) {
-                    const link = slide.querySelector('a');
-                    if (!link) return;
-
-                    const category = link.getAttribute('data-category');
-                    const targetSection = document.getElementById('featured-tours');
-
-                    if (targetSection && category) {
-                        e.preventDefault();
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-
-                        const targetBtn = document.querySelector(`.tour-filter-btn[data-category="${category}"]`);
-                        if (targetBtn) {
-                            targetBtn.click();
-                        }
-                        if (window.history && window.history.pushState) {
-                            window.history.pushState(null, '', 'tourPackage.php?category=' + encodeURIComponent(category) + '#featured-tours');
-                        }
-                    }
-                }
-            });
+        // Click Handler: Clicking any card opens its respective page
+        coverflowSwiper.on('click', function(swiper, e) {
+            const clickedSlide = swiper.clickedSlide;
+            if (!clickedSlide) return;
+            const link = clickedSlide.querySelector('a');
+            if (link && link.href && link.href !== '#' && !link.href.endsWith('#')) {
+                window.location.href = link.href;
+            }
         });
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initCategoryCoverflow);
+        document.addEventListener('DOMContentLoaded', initCoverflow_<?= str_replace('-', '_', $instance_id); ?>);
     } else {
-        initCategoryCoverflow();
+        initCoverflow_<?= str_replace('-', '_', $instance_id); ?>();
     }
-    window.addEventListener('load', initCategoryCoverflow);
+    window.addEventListener('load', initCoverflow_<?= str_replace('-', '_', $instance_id); ?>);
 })();
 </script>
+
+<?php
+// Clean up temporary variables so subsequent inclusions won't inherit stale values
+unset(
+    $attraction_key,
+    $attraction_eyebrow,
+    $attraction_icon,
+    $attraction_title,
+    $attraction_description,
+    $attraction_items,
+    $attraction_id,
+    $active_dataset_key,
+    $default_dataset,
+    $resolved_eyebrow,
+    $resolved_icon,
+    $resolved_title,
+    $resolved_description,
+    $resolved_items,
+    $instance_id,
+    $section_id,
+    $prev_btn_id,
+    $next_btn_id,
+    $swiper_id,
+    $pagination_id
+);
+?>

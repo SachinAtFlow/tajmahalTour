@@ -15,10 +15,23 @@ if (file_exists($headerNavDataPath)) {
     require_once $headerNavDataPath;
 }
 
+if (!isset($rootPrefix)) {
+    $rootPrefix = !file_exists('assets/css/style.css') ? '../' : '';
+}
 $currentPage = basename($_SERVER['PHP_SELF'] ?? '');
-$isHomeActive = ($currentPage === 'index.php' || $currentPage === '');
-$bookNowUrl = $isHomeActive ? '#booking' : 'index.php#booking';
-$homePrefix = $isHomeActive ? '' : 'index.php';
+$isHomeActive = ($currentPage === 'index.php' || $currentPage === '') && ($rootPrefix === '');
+$bookNowUrl = $isHomeActive ? '#booking' : $rootPrefix . 'index.php#booking';
+$homePrefix = $isHomeActive ? '' : $rootPrefix . 'index.php';
+
+if (!function_exists('theme_url')) {
+    function theme_url($url = '') {
+        global $rootPrefix;
+        if (empty($url) || strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0 || strpos($url, '#') === 0 || strpos($url, 'tel:') === 0 || strpos($url, 'mailto:') === 0 || strpos($url, 'javascript:') === 0) {
+            return $url;
+        }
+        return ($rootPrefix ?? '') . ltrim($url, '/');
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +50,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     
     <!-- Custom Theme CSS -->
-    <link rel="stylesheet" href="assets/css/style.css?v=<?= file_exists(__DIR__ . '/../assets/css/style.css') ? filemtime(__DIR__ . '/../assets/css/style.css') : time(); ?>">
+    <link rel="stylesheet" href="<?= $rootPrefix; ?>assets/css/style.css?v=<?= file_exists(__DIR__ . '/../assets/css/style.css') ? filemtime(__DIR__ . '/../assets/css/style.css') : time(); ?>">
 </head>
 <body>
 
@@ -80,7 +93,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
             </button>
 
             <!-- Brand Logo -->
-            <a class="navbar-brand py-0 me-2 me-xl-4" href="index.php">
+            <a class="navbar-brand py-0 me-2 me-xl-4" href="<?= theme_url('index.php'); ?>">
                 <img src="https://modtel.travelerwp.com/wp-content/uploads/2022/04/Color-2.svg" alt="TajMahalTour" height="34">
             </a>
         </div>
@@ -91,40 +104,40 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
                 
                 <!-- Home -->
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo $isHomeActive ? 'active' : 'text-dark'; ?>" href="index.php">
+                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo $isHomeActive ? 'active' : 'text-dark'; ?>" href="<?= theme_url('index.php'); ?>">
                         Home
                     </a>
                 </li>
 
                 <!-- About Us -->
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'aboutUs.php') ? 'active text-primary' : 'text-dark'; ?>" href="aboutUs.php">
+                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'aboutUs.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('aboutUs.php'); ?>">
                         About
                     </a>
                 </li>
 
                 <!-- Car Rental Multi-Level Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'carRentalLocation.php' || $currentPage === 'carRental.php') ? 'active text-primary' : 'text-dark'; ?>" href="carRentalLocation.php" role="button">
+                    <a class="nav-link dropdown-toggle fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'carRentalLocation.php' || $currentPage === 'carRental.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('carRentalLocation.php'); ?>" role="button">
                         Car Rental
                     </a>
-                    <ul class="dropdown-menu shadow-sm border-0 rounded-3 py-2">
+                    <ul class="dropdown-menu shadow border-0 rounded-4 py-2">
                         <?php if (!empty($carNavMenu)): ?>
                             <?php foreach ($carNavMenu as $cat): ?>
                                 <?php if (!empty($cat['sub'])): ?>
                                     <!-- Level 2 Submenu -->
                                     <li class="dropdown-submenu">
-                                        <a class="dropdown-item py-2 px-3 fw-medium d-flex align-items-center justify-content-between" href="<?php echo htmlspecialchars($cat['link']); ?>">
+                                        <a class="dropdown-item py-2 px-3 fw-medium d-flex align-items-center justify-content-between" href="<?php echo htmlspecialchars(theme_url($cat['link'])); ?>">
                                             <span><?php echo htmlspecialchars($cat['title']); ?></span>
                                             <i class="bi bi-chevron-right small text-muted ms-2"></i>
                                         </a>
-                                        <ul class="dropdown-menu dropdown-submenu-menu shadow-sm border-0 rounded-3 py-2">
+                                        <ul class="dropdown-menu dropdown-submenu-menu shadow border-0 rounded-4 py-2">
                                             <li class="dropdown-header text-primary fw-bold small text-uppercase px-3 py-1">
                                                 <?php echo htmlspecialchars($cat['title']); ?>
                                             </li>
                                             <?php foreach ($cat['sub'] as $subItem): ?>
                                                 <li>
-                                                    <a class="dropdown-item py-1.5 px-3 small text-secondary" href="<?php echo htmlspecialchars($subItem['link']); ?>">
+                                                    <a class="dropdown-item py-1.5 px-3 small text-secondary" href="<?php echo htmlspecialchars(theme_url($subItem['link'])); ?>">
                                                         <i class="bi bi-circle-fill text-muted me-2" style="font-size: 5px;"></i>
                                                         <?php echo htmlspecialchars($subItem['name']); ?>
                                                     </a>
@@ -134,7 +147,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
                                     </li>
                                 <?php else: ?>
                                     <li>
-                                        <a class="dropdown-item py-2 px-3 fw-medium" href="<?php echo htmlspecialchars($cat['link']); ?>">
+                                        <a class="dropdown-item py-2 px-3 fw-medium" href="<?php echo htmlspecialchars(theme_url($cat['link'])); ?>">
                                             <?php echo htmlspecialchars($cat['title']); ?>
                                         </a>
                                     </li>
@@ -146,24 +159,24 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
 
                 <!-- Tour Packages Multi-Level Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'tourPackage.php') ? 'active text-primary' : 'text-dark'; ?>" href="tourPackage.php" role="button">
+                    <a class="nav-link dropdown-toggle fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'tourPackage.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('tourPackage.php'); ?>" role="button">
                         Tour Packages
                     </a>
-                    <ul class="dropdown-menu shadow-sm border-0 rounded-3 py-2">
+                    <ul class="dropdown-menu shadow border-0 rounded-4 py-2">
                         <?php if (!empty($tourNavMenu)): ?>
                             <?php foreach ($tourNavMenu as $tCat): ?>
                                 <li class="dropdown-submenu">
-                                    <a class="dropdown-item py-2 px-3 fw-medium d-flex align-items-center justify-content-between" href="<?php echo htmlspecialchars($tCat['link']); ?>">
+                                    <a class="dropdown-item py-2 px-3 fw-medium d-flex align-items-center justify-content-between" href="<?php echo htmlspecialchars(theme_url($tCat['link'])); ?>">
                                         <span><?php echo htmlspecialchars($tCat['title']); ?></span>
                                         <i class="bi bi-chevron-right small text-muted ms-2"></i>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-submenu-menu shadow-sm border-0 rounded-3 py-2">
+                                    <ul class="dropdown-menu dropdown-submenu-menu shadow border-0 rounded-4 py-2">
                                         <li class="dropdown-header text-primary fw-bold small text-uppercase px-3 py-1">
                                             <?php echo htmlspecialchars($tCat['title']); ?>
                                         </li>
                                         <?php foreach ($tCat['sub'] as $subTour): ?>
                                             <li>
-                                                <a class="dropdown-item py-1.5 px-3 small text-secondary" href="<?php echo htmlspecialchars($subTour['link']); ?>">
+                                                <a class="dropdown-item py-1.5 px-3 small text-secondary" href="<?php echo htmlspecialchars(theme_url($subTour['link'])); ?>">
                                                     <i class="bi bi-circle-fill text-muted me-2" style="font-size: 5px;"></i>
                                                     <?php echo htmlspecialchars($subTour['name']); ?>
                                                 </a>
@@ -180,14 +193,14 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
 
                 <!-- Contact -->
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'contactUs.php') ? 'active text-primary' : 'text-dark'; ?>" href="contactUs.php">
+                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'contactUs.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('contactUs.php'); ?>">
                         Contact
                     </a>
                 </li>
 
                 <!-- Payment -->
                 <li class="nav-item">
-                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="payment.php">
+                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="<?= theme_url('payment.php'); ?>">
                         Payment
                     </a>
                 </li>
@@ -213,7 +226,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
     
     <!-- Drawer Header -->
     <div class="d-flex align-items-center justify-content-between p-3 border-bottom bg-light">
-        <a href="index.php" class="d-flex align-items-center">
+        <a href="<?= theme_url('index.php'); ?>" class="d-flex align-items-center">
             <img src="https://modtel.travelerwp.com/wp-content/uploads/2022/04/Color-2.svg" alt="TajMahalTour" height="30">
         </a>
         <button type="button" id="mobile-menu-close" class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center p-0" style="width: 32px; height: 32px;" aria-label="Close menu">
@@ -225,12 +238,12 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
     <div class="flex-grow-1 overflow-auto p-3">
         
         <!-- Home -->
-        <a href="index.php" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold mb-1 <?php echo $isHomeActive ? 'bg-primary bg-opacity-10 text-primary' : 'text-dark'; ?>">
+        <a href="<?= theme_url('index.php'); ?>" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold mb-1 <?php echo $isHomeActive ? 'bg-primary bg-opacity-10 text-primary' : 'text-dark'; ?>">
             <span>Home</span>
         </a>
 
         <!-- About Us -->
-        <a href="aboutUs.php" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
+        <a href="<?= theme_url('aboutUs.php'); ?>" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
             <span>About Us</span>
         </a>
 
@@ -241,7 +254,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
                 <i class="bi bi-chevron-down accordion-chevron small text-muted"></i>
             </button>
             <div class="accordion-content d-none ps-3 pe-2 py-2 bg-light rounded-3 mb-2 border">
-                <a href="carRentalLocation.php" class="d-block text-primary fw-bold small text-decoration-none mb-2">
+                <a href="<?= theme_url('carRentalLocation.php'); ?>" class="d-block text-primary fw-bold small text-decoration-none mb-2">
                     Explore All Vehicles &rarr;
                 </a>
                 <?php if (!empty($carNavMenu)): ?>
@@ -254,14 +267,14 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
                                 </button>
                                 <div class="accordion-content d-none ps-3 py-1 border-start border-2 border-primary ms-2 mb-1">
                                     <?php foreach ($cat['sub'] as $subItem): ?>
-                                        <a href="<?php echo htmlspecialchars($subItem['link']); ?>" class="d-block py-1 text-secondary text-decoration-none small">
+                                        <a href="<?php echo htmlspecialchars(theme_url($subItem['link'])); ?>" class="d-block py-1 text-secondary text-decoration-none small">
                                             &bull; <?php echo htmlspecialchars($subItem['name']); ?>
                                         </a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
                         <?php else: ?>
-                            <a href="<?php echo htmlspecialchars($cat['link']); ?>" class="d-block py-1 text-secondary text-decoration-none small">
+                            <a href="<?php echo htmlspecialchars(theme_url($cat['link'])); ?>" class="d-block py-1 text-secondary text-decoration-none small">
                                 <?php echo htmlspecialchars($cat['title']); ?>
                             </a>
                         <?php endif; ?>
@@ -277,7 +290,7 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
                 <i class="bi bi-chevron-down accordion-chevron small text-muted"></i>
             </button>
             <div class="accordion-content d-none ps-3 pe-2 py-2 bg-light rounded-3 mb-2 border">
-                <a href="tourPackage.php" class="d-block text-primary fw-bold small text-decoration-none mb-2">
+                <a href="<?= theme_url('tourPackage.php'); ?>" class="d-block text-primary fw-bold small text-decoration-none mb-2">
                     Explore All Packages &rarr;
                 </a>
                 <?php if (!empty($tourNavMenu)): ?>
@@ -290,14 +303,14 @@ $homePrefix = $isHomeActive ? '' : 'index.php';
                                 </button>
                                 <div class="accordion-content d-none ps-3 py-1 border-start border-2 border-primary ms-2 mb-1">
                                     <?php foreach ($tCat['sub'] as $subTour): ?>
-                                        <a href="<?php echo htmlspecialchars($subTour['link']); ?>" class="d-block py-1 text-secondary text-decoration-none small">
+                                        <a href="<?php echo htmlspecialchars(theme_url($subTour['link'])); ?>" class="d-block py-1 text-secondary text-decoration-none small">
                                             &bull; <?php echo htmlspecialchars($subTour['name']); ?>
                                         </a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
                         <?php else: ?>
-                            <a href="<?php echo htmlspecialchars($tCat['link']); ?>" class="d-block py-1 text-secondary text-decoration-none small px-2">
+                            <a href="<?php echo htmlspecialchars(theme_url($tCat['link'])); ?>" class="d-block py-1 text-secondary text-decoration-none small px-2">
                                 <?php echo htmlspecialchars($tCat['title']); ?>
                             </a>
                         <?php endif; ?>

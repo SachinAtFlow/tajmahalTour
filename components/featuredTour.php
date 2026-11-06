@@ -14,7 +14,8 @@
             if (strpos($imgLower, 'rajasthan') !== false || strpos($imgLower, 'jaipur') !== false) return 'assets/images/rajasthan/jaipur.avif';
             if (strpos($imgLower, 'punjab') !== false || strpos($imgLower, 'golden') !== false) return 'assets/images/punjab/goldenTemple.avif';
             if (strpos($imgLower, 'uttrakhand') !== false || strpos($imgLower, 'uttarakhand') !== false || strpos($imgLower, 'rishikesh') !== false) return 'assets/images/uttrakhand/uttrakhand.avif';
-            if (strpos($imgLower, 'guj') !== false) return 'assets/images/gujrat/gujrat-ropeway.avif';
+            if (strpos($imgLower, 'wildlife') !== false || strpos($imgLower, 'corbett') !== false || strpos($imgLower, 'safari') !== false) return 'assets/images/wildlife/ranthambhore.avif';
+            if (strpos($imgLower, 'guj') !== false) return 'assets/images/gujrat/gujrat.avif';
             if (strpos($imgLower, 'nepal') !== false) return 'assets/images/nepal/nepal.avif';
             return 'assets/images/delhi/indiaGate.avif';
         }
@@ -98,6 +99,11 @@
             return 'Handpicked guided journey designed for comfort, luxury, and authentic cultural exploration.';
         }
     }
+
+    // Determine if current page is Home Page (index.php)
+    $currentPage = basename($_SERVER['PHP_SELF'] ?? '');
+    $isHomePage = isset($isHomeActive) ? $isHomeActive : (($currentPage === 'index.php' || $currentPage === '') && (empty($rootPrefix) || $rootPrefix === './'));
+    $displayedTours = !empty($toursData) && is_array($toursData) ? $toursData : [];
     ?>
 
     <!-- Featured Tours Section (Clean & Minimalist Modern Card UI) -->
@@ -116,38 +122,55 @@
                     <p class="text-secondary small mt-1 mb-0">Handpicked guided journeys designed for comfort, luxury, and authentic cultural exploration.</p>
                 </div>
 
-                <!-- Filter Tabs -->
-                <div class="d-flex flex-wrap items-center gap-2 mt-2">
-                    <button type="button" data-category="all" class="tour-filter-btn active">All</button>
-                    <button type="button" data-category="delhi" class="tour-filter-btn">Delhi</button>
-                    <button type="button" data-category="uttar-pradesh" class="tour-filter-btn">Uttar Pradesh</button>
-                    <button type="button" data-category="rajasthan" class="tour-filter-btn">Rajasthan</button>
-                    <button type="button" data-category="himachal" class="tour-filter-btn">Himachal</button>
-                    <button type="button" data-category="uttarakhand" class="tour-filter-btn">Uttarakhand</button>
-                    <button type="button" data-category="gujarat" class="tour-filter-btn">Gujarat</button>
-                    <button type="button" data-category="nepal" class="tour-filter-btn">Nepal</button>
-                    <button type="button" data-category="spiritual" class="tour-filter-btn">Spiritual</button>
-                    <button type="button" data-category="wildlife" class="tour-filter-btn">Wildlife</button>
-                    <button type="button" data-category="weekend" class="tour-filter-btn">Weekend</button>
+                <!-- Filter Tabs (Arranged in 2 centered rows matching image) -->
+                <div class="d-flex flex-column align-items-center gap-2 mt-3 w-100" id="tour-filter-tabs">
+                    <!-- Row 1: Top, Delhi, Uttar Pradesh, Rajasthan, Himachal, Uttarakhand -->
+                    <div class="d-flex flex-wrap justify-content-center align-items-center gap-2">
+                        <button type="button" data-category="top" class="tour-filter-btn active">Top</button>
+                        <button type="button" data-category="delhi" class="tour-filter-btn">Delhi</button>
+                        <button type="button" data-category="uttar-pradesh" class="tour-filter-btn">Uttar Pradesh</button>
+                        <button type="button" data-category="rajasthan" class="tour-filter-btn">Rajasthan</button>
+                        <button type="button" data-category="himachal" class="tour-filter-btn">Himachal</button>
+                        <button type="button" data-category="uttarakhand" class="tour-filter-btn">Uttarakhand</button>
+                    </div>
+                    <!-- Row 2: Punjab, Gujarat, Nepal, Spiritual, Wildlife, Weekend -->
+                    <div class="d-flex flex-wrap justify-content-center align-items-center gap-2">
+                        <button type="button" data-category="punjab" class="tour-filter-btn">Punjab</button>
+                        <button type="button" data-category="gujarat" class="tour-filter-btn">Gujarat</button>
+                        <button type="button" data-category="nepal" class="tour-filter-btn">Nepal</button>
+                        <button type="button" data-category="spiritual" class="tour-filter-btn">Spiritual</button>
+                        <button type="button" data-category="wildlife" class="tour-filter-btn">Wildlife</button>
+                        <button type="button" data-category="weekend" class="tour-filter-btn">Weekend</button>
+                    </div>
                 </div>
             </div>
 
             <!-- Dynamic Cards Grid -->
             <div class="row g-4" id="tour-cards-container">
-                <?php if (!empty($toursData) && is_array($toursData)): ?>
-                    <?php foreach ($toursData as $tour): ?>
+                <?php if (!empty($displayedTours) && is_array($displayedTours)): ?>
+                    <?php foreach ($displayedTours as $tour): ?>
                         <?php 
-                            $category = $tour['category'] ?? 'all';
-                            $isFeatured = (!empty($tour['is_featured']) && $tour['is_featured'] === true) ? 'true' : 'false';
+                            $rawCat = strtolower($tour['category'] ?? 'all');
+                            if (strpos($rawCat, 'uttrakhand') !== false && strpos($rawCat, 'uttarakhand') === false) {
+                                $rawCat .= ' uttarakhand';
+                            }
+                            if (strpos($rawCat, 'gujrat') !== false && strpos($rawCat, 'gujarat') === false) {
+                                $rawCat .= ' gujarat';
+                            }
+                            $isFeaturedBool = (!empty($tour['is_featured']) && $tour['is_featured'] === true);
+                            $isFeatured = $isFeaturedBool ? 'true' : 'false';
+                            // Initial display: only Top / Featured cards are visible on load, others start hidden
+                            $initialClass = $isFeaturedBool ? '' : 'd-none';
                             $imageSrc = getTourImageFallback($tour['image'] ?? '');
                             $price = getTourPriceDisplay($tour);
                             $rating = getTourRatingDisplay($tour);
                             $desc = getTourDescriptionDisplay($tour);
-                            $tourLink = htmlspecialchars($tour['link'] ?? '#booking');
+                            $rawTourLink = $tour['link'] ?? '#booking';
+                            $tourLink = htmlspecialchars(function_exists('theme_url') ? theme_url($rawTourLink) : $rawTourLink);
                         ?>
                         
-                        <div class="col-12 col-sm-6 col-lg-3 tour-card-col" 
-                            data-category="<?= htmlspecialchars($category); ?>" 
+                        <div class="col-12 col-sm-6 col-lg-3 tour-card-col <?= $initialClass; ?>" 
+                            data-category="<?= htmlspecialchars($rawCat); ?>" 
                             data-featured="<?= $isFeatured; ?>">
                             
                             <!-- Dark Luxury Card (Matching Provided Image Design) -->
@@ -165,8 +188,8 @@
 
                                     <a href="<?= $tourLink; ?>" tabindex="-1" aria-hidden="true" class="d-block w-100 h-100">
                                         <img 
-                                            src="<?= htmlspecialchars($imageSrc); ?>" 
-                                            alt="<?= htmlspecialchars($tour['title'] ?? ''); ?>" 
+                                            src="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($imageSrc) : $imageSrc); ?>" 
+                                            alt="<?= htmlspecialchars(!empty($tour['title']) ? $tour['title'] . ' Tour Package' : 'Tour Package'); ?>" 
                                             loading="lazy"
                                         >
                                     </a>
@@ -228,6 +251,16 @@
                 </div>
             </div>
 
+            <?php if ($isHomePage): ?>
+            <!-- Explore More Tours Navigation Button (Only on Home Page) -->
+            <div class="text-center mt-5" id="explore-more-tours-wrapper">
+                <a id="btn-explore-more-tours" href="<?= function_exists('theme_url') ? theme_url('tourPackage.php') : 'tourPackage.php'; ?>" class="btn btn-primary rounded-pill px-5 py-3 fw-bold shadow-sm d-inline-flex align-items-center gap-2 hover-lift">
+                    <span>Explore More Tours</span>
+                    <i class="bi bi-arrow-right fs-5"></i>
+                </a>
+            </div>
+            <?php endif; ?>
+
         </div>
     </section>
 
@@ -260,16 +293,19 @@
                 let visibleCount = 0;
 
                 tourCards.forEach(card => {
-                    const cardCategories = (card.getAttribute('data-category') || '').split(' ');
+                    const cardCategories = (card.getAttribute('data-category') || '').toLowerCase().split(' ');
                     const isFeatured = card.getAttribute('data-featured') === 'true';
 
-                    if (category === 'all') {
+                    if (category === 'top') {
                         if (isFeatured) {
                             card.classList.remove('d-none');
                             visibleCount++;
                         } else {
                             card.classList.add('d-none');
                         }
+                    } else if (category === 'all') {
+                        card.classList.remove('d-none');
+                        visibleCount++;
                     } else {
                         if (cardCategories.includes(category)) {
                             card.classList.remove('d-none');

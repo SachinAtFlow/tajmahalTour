@@ -68,7 +68,7 @@ $safetyFeatures = [
             <div class="col-lg-5">
                 <div class="card border-0 rounded-4 overflow-hidden h-100 position-relative text-white shadow-sm safety-banner-card" style="min-height: 480px;">
                     <img
-                        src="assets/images/others/driving.avif"
+                        src="<?= function_exists('theme_url') ? theme_url('assets/images/others/driving.avif') : 'assets/images/others/driving.avif'; ?>"
                         alt="Safe and verified cab journey"
                         class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover banner-img"
                         loading="lazy"

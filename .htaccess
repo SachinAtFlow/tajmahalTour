@@ -1,0 +1,31 @@
+# ----------------------------------------------------------------------
+# Taj Mahal Tour - Apache Configuration & Error Handlers
+# ----------------------------------------------------------------------
+
+# Prevent directory browsing
+Options -Indexes
+
+# Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevent loop for 404.php itself
+    RewriteRule ^404\.php$ - [L]
+
+    # If physical file or directory exists, serve it directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Otherwise route to 404.php
+    RewriteRule ^(.*)$ 404.php [L,QSA]
+</IfModule>
+
+# Fallback Apache Error Documents
+ErrorDocument 400 /tajmahalTour/404.php?code=400
+ErrorDocument 401 /tajmahalTour/404.php?code=401
+ErrorDocument 403 /tajmahalTour/404.php?code=403
+ErrorDocument 404 /tajmahalTour/404.php?code=404
+ErrorDocument 500 /tajmahalTour/404.php?code=500
+ErrorDocument 503 /tajmahalTour/404.php?code=503
+

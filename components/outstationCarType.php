@@ -97,8 +97,8 @@ $outstationCars = [
                                     <i class="bi bi-circle-fill me-1" style="font-size: 6px;"></i>Available
                                 </span>
                                 <img 
-                                    src="<?php echo htmlspecialchars($car['image']); ?>" 
-                                    alt="<?php echo htmlspecialchars($car['title']); ?>" 
+                                    src="<?php echo htmlspecialchars(function_exists('theme_url') ? theme_url($car['image']) : $car['image']); ?>" 
+                                    alt="<?php echo htmlspecialchars(!empty($car['title']) ? $car['title'] . ' - Outstation Car Rental' : 'Outstation Car'); ?>" 
                                     class="img-fluid"
                                     style="max-height: 125px; width: auto; object-fit: contain;"
                                     loading="lazy"

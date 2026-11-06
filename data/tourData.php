@@ -9,12 +9,12 @@ $toursData = [
         "category" => "delhi",
         "tag" => "DELHI",
         "subtitle" => "Explore <span class=\"text-orange-500 font-bold\">Delhi with a Private Car</span>",
-        "image" => "assets/images/delhi/india-gate.avif",
+        "image" => "assets/images/delhi/indiaGate.avif",
         "duration" => "Full Day",
         "type" => "Chauffeur",
         "icon" => "car",
         "link" => "carRentalLocation.php?city=delhi-ncr",
-        "is_featured" => true // All tab pe top 8 me dikhega
+        "is_featured" => true
     ],
     [
         "id" => 2,
@@ -22,11 +22,11 @@ $toursData = [
         "category" => "uttar-pradesh delhi",
         "tag" => "DELHI - AGRA",
         "subtitle" => "Visit <span class=\"text-orange-500 font-bold\">Taj Mahal & Agra Fort</span>",
-        "image" => "assets/images/uttarpradesh/tajmahal2.avif",
+        "image" => "assets/images/uttarPradesh/tajmahal.avif",
         "duration" => "01 Day",
         "type" => "Private Trip",
         "icon" => "user",
-        "link" => "samedaytours/samedayagratour.html",
+        "link" => "samedaytour/specificTourTemplate.php?tour=agra-taj-mahal-same-day-tour",
         "is_featured" => true
     ],
     [
@@ -39,7 +39,7 @@ $toursData = [
         "duration" => "4 Days",
         "type" => "Private Car",
         "icon" => "car",
-        "link" => "tourPackageDetail.php?tour=golden-triangle-delhi-agra-jaipur-4-days",
+        "link" => "goldentriangletour/specificTourTemplate.php?tour=delhi-agra-jaipur-tour-4-days",
         "is_featured" => true
     ],
     [
@@ -48,11 +48,11 @@ $toursData = [
         "category" => "rajasthan",
         "tag" => "RAJASTHAN",
         "subtitle" => "Discover <span class=\"text-orange-500 font-bold\">Jaipur • Udaipur • Jodhpur</span>",
-        "image" => "assets/images/rajasthan/rajasthan2.avif",
+        "image" => "assets/images/rajasthan/rajasthan.avif",
         "duration" => "2–5 Days",
         "type" => "Flexible",
         "icon" => "map",
-        "link" => "tourPackageDetail.php?tour=rajasthan",
+        "link" => "rajasthantour/index.php",
         "is_featured" => true
     ],
     [
@@ -61,11 +61,11 @@ $toursData = [
         "category" => "himachal",
         "tag" => "HIMACHAL",
         "subtitle" => "Explore <span class=\"text-orange-500 font-bold\">Shimla • Manali • Dalhousie</span>",
-        "image" => "assets/images/himachal/shimla.avif",
+        "image" => "assets/images/himachal/himachal.avif",
         "duration" => "3–11 Days",
         "type" => "Hill Trip",
         "icon" => "mountain",
-        "link" => "tourPackageDetail.php?tour=himachal-holidays-hill-station-tour",
+        "link" => "himachaltour/index.php",
         "is_featured" => true
     ],
     [
@@ -78,7 +78,7 @@ $toursData = [
         "duration" => "2–3 Days",
         "type" => "Spiritual",
         "icon" => "sparkles",
-        "link" => "tourPackageDetail.php?tour=haridwar-rishikesh-same-day",
+        "link" => "uttarakhandtour/specificTourTemplate.php?tour=haridwar-rishikesh-3-days-tour",
         "is_featured" => false
     ],
     [
@@ -87,11 +87,11 @@ $toursData = [
         "category" => "spiritual uttar-pradesh uttarakhand",
         "tag" => "SPIRITUAL PILGRIMAGE",
         "subtitle" => "Sacred <span class=\"text-orange-500 font-bold\">Char Dham • Haridwar • Amritsar</span>",
-        "image" => "assets/images/hero-images/ram-mandir.avif",
+        "image" => "assets/images/uttrakhand/kedarnath.avif",
         "duration" => "4–12 Days",
         "type" => "Pilgrimage",
         "icon" => "user-check",
-        "link" => "tourPackageDetail.php?tour=spiritual",
+        "link" => "spiritualtour/index.php",
         "is_featured" => true
     ],
     [
@@ -100,11 +100,11 @@ $toursData = [
         "category" => "wildlife uttarakhand rajasthan",
         "tag" => "WILDLIFE SAFARI",
         "subtitle" => "Explore <span class=\"text-orange-500 font-bold\">Corbett • Ranthambore • Bharatpur</span>",
-        "image" => "assets/images/uttrakhand/national-park.avif",
+        "image" => "assets/images/wildlife/jim-corbett.avif",
         "duration" => "4–13 Days",
         "type" => "Jungle Safari",
         "icon" => "trees",
-        "link" => "tourPackageDetail.php?tour=wildlife",
+        "link" => "wildlifetour/index.php",
         "is_featured" => true
     ],
 
@@ -119,8 +119,8 @@ $toursData = [
         "duration" => "4 Days",
         "type" => "Luxury Car",
         "icon" => "car",
-        "link" => "tourPackageDetail.php?tour=udaipur-mount-abu-tour",
-        "is_featured" => false // All tab pe nahi dikhega, sirf Rajasthan tab me
+        "link" => "rajasthantour/specificTourTemplate.php?tour=royal-rajasthan-tour-16-days",
+        "is_featured" => false
     ],
     [
         "id" => 10,
@@ -132,7 +132,7 @@ $toursData = [
         "duration" => "3 Days",
         "type" => "Weekend Hill Trip",
         "icon" => "mountain",
-        "link" => "tourPackageDetail.php?tour=delhi-to-shimla-weekend-tour",
+        "link" => "himachaltour/specificTourTemplate.php?tour=delhi-to-shimla-weekend-tour",
         "is_featured" => false
     ],
 
@@ -149,7 +149,7 @@ $toursData = [
         "duration" => "5–7 Days",
         "type" => "Heritage & Safari",
         "icon" => "map",
-        "link" => "tourPackageDetail.php?tour=gujarat",
+        "link" => "gujarattour/index.php",
         "is_featured" => false
     ],
     [
@@ -162,7 +162,7 @@ $toursData = [
         "duration" => "4–5 Days",
         "type" => "Spiritual",
         "icon" => "sparkles",
-        "link" => "tourPackageDetail.php?tour=dwarka-somnath-tour",
+        "link" => "gujarattour/specificTourTemplate.php?tour=dwarka-somnath-spiritual-tour",
         "is_featured" => false
     ],
     [
@@ -175,7 +175,7 @@ $toursData = [
         "duration" => "3–4 Days",
         "type" => "Desert Tour",
         "icon" => "sun",
-        "link" => "tourPackageDetail.php?tour=rann-of-kutch-tour",
+        "link" => "gujarattour/specificTourTemplate.php?tour=rann-of-kutch-white-desert-tour",
         "is_featured" => false
     ],
     [
@@ -188,7 +188,7 @@ $toursData = [
         "duration" => "3 Days",
         "type" => "Safari",
         "icon" => "trees",
-        "link" => "tourPackageDetail.php?tour=gir-national-park-tour",
+        "link" => "gujarattour/specificTourTemplate.php?tour=gir-national-park-wildlife-safari",
         "is_featured" => false
     ],
 
@@ -205,7 +205,7 @@ $toursData = [
         "duration" => "6–8 Days",
         "type" => "Himalayan Trip",
         "icon" => "mountain",
-        "link" => "tourPackageDetail.php?tour=nepal",
+        "link" => "nepaltour/index.php",
         "is_featured" => true
     ],
     [
@@ -218,7 +218,7 @@ $toursData = [
         "duration" => "4 Days",
         "type" => "Cultural Trip",
         "icon" => "sparkles",
-        "link" => "tourPackageDetail.php?tour=kathmandu-heritage-tour",
+        "link" => "nepaltour/specificTourTemplate.php?tour=kathmandu-pashupatinath-tour-4-days",
         "is_featured" => false
     ],
     [
@@ -231,7 +231,7 @@ $toursData = [
         "duration" => "5 Days",
         "type" => "Scenic Hills",
         "icon" => "compass",
-        "link" => "tourPackageDetail.php?tour=pokhara-annapurna-tour",
+        "link" => "nepaltour/specificTourTemplate.php?tour=pokhara-phewa-lake-mountain-tour-5-days",
         "is_featured" => false
     ],
     [
@@ -240,11 +240,11 @@ $toursData = [
         "category" => "nepal",
         "tag" => "NEPAL",
         "subtitle" => "Witness <span class=\"text-orange-500 font-bold\">Mount Everest Up-Close</span>",
-        "image" => "assets/images/nepal/everest-base-camp.avif",
+        "image" => "assets/images/nepal/everestBaseCamp.avif",
         "duration" => "4 Days",
         "type" => "Scenic Flight",
         "icon" => "plane",
-        "link" => "tourPackageDetail.php?tour=everest-flight-kathmandu",
+        "link" => "nepaltour/specificTourTemplate.php?tour=everest-mountain-flight-tour",
         "is_featured" => false
     ],
     [
@@ -257,7 +257,7 @@ $toursData = [
         "duration" => "5–6 Days",
         "type" => "Jungle & Lakes",
         "icon" => "trees",
-        "link" => "tourPackageDetail.php?tour=chitwan-wildlife-tour",
+        "link" => "nepaltour/specificTourTemplate.php?tour=chitwan-jungle-safari-pokhara-tour",
         "is_featured" => false
     ],
     [
@@ -270,7 +270,7 @@ $toursData = [
         "duration" => "7 Days",
         "type" => "Grand Odyssey",
         "icon" => "compass",
-        "link" => "tourPackageDetail.php?tour=complete-nepal-odyssey",
+        "link" => "nepaltour/specificTourTemplate.php?tour=complete-nepal-odyssey-7-days",
         "is_featured" => false
     ],
 
@@ -283,11 +283,11 @@ $toursData = [
         "category" => "rajasthan",
         "tag" => "RAJASTHAN",
         "subtitle" => "Epic 20 Days <span class=\"text-orange-500 font-bold\">Heritage Odyssey</span>",
-        "image" => "assets/images/hero-images/rajasthan.avif",
+        "image" => "assets/images/rajasthan/rajasthan.avif",
         "duration" => "20 Days",
         "type" => "Grand Heritage",
         "icon" => "crown",
-        "link" => "tourPackageDetail.php?tour=rajasthan-heritage-tour-20-days",
+        "link" => "rajasthantour/specificTourTemplate.php?tour=20-day-rajasthan-heritage-tour",
         "is_featured" => false
     ],
     [
@@ -296,11 +296,11 @@ $toursData = [
         "category" => "rajasthan",
         "tag" => "RAJASTHAN",
         "subtitle" => "Forts, Palaces & <span class=\"text-orange-500 font-bold\">Desert Sand Dunes</span>",
-        "image" => "assets/images/rajasthan/rajasthan2.avif",
+        "image" => "assets/images/rajasthan/jaisalmer.avif",
         "duration" => "16 Days",
         "type" => "Royal Circuit",
         "icon" => "castle",
-        "link" => "tourPackageDetail.php?tour=royal-rajasthan-tour-16-days",
+        "link" => "rajasthantour/specificTourTemplate.php?tour=royal-rajasthan-tour-16-days",
         "is_featured" => false
     ],
     [
@@ -313,7 +313,7 @@ $toursData = [
         "duration" => "13 Days",
         "type" => "Forts Tour",
         "icon" => "shield",
-        "link" => "tourPackageDetail.php?tour=rajasthan-forts-palaces-tour-13-days",
+        "link" => "rajasthantour/specificTourTemplate.php?tour=rajasthan-forts-palaces-13-days",
         "is_featured" => false
     ],
     [
@@ -326,7 +326,7 @@ $toursData = [
         "duration" => "14 Days",
         "type" => "Desert Safari",
         "icon" => "sun",
-        "link" => "tourPackageDetail.php?tour=rajasthan-camel-safari-tour-14-days",
+        "link" => "rajasthantour/specificTourTemplate.php?tour=rajasthan-camel-safari-14-days",
         "is_featured" => false
     ],
     [
@@ -339,7 +339,7 @@ $toursData = [
         "duration" => "16 Days",
         "type" => "Cultural Tour",
         "icon" => "sparkles",
-        "link" => "tourPackageDetail.php?tour=rajasthan-culture-tour-16-days",
+        "link" => "rajasthantour/specificTourTemplate.php?tour=rajasthan-culture-tour-16-days",
         "is_featured" => false
     ],
 
@@ -356,20 +356,20 @@ $toursData = [
         "duration" => "4 Days",
         "type" => "Heritage Triangle",
         "icon" => "map-pin",
-        "link" => "tourPackageDetail.php?tour=golden-triangle-delhi-agra-jaipur-4-days",
+        "link" => "goldentriangletour/specificTourTemplate.php?tour=delhi-agra-jaipur-tour-4-days",
         "is_featured" => false
     ],
     [
         "id" => 27,
         "title" => "Golden Temple Amritsar Tour Packages",
-        "category" => "delhi uttar-pradesh",
+        "category" => "delhi uttar-pradesh punjab",
         "tag" => "GOLDEN TRIANGLE + PUNJAB",
         "subtitle" => "Amritsar <span class=\"text-orange-500 font-bold\">• Delhi • Agra • Jaipur</span>",
-        "image" => "assets/images/punjab/golden-temple.avif",
+        "image" => "assets/images/punjab/goldenTemple.avif",
         "duration" => "7 Days",
         "type" => "Spiritual & Heritage",
         "icon" => "sparkles",
-        "link" => "tourPackageDetail.php?tour=golden-triangle-amritsar-tour-7-days",
+        "link" => "goldentriangletour/specificTourTemplate.php?tour=golden-triangle-with-amritsar-7-days",
         "is_featured" => false
     ],
     [
@@ -378,11 +378,11 @@ $toursData = [
         "category" => "delhi uttrakhand uttar-pradesh",
         "tag" => "TRIANGLE + UTTARAKHAND",
         "subtitle" => "Jaipur <span class=\"text-orange-500 font-bold\">• Agra • Haridwar • Rishikesh</span>",
-        "image" => "assets/images/uttrakhand/rishikesh2.avif",
+        "image" => "assets/images/uttrakhand/rishikesh.avif",
         "duration" => "8 Days",
         "type" => "Spiritual Circuit",
         "icon" => "compass",
-        "link" => "tourPackageDetail.php?tour=golden-triangle-haridwar-rishikesh-8-days",
+        "link" => "goldentriangletour/specificTourTemplate.php?tour=golden-triangle-with-haridwar-rishikesh-8-days",
         "is_featured" => false
     ],
     [
@@ -391,11 +391,11 @@ $toursData = [
         "category" => "delhi uttar-pradesh rajasthan",
         "tag" => "HERITAGE & TEMPLE CIRCUIT",
         "subtitle" => "Agra <span class=\"text-orange-500 font-bold\">• Orchha • Khajuraho • Varanasi</span>",
-        "image" => "assets/images/uttarpradesh/varanasi.avif",
+        "image" => "assets/images/uttarPradesh/varanasi.avif",
         "duration" => "10-12 Days",
         "type" => "Grand Temple Odyssey",
         "icon" => "crown",
-        "link" => "tourPackageDetail.php?tour=golden-triangle-orchha-khajuraho-varanasi-tour",
+        "link" => "goldentriangletour/specificTourTemplate.php?tour=golden-triangle-with-orchha-khajuraho-varanasi",
         "is_featured" => false
     ],
     [
@@ -404,11 +404,11 @@ $toursData = [
         "category" => "rajasthan delhi uttar-pradesh",
         "tag" => "TRIANGLE + WILDLIFE",
         "subtitle" => "Agra <span class=\"text-orange-500 font-bold\">• Bharatpur • Ranthambhore • Jaipur</span>",
-        "image" => "assets/images/uttrakhand/national-park.avif",
+        "image" => "assets/images/wildlife/ranthambhore.avif",
         "duration" => "9 Days",
         "type" => "Wildlife & Royal Forts",
         "icon" => "camera",
-        "link" => "tourPackageDetail.php?tour=golden-triangle-ranthambore-tiger-safari-9-days",
+        "link" => "goldentriangletour/specificTourTemplate.php?tour=golden-triangle-with-ranthambhore-safari-9-days",
         "is_featured" => false
     ],
 
@@ -421,11 +421,11 @@ $toursData = [
         "category" => "delhi",
         "tag" => "DELHI SIGHTSEEING",
         "subtitle" => "12 Heritage <span class=\"text-orange-500 font-bold\">Monuments of Delhi</span>",
-        "image" => "assets/images/delhi/india-gate.avif",
+        "image" => "assets/images/delhi/indiaGate.avif",
         "duration" => "1 Day",
         "type" => "City Sightseeing",
         "icon" => "car",
-        "link" => "samedaytours/delhifulldaytour.html",
+        "link" => "samedaytour/specificTourTemplate.php?tour=delhi-sightseeing-same-day-tour",
         "is_featured" => false
     ],
     [
@@ -438,7 +438,7 @@ $toursData = [
         "duration" => "1 Day",
         "type" => "Sunrise & Sunset Excursion",
         "icon" => "sun",
-        "link" => "samedaytours/samedayagratour.html",
+        "link" => "samedaytour/specificTourTemplate.php?tour=agra-taj-mahal-same-day-tour",
         "is_featured" => false
     ],
     [
@@ -451,7 +451,7 @@ $toursData = [
         "duration" => "1 Day",
         "type" => "Expressway Cab",
         "icon" => "castle",
-        "link" => "tourPackageDetail.php?tour=jaipur-same-day",
+        "link" => "samedaytour/specificTourTemplate.php?tour=jaipur-pink-city-same-day-tour",
         "is_featured" => false
     ],
     [
@@ -460,11 +460,11 @@ $toursData = [
         "category" => "uttar-pradesh delhi",
         "tag" => "DIVINE BRAJ BHOOMI",
         "subtitle" => "Mathura <span class=\"text-orange-500 font-bold\">• Vrindavan • Agra</span>",
-        "image" => "assets/images/uttarpradesh/mathura.avif",
+        "image" => "assets/images/uttarPradesh/vrindavan.avif",
         "duration" => "1 / 2 Days",
         "type" => "Spiritual & Heritage",
         "icon" => "sparkles",
-        "link" => "tourPackageDetail.php?tour=mathura-vrindavan-same-day",
+        "link" => "samedaytour/specificTourTemplate.php?tour=mathura-vrindavan-same-day-tour",
         "is_featured" => false
     ],
     [
@@ -477,7 +477,7 @@ $toursData = [
         "duration" => "1 / 2 / 3 Days",
         "type" => "Holy Snan & Aarti",
         "icon" => "compass",
-        "link" => "tourPackageDetail.php?tour=haridwar-rishikesh-same-day",
+        "link" => "samedaytour/specificTourTemplate.php?tour=haridwar-rishikesh-same-day-tour",
         "is_featured" => false
     ],
 
@@ -494,7 +494,7 @@ $toursData = [
         "duration" => "11 Days",
         "type" => "Complete Hill Odyssey",
         "icon" => "mountain",
-        "link" => "tourPackageDetail.php?tour=himachal-holidays-hill-station-tour",
+        "link" => "himachaltour/specificTourTemplate.php?tour=himachal-holidays-hill-station-tour",
         "is_featured" => false
     ],
     [
@@ -507,7 +507,7 @@ $toursData = [
         "duration" => "11 Days",
         "type" => "Grand Hill & City Circuit",
         "icon" => "compass",
-        "link" => "tourPackageDetail.php?tour=shimla-manali-dharamshala-dalhousie-chandigarh-tour",
+        "link" => "himachaltour/specificTourTemplate.php?tour=shimla-manali-dharamshala-chandigarh-tour",
         "is_featured" => false
     ],
     [
@@ -520,7 +520,7 @@ $toursData = [
         "duration" => "8 Days",
         "type" => "Adventure Safari",
         "icon" => "tent",
-        "link" => "tourPackageDetail.php?tour=himachal-adventure-tour-car-hire",
+        "link" => "himachaltour/specificTourTemplate.php?tour=hillstation-himachal-adventure-tour",
         "is_featured" => false
     ],
     [
@@ -533,12 +533,12 @@ $toursData = [
         "duration" => "8 Days",
         "type" => "Honeymoon Special",
         "icon" => "heart",
-        "link" => "tourPackageDetail.php?tour=himachal-honeymoon-tour-packages",
+        "link" => "himachaltour/specificTourTemplate.php?tour=hillstation-honeymoon-tour-packages",
         "is_featured" => false
     ],
 
     // =========================================================
-    // 5 SPIRITUAL & PILGRIMAGE TOURS (From tourDataPilgrimage.txt)
+    // 5 SPIRITUAL & PILGRIMAGE TOURS
     // =========================================================
     [
         "id" => 40,
@@ -550,7 +550,7 @@ $toursData = [
         "duration" => "12 Days",
         "type" => "Sacred Yatra",
         "icon" => "sparkles",
-        "link" => "tourPackageDetail.php?tour=delhi-to-char-dham-yatra",
+        "link" => "spiritualtour/specificTourTemplate.php?tour=delhi-to-char-dham-yatra-12-days",
         "is_featured" => false
     ],
     [
@@ -559,11 +559,11 @@ $toursData = [
         "category" => "spiritual punjab",
         "tag" => "GOLDEN TEMPLE",
         "subtitle" => "Harmandir Sahib <span class=\"text-orange-500 font-bold\">• Wagah Border • Chandigarh</span>",
-        "image" => "assets/images/punjab/golden-temple.avif",
+        "image" => "assets/images/punjab/goldenTemple.avif",
         "duration" => "4 Days",
         "type" => "Spiritual & Heritage",
         "icon" => "sun",
-        "link" => "tourPackageDetail.php?tour=delhi-to-amritsar-golden-temple-tour",
+        "link" => "spiritualtour/specificTourTemplate.php?tour=delhi-to-amritsar-golden-temple-tour-4-days",
         "is_featured" => false
     ],
     [
@@ -572,11 +572,11 @@ $toursData = [
         "category" => "spiritual rajasthan uttar-pradesh",
         "tag" => "AJMER & PUSHKAR",
         "subtitle" => "Taj Mahal <span class=\"text-orange-500 font-bold\">• Amber Fort • Ajmer Sharif • Pushkar</span>",
-        "image" => "assets/images/rajasthan/rajasthan2.avif",
+        "image" => "assets/images/rajasthan/rajasthan.avif",
         "duration" => "9 Days",
         "type" => "Heritage & Sufi Pilgrimage",
         "icon" => "compass",
-        "link" => "tourPackageDetail.php?tour=delhi-to-agra-jaipur-ajmer-pushkar-tour",
+        "link" => "spiritualtour/specificTourTemplate.php?tour=delhi-to-agra-jaipur-ajmer-pushkar-tour-9-days",
         "is_featured" => false
     ],
     [
@@ -589,7 +589,7 @@ $toursData = [
         "duration" => "6 Days",
         "type" => "Heritage & Temples",
         "icon" => "castle",
-        "link" => "tourPackageDetail.php?tour=delhi-to-agra-jaipur-pushkar-tour",
+        "link" => "spiritualtour/specificTourTemplate.php?tour=delhi-to-agra-jaipur-pushkar-tour-6-days",
         "is_featured" => false
     ],
     [
@@ -602,12 +602,12 @@ $toursData = [
         "duration" => "7 Days",
         "type" => "Pilgrimage & Hill Station",
         "icon" => "mountain",
-        "link" => "tourPackageDetail.php?tour=delhi-to-haridwar-rishikesh-mussoorie-tour",
+        "link" => "spiritualtour/specificTourTemplate.php?tour=delhi-to-haridwar-rishikesh-mussoorie-tour-7-days",
         "is_featured" => false
     ],
 
     // =========================================================
-    // 4 WILDLIFE TOURS (From tourDataWildlife.txt)
+    // 4 WILDLIFE TOURS
     // =========================================================
     [
         "id" => 45,
@@ -619,7 +619,7 @@ $toursData = [
         "duration" => "6 Days",
         "type" => "Birdwatching Safari",
         "icon" => "trees",
-        "link" => "tourPackageDetail.php?tour=delhi-to-bharatpur-bird-sanctuary-tour",
+        "link" => "wildlifetour/specificTourTemplate.php?tour=delhi-to-bharatpur-bird-sanctuary-tour-6-days",
         "is_featured" => false
     ],
     [
@@ -632,7 +632,7 @@ $toursData = [
         "duration" => "4 Days",
         "type" => "Tiger Safari",
         "icon" => "trees",
-        "link" => "tourPackageDetail.php?tour=delhi-to-corbett-wildlife-tour-packages",
+        "link" => "wildlifetour/specificTourTemplate.php?tour=delhi-to-corbett-wildlife-tour-packages-4-days",
         "is_featured" => false
     ],
     [
@@ -645,7 +645,7 @@ $toursData = [
         "duration" => "13 Days",
         "type" => "Grand Tiger Odyssey",
         "icon" => "compass",
-        "link" => "tourPackageDetail.php?tour=delhi-to-ranthambhore-wildlife-tour",
+        "link" => "wildlifetour/specificTourTemplate.php?tour=delhi-to-ranthambhore-wildlife-tour-13-days",
         "is_featured" => false
     ],
     [
@@ -658,12 +658,12 @@ $toursData = [
         "duration" => "7 Days",
         "type" => "Wildlife Circuit",
         "icon" => "trees",
-        "link" => "tourPackageDetail.php?tour=delhi-to-sariska-wildlife-tour-packages",
+        "link" => "wildlifetour/specificTourTemplate.php?tour=delhi-to-sariska-wildlife-tour-packages-7-days",
         "is_featured" => false
     ],
 
     // =========================================================
-    // 5 WEEKEND TOURS (From tourDataWeekend.txt)
+    // 5 WEEKEND TOURS
     // =========================================================
     [
         "id" => 49,
@@ -675,7 +675,7 @@ $toursData = [
         "duration" => "8 Days",
         "type" => "Hills & Valley Tour",
         "icon" => "mountain",
-        "link" => "tourPackageDetail.php?tour=delhi-to-shimla-manali-weekend-tour",
+        "link" => "weekendtour/specificTourTemplate.php?tour=delhi-to-shimla-manali-weekend-tour-8-days",
         "is_featured" => false
     ],
     [
@@ -688,7 +688,7 @@ $toursData = [
         "duration" => "6 Days",
         "type" => "Lake District Retreat",
         "icon" => "mountain",
-        "link" => "tourPackageDetail.php?tour=delhi-nainital-kausani-almora-ranikhet-tour",
+        "link" => "weekendtour/specificTourTemplate.php?tour=delhi-nainital-kausani-almora-ranikhet-tour-6-days",
         "is_featured" => false
     ],
     [
@@ -701,7 +701,7 @@ $toursData = [
         "duration" => "3 Days",
         "type" => "Wildlife Safari",
         "icon" => "trees",
-        "link" => "tourPackageDetail.php?tour=delhi-to-jim-corbett-wildlife-tour-car",
+        "link" => "weekendtour/specificTourTemplate.php?tour=delhi-to-jim-corbett-wildlife-tour-3-days",
         "is_featured" => false
     ],
     [
@@ -714,7 +714,7 @@ $toursData = [
         "duration" => "3 Days",
         "type" => "Royal Heritage Tour",
         "icon" => "car",
-        "link" => "tourPackageDetail.php?tour=delhi-to-jaipur-weekend-tour",
+        "link" => "weekendtour/specificTourTemplate.php?tour=delhi-to-jaipur-weekend-tour-3-days",
         "is_featured" => false
     ],
     [
@@ -722,12 +722,12 @@ $toursData = [
         "title" => "Delhi To Mussoorie Weekend Tour Packages",
         "category" => "weekend uttarakhand",
         "tag" => "QUEEN OF HILLS",
-        "subtitle" => "Mussoorie <span class=\"text-orange-500 font-bold\">• Kempty Falls • Gun Hill • Camel\'s Back</span>",
+        "subtitle" => "Mussoorie <span class=\"text-orange-500 font-bold\">• Kempty Falls • Gun Hill • Camel's Back</span>",
         "image" => "assets/images/uttrakhand/mussoorie.avif",
         "duration" => "3 Days",
         "type" => "Hill Getaway",
         "icon" => "mountain",
-        "link" => "tourPackageDetail.php?tour=delhi-to-mussoorie-weekend-tour-packages",
+        "link" => "weekendtour/specificTourTemplate.php?tour=delhi-to-mussoorie-weekend-tour-3-days",
         "is_featured" => false
     ],
     [
@@ -740,8 +740,7 @@ $toursData = [
         "duration" => "2–8 Days",
         "type" => "Flexible Weekend Escapes",
         "icon" => "car",
-        "link" => "tourPackageDetail.php?tour=weekend-tour",
+        "link" => "weekendtour/index.php",
         "is_featured" => false
     ]
 ];
-?>

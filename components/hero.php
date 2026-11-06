@@ -28,8 +28,8 @@
             <div class="elementor-widget-wrap elementor-element-populated">
                 <div class="elementor-element elementor-element-56787504 elementor-widget elementor-widget-st_banner_form" data-id="56787504" data-element_type="widget" data-e-type="widget" data-settings="{&quot;style&quot;:&quot;style_2&quot;,&quot;type_form&quot;:&quot;single&quot;}" data-widget_type="st_banner_form.default">
                     <div class="elementor-widget-container">
-                        <div class="bg-white rounded-5 shadow-lg p-2 p-lg-3 mx-auto text-start">
-                            <form action="#tours" class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between gap-2 m-0" method="get">
+                        <div id="booking" class="bg-white rounded-5 shadow-lg p-2 p-lg-3 mx-auto text-start">
+                            <form id="home-booking-form" action="#featured-tours" class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between gap-2 m-0" method="get">
                                     
                                 <!-- Location Field -->
                                 <div class="dropdown flex-grow-1 border-end-lg border-bottom-md px-3 py-2">

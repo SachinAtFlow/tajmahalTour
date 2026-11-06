@@ -6,7 +6,7 @@
 ?>
 
 <!-- Tour Package Hero Banner -->
-<section id="tour-package-hero" class="position-relative text-white py-5 overflow-hidden" style="background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.82)), url('assets/images/uttarPradesh/tajmahal.avif') center/cover no-repeat; min-height: 420px;">
+<section id="tour-package-hero" class="position-relative text-white py-5 overflow-hidden" style="background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.82)), url('<?= function_exists('theme_url') ? theme_url('assets/images/uttarPradesh/tajmahal.avif') : 'assets/images/uttarPradesh/tajmahal.avif'; ?>') center/cover no-repeat; min-height: 420px;">
     <div class="container position-relative z-2 py-4 py-lg-5">
         
         <!-- Breadcrumb & Tag -->

@@ -24,7 +24,7 @@ require_once __DIR__ . '/../data/blogData.php';
                 </p>
             </div>
             <div class="flex-shrink-0">
-                <a href="blog.php" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2">
+                <a href="<?= function_exists('theme_url') ? theme_url('blog/index.php') : 'blog/index.php'; ?>" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2">
                     <span>View All Articles</span>
                     <i class="bi bi-arrow-right"></i>
                 </a>
@@ -33,11 +33,16 @@ require_once __DIR__ . '/../data/blogData.php';
 
         <!-- Dynamic Blog Cards Grid (Matching Featured Tour Card UI) -->
         <div class="row g-4">
-            <?php if (!empty($blogPosts)): ?>
-                <?php foreach ($blogPosts as $post): ?>
+            <?php 
+                $homeBlogPosts = !empty($blogPosts) ? array_slice($blogPosts, 0, 4) : [];
+            ?>
+            <?php if (!empty($homeBlogPosts)): ?>
+                <?php foreach ($homeBlogPosts as $post): ?>
                     <?php 
                         $tag = htmlspecialchars($post['tag'] ?? strtoupper($post['category'] ?? 'TRAVEL GUIDE'));
-                        $postLink = htmlspecialchars($post['link'] ?? '#booking');
+                        $rawLink = !empty($post['slug']) ? 'blog/specificBlogTemplate.php?slug=' . urlencode($post['slug']) : ($post['link'] ?? 'blog/index.php');
+                        $postLink = htmlspecialchars(function_exists('theme_url') ? theme_url($rawLink) : $rawLink);
+                        $postImage = htmlspecialchars(function_exists('theme_url') ? theme_url($post['image']) : $post['image']);
                     ?>
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="dark-tour-card">
@@ -54,7 +59,7 @@ require_once __DIR__ . '/../data/blogData.php';
 
                                 <a href="<?= $postLink; ?>" tabindex="-1" aria-hidden="true" class="d-block w-100 h-100">
                                     <img 
-                                        src="<?= htmlspecialchars($post['image']); ?>" 
+                                        src="<?= $postImage; ?>" 
                                         alt="<?= htmlspecialchars($post['title'] ?? ''); ?>" 
                                         loading="lazy"
                                     >

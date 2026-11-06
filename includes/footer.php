@@ -1,3 +1,15 @@
+<?php
+$rootPrefix = !file_exists('assets/css/style.css') ? '../' : '';
+if (!function_exists('theme_url')) {
+    function theme_url($url = '') {
+        global $rootPrefix;
+        if (empty($url) || strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0 || strpos($url, '#') === 0 || strpos($url, 'tel:') === 0 || strpos($url, 'mailto:') === 0 || strpos($url, 'javascript:') === 0) {
+            return $url;
+        }
+        return ($rootPrefix ?? '') . ltrim($url, '/');
+    }
+}
+?>
 <!-- Footer Section -->
 <footer id="site-footer" class="bg-dark text-white-50 pt-5 pb-3 mt-5">
     <div class="container">
@@ -22,12 +34,13 @@
             <div class="col-lg-2 col-md-6">
                 <h6 class="text-white fw-semibold mb-3">Quick Links</h6>
                 <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
-                    <li><a href="index.php" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Home</a></li>
-                    <li><a href="aboutUs.php" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> About Us</a></li>
-                    <li><a href="carRentalLocation.php" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Car Rental</a></li>
-                    <li><a href="tourPackage.php" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Tour Packages</a></li>
-                    <li><a href="#why-us" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Why Choose Us</a></li>
-                    <li><a href="contactUs.php" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Contact Us</a></li>
+                    <li><a href="<?= theme_url('index.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Home</a></li>
+                    <li><a href="<?= theme_url('aboutUs.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> About Us</a></li>
+                    <li><a href="<?= theme_url('carRentalLocation.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Car Rental</a></li>
+                    <li><a href="<?= theme_url('tourPackage.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Tour Packages</a></li>
+                    <li><a href="<?= theme_url('blog/index.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Travel Blog</a></li>
+                    <li><a href="<?= theme_url('index.php#why-us'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Why Choose Us</a></li>
+                    <li><a href="<?= theme_url('contactUs.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Contact Us</a></li>
                 </ul>
             </div>
 
@@ -88,9 +101,13 @@
 <!-- Swiper JS CDN -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+<!-- Global Config & Utils Scripts (per AGENTS.md rule 8) -->
+<script src="<?= $rootPrefix; ?>assets/js/config.js"></script>
+<script src="<?= $rootPrefix; ?>assets/js/utils.js"></script>
+
 <!-- Component Scripts -->
-<script src="assets/js/header.js"></script>
-<script src="assets/js/components/testimonial.js"></script>
+<script src="<?= $rootPrefix; ?>assets/js/header.js"></script>
+<script src="<?= $rootPrefix; ?>assets/js/components/testimonial.js"></script>
 
 <!-- Interactive Scripts for Search Form -->
 <script>
