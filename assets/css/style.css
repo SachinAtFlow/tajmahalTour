@@ -37,7 +37,14 @@
     --nav-drawer-width: 320px;
 }
 
-/* Base Font */
+/* Base Font & Strict Global Scroll Containment */
+html, body {
+    overflow-x: clip !important;
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    position: relative;
+}
+
 * {
     font-family: var(--font-main);
 }
@@ -860,7 +867,9 @@
    ========================================== */
 .tour-categories-showcase {
     position: relative;
-    overflow: hidden;
+    overflow: hidden !important;
+    contain: paint;
+    max-width: 100vw;
     background: radial-gradient(circle at 50% 45%, #1e293b 0%, #0f172a 65%, #090d16 100%);
     padding: 4.5rem 0 3.5rem;
 }
@@ -896,7 +905,7 @@
     padding-top: 1.5rem;
     padding-bottom: 3rem;
     width: 100%;
-    overflow: visible !important;
+    overflow: hidden !important;
     position: relative;
     z-index: 2;
 }
@@ -908,11 +917,26 @@
     overflow: hidden;
     position: relative;
     text-decoration: none;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
-    transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.45s ease, filter 0.45s ease, box-shadow 0.45s ease;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    transition: opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
     display: block;
     background-color: #0f172a;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    clip-path: inset(0 round 32px);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.category-coverflow-swiper a,
+.category-coverflow-swiper a:focus,
+.category-coverflow-swiper a:active,
+.category-coverflow-swiper a:hover {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 .category-coverflow-swiper .swiper-slide:not(.swiper-slide-active) {
@@ -924,8 +948,23 @@
 .category-coverflow-swiper .swiper-slide-active {
     opacity: 1;
     filter: brightness(1);
-    box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.75), 0 0 40px rgba(59, 113, 254, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.75), 0 0 40px rgba(59, 113, 254, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+/* Eliminate Swiper default 3D slide shadow artifacts completely */
+.category-coverflow-swiper [class*="swiper-slide-shadow"],
+.category-coverflow-swiper .swiper-slide-shadow-left,
+.category-coverflow-swiper .swiper-slide-shadow-right,
+.category-coverflow-swiper .swiper-slide-shadow-top,
+.category-coverflow-swiper .swiper-slide-shadow-bottom,
+.category-coverflow-swiper .swiper-slide-shadow-coverflow-left,
+.category-coverflow-swiper .swiper-slide-shadow-coverflow-right {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
 }
 
 .category-coverflow-swiper .swiper-slide img {
@@ -934,6 +973,8 @@
     object-fit: cover;
     display: block;
     transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .category-coverflow-swiper .swiper-slide:hover img {

@@ -74,6 +74,52 @@ $categoryMeta = [
 ];
 ?>
 
+<!-- Zero-artifact Inline Styles for 3D Coverflow -->
+<style>
+/* Prevent horizontal window scrollbar flash during 3D transform */
+html, body {
+    overflow-x: clip !important;
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+}
+
+#navbar-tour-categories {
+    overflow: hidden !important;
+    contain: paint !important;
+    max-width: 100vw !important;
+}
+
+#navbar-tour-categories .category-coverflow-swiper {
+    overflow: hidden !important;
+    contain: paint !important;
+}
+
+/* Eliminate all Swiper coverflow slide shadow elements & borders */
+#navbar-tour-categories [class*="swiper-slide-shadow"],
+#navbar-tour-categories .swiper-slide-shadow-left,
+#navbar-tour-categories .swiper-slide-shadow-right {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
+}
+
+#navbar-tour-categories .swiper-slide a {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+#navbar-tour-categories .swiper-slide img {
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    pointer-events: none !important;
+}
+</style>
+
 <!-- Navbar Level 1 Tour Categories 3D Coverflow Section -->
 <section class="tour-categories-showcase position-relative" id="navbar-tour-categories">
     <div class="container position-relative z-2 mb-2">
@@ -107,7 +153,7 @@ $categoryMeta = [
     </div>
 
     <!-- 3D Coverflow Carousel Container -->
-    <div class="w-100 overflow-hidden position-relative">
+    <div class="w-100 position-relative" style="overflow: hidden !important; contain: paint; max-width: 100vw;">
         <div class="swiper category-coverflow-swiper">
             <div class="swiper-wrapper">
                 <?php if (!empty($tourNavMenu)): ?>
@@ -133,6 +179,7 @@ $categoryMeta = [
                                     src="<?= htmlspecialchars($meta['image']); ?>" 
                                     alt="<?= htmlspecialchars($title); ?>" 
                                     loading="lazy"
+                                    draggable="false"
                                 >
                                 
                                 <!-- Cinematic Dark Overlay -->
@@ -175,6 +222,13 @@ $categoryMeta = [
         // Prevent double initialization
         if (swiperEl.swiper) return;
 
+        // Strip any shadow elements from DOM
+        function removeShadowArtifacts(container) {
+            if (!container) return;
+            const shadows = container.querySelectorAll('[class*="swiper-slide-shadow"]');
+            shadows.forEach(function(el) { el.remove(); });
+        }
+
         const catSwiper = new Swiper(swiperEl, {
             effect: 'coverflow',
             grabCursor: true,
@@ -182,7 +236,7 @@ $categoryMeta = [
             slidesPerView: 'auto',
             initialSlide: 1,
             loop: true,
-            speed: 650,
+            speed: 600,
             slideToClickedSlide: true,
             preventClicks: false,
             autoplay: {
@@ -192,8 +246,8 @@ $categoryMeta = [
             },
             coverflowEffect: {
                 rotate: 0,
-                stretch: 20,
-                depth: 220,
+                stretch: 0,
+                depth: 180,
                 modifier: 1,
                 slideShadows: false,
             },
@@ -208,24 +262,38 @@ $categoryMeta = [
             breakpoints: {
                 320: {
                     coverflowEffect: {
-                        depth: 90,
-                        stretch: 10,
+                        depth: 80,
+                        stretch: 0,
                         modifier: 1,
+                        slideShadows: false,
                     }
                 },
                 768: {
                     coverflowEffect: {
-                        depth: 170,
-                        stretch: 15,
+                        depth: 140,
+                        stretch: 0,
                         modifier: 1,
+                        slideShadows: false,
                     }
                 },
                 1024: {
                     coverflowEffect: {
-                        depth: 220,
-                        stretch: 20,
+                        depth: 180,
+                        stretch: 0,
                         modifier: 1,
+                        slideShadows: false,
                     }
+                }
+            },
+            on: {
+                init: function() {
+                    removeShadowArtifacts(this.el);
+                },
+                slideChangeTransitionStart: function() {
+                    removeShadowArtifacts(this.el);
+                },
+                setTranslate: function() {
+                    removeShadowArtifacts(this.el);
                 }
             }
         });
@@ -233,7 +301,6 @@ $categoryMeta = [
         // Click Handler: Clicking the active center card triggers smooth category filter
         swiperEl.querySelectorAll('.swiper-slide').forEach(slide => {
             slide.addEventListener('click', function(e) {
-                // If it's already the active center slide, jump & filter
                 if (slide.classList.contains('swiper-slide-active')) {
                     const link = slide.querySelector('a');
                     if (!link) return;
