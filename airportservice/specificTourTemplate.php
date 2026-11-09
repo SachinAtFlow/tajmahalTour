@@ -169,87 +169,7 @@ require_once __DIR__ . '/../includes/header.php';
                     </div>
                 </div>
 
-                <!-- Fleet Rates for this Airport -->
-                <div class="card border-0 rounded-4 shadow-sm p-4 mb-4 bg-white">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h3 class="fs-5 fw-bold text-dark mb-0 d-flex align-items-center gap-2">
-                            <i class="bi bi-car-front-fill text-primary"></i> Vehicle Options &amp; Flat Rates
-                        </h3>
-                        <span class="text-secondary small">Toll &amp; Parking Included</span>
-                    </div>
 
-                    <div class="row g-3">
-                        <?php foreach ($currentAirport['fleet_pricing'] as $fleet): ?>
-                            <div class="col-md-6">
-                                <div class="card h-100 border rounded-4 p-3.5 <?= !empty($fleet['popular']) ? 'border-primary shadow-xs' : 'border-light-subtle'; ?> bg-white">
-                                    <?php if (!empty($fleet['popular'])): ?>
-                                        <span class="badge bg-primary text-white position-absolute top-0 end-0 m-3 px-2 py-1 rounded-pill small fw-semibold" style="font-size: 10px;">
-                                            MOST POPULAR
-                                        </span>
-                                    <?php endif; ?>
-                                    
-                                    <h4 class="fs-6 fw-bold text-dark mb-1"><?= htmlspecialchars($fleet['type']); ?></h4>
-                                    <div class="text-primary fw-bold fs-4 mb-2"><?= htmlspecialchars($fleet['fare']); ?></div>
-                                    
-                                    <div class="text-secondary small mb-3">
-                                        <div class="mb-1"><i class="bi bi-people-fill text-primary me-1.5"></i> <?= htmlspecialchars($fleet['capacity']); ?></div>
-                                        <div class="mb-1"><i class="bi bi-briefcase-fill text-primary me-1.5"></i> <?= htmlspecialchars($fleet['luggage']); ?></div>
-                                        <div><i class="bi bi-stars text-warning me-1.5"></i> <?= htmlspecialchars($fleet['features']); ?></div>
-                                    </div>
-
-                                    <div class="mt-auto pt-2 border-top">
-                                        <a href="https://wa.me/918800722606?text=Hi%2C%20I%20want%20to%20book%20<?= urlencode($fleet['type']); ?>%20for%20<?= urlencode($currentAirport['title']); ?>" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill w-100 py-1.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-1.5">
-                                            <span>Reserve <?= htmlspecialchars($fleet['type']); ?></span>
-                                            <i class="bi bi-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-
-                <!-- Popular Transfer Corridors -->
-                <div class="card border-0 rounded-4 shadow-sm p-4 mb-4 bg-white">
-                    <h3 class="fs-5 fw-bold text-dark mb-3 d-flex align-items-center gap-2">
-                        <i class="bi bi-compass-fill text-primary"></i> Popular Highway Transfer Corridors
-                    </h3>
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light small">
-                                <tr>
-                                    <th scope="col" class="py-2.5">Destination Route</th>
-                                    <th scope="col" class="py-2.5">Distance &amp; Time</th>
-                                    <th scope="col" class="py-2.5">Sedan Starting Fare</th>
-                                    <th scope="col" class="py-2.5 text-end">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="small">
-                                <?php foreach ($currentAirport['popular_transfers'] as $transfer): ?>
-                                    <tr>
-                                        <td class="py-3">
-                                            <div class="fw-bold text-dark"><?= htmlspecialchars($transfer['route']); ?></div>
-                                            <div class="text-secondary small" style="font-size: 11.5px;"><?= htmlspecialchars($transfer['desc']); ?></div>
-                                        </td>
-                                        <td class="py-3 text-secondary">
-                                            <div><i class="bi bi-speedometer2 text-primary me-1"></i> <?= htmlspecialchars($transfer['distance']); ?></div>
-                                            <div><i class="bi bi-hourglass-split text-primary me-1"></i> <?= htmlspecialchars($transfer['duration']); ?></div>
-                                        </td>
-                                        <td class="py-3">
-                                            <span class="text-primary fw-bold fs-6"><?= htmlspecialchars($transfer['fare']); ?></span>
-                                            <span class="text-secondary d-block" style="font-size: 10px;">all-inclusive</span>
-                                        </td>
-                                        <td class="py-3 text-end">
-                                            <a href="https://wa.me/918800722606?text=Hi%2C%20I%20want%20to%20book%20<?= urlencode($transfer['route']); ?>" target="_blank" class="btn btn-sm btn-primary rounded-pill px-3 py-1 fw-semibold">
-                                                Book
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
 
                 <!-- Cross-Link to Other Airport -->
                 <?php if ($otherAirport): ?>
@@ -263,7 +183,7 @@ require_once __DIR__ . '/../includes/header.php';
                                 <p class="text-secondary small mb-0"><?= htmlspecialchars($otherAirport['subtitle']); ?></p>
                             </div>
                             <a href="specificTourTemplate.php?airport=<?= urlencode($otherAirport['slug']); ?>" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold flex-shrink-0">
-                                Switch to <?= htmlspecialchars($otherAirport['code']); ?> &rarr;
+                                Switch  &rarr;
                             </a>
                         </div>
                     </div>
@@ -271,65 +191,60 @@ require_once __DIR__ . '/../includes/header.php';
 
             </div>
 
-            <!-- Right Sidebar: Sticky Reservation Form (4 Cols) -->
+            <!-- Right Sidebar: Compact Sticky Reservation Form (4 Cols) -->
             <div class="col-lg-4">
                 <div class="sticky-top" style="top: 90px; z-index: 10;">
                     
-                    <div class="card border-0 rounded-4 shadow-sm p-4 bg-white mb-4">
-                        <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom">
+                    <div class="card border-0 rounded-4 shadow-sm p-3 p-md-3.5 bg-white">
+                        <!-- Compact Header with Starting Fare & Badge -->
+                        <div class="d-flex align-items-center justify-content-between pb-2 mb-2.5 border-bottom">
                             <div>
-                                <span class="text-secondary small d-block">Instant Quote</span>
-                                <span class="fs-3 fw-bold text-primary"><?= htmlspecialchars($currentAirport['price_start']); ?></span>
-                                <span class="text-secondary small">/ starting</span>
+                                <span class="text-secondary small d-block" style="font-size: 11px;">Starting From</span>
+                                <span class="fs-4 fw-bold text-primary lh-1"><?= htmlspecialchars($currentAirport['price_start']); ?></span>
                             </div>
-                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2.5 py-1.5 rounded-pill small">
-                                <i class="bi bi-lightning-charge-fill me-1"></i> Instant Confirmation
+                            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2.5 py-1 rounded-pill small">
+                                <i class="bi bi-lightning-charge-fill me-1"></i> Instant Quote
                             </span>
                         </div>
 
-                        <h4 class="fs-6 fw-bold text-dark mb-3">Book Your <?= htmlspecialchars($currentAirport['code']); ?> Airport Cab</h4>
+                        <h4 class="fs-6 fw-bold text-dark mb-2.5">Book <?= htmlspecialchars($currentAirport['code']); ?> Airport Cab</h4>
 
-                        <form action="<?= theme_url('contact.php'); ?>" method="GET" class="d-flex flex-column gap-3">
+                        <!-- 2-Column Compact Form Grid -->
+                        <form action="<?= theme_url('contact.php'); ?>" method="GET" class="row g-2">
                             <input type="hidden" name="airport_slug" value="<?= htmlspecialchars($currentAirport['slug']); ?>">
                             
-                            <div>
-                                <label class="form-label small fw-semibold text-secondary mb-1">Service Type</label>
-                                <select name="service_direction" class="form-select rounded-3 py-2 small text-dark">
-                                    <option value="pickup" selected>Terminal Pickup (Flight Arrival)</option>
-                                    <option value="drop">Airport Drop (Flight Departure)</option>
-                                    <option value="roundtrip">Airport Roundtrip Transfer</option>
+                            <!-- Trip Type & Terminal -->
+                            <div class="col-6">
+                                <label class="form-label text-secondary mb-1" style="font-size: 11px;">Trip Type</label>
+                                <select name="service_direction" class="form-select rounded-3 py-1.5 small text-dark">
+                                    <option value="pickup" selected>Pickup</option>
+                                    <option value="drop">Drop</option>
+                                    <option value="roundtrip">Roundtrip</option>
                                 </select>
                             </div>
-
-                            <div>
-                                <label class="form-label small fw-semibold text-secondary mb-1">Select Terminal</label>
-                                <select name="terminal" class="form-select rounded-3 py-2 small text-dark">
+                            <div class="col-6">
+                                <label class="form-label text-secondary mb-1" style="font-size: 11px;">Terminal</label>
+                                <select name="terminal" class="form-select rounded-3 py-1.5 small text-dark">
                                     <?php foreach ($currentAirport['terminals'] as $term): ?>
                                         <option value="<?= htmlspecialchars($term['name']); ?>"><?= htmlspecialchars($term['name']); ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
 
-                            <div>
-                                <label class="form-label small fw-semibold text-secondary mb-1">Travel Date &amp; Time</label>
-                                <div class="row g-2">
-                                    <div class="col-7">
-                                        <input type="date" name="travel_date" class="form-control rounded-3 py-2 small" value="<?= date('Y-m-d'); ?>">
-                                    </div>
-                                    <div class="col-5">
-                                        <input type="time" name="travel_time" class="form-control rounded-3 py-2 small" value="12:00">
-                                    </div>
-                                </div>
+                            <!-- Date & Time -->
+                            <div class="col-6">
+                                <label class="form-label text-secondary mb-1" style="font-size: 11px;">Travel Date</label>
+                                <input type="date" name="travel_date" class="form-control rounded-3 py-1.5 small" value="<?= date('Y-m-d'); ?>">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label text-secondary mb-1" style="font-size: 11px;">Time</label>
+                                <input type="time" name="travel_time" class="form-control rounded-3 py-1.5 small" value="12:00">
                             </div>
 
-                            <div>
-                                <label class="form-label small fw-semibold text-secondary mb-1">Flight Number (For Live Tracking)</label>
-                                <input type="text" name="flight_no" class="form-control rounded-3 py-2 small" placeholder="e.g. AI-102, 6E-204">
-                            </div>
-
-                            <div>
-                                <label class="form-label small fw-semibold text-secondary mb-1">Preferred Vehicle</label>
-                                <select name="vehicle_type" class="form-select rounded-3 py-2 small text-dark">
+                            <!-- Vehicle & Flight No -->
+                            <div class="col-6">
+                                <label class="form-label text-secondary mb-1" style="font-size: 11px;">Vehicle Type</label>
+                                <select name="vehicle_type" class="form-select rounded-3 py-1.5 small text-dark">
                                     <?php foreach ($currentAirport['fleet_pricing'] as $fl): ?>
                                         <option value="<?= htmlspecialchars($fl['type']); ?>">
                                             <?= htmlspecialchars($fl['type']); ?> (<?= htmlspecialchars($fl['fare']); ?>)
@@ -337,35 +252,32 @@ require_once __DIR__ . '/../includes/header.php';
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-
-                            <div>
-                                <label class="form-label small fw-semibold text-secondary mb-1">Drop / Pickup Hotel or City</label>
-                                <input type="text" name="hotel_destination" class="form-control rounded-3 py-2 small" placeholder="e.g. Taj Mahal Hotel Agra, Noida Sec 18">
+                            <div class="col-6">
+                                <label class="form-label text-secondary mb-1" style="font-size: 11px;">Flight No.</label>
+                                <input type="text" name="flight_no" class="form-control rounded-3 py-1.5 small" placeholder="e.g. 6E-204">
                             </div>
 
-                            <button type="submit" class="btn btn-primary rounded-pill w-100 py-2.5 fw-semibold shadow-sm mt-1">
-                                Confirm Airport Cab <i class="bi bi-arrow-right ms-1"></i>
-                            </button>
+                            <!-- Destination -->
+                            <div class="col-12">
+                                <label class="form-label text-secondary mb-1" style="font-size: 11px;">Drop / Pickup City or Hotel</label>
+                                <input type="text" name="hotel_destination" class="form-control rounded-3 py-1.5 small" placeholder="e.g. Connaught Place, Agra, Noida">
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="col-12 mt-2">
+                                <button type="submit" class="btn btn-primary rounded-pill w-100 py-2 fw-semibold shadow-sm">
+                                    Confirm Airport Cab <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
                         </form>
 
-                        <div class="mt-3 pt-3 border-top text-center text-secondary small" style="font-size: 11.5px;">
-                            <i class="bi bi-shield-check text-success me-1"></i> Verified Drivers &bull; Free Waiting Time &bull; No Hidden Tolls
+                        <!-- Compact Support & Guarantees Footer -->
+                        <div class="mt-2.5 pt-2.5 border-top d-flex align-items-center justify-content-between text-secondary" style="font-size: 11px;">
+                            <span><i class="bi bi-shield-check text-success me-1"></i> Tolls Included</span>
+                            <a href="https://wa.me/918800722606?text=Hi%2C%20I%20need%20urgent%20airport%20taxi" target="_blank" class="text-success fw-bold text-decoration-none d-inline-flex align-items-center gap-1">
+                                <i class="bi bi-whatsapp"></i> Quick WhatsApp
+                            </a>
                         </div>
-                    </div>
-
-                    <!-- Direct Helpline Card -->
-                    <div class="card border-0 rounded-4 shadow-sm p-3.5 bg-dark text-white text-center">
-                        <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
-                            <i class="bi bi-headset fs-4 text-warning"></i>
-                            <span class="fw-bold">Airport Chauffeur Dispatch</span>
-                        </div>
-                        <p class="text-white-50 small mb-2">Need a last-minute flight pickup in the next 60 minutes?</p>
-                        <a href="tel:000999656888" class="text-warning fw-bold text-decoration-none fs-5 d-block mb-2">
-                            (000) 999 -656 -888
-                        </a>
-                        <a href="https://wa.me/918800722606?text=Hi%2C%20I%20need%20urgent%20airport%20taxi" target="_blank" class="btn btn-outline-light btn-sm rounded-pill py-1.5 px-3 small">
-                            <i class="bi bi-whatsapp text-success me-1"></i> Urgent WhatsApp Dispatch
-                        </a>
                     </div>
 
                 </div>
@@ -374,6 +286,16 @@ require_once __DIR__ . '/../includes/header.php';
         </div>
     </div>
 </section>
+
+<!-- Local Sightseeing Car Rental Fleet -->
+<?php require_once __DIR__ . '/../components/localCarType.php'; ?>
+
+<!-- Outstation Car Rental Fleet -->
+<?php require_once __DIR__ . '/../components/outstationCarType.php'; ?>
+
+<!-- How it works section -->
+<?php require_once __DIR__ . '/../components/howItWorks.php'; ?>
+
 
 <!-- Reusable Section 1: Modern Airport Taxi Showcase (From Image Design) -->
 <?php require_once __DIR__ . '/../components/airportTaxi.php'; ?>

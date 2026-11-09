@@ -41,13 +41,15 @@ require_once 'includes/header.php';
     <?php require_once 'components/testimonials.php'; ?>
 
     <!-- 9. Quick Booking & Cab Inquiry Form -->
-    <?php require_once 'components/booking.php'; ?>
+    <?php //require_once 'components/booking.php'; ?>
+
+    
+    <!-- 11. Tour Memories Marquee Strip -->
+    <?php require_once 'components/gallerySection.php'; ?>
 
     <!-- 10. Frequently Asked Questions (FAQ) -->
     <?php require_once 'components/faq.php'; ?>
 
-    <!-- 11. Tour Memories Marquee Strip -->
-    <?php require_once 'components/gallerySection.php'; ?>
 
     <!-- 12. Final Call To Action Banner -->
     <?php require_once 'components/cta.php'; ?>

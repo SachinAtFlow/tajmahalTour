@@ -33,6 +33,158 @@ if (!empty($tours) && is_array($tours)) {
         }
     }
 }
+
+/**
+ * Intelligent Itinerary Step Parser & Formatter Helper
+ * Transforms dense paragraph text into structured, highly readable day cards
+ * with bolded monuments/cities, distance pills, and night-stay badges.
+ */
+if (!function_exists('parseTourItineraryStep')) {
+    function parseTourItineraryStep($step, $sIdx) {
+        $timeBadge = !empty($step['time']) ? $step['time'] : (!empty($step['day']) ? $step['day'] : ('Day ' . sprintf('%02d', $sIdx + 1)));
+        $rawTitle = $step['title'] ?? '';
+        $rawDesc = $step['desc'] ?? '';
+        $detectedStay = $step['stay'] ?? '';
+
+        // 1. Extract Route Distance & Drive Time from Title
+        $distance = '';
+        $cleanTitle = $rawTitle;
+
+        if (preg_match('/\(([^)]*(?:km|kms|hr|hrs|hours|drive|trek)[^)]*)\)/i', $rawTitle, $m)) {
+            $distance = trim($m[1]);
+            $cleanTitle = trim(str_replace($m[0], '', $rawTitle));
+        } else if (preg_match('/(\d+\s*[\/\-]?\s*(?:kms?|km)\s*[,;\/]?\s*\d*\s*[\/\-]?\s*(?:hrs?|hours)?)/i', $rawTitle, $m)) {
+            $distance = trim($m[1]);
+            $cleanTitle = trim(str_replace($m[0], '', $rawTitle));
+        }
+        
+        // Normalize distance formatting
+        if (!empty($distance)) {
+            $distance = preg_replace('/(\d+)\s*[\/\-]\s*Kms?\s*[,;\/]\s*(\d+)\s*[\/\-]\s*Hrs?/i', '$1 Kms • $2 Hrs', $distance);
+            $distance = preg_replace('/\s*[\/\,]\s*/', ' • ', $distance);
+            $distance = preg_replace('/(\d+)\s*(kms?)/i', '$1 Kms', $distance);
+            $distance = preg_replace('/(\d+)\s*(hrs?|hours?)/i', '$1 Hrs', $distance);
+            $distance = trim($distance, " •-–:\t");
+        }
+        $cleanTitle = trim($cleanTitle, " -–:\t");
+
+        // 2. Extract Stay and Break text into lines
+        $rawLines = preg_split('/\r\n|\r|\n/', trim($rawDesc));
+        $lines = [];
+
+        foreach ($rawLines as $l) {
+            $trim = trim($l);
+            if (empty($trim)) continue;
+
+            // Check if line indicates overnight stay
+            if (empty($detectedStay)) {
+                if (preg_match('/^(?:Evening:\s*)?Overnight(?:\'s)?\s+stay(?:\s+at\s+hotel)?\s+(?:in|at)\s+([A-Za-z\s\/\,\-]+)\.?$/i', $trim, $sm)
+                    || preg_match('/^(?:Night\s+stay(?:\s+in|\s+at)\s+([A-Za-z\s\/\,\-]+)\.?)$/i', $trim, $sm)) {
+                    $detectedStay = trim($sm[1], " .\t\n\r\0\x0B");
+                    continue;
+                }
+            }
+            $lines[] = $trim;
+        }
+
+        // If single long block, break into sentences
+        if (count($lines) === 1 && strlen($lines[0]) > 140) {
+            $sentenceList = preg_split('/(?<=[.!?])\s+(?=[A-Z0-9])/', $lines[0]);
+            $grouped = [];
+            $temp = '';
+            foreach ($sentenceList as $s) {
+                $s = trim($s);
+                if (empty($s)) continue;
+
+                // Check if sentence indicates stay
+                if (empty($detectedStay)) {
+                    if (preg_match('/Overnight(?:\'s)?\s+stay(?:\s+at\s+hotel)?\s+(?:in|at)\s+([A-Za-z\s\/\,\-]+)\.?/i', $s, $sm)) {
+                        $detectedStay = trim($sm[1], " .\t\n\r\0\x0B");
+                        $s = trim(preg_replace('/Overnight(?:\'s)?\s+stay(?:\s+at\s+hotel)?\s+(?:in|at)\s+([A-Za-z\s\/\,\-]+)\.?/i', '', $s));
+                    }
+                }
+
+                if (empty($s)) continue;
+
+                if (empty($temp)) {
+                    $temp = $s;
+                } else if (strlen($temp) + strlen($s) < 160) {
+                    $temp .= ' ' . $s;
+                } else {
+                    $grouped[] = $temp;
+                    $temp = $s;
+                }
+            }
+            if (!empty($temp)) {
+                $grouped[] = $temp;
+            }
+            $lines = count($grouped) > 1 ? $grouped : $lines;
+        }
+
+        // 3. Highlight Important Locations & Terms
+        $keywords = [
+            // Monuments & Heritage
+            'Taj Mahal', 'Agra Fort', 'Baby Taj', 'Itmad-ud-Daulah', 'Fatehpur Sikri', 'Buland Darwaza',
+            'Amber Fort', 'Amer Fort', 'City Palace', 'Hawa Mahal', 'Jantar Mantar', 'Jal Mahal', 'Nahargarh Fort', 'Jaigarh Fort', 'Albert Hall Museum', 'Albert Hall',
+            'Red Fort', 'Jama Masjid', 'Raj Ghat', 'Qutub Minar', 'Humayun\'s Tomb', 'Humayun Tomb', 'India Gate', 'Rashtrapati Bhavan', 'Parliament House', 'Lotus Temple', 'Akshardham Temple', 'Swaminarayan Akshardham',
+            'Mehrangarh Fort', 'Jaswant Thada', 'Umaid Bhawan Palace', 'Sonar Fort', 'Jaisalmer Fort', 'Patwon Ki Haveli', 'Gadisar Lake', 'Sam Sand Dunes', 'Junagarh Fort', 'Lalgarh Palace',
+            'Lake Pichola', 'Saheliyon Ki Bari', 'Jagdish Temple', 'Chittorgarh Fort', 'Kumbhalgarh Fort', 'Ranakpur Jain Temple', 'Ranakpur Temples', 'Dilwara Temples',
+            'Gwalior Fort', 'Khajuraho Temples', 'Western Group of Temples', 'Orchha Fort', 'Jehangir Mahal', 'Bara Imambara', 'Chhota Imambara', 'Rumi Darwaza',
+            // Spiritual & Sacred Sites
+            'Golden Temple', 'Harmandir Sahib', 'Akal Takht', 'Jallianwala Bagh', 'Wagah Border', 'Partition Museum', 'Gobindgarh Fort', 'Anandpur Sahib', 'Virasat-e-Khalsa',
+            'Har Ki Pauri', 'Mansa Devi Temple', 'Mansa Devi', 'Chandi Devi Temple', 'Chandi Devi', 'Parmarth Niketan', 'Triveni Ghat', 'Ram Jhula', 'Lakshman Jhula', 'Beatles Ashram', 'Neelkanth Mahadev',
+            'Yamunotri Temple', 'Yamunotri', 'Gangotri Temple', 'Gangotri', 'Kedarnath Temple', 'Kedarnath', 'Badrinath Temple', 'Badrinath', 'Char Dham', 'Janki Chatti', 'Gaurikund',
+            'Kashi Vishwanath Temple', 'Kashi Vishwanath Corridor', 'Kashi Vishwanath', 'Dashashwamedh Ghat', 'Manikarnika Ghat', 'Sarnath', 'Dhamek Stupa', 'Assi Ghat',
+            'Shri Ram Janmabhoomi Mandir', 'Ram Janmabhoomi', 'Ram Mandir', 'Hanuman Garhi', 'Kanak Bhawan', 'Saryu River', 'Ram Ki Paidi',
+            'Shri Krishna Janmabhoomi', 'Banke Bihari Temple', 'Banke Bihari', 'Prem Mandir', 'Dwarkadhish Temple', 'ISKCON Temple', 'Nidhivan', 'Gomti Ghat',
+            'Bet Dwarka', 'Nageshwar Jyotirlinga', 'Somnath Temple', 'Bhalka Tirth', 'Triveni Sangam',
+            'Pashupatinath Temple', 'Boudhanath Stupa', 'Swayambhunath Stupa', 'Swayambhunath', 'Bhaktapur Durbar Square', 'Patan Durbar Square', 'Kathmandu Durbar Square',
+            // Hill Stations & Nature
+            'Kufri', 'Mall Road', 'Ridge Maidan', 'Christ Church', 'Jakhu Temple', 'Solang Valley', 'Rohtang Pass', 'Hadimba Devi Temple', 'Vashisht Bath', 'McLeodganj', 'Khajjiar',
+            'Naini Lake', 'Naina Devi Temple', 'Bhimtal', 'Kempty Falls', 'Gun Hill', 'Lal Tibba', 'Camel\'s Back Road',
+            'Phewa Lake', 'Sarangkot', 'Davis Falls', 'Machhapuchhre', 'Annapurna',
+            // Wildlife Parks
+            'Ranthambhore National Park', 'Ranthambore National Park', 'Ranthambore', 'Jim Corbett National Park', 'Corbett National Park', 'Corbett', 'Keoladeo Ghana Bird Sanctuary', 'Bharatpur Bird Sanctuary', 'Bharatpur', 'Sariska Tiger Reserve', 'Sariska', 'Gir National Park', 'Sasan Gir', 'Devalia Safari Park',
+            // Cities & Destinations
+            'Delhi NCR', 'New Delhi', 'Old Delhi', 'Delhi', 'Agra', 'Jaipur', 'Amritsar', 'Haridwar', 'Rishikesh', 'Mussoorie', 'Dehradun', 'Nainital', 'Almora', 'Ranikhet', 'Kausani',
+            'Shimla', 'Manali', 'Kullu', 'Dharamshala', 'Dalhousie', 'Chandigarh',
+            'Udaipur', 'Jodhpur', 'Jaisalmer', 'Bikaner', 'Pushkar', 'Ajmer', 'Mandawa', 'Shekhawati', 'Mount Abu', 'Bundi', 'Kota',
+            'Varanasi', 'Ayodhya', 'Prayagraj', 'Lucknow', 'Mathura', 'Vrindavan', 'Khajuraho', 'Orchha',
+            'Ahmedabad', 'Rajkot', 'Bhuj', 'Dhordo', 'Great Rann of Kutch', 'Statue of Unity', 'Kevadia',
+            'Kathmandu', 'Pokhara', 'Chitwan',
+            // Activities & Experiences
+            'Ganga Aarti', 'Saryu Aarti', 'Maha Aarti', 'Jungle Safari', 'Jeep Safari', 'Tiger Safari', 'Camel Safari', 'Sunrise', 'Sunset', 'Boat Ride', 'Ropeway',
+            'Guru Ka Langar', 'Palki Sahib', 'Yamuna Expressway', 'Private AC Cab', 'Chauffeur'
+        ];
+
+        usort($keywords, function($a, $b) {
+            return strlen($b) - strlen($a);
+        });
+
+        $pattern = '/\b(' . implode('|', array_map('preg_quote', $keywords)) . ')\b/i';
+
+        $cleanPoints = [];
+        foreach ($lines as $line) {
+            $cleanLine = preg_replace('/^[•\-\*#\d\.\)]+\s*/', '', $line);
+            if (empty($cleanLine)) continue;
+
+            $highlighted = preg_replace_callback($pattern, function($match) {
+                return '<strong class="text-dark fw-bold">' . $match[0] . '</strong>';
+            }, htmlspecialchars($cleanLine, ENT_QUOTES, 'UTF-8'));
+
+            $highlighted = str_replace(['&lt;strong class=&quot;text-dark fw-bold&quot;&gt;', '&lt;/strong&gt;'], ['<strong class="text-dark fw-bold">', '</strong>'], $highlighted);
+            $cleanPoints[] = $highlighted;
+        }
+
+        return [
+            'timeBadge' => $timeBadge,
+            'title' => $cleanTitle,
+            'distance' => $distance,
+            'points' => $cleanPoints,
+            'stay' => $detectedStay
+        ];
+    }
+}
 ?>
 
 <!-- Breadcrumb Header -->
@@ -157,52 +309,80 @@ if (!empty($tours) && is_array($tours)) {
                 </div>
 
                 <!-- Detailed Itinerary Timeline -->
-                <div class="card border-0 rounded-4 shadow-sm p-4 mb-4 bg-white" id="detailed-tour-itinerary">
-                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3 pb-2 border-bottom">
+                <div class="card border-0 rounded-4 shadow-sm p-4 p-md-4 mb-4 bg-white" id="detailed-tour-itinerary">
+                    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-4 pb-3 border-bottom">
                         <div>
-                            <h3 class="fs-5 fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                            <div class="d-flex align-items-center gap-2 mb-3">
+                                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-1 small fw-semibold">
+                                    <i class="bi bi-map-fill me-1"></i> DAY-BY-DAY ROUTE & SIGHTSEEING
+                                </span>
+                            </div>
+                            <h3 class="fs-5 fw-bold text-dark mb-1 d-flex align-items-center gap-2">
                                 <i class="bi bi-calendar3 text-primary"></i> Detailed Tour Itinerary
                             </h3>
-                            <p class="text-secondary small mb-0 mt-1">Day-wise travel schedule with private AC vehicle, verified chauffeur & flexible stops.</p>
+                            <p class="text-secondary small mb-0">Thoughtfully crafted day-wise schedule with private AC vehicle, verified chauffeur & flexible stops.</p>
                         </div>
                         <?php if (!empty($currentTour['itinerary'])): ?>
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-1.5 fw-semibold small">
-                                <i class="bi bi-clock-history me-1"></i> <?= count($currentTour['itinerary']); ?> Planned Schedule Steps
+                            <span class="badge bg-primary text-white border-0 rounded-pill px-3.5 py-2 fw-semibold small shadow-xs flex-shrink-0 align-self-start align-self-md-center">
+                                <i class="bi bi-clock-history me-1"></i> <?= count($currentTour['itinerary']); ?> Planned Days Schedule
                             </span>
                         <?php endif; ?>
                     </div>
 
                     <?php if (!empty($currentTour['itinerary'])): ?>
-                        <div class="position-relative ps-3 ps-md-4 border-start border-2 border-primary border-opacity-25 ms-2 pt-2">
-                            <?php foreach ($currentTour['itinerary'] as $sIdx => $step): ?>
+                        <div class="itinerary-timeline-container">
+                            <?php foreach ($currentTour['itinerary'] as $sIdx => $rawStep): ?>
                                 <?php 
-                                    $timeBadge = !empty($step['time']) ? $step['time'] : (!empty($step['day']) ? $step['day'] : ('Day ' . sprintf('%02d', $sIdx + 1)));
-                                    $title = $step['title'] ?? '';
-                                    $desc = $step['desc'] ?? '';
-                                    $stay = $step['stay'] ?? '';
+                                    $step = parseTourItineraryStep($rawStep, $sIdx);
                                 ?>
-                                <div class="position-relative mb-4 pb-2 itinerary-day-node">
-                                    <!-- Timeline Node Circle -->
-                                    <div class="position-absolute rounded-circle bg-primary" style="width: 14px; height: 14px; left: -24px; top: 6px; box-shadow: 0 0 0 4px rgba(59, 113, 254, 0.2);"></div>
-                                    
-                                    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                                        <span class="badge bg-primary text-white rounded-pill px-2.5 py-1 small fw-semibold shadow-xs">
-                                            <?= htmlspecialchars($timeBadge); ?>
-                                        </span>
-                                        <h4 class="fs-6 fw-bold text-dark mb-0"><?= htmlspecialchars($title); ?></h4>
-                                    </div>
+                                <div class="itinerary-day-wrapper">
+                                    <!-- Timeline Node Marker -->
+                                    <div class="itinerary-timeline-marker"></div>
 
-                                    <div class="text-secondary small mb-2 lh-base itinerary-desc">
-                                        <?= nl2br(htmlspecialchars($desc)); ?>
-                                    </div>
-
-                                    <?php if (!empty($stay)): ?>
-                                        <div class="mt-2">
-                                            <span class="badge bg-light text-dark border px-2.5 py-1 small">
-                                                <i class="bi bi-moon-stars-fill text-warning me-1"></i> <strong>Night Stay:</strong> <?= htmlspecialchars($stay); ?>
-                                            </span>
+                                    <!-- Day Content Card Box -->
+                                    <div class="itinerary-day-box">
+                                        <!-- Header: Day Badge, Title & Distance -->
+                                        <div class="itinerary-day-header d-flex flex-wrap align-items-center justify-content-between gap-2.5">
+                                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                                <span class="itinerary-day-badge">
+                                                    <i class="bi bi-calendar-check-fill me-2"></i> <?= htmlspecialchars($step['timeBadge']); ?>
+                                                </span>
+                                                <h4 class="itinerary-day-title"><?= htmlspecialchars($step['title']); ?></h4>
+                                            </div>
+                                            <?php if (!empty($step['distance'])): ?>
+                                                <span class="itinerary-dist-badge">
+                                                    <i class="bi bi-speedometer2 text-primary"></i> <?= htmlspecialchars($step['distance']); ?>
+                                                </span>
+                                            <?php endif; ?>
                                         </div>
-                                    <?php endif; ?>
+
+                                        <!-- Day Points / Activities -->
+                                        <ul class="itinerary-points-list">
+                                            <?php foreach ($step['points'] as $pt): ?>
+                                                <li class="itinerary-point-item">
+                                                    <span class="itinerary-point-bullet">
+                                                        <i class="bi bi-geo-alt-fill"></i>
+                                                    </span>
+                                                    <div class="itinerary-point-text">
+                                                        <?= $pt; ?>
+                                                    </div>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+
+                                        <!-- Night Stay / Overnight Indicator -->
+                                        <?php if (!empty($step['stay'])): ?>
+                                            <div class="itinerary-day-footer d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                <span class="itinerary-night-stay">
+                                                    <i class="bi bi-moon-stars-fill text-warning"></i>
+                                                    <span><strong>Night Stay:</strong> <?= htmlspecialchars($step['stay']); ?></span>
+                                                </span>
+                                                <span class="text-muted small d-inline-flex align-items-center gap-2">
+                                                    <i class="bi bi-shield-check text-success"></i> Handpicked Verified Hotel Stay
+                                                </span>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -251,8 +431,8 @@ if (!empty($tours) && is_array($tours)) {
             </div>
 
             <!-- Right Column: Sticky Booking & Inquiry Form (4 Cols) -->
-            <div class="col-lg-4">
-                <div class="sticky-top" style="top: 85px; z-index: 10;">
+            <div class="col-lg-4 position-relative">
+                <div class="tour-sticky-sidebar sticky-top" style="top: 90px; z-index: 100;">
                     
                     <div class="card border-0 rounded-4 shadow-sm bg-white overflow-hidden p-4 mb-4" id="tour-inquiry-card">
                         
@@ -338,7 +518,24 @@ if (!empty($tours) && is_array($tours)) {
 </section>
 
 <!-- Related Tour Packages: 4-Column Responsive Grid Showcase -->
-<?php require_once __DIR__ . '/relatedTours.php'; ?>
+<?php //require_once __DIR__ . '/relatedTours.php'; ?>
+
+<!-- Car Type Section -->
+<?php require_once __DIR__ . '/localCarType.php'; ?>
+<?php require_once __DIR__ . '/outstationCarType.php'; ?>
+<?php require_once __DIR__ . '/testimonials.php'; ?>
+
+
+
+<?php require_once __DIR__ . '/howItWorks.php'; ?>
+<?php require_once __DIR__ . '/whyUs.php'; ?>
+<?php require_once __DIR__ . '/about.php'; ?>
+
+
+
+
+
+
 
 <!-- Reusable Sections: Driver Safety & Fleet Standards -->
 <?php require_once __DIR__ . '/safetyVarified.php'; ?>
@@ -346,12 +543,17 @@ if (!empty($tours) && is_array($tours)) {
 <!-- Reusable Sections: Customer Testimonials -->
 <?php //require_once __DIR__ . '/testimonials.php'; ?>
 
-<!-- Reusable Sections: Gallery Section -->
+<!-- Top Places,gallery Section -->
+<?php require_once __DIR__ . '/top-places.php'; ?>
 <?php require_once __DIR__ . '/gallerySection.php'; ?>
 
 
 <!-- Reusable Sections: FAQ Section -->
 <?php require_once __DIR__ . '/faq.php'; ?>
+
+
+<!-- Reusable Sections: Blog -->
+<?php require_once __DIR__ . '/blog.php'; ?>
 
 <!-- Reusable Sections: Call to Action Banner -->
 <?php require_once __DIR__ . '/cta.php'; ?>

@@ -88,7 +88,7 @@ require_once __DIR__ . '/../includes/header.php';
                             <label class="form-label small fw-semibold text-secondary mb-1">Select Airport</label>
                             <select name="airport_select" class="form-select rounded-3 py-2 text-dark fw-medium">
                                 <option value="igi-delhi-airport" selected>Indira Gandhi International Airport (DEL) - T1, T2, T3</option>
-                                <option value="noida-jewar-airport">Noida International Airport (DXN) - Jewar</option>
+                                <option value="noida-jewar-airport">Noida International Airport - Jewar</option>
                             </select>
                         </div>
 
@@ -220,11 +220,14 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
 </section>
 
+<!-- Local Sightseeing Car Rental Fleet -->
+<?php require_once __DIR__ . '/../components/localCarType.php'; ?>
+
+<!-- Outstation Car Rental Fleet -->
+<?php require_once __DIR__ . '/../components/outstationCarType.php'; ?>
+
 <!-- Reusable Section 1: Modern Airport Taxi Showcase (From Image Design) -->
 <?php require_once __DIR__ . '/../components/airportTaxi.php'; ?>
-
-<!-- Reusable Section 2: Outstation Fleet & Rates -->
-<?php require_once __DIR__ . '/../components/outstationCarType.php'; ?>
 
 <!-- Reusable Section 3: Driver Safety & Fleet Standards -->
 <?php require_once __DIR__ . '/../components/safetyVarified.php'; ?>

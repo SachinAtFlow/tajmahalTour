@@ -38,7 +38,7 @@ $whyUsFeatures = [
                 <i class="bi bi-patch-check-fill me-1"></i> WE ARE BEST
             </span>
             <h2 class="display-6 fw-bold text-dark mb-2">
-                Why Choose India Tour Hire
+                Why Choose Taj Mahal Taxi Service
             </h2>
             <p class="text-secondary mx-auto mb-0" style="max-width: 620px;">
                 Dedicated to providing exceptional value, total peace of mind, and flexible booking solutions for your travel adventures.

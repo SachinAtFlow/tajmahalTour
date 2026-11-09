@@ -1,53 +1,75 @@
-<!-- Why Choose Us Section -->
-<section class="py-5 bg-light" id="why-us">
+<?php
+/**
+ * Why Choose Us Component
+ * Converted to pure Bootstrap 5 with clean modern structure matching project theme.
+ */
+
+$whyUsFeatures = [
+    [
+        'icon' => 'bi-wallet2',
+        'title' => 'Flexible Payment',
+        'desc' => 'Dedicated to offering exceptional value for your travel with convenient multi-tier payment choices.'
+    ],
+    [
+        'icon' => 'bi-arrow-repeat',
+        'title' => 'No Change Fees',
+        'desc' => 'Your journey with us is about relaxation and discovery — reschedule your dates without hidden change penalties.'
+    ],
+    [
+        'icon' => 'bi-piggy-bank',
+        'title' => 'Flex Deposit',
+        'desc' => 'Lock in your dream destination with a minimal advance deposit and pay the balance comfortably upon arrival.'
+    ],
+    [
+        'icon' => 'bi-shield-check',
+        'title' => 'Pay Securely',
+        'desc' => 'Book with complete peace of mind through certified 256-bit SSL encrypted payment gateways and card security.'
+    ]
+];
+?>
+
+<!-- Why Choose Us Section (Clean & Modern Bootstrap 5 Structure) -->
+<section class="py-5 bg-white position-relative" id="why-choose-us">
     <div class="container py-4">
+        
+        <!-- Section Header -->
         <div class="text-center mb-5">
-            <span class="text-primary text-uppercase fw-bold small">Why Tour With Us</span>
-            <h2 class="fw-bold mt-1">Unmatched Experience in Agra</h2>
-            <div class="bg-warning mx-auto mt-2" style="width: 60px; height: 3px;"></div>
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-semibold mb-2">
+                <i class="bi bi-patch-check-fill me-1"></i> WE ARE BEST
+            </span>
+            <h2 class="display-6 fw-bold text-dark mb-2">
+                Why Choose India Tour Hire
+            </h2>
+            <p class="text-secondary mx-auto mb-0" style="max-width: 620px;">
+                Dedicated to providing exceptional value, total peace of mind, and flexible booking solutions for your travel adventures.
+            </p>
         </div>
 
+        <!-- 4-Column Feature Cards Grid -->
         <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="card border border-light-subtle shadow-xs h-100 p-4 text-center rounded-4 hover-lift">
-                    <div class="mx-auto mb-3 bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                        <i class="bi bi-person-badge-fill fs-2"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2">Govt. Licensed Guides</h5>
-                    <p class="text-muted small mb-0">Learn authentic Mughal history, legends, and architectural secrets from certified regional experts.</p>
-                </div>
-            </div>
+            <?php foreach ($whyUsFeatures as $feature): ?>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card h-100 p-4 text-center d-flex flex-column align-items-center justify-content-start border border-light-subtle rounded-4 shadow-xs hover-lift bg-white">
+                        
+                        <!-- Feature Icon Box -->
+                        <div class="rounded-4 bg-primary bg-opacity-10 text-primary d-inline-flex align-items-center justify-content-center mb-4" style="width: 64px; height: 64px;">
+                            <i class="bi <?php echo htmlspecialchars($feature['icon']); ?> fs-2"></i>
+                        </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="card border border-light-subtle shadow-xs h-100 p-4 text-center rounded-4 hover-lift">
-                    <div class="mx-auto mb-3 bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                        <i class="bi bi-shield-check fs-2"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2">Skip-the-Line Tickets</h5>
-                    <p class="text-muted small mb-0">Save time with pre-booked hassle-free entry tickets to Taj Mahal and Agra Fort monuments.</p>
-                </div>
-            </div>
+                        <!-- Feature Title -->
+                        <h5 class="fw-bold text-dark mb-2">
+                            <?php echo htmlspecialchars($feature['title']); ?>
+                        </h5>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="card border border-light-subtle shadow-xs h-100 p-4 text-center rounded-4 hover-lift">
-                    <div class="mx-auto mb-3 bg-warning bg-opacity-10 text-warning rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                        <i class="bi bi-car-front-fill fs-2"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2">Private AC Transport</h5>
-                    <p class="text-muted small mb-0">Clean, air-conditioned sedans, SUVs, and luxury vans with polite and professional chauffeurs.</p>
-                </div>
-            </div>
+                        <!-- Feature Description -->
+                        <p class="text-secondary small mb-0 lh-base">
+                            <?php echo htmlspecialchars($feature['desc']); ?>
+                        </p>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="card border border-light-subtle shadow-xs h-100 p-4 text-center rounded-4 hover-lift">
-                    <div class="mx-auto mb-3 bg-danger bg-opacity-10 text-danger rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                        <i class="bi bi-arrow-repeat fs-2"></i>
                     </div>
-                    <h5 class="fw-bold mb-2">Free Cancellation</h5>
-                    <p class="text-muted small mb-0">Flexible bookings with full refund guarantee up to 24 hours before your scheduled tour.</p>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
+
     </div>
 </section>
-

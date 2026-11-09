@@ -14,43 +14,43 @@ $exploreRegions = [
         'name'  => 'Rajasthan',
         'tag'   => 'Jaipur, Udaipur & Palaces',
         'image' => 'assets/images/rajasthan/rajasthan.avif',
-        'link'  => 'tourPackageDetail.php?tour=rajasthan'
+        'link'  => 'rajasthantour/index.php'
     ],
     [
         'name'  => 'Uttar Pradesh',
         'tag'   => 'Taj Mahal, Agra & Varanasi',
         'image' => 'assets/images/uttarPradesh/tajmahal.avif',
-        'link'  => 'tourPackageDetail.php?tour=uttar-pradesh'
+        'link'  => 'uttarpradeshtour/index.php'
     ],
     [
         'name'  => 'Uttarakhand',
         'tag'   => 'Rishikesh, Haridwar & Hills',
         'image' => 'assets/images/uttrakhand/uttrakhand.avif',
-        'link'  => 'tourPackageDetail.php?tour=uttarakhand'
+        'link'  => 'uttarakhandtour/index.php'
     ],
     [
         'name'  => 'Himachal Pradesh',
         'tag'   => 'Shimla, Manali & Valleys',
         'image' => 'assets/images/himachal/himachal.avif',
-        'link'  => 'himachaltours/himachalholidays.html'
+        'link'  => 'himachaltour/index.php'
     ],
     [
         'name'  => 'Gujarat',
         'tag'   => 'Rann of Kutch & Heritage',
         'image' => 'assets/images/gujrat/gujrat.avif',
-        'link'  => 'tourPackageDetail.php?tour=gujarat'
+        'link'  => 'gujarattour/index.php'
     ],
     [
         'name'  => 'Nepal',
         'tag'   => 'Kathmandu & Pokhara Vistas',
         'image' => 'assets/images/nepal/nepal.avif',
-        'link'  => 'tourPackageDetail.php?tour=nepal'
+        'link'  => 'nepaltour/index.php'
     ],
     [
         'name'  => 'Punjab',
         'tag'   => 'Golden Temple & Amritsar',
         'image' => 'assets/images/punjab/goldenTemple.avif',
-        'link'  => 'tourPackageDetail.php?tour=punjab'
+        'link'  => 'punjabtour/index.php'
     ]
 ];
 ?>
@@ -85,7 +85,8 @@ $exploreRegions = [
             <!-- Group 1 -->
             <div class="region-group">
                 <?php foreach ($exploreRegions as $region): ?>
-                    <a href="<?= htmlspecialchars($region['link']); ?>" class="region-image-card" title="Explore <?= htmlspecialchars($region['name']); ?>">
+                    <?php $regLink = function_exists('theme_url') ? theme_url($region['link']) : $region['link']; ?>
+                    <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card" title="Explore <?= htmlspecialchars($region['name']); ?>">
                         <!-- Background Image -->
                         <img 
                             src="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($region['image']) : $region['image']); ?>" 
@@ -106,7 +107,8 @@ $exploreRegions = [
             <!-- Group 2 (Duplicate for Seamless Infinite Loop) -->
             <div class="region-group" aria-hidden="true">
                 <?php foreach ($exploreRegions as $region): ?>
-                    <a href="<?= htmlspecialchars($region['link']); ?>" class="region-image-card" tabindex="-1" title="Explore <?= htmlspecialchars($region['name']); ?>">
+                    <?php $regLink = function_exists('theme_url') ? theme_url($region['link']) : $region['link']; ?>
+                    <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card" tabindex="-1" title="Explore <?= htmlspecialchars($region['name']); ?>">
                         <!-- Background Image -->
                         <img 
                             src="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($region['image']) : $region['image']); ?>" 
@@ -129,7 +131,7 @@ $exploreRegions = [
     <div class="container">
         <!-- View All Destinations Button -->
         <div class="text-center mt-4 pt-2">
-            <a href="index.php#featured-tours" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2">
+            <a href="<?= htmlspecialchars(function_exists('theme_url') ? theme_url('tourPackage.php') : 'tourPackage.php'); ?>" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2">
                 <span>View All Tour Packages</span>
                 <i class="bi bi-arrow-right"></i>
             </a>

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 /* ==========================================================================
    CSS Variables & Design Tokens (per AGENTS.md guidelines)
@@ -6,6 +7,13 @@
 :root {
     /* Fonts */
     --font-main: 'DM Sans', sans-serif; 
+    --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    
+    /* Editorial Gallery Theme Tokens */
+    --gallery-bg: #ded7cc;
+    --gallery-text: #171513;
+    --gallery-text-muted: #6e675f;
+    --gallery-card-border: #141414;
     
     /* Brand Colors */
     --primary-color: #3B71FE;
@@ -58,11 +66,10 @@
     --nav-drawer-width: 320px;
 }
 
-/* Base Font & Strict Global Scroll Containment */
+/* Base Font & Strict Global Scroll Containment (Clip prevents horizontal overflow without breaking position: sticky) */
 html, body {
-    overflow-x: clip !important;
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
+    overflow-x: clip;
+    max-width: 100vw;
     position: relative;
 }
 
@@ -1985,8 +1992,14 @@ html, body {
 }
 
 /* ==========================================================================
-   MEMORIES GALLERY MARQUEE COMPONENT (Matching Provided Design)
+   MEMORIES & MOMENTS GALLERY MARQUEE COMPONENT (Theme-Aligned Light UI)
    ========================================================================== */
+.memories-marquee-section {
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
 .memories-marquee {
     position: relative;
     width: 100%;
@@ -1998,7 +2011,7 @@ html, body {
     display: flex;
     width: max-content;
     will-change: transform;
-    animation: memoriesMarqueeScroll 45s linear infinite;
+    animation: memoriesMarqueeScroll 48s linear infinite;
 }
 
 .memories-marquee:hover .memories-marquee-track {
@@ -2017,32 +2030,41 @@ html, body {
 .memories-group {
     display: flex;
     align-items: center;
-    gap: 22px;
-    padding-right: 22px;
+    gap: 24px;
+    padding-right: 24px;
 }
 
 .memory-card {
-    width: 240px;
-    height: 240px;
+    width: 220px;
+    height: 220px;
     flex-shrink: 0;
     position: relative;
     overflow: hidden;
     border-radius: 18px;
-    border: 5px solid #ffffff;
-    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
-    background-color: #e2e8f0;
+    border: 6px solid #ffffff;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12);
+    background-color: #f1f5f9;
     cursor: pointer;
-    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s ease, z-index 0.35s ease;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
     display: block;
     text-decoration: none;
 }
 
 @media (min-width: 768px) {
     .memory-card {
-        width: 270px;
-        height: 270px;
+        width: 260px;
+        height: 260px;
+        border-width: 7px;
         border-radius: 20px;
-        border-width: 6px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .memory-card {
+        width: 285px;
+        height: 285px;
+        border-width: 8px;
+        border-radius: 22px;
     }
 }
 
@@ -2051,13 +2073,13 @@ html, body {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .memory-card:hover {
     transform: rotate(0deg) scale(1.08) translateY(-8px) !important;
     z-index: 25;
-    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.26) !important;
+    box-shadow: 0 25px 55px rgba(15, 23, 42, 0.22) !important;
 }
 
 .memory-card:hover img {
@@ -2067,7 +2089,7 @@ html, body {
 .memory-card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(15, 23, 42, 0.75) 0%, transparent 60%);
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.72) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.3s ease;
     display: flex;
@@ -2080,30 +2102,39 @@ html, body {
     opacity: 1;
 }
 
-/* Edge Fades for Cinema Look */
+/* Edge Fades for Cinema Look (Clean White Theme Fade) */
 .memories-marquee::before,
 .memories-marquee::after {
     content: '';
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 80px;
+    width: 90px;
     z-index: 10;
     pointer-events: none;
 }
 .memories-marquee::before {
     left: 0;
-    background: linear-gradient(to right, #f8fafc 0%, transparent 100%);
+    background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
 }
 .memories-marquee::after {
     right: 0;
-    background: linear-gradient(to left, #f8fafc 0%, transparent 100%);
+    background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.bg-light .memories-marquee::before,
+.memories-marquee-section.bg-light .memories-marquee::before {
+    background: linear-gradient(to right, #f8f9fa 0%, rgba(248, 249, 250, 0) 100%);
+}
+.bg-light .memories-marquee::after,
+.memories-marquee-section.bg-light .memories-marquee::after {
+    background: linear-gradient(to left, #f8f9fa 0%, rgba(248, 249, 250, 0) 100%);
 }
 
 @media (min-width: 768px) {
     .memories-marquee::before,
     .memories-marquee::after {
-        width: 140px;
+        width: 150px;
     }
 }
 
@@ -2112,5 +2143,443 @@ html, body {
         animation: none;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .memories-marquee-track {
+        animation: none;
+    }
+}
+}
+
+/* ==========================================================================
+   Detailed Tour Itinerary Modern Timeline UI (Consistent Spacing & Rhythm)
+   ========================================================================== */
+.itinerary-timeline-container {
+    position: relative;
+    padding-left: 36px;
+    margin: 0;
+}
+.itinerary-day-wrapper {
+    position: relative;
+    margin-bottom: 22px;
+}
+.itinerary-day-wrapper:last-child {
+    margin-bottom: 0;
+}
+/* Connecting vertical segment between consecutive nodes */
+.itinerary-day-wrapper::before {
+    content: '';
+    position: absolute;
+    left: -21px;
+    top: 34px;
+    bottom: -24px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary-color) 0%, rgba(59, 113, 254, 0.3) 100%);
+    z-index: 1;
+}
+.itinerary-day-wrapper:last-child::before {
+    display: none;
+}
+/* Timeline Marker Dot: Centered horizontally at left -28px and vertically at 26px */
+.itinerary-timeline-marker {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: -28px;
+    top: 26px;
+    background: var(--primary-color);
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(59, 113, 254, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    z-index: 2;
+}
+.itinerary-day-box {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    padding: 20px 22px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.itinerary-day-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.07);
+    border-color: rgba(59, 113, 254, 0.35);
+}
+.itinerary-day-wrapper:hover .itinerary-timeline-marker {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 6px rgba(59, 113, 254, 0.35);
+}
+/* Day Header inside box */
+.itinerary-day-header {
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.itinerary-day-badge {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-radius: 50rem;
+    padding: 5px 14px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(59, 113, 254, 0.25);
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+.itinerary-day-title {
+    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0;
+}
+.itinerary-dist-badge {
+    background: #f8fafc;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    border-radius: 50rem;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+/* Points List & Item */
+.itinerary-points-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.itinerary-point-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+}
+.itinerary-point-bullet {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    background: rgba(59, 113, 254, 0.1);
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.itinerary-day-box:hover .itinerary-point-bullet {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+.itinerary-point-text {
+    color: #334155;
+    font-size: 0.925rem;
+    line-height: 1.6;
+    flex: 1;
+}
+.itinerary-point-text strong {
+    color: #0f172a !important;
+    font-weight: 700;
+}
+/* Night Stay Footer */
+.itinerary-day-footer {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.08);
+}
+.itinerary-night-stay {
+    background: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+    border-radius: 50rem;
+    padding: 5px 14px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.2;
+}
+@media (max-width: 576px) {
+    .itinerary-timeline-container {
+        padding-left: 24px;
+    }
+    .itinerary-day-wrapper::before {
+        left: -17px;
+        top: 28px;
+        bottom: -20px;
+    }
+    .itinerary-timeline-marker {
+        left: -24px;
+        top: 21px;
+        width: 14px;
+        height: 14px;
+        border-width: 2px;
+    }
+    .itinerary-day-box {
+        padding: 16px 14px;
+        border-radius: 14px;
+    }
+    .itinerary-day-wrapper {
+        margin-bottom: 18px;
+    }
+    .itinerary-day-title {
+        font-size: 0.95rem;
+    }
+    .itinerary-dist-badge {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+    .itinerary-points-list {
+        gap: 8px;
+    }
+    .itinerary-point-text {
+        font-size: 0.875rem;
+        line-height: 1.55;
+    }
+}
+
+/* ==========================================================================
+   Sticky Tour Booking & Inquiry Sidebar Card
+   ========================================================================== */
+@media (min-width: 992px) {
+    .tour-sticky-sidebar {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: 90px !important;
+        z-index: 100 !important;
+        max-height: calc(100vh - 105px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        display: flex;
+        flex-direction: column;
+    }
+    /* Subtle custom scrollbar if content exceeds viewport on small laptop screens */
+    .tour-sticky-sidebar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .tour-sticky-sidebar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .tour-sticky-sidebar::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+    }
+    .tour-sticky-sidebar:hover::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.25);
+    }
+}
+
+/* ==========================================================================
+   Multi-Line Truncation Helpers
+   ========================================================================== */
+.text-line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.text-line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.text-line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   Theme Blog Section & Cards (Consistent Clean Light Layout)
+   ========================================================================== */
+.theme-blog-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.theme-blog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+    border-color: rgba(59, 113, 254, 0.28);
+}
+
+.theme-blog-media {
+    position: relative;
+    width: 100%;
+    height: 205px;
+    overflow: hidden;
+    background-color: #e2e8f0;
+}
+
+.theme-blog-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.theme-blog-card:hover .theme-blog-media img {
+    transform: scale(1.08);
+}
+
+.theme-blog-category-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.95);
+    color: #0f172a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 4px 12px;
+    border-radius: 50rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.2;
+}
+
+.theme-blog-category-badge .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.theme-blog-time-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    background: rgba(15, 23, 42, 0.72);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 50rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.2;
+}
+
+.theme-blog-body {
+    padding: 1.35rem 1.35rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.theme-blog-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.65rem;
+}
+
+.theme-blog-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.42;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.theme-blog-card:hover .theme-blog-title {
+    color: var(--primary-color);
+}
+
+.theme-blog-excerpt {
+    font-size: 0.865rem;
+    color: #64748b;
+    line-height: 1.55;
+    margin-bottom: 1.1rem;
+}
+
+.theme-blog-footer {
+    margin-top: auto;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.theme-blog-cta-text {
+    font-size: 0.865rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.25s ease;
+}
+
+.theme-blog-card:hover .theme-blog-cta-text {
+    gap: 10px;
+}
+
+.theme-blog-arrow-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--accent-blue-subtle);
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.theme-blog-card:hover .theme-blog-arrow-circle {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transform: rotate(45deg);
+}
+
 
 
