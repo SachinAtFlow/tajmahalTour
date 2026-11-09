@@ -54,7 +54,7 @@ $cardOffsets = [20, 8, -6, -14, 6, 22, 10, -6, -14, 8, 20, 8, -6, -12];
         
         <!-- Standard Theme Section Header -->
         <div class="max-w-2xl mx-auto mb-3">
-            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-semibold mb-2 d-inline-flex align-items-center gap-1.5">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-semibold mb-2 d-inline-flex align-items-center gap-2">
                 <i class="bi bi-camera-fill text-warning"></i>
                 <span>REAL TRAVEL EXPERIENCES</span>
             </span>
@@ -74,7 +74,7 @@ $cardOffsets = [20, 8, -6, -14, 6, 22, 10, -6, -14, 8, 20, 8, -6, -12];
             <div class="memories-marquee-track">
                 
                 <!-- Group 1 -->
-                <div class="memories-group">
+                <div class="d-flex align-items-center gap-4 pe-4 flex-shrink-0">
                     <?php foreach ($marqueePhotos as $idx => $photo): ?>
                         <?php 
                             $photoUrl = theme_url($photo['url']);
@@ -103,7 +103,7 @@ $cardOffsets = [20, 8, -6, -14, 6, 22, 10, -6, -14, 8, 20, 8, -6, -12];
                 </div>
 
                 <!-- Group 2 (Duplicate for Seamless Infinite Marquee Loop) -->
-                <div class="memories-group" aria-hidden="true">
+                <div class="d-flex align-items-center gap-4 pe-4 flex-shrink-0" aria-hidden="true">
                     <?php foreach ($marqueePhotos as $idx => $photo): ?>
                         <?php 
                             $photoUrl = theme_url($photo['url']);
@@ -137,9 +137,9 @@ $cardOffsets = [20, 8, -6, -14, 6, 22, 10, -6, -14, 8, 20, 8, -6, -12];
 
     <!-- Theme Primary CTA Button to gallery.php -->
     <div class="container text-center pt-2 position-relative z-2">
-        <a href="<?= theme_url('gallery.php'); ?>" class="btn btn-primary rounded-pill px-5 py-3 fw-bold shadow-sm d-inline-flex align-items-center gap-2 hover-lift">
-            <span>View Full Gallery (30+ Moments)</span>
-            <i class="bi bi-arrow-right fs-5"></i>
+        <a href="<?= theme_url('gallery.php'); ?>" class="btn btn-primary rounded-pill px-4 py-2 px-md-5 py-md-3 small fs-md-6 fw-bold shadow-sm d-inline-flex align-items-center gap-2 hover-lift">
+            <span>View Full Gallery</span>
+            <i class="bi bi-arrow-right fs-6 fs-md-5"></i>
         </a>
     </div>
 

@@ -20,18 +20,25 @@ $initialBatch = 30; // Initial photos to show for optimal performance
 
     <!-- 2. Page Hero Banner -->
     <section class="position-relative py-5 bg-dark text-white text-center overflow-hidden" id="gallery-hero-banner" style="background: linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.88)), url('<?= theme_url('assets/images/uttarPradesh/tajmahal.avif'); ?>') center/cover no-repeat; min-height: 290px;">
-        <div class="position-absolute top-0 end-0 bottom-0 start-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#3B71FE 1px, transparent 1px); background-size: 28px 28px;"></div>
+        <div class="position-absolute top-0 end-0 bottom-0 start-0 opacity-20 pointer-events-none" style="background-size: 28px 28px;"></div>
         
         <div class="container position-relative z-1 py-4 py-lg-5">
-            <span class="badge bg-primary bg-opacity-25 text-white border border-light border-opacity-25 px-3 py-2 rounded-pill fw-semibold mb-3">
-                <i class="bi bi-camera-fill me-1 text-warning"></i> REAL MOMENTS & MEMORIES
-            </span>
-            <h1 class="display-4 fw-bold text-white mb-2 font-serif">
+            <h1 class="display-5 display-md-4 fw-bold text-white mb-2 font-serif">
                 Tour & Fleet Gallery
             </h1>
-            <p class="lead text-white-50 fs-6 max-w-2xl mx-auto mb-0" style="max-width: 650px;">
+            <p class="lead text-white-50 fs-6 max-w-2xl mx-auto mb-3 mb-md-4 px-2" style="max-width: 650px;">
                 Candid moments, smiling passengers, and iconic destinations captured on road trips across Delhi, Agra, Rajasthan, Himachal Pradesh, Punjab, and Uttarakhand.
             </p>
+            <nav aria-label="breadcrumb" class="pt-1">
+                <ol class="breadcrumb justify-content-center mb-0 small">
+                    <li class="breadcrumb-item">
+                        <a href="index.php" class="text-white-50 text-decoration-none hover-white">
+                            <i class="bi bi-house-door me-1"></i> Home
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Gallery</li>
+                </ol>
+            </nav>
         </div>
     </section>
 
@@ -41,7 +48,7 @@ $initialBatch = 30; // Initial photos to show for optimal performance
         <!-- Ambient Background Glow -->
         <div class="position-absolute top-0 start-50 translate-middle-x pointer-events-none" style="width: 600px; height: 300px; background: radial-gradient(circle, rgba(59, 113, 254, 0.08) 0%, rgba(59, 113, 254, 0) 70%); filter: blur(50px); z-index: 0;"></div>
 
-        <div class="container-fluid px-3 px-sm-4 px-lg-5 position-relative z-1" style="max-width: 1750px;">
+        <div class="container-fluid px-2 px-sm-4 px-lg-5 position-relative z-1" style="max-width: 1750px;">
             
             <!-- Section Header & Counter -->
             <div class="text-center max-w-3xl mx-auto mb-4 mb-lg-5">
@@ -97,13 +104,13 @@ $initialBatch = 30; // Initial photos to show for optimal performance
 
                 <!-- Load More Button -->
                 <?php if ($totalCount > $initialBatch): ?>
-                    <div class="text-center mt-5" id="load-more-wrapper">
+                    <div class="text-center mt-4 mt-md-5" id="load-more-wrapper">
                         <button type="button" 
                                 id="btn-load-more" 
-                                class="btn btn-outline-primary rounded-pill px-5 py-3 fw-bold shadow-sm d-inline-flex align-items-center gap-2 hover-lift"
+                                class="btn btn-outline-primary rounded-pill px-3 py-2 px-md-5 py-md-3 small fs-md-6 fw-bold shadow-sm d-inline-flex align-items-center gap-2 hover-lift"
                                 onclick="loadMoreGalleryPhotos()">
                             <span>Load More Memories</span>
-                            <span class="badge bg-primary text-white rounded-pill px-2.5 py-1 ms-1" id="remaining-count">
+                            <span class="badge bg-primary text-white rounded-pill px-2 py-0.5 px-md-2.5 py-md-1 ms-1" id="remaining-count">
                                 <?= $totalCount - $initialBatch; ?> more
                             </span>
                         </button>
@@ -118,12 +125,12 @@ $initialBatch = 30; // Initial photos to show for optimal performance
             <?php endif; ?>
 
             <!-- Bottom Floating Booking Assist Card -->
-            <div class="mt-5 pt-3 text-center">
-                <div class="d-inline-flex flex-wrap align-items-center justify-content-center gap-3 p-2 px-4 rounded-pill bg-light border shadow-sm">
+            <div class="mt-4 mt-md-5 pt-2 pt-md-3 text-center">
+                <div class="d-inline-flex flex-column flex-md-row align-items-center justify-content-center gap-2 gap-md-3 p-3 px-md-4 py-md-2 rounded-4 rounded-md-pill bg-light border shadow-sm text-center">
                     <span class="small text-secondary fw-medium">
                         Want to create unforgettable travel memories across North India?
                     </span>
-                    <a href="<?= theme_url('tourPackage.php'); ?>" class="btn btn-sm btn-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-xs">
+                    <a href="<?= theme_url('tourPackage.php'); ?>" class="btn btn-sm btn-primary rounded-pill px-3 py-1.5 px-md-4 py-md-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-xs">
                         <span>Book Your Tour Cab</span>
                         <i class="bi bi-arrow-right"></i>
                     </a>

@@ -66,7 +66,7 @@ $categoryDescription = $categoryDescription ?? 'Discover handpicked itineraries 
         
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h2 class="fs-4 fw-bold text-dark mb-1">Available Tour Circuits</h2>
+                <h2 class="fs-4 fw-bold text-dark mb-1">Top <?= htmlspecialchars($categoryTitle); ?> Packages</h2>
                 <p class="text-secondary small mb-0">Select any package below to explore detailed day-wise itinerary and book online.</p>
             </div>
             <span class="badge bg-primary rounded-pill px-3 py-2 fw-medium small">
@@ -76,68 +76,99 @@ $categoryDescription = $categoryDescription ?? 'Discover handpicked itineraries 
 
         <div class="row g-4">
             <?php foreach ($tours as $tour): ?>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 rounded-4 overflow-hidden shadow-sm bg-white d-flex flex-column transition-all hover-shadow">
+                <?php
+                    $slug = $tour['slug'] ?? '';
+                    $tourUrl = (!empty($categorySlug) && !file_exists('specificTourTemplate.php')) 
+                        ? theme_url($categorySlug . '/specificTourTemplate.php?tour=' . urlencode($slug)) 
+                        : 'specificTourTemplate.php?tour=' . urlencode($slug);
+                    
+                    $imgRaw = $tour['image'] ?? 'assets/images/uttarPradesh/tajmahal.avif';
+                    $imgSrc = htmlspecialchars(function_exists('theme_url') ? theme_url($imgRaw) : $imgRaw);
+                    
+                    $tag = !empty($tour['tag']) ? $tour['tag'] : (!empty($tour['duration']) ? $tour['duration'] : 'FEATURED TOUR');
+                    $desc = !empty($tour['overview']) ? $tour['overview'] : (!empty($tour['description']) ? $tour['description'] : 'Handpicked guided journey designed for comfort, luxury, and authentic cultural exploration.');
+                    $rating = !empty($tour['rating']) ? $tour['rating'] : '4.9';
+                    $reviews = !empty($tour['reviews_count']) ? $tour['reviews_count'] : '250+';
+                    $price = !empty($tour['price_start']) ? $tour['price_start'] : (!empty($tour['price']) ? $tour['price'] : '');
+                    $duration = !empty($tour['duration']) ? $tour['duration'] : 'Flexible Days';
+                ?>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Entire Card As Single Clickable Element with Featured Tour Dark Luxury Look -->
+                    <a href="<?= $tourUrl; ?>" class="dark-tour-card text-decoration-none d-flex flex-column h-100" title="<?= htmlspecialchars($tour['title']); ?>">
                         
-                        <!-- Tour Card Image -->
-                        <div class="position-relative" style="height: 240px; overflow: hidden;">
-                            <img 
-                                src="<?= theme_url($tour['image'] ?? 'assets/images/uttarPradesh/tajmahal.avif'); ?>" 
-                                class="w-100 h-100 object-fit-cover" 
-                                alt="<?= htmlspecialchars($tour['title']); ?>"
-                                loading="lazy"
-                            >
-                            <span class="position-absolute top-0 start-0 m-3 badge bg-dark bg-opacity-75 text-white rounded-pill px-3 py-1.5 small fw-semibold">
-                                <i class="bi bi-clock-history me-1"></i> <?= htmlspecialchars($tour['duration'] ?? '1 Day'); ?>
-                            </span>
-                            <span class="position-absolute top-0 end-0 m-3 badge bg-primary text-white rounded-pill px-2.5 py-1.5 small fw-semibold shadow-xs">
-                                <?= htmlspecialchars($tour['price_start'] ?? '₹4,500'); ?>
-                            </span>
-                        </div>
-
-                        <!-- Tour Card Content -->
-                        <div class="card-body p-4 d-flex flex-column flex-grow-1">
-                            <div class="d-flex align-items-center gap-1 text-warning small mb-2">
-                                <i class="bi bi-star-fill"></i>
-                                <span class="text-dark fw-bold ms-1"><?= htmlspecialchars($tour['rating'] ?? '4.9'); ?></span>
-                                <span class="text-secondary">(<?= htmlspecialchars($tour['reviews_count'] ?? '200+'); ?> reviews)</span>
-                            </div>
-
-                            <h3 class="fs-5 fw-bold text-dark mb-2 lh-sm">
-                                <?= htmlspecialchars($tour['title']); ?>
-                            </h3>
-
-                            <p class="text-secondary small mb-3 flex-grow-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                <?= htmlspecialchars($tour['overview'] ?? ''); ?>
-                            </p>
-
-                            <!-- Highlights Preview -->
-                            <?php if (!empty($tour['highlights'])): ?>
-                                <ul class="list-unstyled small mb-3 d-flex flex-column gap-1.5 text-secondary">
-                                    <?php foreach (array_slice($tour['highlights'], 0, 2) as $hl): ?>
-                                        <li class="d-flex align-items-start gap-2">
-                                            <i class="bi bi-check2 text-success fw-bold mt-0.5"></i>
-                                            <span class="text-truncate"><?= htmlspecialchars($hl); ?></span>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
+                        <!-- Top Media Area with Floating Badges & Seamless Bottom Fade -->
+                        <div class="dark-tour-media">
+                            
+                            <!-- Floating Tag Badge (Top-Left) -->
+                            <?php if (!empty($tag)): ?>
+                                <span class="position-absolute top-0 start-0 m-3 z-3 badge rounded-pill bg-dark bg-opacity-75 text-white border border-light border-opacity-25 px-3 py-2 fw-semibold shadow-sm d-inline-flex align-items-center" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-size: 11px; letter-spacing: 0.05em;">
+                                    <?= htmlspecialchars($tag); ?>
+                                </span>
                             <?php endif; ?>
 
-                            <div class="pt-3 border-top mt-auto d-flex align-items-center justify-content-between">
-                                <span class="text-secondary small">
-                                    <i class="bi bi-car-front text-primary me-1"></i> Private Chauffeur
+                            <!-- Floating Price Badge (Top-Right) -->
+                            <?php if (!empty($price)): ?>
+                                <span class="position-absolute top-0 end-0 m-3 z-3 badge rounded-pill bg-primary text-white px-2.5 py-1.5 fw-bold shadow-sm d-inline-flex align-items-center" style="font-size: 12px;">
+                                    <?= htmlspecialchars($price); ?>
                                 </span>
-                                <a 
-                                    href="specificTourTemplate.php?tour=<?= urlencode($tour['slug']); ?>" 
-                                    class="btn btn-outline-primary btn-sm rounded-pill px-3 py-1.5 fw-semibold d-inline-flex align-items-center gap-1.5"
-                                >
-                                    <span>View Details</span>
-                                    <i class="bi bi-arrow-right small"></i>
-                                </a>
+                            <?php endif; ?>
+
+                            <img 
+                                src="<?= $imgSrc; ?>" 
+                                alt="<?= htmlspecialchars($tour['title']); ?> Tour Package" 
+                                loading="lazy"
+                                decoding="async"
+                            >
+                            <!-- Seamless Bottom Gradient Fade into Card Body -->
+                            <div class="dark-tour-fade"></div>
+                        </div>
+
+                        <!-- Card Content Body -->
+                        <div class="dark-tour-body">
+                            <div>
+                                <!-- Title -->
+                                <div class="mb-1">
+                                    <h3 class="dark-tour-title text-line-clamp-2">
+                                        <?= htmlspecialchars($tour['title']); ?>
+                                    </h3>
+                                </div>
+
+                                <!-- 2-Line Subtitle / Overview Description -->
+                                <p class="dark-tour-desc text-line-clamp-2">
+                                    <?= htmlspecialchars($desc); ?>
+                                </p>
+
+                                <!-- Spec Pill Badges Row -->
+                                <div class="dark-tour-pills">
+                                    <!-- Duration Pill -->
+                                    <span class="dark-tour-pill">
+                                        <i class="bi bi-clock-history opacity-75"></i>
+                                        <span><?= htmlspecialchars($duration); ?></span>
+                                    </span>
+                                    <!-- Vehicle / Type Pill -->
+                                    <span class="dark-tour-pill">
+                                        <i class="bi bi-car-front opacity-75"></i>
+                                        <span>Private Chauffeur</span>
+                                    </span>
+                                    <!-- Rating Pill -->
+                                    <span class="dark-tour-pill">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <span><?= htmlspecialchars($rating); ?> (<?= htmlspecialchars($reviews); ?>)</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Solid White "Explore Itinerary" Full-Width CTA Button (Visual Trigger) -->
+                            <div class="mt-auto pt-1">
+                                <span class="btn-dark-tour-cta d-inline-flex align-items-center justify-content-center gap-2">
+                                    <span>Explore Itinerary</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </span>
                             </div>
 
                         </div>
-                    </div>
+
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>

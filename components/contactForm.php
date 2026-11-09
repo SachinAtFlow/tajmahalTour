@@ -142,14 +142,14 @@
                         Speak directly with our senior reservation desk or start an immediate WhatsApp chat for instant driver assignment.
                     </p>
                     <div class="d-flex flex-wrap gap-2">
-                        <a href="https://wa.me/918800722606?text=Hi%2C+I+need+urgent+cab%2Ftour+booking." class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-xs">
+                        <a href="https://wa.me/918800722606?text=Hi%2C+I+need+urgent+cab%2Ftour+booking." class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-xs fast-contact-btn">
                             <i class="bi bi-whatsapp"></i>
                             <span>WhatsApp: +91 8800722606</span>
                         </a>
-                        <a href="tel:+919876543210" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2">
+                        <a href="tel:+919876543210" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 fast-contact-btn">
                             <i class="bi bi-telephone"></i>
-                            <span>Call: +91 98765 43210</span>
-                        </a>
+                            <span>Call: +91 98765 43210</span> 
+                        </a>    
                     </div>
                 </div>
 

@@ -13,10 +13,6 @@ $currentCitySlug = $cityData['slug'] ?? 'delhi-ncr';
         
         <!-- Breadcrumb & Badge -->
         <div class="text-center mb-3">
-            <span class="badge bg-primary bg-opacity-25 text-white border border-light border-opacity-25 px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-1.5">
-                <i class="bi bi-car-front-fill"></i>
-                <span><?= htmlspecialchars($cityData['badge']); ?> &bull; <?= htmlspecialchars($cityData['state']); ?></span>
-            </span>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center mb-0 small">
                     <li class="breadcrumb-item">
@@ -122,22 +118,22 @@ $currentCitySlug = $cityData['slug'] ?? 'delhi-ncr';
 
         <!-- Trust Badges Strip -->
         <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 gap-md-4 mt-4 pt-2 text-white-50 small">
-            <span class="d-inline-flex align-items-center gap-1.5">
+            <span class="d-inline-flex align-items-center gap-2">
                 <i class="bi bi-star-fill text-warning"></i>
                 <strong class="text-white">4.9/5</strong> Driver Rating
             </span>
             <span class="opacity-50 d-none d-sm-inline">&bull;</span>
-            <span class="d-inline-flex align-items-center gap-1.5">
+            <span class="d-inline-flex align-items-center gap-2">
                 <i class="bi bi-shield-check text-success"></i>
                 <span>₹0 Advance Deposit</span>
             </span>
             <span class="opacity-50 d-none d-sm-inline">&bull;</span>
-            <span class="d-inline-flex align-items-center gap-1.5">
+            <span class="d-inline-flex align-items-center gap-2">
                 <i class="bi bi-broadcast text-info"></i>
                 <span>GPS Live Tracked</span>
             </span>
             <span class="opacity-50 d-none d-md-inline">&bull;</span>
-            <span class="d-inline-flex align-items-center gap-1.5">
+            <span class="d-inline-flex align-items-center gap-2">
                 <i class="bi bi-clock-history text-primary"></i>
                 <span>24x7 Doorstep Pickup</span>
             </span>

@@ -128,26 +128,28 @@ require_once __DIR__ . '/../includes/header.php';
                 </div>
 
                 <!-- Terminal-Wise Meet & Greet Guide -->
-                <div class="card border-0 rounded-4 shadow-sm p-4 mb-4 bg-white">
+                <div class="card border-0 rounded-4 shadow-sm p-3 p-md-4 mb-4 bg-white">
                     <h3 class="fs-5 fw-bold text-dark mb-3 d-flex align-items-center gap-2">
                         <i class="bi bi-signpost-split-fill text-primary"></i> Terminal Meet &amp; Greet Points
                     </h3>
                     <div class="row g-3">
                         <?php foreach ($currentAirport['terminals'] as $terminal): ?>
                             <div class="col-12">
-                                <div class="p-3 rounded-3 bg-light border border-light-subtle d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
-                                    <div>
-                                        <div class="fw-bold text-dark fs-6 mb-0.5">
-                                            <i class="bi bi-airplane text-primary me-1"></i> <?= htmlspecialchars($terminal['name']); ?>
+                                <div class="p-3 rounded-3 bg-light border border-light-subtle d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+                                    <div class="flex-grow-1 pe-md-2">
+                                        <div class="fw-bold text-dark fs-6 mb-0.5 d-flex align-items-center gap-1.5">
+                                            <i class="bi bi-airplane text-primary"></i> 
+                                            <span><?= htmlspecialchars($terminal['name']); ?></span>
                                         </div>
                                         <div class="text-secondary small">
                                             <?= htmlspecialchars($terminal['type']); ?>
                                         </div>
                                     </div>
-                                    <div class="text-sm-end">
-                                        <span class="badge bg-white text-primary border border-primary border-opacity-25 px-2.5 py-1.5 rounded-pill small fw-semibold">
-                                            <i class="bi bi-geo-alt-fill text-danger me-1"></i> <?= htmlspecialchars($terminal['pickup']); ?>
-                                        </span>
+                                    <div class="pt-1 pt-md-0 flex-shrink-0">
+                                        <div class="bg-white text-primary border border-primary border-opacity-25 px-2.5 py-1.5 rounded-3 rounded-md-pill small fw-semibold d-inline-flex align-items-start align-items-md-center gap-1.5 text-start shadow-2xs" style="max-width: 100%; line-height: 1.4;">
+                                            <i class="bi bi-geo-alt-fill text-danger flex-shrink-0 mt-0.5 mt-md-0"></i> 
+                                            <span class="text-wrap"><?= htmlspecialchars($terminal['pickup']); ?></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +161,7 @@ require_once __DIR__ . '/../includes/header.php';
 
                 <!-- Cross-Link to Other Airport -->
                 <?php if ($otherAirport): ?>
-                    <div class="card border-0 rounded-4 shadow-sm p-4 mb-4 bg-white border-start border-primary border-4">
+                    <div class="card border-0 rounded-4 shadow-sm p-3 p-md-4 mb-4 bg-white border-start border-primary border-4">
                         <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
                             <div>
                                 <span class="badge bg-primary bg-opacity-10 text-primary px-2.5 py-1 rounded-pill small fw-semibold mb-1">

@@ -139,7 +139,7 @@ $testimonialCount = !empty($testimonials) ? count($testimonials) : 0;
         </div>
 
         <!-- Write a Review on Google Action Button -->
-        <div class="hc-action-container text-center mt-4 pt-2">
+        <div class="d-flex justify-content-center align-items-center text-center mt-4 pt-2">
             <a href="https://share.google/YvijXnULif0EI5xRG" target="_blank" class="hc-btn-google" rel="noopener noreferrer">
                 <svg class="hc-btn-icon" width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path fill="#EA4335" d="M24 9.5c3.1 0 5.8 1.1 7.9 2.9l5.9-5.9C34.2 3.4 29.4 1 24 1 14.9 1 7.2 6.5 3.8 14.3l6.9 5.4C12.4 13.4 17.7 9.5 24 9.5z"></path>

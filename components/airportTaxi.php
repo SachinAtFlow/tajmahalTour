@@ -27,7 +27,7 @@
 
                     <!-- Main Headline -->
                     <h2 class="display-6 airport-taxi-title mb-3">
-                        Stress-Free Airport Pick &amp; Drop <br class="d-none d-md-block">
+                        Stress-Free Airport Pick &amp; Drop 
                         With <span class="text-primary">On-Time</span> Chauffeurs
                     </h2>
 
@@ -41,7 +41,7 @@
                         
                         <!-- Feature 1: On-Time Guarantee -->
                         <div class="col-sm-6">
-                            <div class="airport-feature-card h-100">
+                            <div class="airport-feature-card h-100 d-flex align-items-center">
                                 <div class="airport-icon-box">
                                     <i class="bi bi-clock-history"></i>
                                 </div>
@@ -54,7 +54,7 @@
 
                         <!-- Feature 2: Safe & Comfortable Rides -->
                         <div class="col-sm-6">
-                            <div class="airport-feature-card h-100">
+                            <div class="airport-feature-card h-100 d-flex align-items-center">
                                 <div class="airport-icon-box">
                                     <i class="bi bi-shield-check"></i>
                                 </div>
@@ -67,7 +67,7 @@
 
                         <!-- Feature 3: Terminal Meet & Greet -->
                         <div class="col-sm-6">
-                            <div class="airport-feature-card h-100">
+                            <div class="airport-feature-card h-100 d-flex align-items-center">
                                 <div class="airport-icon-box">
                                     <i class="bi bi-car-front-fill"></i>
                                 </div>
@@ -80,7 +80,7 @@
 
                         <!-- Feature 4: Convenient & Verified -->
                         <div class="col-sm-6">
-                            <div class="airport-feature-card h-100">
+                            <div class="airport-feature-card h-100 d-flex align-items-center">
                                 <div class="airport-icon-box">
                                     <i class="bi bi-person-check-fill"></i>
                                 </div>
@@ -93,14 +93,14 @@
 
                     </div>
 
-                    <!-- Call to Action Button with Cleanly Positioned Curved Doodle SVG -->
-                    <div class="position-relative d-inline-block pt-1 pb-4">
-                        <a href="<?= function_exists('theme_url') ? theme_url('airportservice/index.php') : 'airportservice/index.php'; ?>" class="btn btn-primary rounded-pill px-4 py-2.5 fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
+                    <!-- Call to Action Buttons -->
+                    <div class="position-relative d-flex flex-wrap align-items-center gap-3 pt-1 pb-4">
+                        <a href="<?= function_exists('theme_url') ? theme_url('airportservice/index.php') : 'airportservice/index.php'; ?>" class="btn btn-primary rounded-pill px-4 py-2.5 fw-semibold shadow-sm d-inline-flex align-items-center justify-content-center gap-2">
                             <span>Explore More</span>
                             <i class="bi bi-arrow-right"></i>
                         </a>
 
-                        <a href="https://wa.me/918800722606?text=Hi%2C%20I%20want%20to%20inquire%20about%20Airport%20Taxi%20Service" target="_blank" class="btn btn-success rounded-pill px-4 py-2.5 fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
+                        <a href="https://wa.me/918800722606?text=Hi%2C%20I%20want%20to%20inquire%20about%20Airport%20Taxi%20Service" target="_blank" class="btn btn-success rounded-pill px-4 py-2.5 fw-semibold shadow-sm d-inline-flex align-items-center justify-content-center gap-2">
                             <i class="bi bi-whatsapp"></i>
                             <span>WhatsApp Booking</span>
                         </a>

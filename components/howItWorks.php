@@ -85,21 +85,29 @@ $howItWorksSteps = [
             <?php endforeach; ?>
         </div>
 
-        <!-- Bottom Reassurance Banner -->
-        <div class="text-center mt-5 pt-2">
-            <div class="d-inline-flex flex-wrap align-items-center justify-content-center gap-3 bg-white px-4 py-2.5 rounded-pill border border-light-subtle shadow-xs">
-                <span class="text-dark small fw-semibold d-inline-flex align-items-center gap-1.5">
-                    <i class="bi bi-patch-check-fill text-primary"></i> 24x7 On-Call Support
-                </span>
-                <span class="text-secondary opacity-50 d-none d-sm-inline">&bull;</span>
-                <span class="text-dark small fw-semibold d-inline-flex align-items-center gap-1.5">
-                    <i class="bi bi-credit-card-2-front-fill text-success"></i> Multiple Payment Modes
-                </span>
-                <span class="text-secondary opacity-50 d-none d-sm-inline">&bull;</span>
-                <a href="#booking" class="text-primary small fw-bold text-decoration-none d-inline-flex align-items-center gap-1">
-                    <span>Reserve a Cab Now</span>
-                    <i class="bi bi-arrow-right"></i>
-                </a>
+        <!-- Bottom Reassurance Banner (Left: Support & Payments, Right: Reserve Button) -->
+        <div class="mt-5 pt-2">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 bg-white p-3 ps-md-4 pe-md-3 rounded-4 rounded-md-pill border border-light-subtle shadow-xs mx-auto" style="max-width: 860px;">
+                <!-- Left: 24x7 Support & Payment Modes -->
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-start gap-2 gap-sm-3">
+                    <span class="text-dark small fw-semibold d-inline-flex align-items-center gap-1.5">
+                        <i class="bi bi-patch-check-fill text-primary"></i>
+                        <span>24x7 On-Call Support</span>
+                    </span>
+                    <span class="text-secondary opacity-50 d-none d-sm-inline">&bull;</span>
+                    <span class="text-dark small fw-semibold d-inline-flex align-items-center gap-1.5">
+                        <i class="bi bi-credit-card-2-front-fill text-success"></i>
+                        <span>Multiple Payment Modes</span>
+                    </span>
+                </div>
+
+                <!-- Right: Reserve a Cab Button -->
+                <div class="flex-shrink-0">
+                    <a href="<?= isset($bookNowUrl) ? $bookNowUrl : (function_exists('theme_url') ? theme_url('index.php#booking') : '#booking'); ?>" class="btn btn-primary rounded-pill px-4 py-2 small fw-semibold d-inline-flex align-items-center gap-2 shadow-xs">
+                        <span>Reserve a Cab Now</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
 

@@ -12,7 +12,7 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tour-card">
                     <div class="position-relative">
-                        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=700&q=80" class="card-img-top" alt="Sunrise Taj Mahal Tour" style="height: 220px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=700&q=80" class="card-img-top object-fit-cover" alt="Sunrise Taj Mahal Tour" style="height: 220px;">
                         <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill fw-semibold">
                             Most Popular
                         </span>
@@ -42,7 +42,7 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tour-card">
                     <div class="position-relative">
-                        <img src="https://images.unsplash.com/photo-1598324789736-4861fadd3a4c?auto=format&fit=crop&w=700&q=80" class="card-img-top" alt="Same Day Agra Tour" style="height: 220px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1598324789736-4861fadd3a4c?auto=format&fit=crop&w=700&q=80" class="card-img-top object-fit-cover" alt="Same Day Agra Tour" style="height: 220px;">
                         <span class="badge bg-success position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill fw-semibold">
                             Best Value
                         </span>
@@ -72,7 +72,7 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tour-card">
                     <div class="position-relative">
-                        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=700&q=80" class="card-img-top" alt="Agra by Gatimaan Express" style="height: 220px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=700&q=80" class="card-img-top object-fit-cover" alt="Agra by Gatimaan Express" style="height: 220px;">
                         <span class="badge bg-info text-dark position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill fw-semibold">
                             Fast & Easy
                         </span>

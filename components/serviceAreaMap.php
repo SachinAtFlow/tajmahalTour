@@ -83,7 +83,7 @@ $exploreRegions = [
     <div class="region-marquee">
         <div class="region-marquee-track" id="regionMarqueeTrack">
             <!-- Group 1 -->
-            <div class="region-group">
+            <div class="d-flex align-items-center flex-shrink-0">
                 <?php foreach ($exploreRegions as $region): ?>
                     <?php $regLink = function_exists('theme_url') ? theme_url($region['link']) : $region['link']; ?>
                     <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card" title="Explore <?= htmlspecialchars($region['name']); ?>">
@@ -105,7 +105,7 @@ $exploreRegions = [
             </div>
 
             <!-- Group 2 (Duplicate for Seamless Infinite Loop) -->
-            <div class="region-group" aria-hidden="true">
+            <div class="d-flex align-items-center flex-shrink-0" aria-hidden="true">
                 <?php foreach ($exploreRegions as $region): ?>
                     <?php $regLink = function_exists('theme_url') ? theme_url($region['link']) : $region['link']; ?>
                     <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card" tabindex="-1" title="Explore <?= htmlspecialchars($region['name']); ?>">

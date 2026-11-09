@@ -12,10 +12,6 @@ require_once 'includes/header.php';
     <!-- 1. Theme-Consistent Hero Banner with Breadcrumbs -->
     <section id="payment-page-banner" class="position-relative text-white text-center d-flex align-items-center justify-content-center py-5" style="background: linear-gradient(rgba(15, 23, 42, 0.68), rgba(15, 23, 42, 0.76)), url('assets/images/uttarPradesh/tajmahal.avif') center/cover no-repeat; min-height: 280px;">
         <div class="container position-relative z-2 py-4">
-            <span class="badge bg-primary bg-opacity-25 text-white border border-light border-opacity-25 px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-1">
-                <i class="bi bi-shield-check"></i>
-                <span>100% SECURE &amp; VERIFIED</span>
-            </span>
             <h1 class="display-4 fw-bold text-white mb-2">Pay Online</h1>
             <p class="text-white-50 mx-auto mb-3" style="max-width: 620px;">
                 Transparent, flexible, and instant online payment options for your North India tour &amp; car rental bookings.
@@ -38,24 +34,24 @@ require_once 'includes/header.php';
 
         <!-- 2. Milestone Stepper (Visual Progress Tracker) -->
         <div class="bg-white rounded-4 border border-light-subtle p-3 p-md-4 shadow-sm mb-4 mb-lg-5">
-            <div class="stepper-track">
+            <div class="stepper-track position-relative d-flex justify-content-between align-items-center">
                 <!-- Step 1: Advance (Active) -->
-                <div class="stepper-step active">
-                    <div class="stepper-node">1</div>
+                <div class="stepper-step active position-relative z-2 d-flex flex-column align-items-center text-center">
+                    <div class="stepper-node rounded-circle d-flex align-items-center justify-content-center fw-bold">1</div>
                     <div class="fw-bold text-dark mt-2 small">25% Advance</div>
                     <div class="text-secondary small d-none d-sm-block">Payable Now to Confirm</div>
                 </div>
 
                 <!-- Step 2: On Arrival -->
-                <div class="stepper-step">
-                    <div class="stepper-node">2</div>
+                <div class="stepper-step position-relative z-2 d-flex flex-column align-items-center text-center">
+                    <div class="stepper-node rounded-circle d-flex align-items-center justify-content-center fw-bold">2</div>
                     <div class="fw-bold text-dark mt-2 small">50% On Arrival</div>
                     <div class="text-secondary small d-none d-sm-block">At Pickup in Delhi/Agra</div>
                 </div>
 
                 <!-- Step 3: Completion -->
-                <div class="stepper-step">
-                    <div class="stepper-node">3</div>
+                <div class="stepper-step position-relative z-2 d-flex flex-column align-items-center text-center">
+                    <div class="stepper-node rounded-circle d-flex align-items-center justify-content-center fw-bold">3</div>
                     <div class="fw-bold text-dark mt-2 small">25% Tour End</div>
                     <div class="text-secondary small d-none d-sm-block">Before Final Drop-off</div>
                 </div>

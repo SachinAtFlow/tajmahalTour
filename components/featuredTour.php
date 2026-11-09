@@ -122,26 +122,20 @@
                     <p class="text-secondary small mt-1 mb-0">Handpicked guided journeys designed for comfort, luxury, and authentic cultural exploration.</p>
                 </div>
 
-                <!-- Filter Tabs (Arranged in 2 centered rows matching image) -->
-                <div class="d-flex flex-column align-items-center gap-2 mt-3 w-100" id="tour-filter-tabs">
-                    <!-- Row 1: Top, Delhi, Uttar Pradesh, Rajasthan, Himachal, Uttarakhand -->
-                    <div class="d-flex flex-wrap justify-content-center align-items-center gap-2">
-                        <button type="button" data-category="top" class="tour-filter-btn active">Top</button>
-                        <button type="button" data-category="delhi" class="tour-filter-btn">Delhi</button>
-                        <button type="button" data-category="uttar-pradesh" class="tour-filter-btn">Uttar Pradesh</button>
-                        <button type="button" data-category="rajasthan" class="tour-filter-btn">Rajasthan</button>
-                        <button type="button" data-category="himachal" class="tour-filter-btn">Himachal</button>
-                        <button type="button" data-category="uttarakhand" class="tour-filter-btn">Uttarakhand</button>
-                    </div>
-                    <!-- Row 2: Punjab, Gujarat, Nepal, Spiritual, Wildlife, Weekend -->
-                    <div class="d-flex flex-wrap justify-content-center align-items-center gap-2">
-                        <button type="button" data-category="punjab" class="tour-filter-btn">Punjab</button>
-                        <button type="button" data-category="gujarat" class="tour-filter-btn">Gujarat</button>
-                        <button type="button" data-category="nepal" class="tour-filter-btn">Nepal</button>
-                        <button type="button" data-category="spiritual" class="tour-filter-btn">Spiritual</button>
-                        <button type="button" data-category="wildlife" class="tour-filter-btn">Wildlife</button>
-                        <button type="button" data-category="weekend" class="tour-filter-btn">Weekend</button>
-                    </div>
+                <!-- Filter Tabs (Left-aligned) -->
+                <div class="d-flex flex-wrap align-items-center justify-content-start gap-2 mt-3" id="tour-filter-tabs">
+                    <button type="button" data-category="top" class="tour-filter-btn active">Top</button>
+                    <button type="button" data-category="delhi" class="tour-filter-btn">Delhi</button>
+                    <button type="button" data-category="uttar-pradesh" class="tour-filter-btn">Uttar Pradesh</button>
+                    <button type="button" data-category="rajasthan" class="tour-filter-btn">Rajasthan</button>
+                    <button type="button" data-category="himachal" class="tour-filter-btn">Himachal</button>
+                    <button type="button" data-category="uttarakhand" class="tour-filter-btn">Uttarakhand</button>
+                    <button type="button" data-category="punjab" class="tour-filter-btn">Punjab</button>
+                    <button type="button" data-category="gujarat" class="tour-filter-btn">Gujarat</button>
+                    <button type="button" data-category="nepal" class="tour-filter-btn">Nepal</button>
+                    <button type="button" data-category="spiritual" class="tour-filter-btn">Spiritual</button>
+                    <button type="button" data-category="wildlife" class="tour-filter-btn">Wildlife</button>
+                    <button type="button" data-category="weekend" class="tour-filter-btn">Weekend</button>
                 </div>
             </div>
 

@@ -22,10 +22,6 @@
                     <li class="breadcrumb-item active text-white" aria-current="page">Tour Packages</li>
                 </ol>
             </nav>
-            <span class="badge bg-primary bg-opacity-25 text-white border border-light border-opacity-25 px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-2 mt-4">
-                <i class="bi bi-compass-fill"></i>
-                <span>HANDPICKED HOLIDAY EXPERIENCES</span>
-            </span>
         </div>
 
         <!-- Banner Title & Description -->
@@ -88,22 +84,22 @@
 
         <!-- Trust Badges Strip -->
         <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 gap-md-4 mt-4 pt-2 text-white-50 small">
-            <span class="d-inline-flex align-items-center gap-1.5">
+            <span class="d-inline-flex align-items-center gap-2">
                 <i class="bi bi-star-fill text-warning"></i>
                 <strong class="text-white">4.9/5</strong> Rating (1,200+ Reviews)
             </span>
             <span class="opacity-50 d-none d-sm-inline">&bull;</span>
-            <span class="d-inline-flex align-items-center gap-1.5">
+            <span class="d-inline-flex align-items-center gap-2">
                 <i class="bi bi-shield-check text-success"></i>
                 <span>₹0 Advance Deposit</span>
             </span>
             <span class="opacity-50 d-none d-sm-inline">&bull;</span>
-            <span class="d-inline-flex align-items-center gap-1.5">
+            <span class="d-inline-flex align-items-center gap-2">
                 <i class="bi bi-person-check-fill text-info"></i>
                 <span>Verified Chauffeur Included</span>
             </span>
             <span class="opacity-50 d-none d-md-inline">&bull;</span>
-            <span class="d-inline-flex align-items-center gap-1.5">
+            <span class="d-inline-flex align-items-center gap-2">
                 <i class="bi bi-arrow-repeat text-primary"></i>
                 <span>Free Date Rescheduling</span>
             </span>

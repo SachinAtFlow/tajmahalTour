@@ -35,32 +35,34 @@
 
             <div class="position-relative z-1">
                 
-                <!-- Pill Badge -->
-                <span class="badge bg-white text-primary border border-primary border-opacity-25 px-3 py-2 rounded-pill fw-semibold mb-3 d-inline-flex align-items-center gap-1.5 shadow-xs">
-                    <span>START YOUR UNFORGETTABLE JOURNEY</span>
-                </span>
+                <!-- Pill Badge (Centered on all viewports, especially mobile) -->
+                <div class="d-flex justify-content-center mb-3">
+                    <span class="badge bg-white text-primary border border-primary border-opacity-25 px-3 py-1.5 px-md-3 py-md-2 rounded-pill fw-semibold text-center d-inline-flex align-items-center justify-content-center gap-1.5 shadow-xs small">
+                        <span>EXPLORE NORTH INDIA & BEYOND</span>
+                    </span>
+                </div>
 
-                <!-- Heading -->
-                <h2 class="display-5 fw-bold text-dark mb-3">
-                    Ready to Experience the Wonder of the Taj Mahal?
+                <!-- Heading (Diverse North India destinations) -->
+                <h2 class="display-6 display-md-5 fw-bold text-dark mb-3">
+                    Ready to Explore North India's Iconic Destinations?
                 </h2>
 
-                <!-- Subtitle -->
-                <p class="text-secondary mx-auto mb-4 fs-6" style="max-width: 660px; line-height: 1.6;">
-                    Book your private guided sunrise tour or premium chauffeur service today. Enjoy VIP skip-the-line monument entries, certified local historians, and 100% transparent pricing.
+                <!-- Subtitle (Covering North India regions: Delhi, Rajasthan, Agra, Himalayas, Gujarat & Nepal) -->
+                <p class="text-secondary mx-auto mb-4 fs-6" style="max-width: 680px; line-height: 1.6;">
+                    From Delhi NCR and the royal heritage of Rajasthan to the Taj Mahal, holy ghats of Varanasi, and scenic Himalayan retreats—book premium chauffeured cabs and customized tour packages with verified drivers and 24/7 on-road support.
                 </p>
 
-                <!-- Action CTA Buttons -->
-                <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 mb-4">
-                    <a href="<?= function_exists('theme_url') ? theme_url('index.php#booking') : 'index.php#booking'; ?>" class="btn btn-primary rounded-pill px-4 py-3 fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
-                        <span>Book Your Tour Now</span>
+                <!-- Action CTA Buttons (Responsive sizing: compact on phone screens) -->
+                <div class="d-flex flex-wrap justify-content-center align-items-center gap-2 gap-md-3 mb-4">
+                    <a href="<?= function_exists('theme_url') ? theme_url('index.php#booking') : 'index.php#booking'; ?>" class="btn btn-primary rounded-pill px-3 py-2 px-md-4 py-md-3 small fs-md-6 fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
+                        <span>Book Your Journey</span>
                         <i class="bi bi-arrow-right"></i>
                     </a>
                     
                     <a 
-                        href="https://wa.me/918800722606?text=Hello%20TajMahalTour,%20I%20want%20to%20plan%20my%20Agra%20trip." 
+                        href="https://wa.me/918800722606?text=Hello%20TajMahalTour,%20I%20want%20to%20plan%20my%20North%20India%20trip%20and%20cab%20service." 
                         target="_blank" 
-                        class="btn btn-light border border-primary border-opacity-25 text-dark rounded-pill px-4 py-3 fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
+                        class="btn btn-light border border-primary border-opacity-25 text-dark rounded-pill px-3 py-2 px-md-4 py-md-3 small fs-md-6 fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
                     >
                         <i class="bi bi-whatsapp text-success"></i>
                         <span>Talk to Travel Expert</span>
@@ -71,7 +73,7 @@
                 <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 gap-md-4 text-secondary small pt-3 border-top border-primary border-opacity-15" style="max-width: 620px; margin: 0 auto;">
                     <div class="d-flex align-items-center gap-2">
                         <i class="bi bi-patch-check-fill text-primary"></i>
-                        <span class="fw-medium text-dark">Free 24h Cancellation</span>
+                        <span class="fw-medium text-dark">Multi-City Coverage</span>
                     </div>
                     <div class="d-flex align-items-center gap-2">
                         <i class="bi bi-patch-check-fill text-primary"></i>

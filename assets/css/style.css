@@ -14,6 +14,9 @@
     --gallery-text: #171513;
     --gallery-text-muted: #6e675f;
     --gallery-card-border: #141414;
+    --gallery-item-height-mobile: 115px;
+    --gallery-item-height-sm: 155px;
+    --gallery-item-height-base: 190px;
     
     /* Brand Colors */
     --primary-color: #3B71FE;
@@ -32,6 +35,10 @@
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+
+    /* Fast Direct Contact Button Font Sizes */
+    --fs-fast-contact-mobile: 0.78rem;
+    --fs-fast-contact-desktop: 0.875rem;
 
     --heading-color: #232323;
     --secondary-text: #6c757d;
@@ -99,18 +106,6 @@ html, body {
     min-height: 65vh;
 }
 
-/* Search Form Responsive Dividers */
-@media (min-width: 992px) {
-    .border-end-lg {
-        border-right: 1px solid var(--border-light) !important;
-    }
-}
-@media (max-width: 991.98px) {
-    .border-bottom-md {
-        border-bottom: 1px solid var(--border-light) !important;
-    }
-}
-
 /* Reusable Interactive Utilities */
 .cursor-pointer {
     cursor: pointer;
@@ -125,11 +120,8 @@ html, body {
     border-color: rgba(59, 113, 254, 0.35) !important;
 }
 
-.line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+.text-orange-500 {
+    color: var(--accent-orange) !important;
 }
 
 /* Spacing for Section Directly Following Overlapping Hero Search Bar */
@@ -349,7 +341,9 @@ html, body {
     transition: color 0.2s ease;
 }
 
-.dark-tour-title a:hover {
+.dark-tour-title a:hover,
+.dark-tour-card:hover .dark-tour-title,
+.dark-tour-card:hover .dark-tour-title a {
     color: #93c5fd;
 }
 
@@ -417,7 +411,8 @@ html, body {
     transition: all 0.25s ease;
 }
 
-.btn-dark-tour-cta:hover {
+.btn-dark-tour-cta:hover,
+.dark-tour-card:hover .btn-dark-tour-cta {
     background-color: #f8fafc !important;
     color: #000000 !important;
     transform: translateY(-2px);
@@ -484,25 +479,6 @@ html, body {
     }
 }
 
-.btn-about-orange {
-    background-color: #ff6b35;
-    color: #ffffff !important;
-    font-weight: 600;
-    padding: 12px 28px;
-    border-radius: 50px;
-    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.28);
-    transition: all 0.25s ease;
-    border: none;
-    text-decoration: none;
-}
-
-.btn-about-orange:hover {
-    background-color: #e85a25;
-    color: #ffffff !important;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(255, 107, 53, 0.38);
-}
-
 .about-counter-num {
     font-size: 2.8rem;
     line-height: 1;
@@ -512,6 +488,17 @@ html, body {
 @media (min-width: 992px) {
     .about-counter-num {
         font-size: 3.4rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .about-counter-num {
+        font-size: 1.65rem;
+    }
+    .about-counter-label {
+        font-size: 0.68rem !important;
+        letter-spacing: 0.02em !important;
+        line-height: 1.2;
     }
 }
 
@@ -582,12 +569,6 @@ html, body {
 }
 
 /* Google Review Action Button (Testimonial Section) */
-.hc-action-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .hc-btn-google {
     display: inline-flex;
     align-items: center;
@@ -840,6 +821,13 @@ html, body {
     padding: 3.5rem 2rem;
 }
 
+@media (max-width: 575.98px) {
+    .cta-banner-card {
+        padding: 2.25rem 1.25rem;
+        border-radius: 20px;
+    }
+}
+
 @media (min-width: 992px) {
     .cta-banner-card {
         padding: 4.5rem 3.5rem;
@@ -947,12 +935,6 @@ html, body {
     width: max-content;
     will-change: transform;
     animation: regionMarqueeScroll 36s linear infinite;
-}
-
-.region-group {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
 }
 
 .region-marquee:hover .region-marquee-track {
@@ -1175,9 +1157,6 @@ html, body {
 /* Stepper Track Connecting Line & Node */
 .stepper-track {
     position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .stepper-track::before {
@@ -1194,10 +1173,6 @@ html, body {
 .stepper-step {
     position: relative;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
 
 .stepper-node {
@@ -1514,8 +1489,6 @@ html, body {
     padding: 14px 18px;
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    display: flex;
-    align-items: center;
     gap: 14px;
 }
 
@@ -1550,17 +1523,6 @@ html, body {
     position: relative;
     max-width: 560px;
     margin: 0 auto;
-}
-
-/* Flight Path SVG Line - Anchored directly to visual container */
-.airport-flight-path {
-    position: absolute;
-    top: -42px;
-    right: -25px;
-    width: 220px;
-    height: 85px;
-    pointer-events: none;
-    z-index: 4;
 }
 
 /* Background Backdrops (Theme-Synchronized) */
@@ -1682,9 +1644,6 @@ html, body {
     .airport-image-card img {
         height: 320px;
     }
-    .airport-flight-path {
-        display: none;
-    }
 }
 
 @media (max-width: 575px) {
@@ -1697,42 +1656,17 @@ html, body {
 }
 
 /* ==========================================================================
-   RELATED TOUR PACKAGES CARDS (Clean Responsive Grid)
-   ========================================================================== */
-.related-tour-card {
-    border: 1px solid rgba(226, 232, 240, 0.85) !important;
-    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
-    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease !important;
-}
-
-.related-tour-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 32px rgba(59, 113, 254, 0.12) !important;
-    border-color: rgba(59, 113, 254, 0.3) !important;
-}
-
-.related-tour-card .related-tour-img {
-    transition: transform 0.5s ease;
-}
-
-.related-tour-card:hover .related-tour-img {
-    transform: scale(1.05);
-}
-
-.line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* ==========================================================================
    JUSTIFIED LINEAR TOUR GALLERY WALL & LIGHTBOX MODAL
    ========================================================================== */
 .gallery-justified-container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+}
+@media (max-width: 575.98px) {
+    .gallery-justified-container {
+        gap: 6px;
+    }
 }
 @media (min-width: 640px) {
     .gallery-justified-container {
@@ -1746,9 +1680,9 @@ html, body {
 }
 
 .gallery-justified-item {
-    height: 190px;
+    height: var(--gallery-item-height-base, 190px);
     flex-grow: var(--aspect-ratio, 1.33);
-    flex-basis: calc(190px * var(--aspect-ratio, 1.33));
+    flex-basis: calc(var(--gallery-item-height-base, 190px) * var(--aspect-ratio, 1.33));
     position: relative;
     overflow: hidden;
     border-radius: 14px;
@@ -1756,6 +1690,20 @@ html, body {
     cursor: pointer;
     transform: translateZ(0);
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+}
+@media (max-width: 575.98px) {
+    .gallery-justified-item {
+        height: var(--gallery-item-height-mobile, 115px);
+        flex-basis: calc(var(--gallery-item-height-mobile, 115px) * var(--aspect-ratio, 1.33));
+        border-radius: 8px;
+    }
+}
+@media (min-width: 576px) and (max-width: 639.98px) {
+    .gallery-justified-item {
+        height: var(--gallery-item-height-sm, 155px);
+        flex-basis: calc(var(--gallery-item-height-sm, 155px) * var(--aspect-ratio, 1.33));
+        border-radius: 12px;
+    }
 }
 @media (min-width: 640px) {
     .gallery-justified-item {
@@ -1804,6 +1752,11 @@ html, body {
     height: 0;
     visibility: hidden;
 }
+@media (max-width: 575.98px) {
+    .gallery-justified-container::after {
+        min-width: 60px;
+    }
+}
 
 /* Hover Overlay & Pills */
 .gallery-hover-overlay {
@@ -1817,6 +1770,11 @@ html, body {
     justify-content: space-between;
     padding: 14px;
     pointer-events: none;
+}
+@media (max-width: 575.98px) {
+    .gallery-hover-overlay {
+        padding: 6px;
+    }
 }
 
 .gallery-justified-item:hover .gallery-hover-overlay {
@@ -1837,6 +1795,13 @@ html, body {
     transform: scale(0.85);
     transition: transform 0.25s ease;
 }
+@media (max-width: 575.98px) {
+    .gallery-zoom-pill {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+    }
+}
 
 .gallery-justified-item:hover .gallery-zoom-pill {
     transform: scale(1);
@@ -1847,6 +1812,11 @@ html, body {
     font-weight: 600;
     color: #ffffff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+@media (max-width: 575.98px) {
+    .gallery-title-pill {
+        font-size: 10px;
+    }
 }
 
 /* Lightbox Modal */
@@ -2027,13 +1997,6 @@ html, body {
     }
 }
 
-.memories-group {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    padding-right: 24px;
-}
-
 .memory-card {
     width: 220px;
     height: 220px;
@@ -2144,13 +2107,6 @@ html, body {
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .memories-marquee-track {
-        animation: none;
-    }
-}
-}
-
 /* ==========================================================================
    Detailed Tour Itinerary Modern Timeline UI (Consistent Spacing & Rhythm)
    ========================================================================== */
@@ -2256,33 +2212,19 @@ html, body {
 }
 /* Points List & Item */
 .itinerary-points-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
     gap: 10px;
 }
 .itinerary-point-item {
-    display: flex;
-    align-items: flex-start;
     gap: 12px;
-    margin: 0;
-    padding: 0;
 }
 .itinerary-point-bullet {
     width: 22px;
     height: 22px;
     min-width: 22px;
-    border-radius: 50%;
     background: rgba(59, 113, 254, 0.1);
     color: var(--primary-color);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     font-size: 11px;
     margin-top: 2px;
-    flex-shrink: 0;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 .itinerary-day-box:hover .itinerary-point-bullet {
@@ -2293,7 +2235,6 @@ html, body {
     color: #334155;
     font-size: 0.925rem;
     line-height: 1.6;
-    flex: 1;
 }
 .itinerary-point-text strong {
     color: #0f172a !important;
@@ -2391,6 +2332,7 @@ html, body {
 /* ==========================================================================
    Multi-Line Truncation Helpers
    ========================================================================== */
+.line-clamp-1,
 .text-line-clamp-1 {
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -2398,6 +2340,7 @@ html, body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.line-clamp-2,
 .text-line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -2405,6 +2348,7 @@ html, body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.line-clamp-3,
 .text-line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -2581,5 +2525,32 @@ html, body {
     transform: rotate(45deg);
 }
 
+.hover-white {
+    transition: color 0.2s ease;
+}
+.hover-white:hover {
+    color: #ffffff !important;
+}
+
+/* Fast Direct Contact Buttons (Contact Form) */
+.fast-contact-btn {
+    font-size: var(--fs-fast-contact-desktop);
+}
+@media (max-width: 575.98px) {
+    .fast-contact-btn {
+        font-size: var(--fs-fast-contact-mobile) !important;
+        padding: 0.35rem 0.65rem !important;
+    }
+}
 
 
+/* Fast Direct Contact Buttons (Contact Form) */
+.fast-contact-btn {
+    font-size: var(--fs-fast-contact-desktop);
+}
+@media (max-width: 575.98px) {
+    .fast-contact-btn {
+        font-size: var(--fs-fast-contact-mobile) !important;
+        padding: 0.35rem 0.65rem !important;
+    }
+}

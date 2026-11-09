@@ -32,7 +32,7 @@
                             <form id="home-booking-form" action="#featured-tours" class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between gap-2 m-0" method="get">
                                     
                                 <!-- Location Field -->
-                                <div class="dropdown flex-grow-1 border-end-lg border-bottom-md px-3 py-2">
+                                <div class="dropdown flex-grow-1 border-bottom border-lg-bottom-0 border-lg-end border-light-subtle px-3 py-2">
                                     <div id="dropdown-destination-hotel" role="button" class="d-flex align-items-center dropdown-toggle text-decoration-none cursor-pointer" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                         <i class="bi bi-geo-alt-fill text-primary fs-3 me-3"></i>
                                         <div class="flex-grow-1">
@@ -56,7 +56,7 @@
                                 </div>
 
                                 <!-- Check In / Check Out Field -->
-                                <div class="d-flex align-items-center flex-grow-1 border-end-lg border-bottom-md px-3 py-2">
+                                <div class="d-flex align-items-center flex-grow-1 border-bottom border-lg-bottom-0 border-lg-end border-light-subtle px-3 py-2">
                                     <!-- Checkin -->
                                     <div class="d-flex align-items-center cursor-pointer flex-grow-1" onclick="document.getElementById('nativeCheckinDate').showPicker ? document.getElementById('nativeCheckinDate').showPicker() : document.getElementById('nativeCheckinDate').focus()">
                                         <i class="bi bi-calendar-check-fill text-primary fs-3 me-3"></i>

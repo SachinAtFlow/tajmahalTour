@@ -99,8 +99,8 @@ $localCars = [
                                 <img 
                                     src="<?php echo htmlspecialchars(function_exists('theme_url') ? theme_url($car['image']) : $car['image']); ?>" 
                                     alt="<?php echo htmlspecialchars(!empty($car['title']) ? $car['title'] . ' - City Car Rental' : 'Sightseeing Car'); ?>" 
-                                    class="img-fluid"
-                                    style="max-height: 125px; width: auto; object-fit: contain;"
+                                    class="img-fluid object-fit-contain"
+                                    style="max-height: 125px; width: auto;"
                                     loading="lazy"
                                 >
                             </div>

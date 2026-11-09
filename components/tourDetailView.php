@@ -344,13 +344,13 @@ if (!function_exists('parseTourItineraryStep')) {
                                         </div>
 
                                         <!-- Day Points / Activities -->
-                                        <ul class="itinerary-points-list">
+                                        <ul class="itinerary-points-list list-unstyled m-0 p-0 d-flex flex-column">
                                             <?php foreach ($step['points'] as $pt): ?>
-                                                <li class="itinerary-point-item">
-                                                    <span class="itinerary-point-bullet">
+                                                <li class="itinerary-point-item d-flex align-items-start m-0 p-0">
+                                                    <span class="itinerary-point-bullet rounded-circle d-inline-flex align-items-center justify-content-center flex-shrink-0">
                                                         <i class="bi bi-geo-alt-fill"></i>
                                                     </span>
-                                                    <div class="itinerary-point-text">
+                                                    <div class="itinerary-point-text flex-grow-1">
                                                         <?= $pt; ?>
                                                     </div>
                                                 </li>

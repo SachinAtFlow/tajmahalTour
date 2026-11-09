@@ -17,7 +17,7 @@ if (!function_exists('theme_url')) {
             <!-- About Us Column -->
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white fw-bold mb-3 d-flex align-items-center">
-                    <i class="bi bi-compass text-warning me-2"></i> TajMahal<span class="text-warning">Tour</span>
+                    <i class="bi bi-compass text-primary me-2"></i> TajMahal<span class="text-primary">Tour</span>
                 </h5>
                 <p class="small text-white-50">
                     We offer premier guided tours to the world-renowned Taj Mahal and heritage sites in Agra. Enjoy private AC transport, expert local historians, skip-the-line monument entries, and memorable experiences.
@@ -34,13 +34,13 @@ if (!function_exists('theme_url')) {
             <div class="col-lg-2 col-md-6">
                 <h6 class="text-white fw-semibold mb-3">Quick Links</h6>
                 <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
-                    <li><a href="<?= theme_url('index.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Home</a></li>
-                    <li><a href="<?= theme_url('aboutUs.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> About Us</a></li>
-                    <li><a href="<?= theme_url('carRentalLocation.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Car Rental</a></li>
-                    <li><a href="<?= theme_url('tourPackage.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Tour Packages</a></li>
-                    <li><a href="<?= theme_url('gallery.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Tour & Fleet Gallery</a></li>
-                    <li><a href="<?= theme_url('blog/index.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Travel Blog</a></li>
-                    <li><a href="<?= theme_url('contactUs.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Contact Us</a></li>
+                    <li><a href="<?= theme_url('index.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-primary small me-1"></i> Home</a></li>
+                    <li><a href="<?= theme_url('aboutUs.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-primary small me-1"></i> About Us</a></li>
+                    <li><a href="<?= theme_url('carRentalLocation.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-primary small me-1"></i> Car Rental</a></li>
+                    <li><a href="<?= theme_url('tourPackage.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-primary small me-1"></i> Tour Packages</a></li>
+                    <li><a href="<?= theme_url('gallery.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-primary small me-1"></i> Tour & Fleet Gallery</a></li>
+                    <li><a href="<?= theme_url('blog/index.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-primary small me-1"></i> Travel Blog</a></li>
+                    <li><a href="<?= theme_url('contactUs.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-primary small me-1"></i> Contact Us</a></li>
                 </ul>
             </div>
 
@@ -48,11 +48,11 @@ if (!function_exists('theme_url')) {
             <div class="col-lg-3 col-md-6">
                 <h6 class="text-white fw-semibold mb-3">Popular Tours</h6>
                 <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
-                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Sunrise Taj Mahal Tour</a></li>
-                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Same Day Agra Tour by Car</a></li>
-                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Agra Tour by Gatimaan Express</a></li>
-                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Agra Fort & Mehtab Bagh Tour</a></li>
-                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-warning me-1"></i> Golden Triangle 3 Days Tour</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-primary me-1"></i> Sunrise Taj Mahal Tour</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-primary me-1"></i> Same Day Agra Tour by Car</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-primary me-1"></i> Agra Tour by Gatimaan Express</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-primary me-1"></i> Agra Fort & Mehtab Bagh Tour</a></li>
+                    <li><a href="#featured-tours" class="text-white-50 text-decoration-none"><i class="bi bi-check2 text-primary me-1"></i> Golden Triangle 3 Days Tour</a></li>
                 </ul>
             </div>
 
@@ -61,19 +61,19 @@ if (!function_exists('theme_url')) {
                 <h6 class="text-white fw-semibold mb-3">Contact Agra Office</h6>
                 <ul class="list-unstyled small text-white-50 d-flex flex-column gap-2 mb-0">
                     <li class="d-flex align-items-start">
-                        <i class="bi bi-geo-alt-fill text-warning me-2 mt-1"></i>
+                        <i class="bi bi-geo-alt-fill text-primary me-2 mt-1"></i>
                         <span>Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India</span>
                     </li>
                     <li class="d-flex align-items-center">
-                        <i class="bi bi-telephone-fill text-warning me-2"></i>
+                        <i class="bi bi-telephone-fill text-primary me-2"></i>
                         <span>+91 98765 43210</span>
                     </li>
                     <li class="d-flex align-items-center">
-                        <i class="bi bi-envelope-fill text-warning me-2"></i>
+                        <i class="bi bi-envelope-fill text-primary me-2"></i>
                         <span>info@tajmahaltour.com</span>
                     </li>
                     <li class="d-flex align-items-center">
-                        <i class="bi bi-shield-check text-warning me-2"></i>
+                        <i class="bi bi-shield-check text-primary me-2"></i>
                         <span>Govt. Approved Tour Operators</span>
                     </li>
                 </ul>
@@ -88,8 +88,9 @@ if (!function_exists('theme_url')) {
                 &copy; <?php echo date('Y'); ?> <strong class="text-white">TajMahalTour</strong>. All Rights Reserved.
             </div>
             <div class="col-md-6 text-center text-md-end">
+                <span class="text-white-50 me-3">Design and Developed by <a href="https://www.techgosh.com/" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none hover-white">Tech Gosh</a></span>
                 <a href="privacy-policy.php" class="text-white-50 text-decoration-none me-3 hover-white">Privacy Policy</a>
-                <a href="terms-conditions.php" class="text-white-50 text-decoration-none me-3 hover-white">Terms &amp; Conditions</a>
+                <a href="terms-conditions.php" class="text-white-50 text-decoration-none hover-white">Terms &amp; Conditions</a>
             </div>
         </div>
     </div>

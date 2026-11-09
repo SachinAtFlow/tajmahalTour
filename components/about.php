@@ -100,34 +100,34 @@
 
             </div>
 
-            <!-- Bottom Counter Statistics Row (3 Fields per User Request) -->
-            <div class="row pt-5 mt-5 border-top border-light-subtle text-center g-4 align-items-center justify-content-around position-relative z-1">
+            <!-- Bottom Counter Statistics Row (Horizontally Arranged Across All Screens) -->
+            <div class="row pt-4 pt-md-5 mt-4 mt-md-5 border-top border-light-subtle text-center g-2 g-sm-4 align-items-start justify-content-around position-relative z-1">
                 
                 <!-- Field 1: 12+ Years Experience -->
-                <div class="col-12 col-sm-4 text-center">
+                <div class="col-4 text-center px-1 px-sm-3">
                     <div class="d-inline-flex align-items-baseline justify-content-center">
                         <span class="about-counter-num fw-bold text-dark" data-target="12">0</span>
-                        <span class="about-counter-num fw-bold text-orange-500 ms-1">+</span>
+                        <span class="about-counter-num fw-bold text-dark ms-0.5 ms-sm-1">+</span>
                     </div>
-                    <div class="text-secondary small fw-medium mt-1 text-uppercase" style="letter-spacing: 0.04em;">Years Experience</div>
+                    <div class="text-secondary small fw-medium mt-1 text-uppercase about-counter-label" style="letter-spacing: 0.04em;">Years Experience</div>
                 </div>
 
                 <!-- Field 2: 500+ Tours Completed -->
-                <div class="col-12 col-sm-4 text-center">
+                <div class="col-4 text-center px-1 px-sm-3">
                     <div class="d-inline-flex align-items-baseline justify-content-center">
                         <span class="about-counter-num fw-bold text-dark" data-target="500">0</span>
-                        <span class="about-counter-num fw-bold text-orange-500 ms-1">+</span>
+                        <span class="about-counter-num fw-bold text-dark ms-0.5 ms-sm-1">+</span>
                     </div>
-                    <div class="text-secondary small fw-medium mt-1 text-uppercase" style="letter-spacing: 0.04em;">Tours Completed</div>
+                    <div class="text-secondary small fw-medium mt-1 text-uppercase about-counter-label" style="letter-spacing: 0.04em;">Tours Completed</div>
                 </div>
 
                 <!-- Field 3: 10+ Fleet Vehicles -->
-                <div class="col-12 col-sm-4 text-center">
+                <div class="col-4 text-center px-1 px-sm-3">
                     <div class="d-inline-flex align-items-baseline justify-content-center">
                         <span class="about-counter-num fw-bold text-dark" data-target="10">0</span>
-                        <span class="about-counter-num fw-bold text-orange-500 ms-1">+</span>
+                        <span class="about-counter-num fw-bold text-dark ms-0.5 ms-sm-1">+</span>
                     </div>
-                    <div class="text-secondary small fw-medium mt-1 text-uppercase" style="letter-spacing: 0.04em;">Fleet Vehicles</div>
+                    <div class="text-secondary small fw-medium mt-1 text-uppercase about-counter-label" style="letter-spacing: 0.04em;">Fleet Vehicles</div>
                 </div>
 
             </div>

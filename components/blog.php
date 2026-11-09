@@ -20,7 +20,7 @@ $homeBlogPosts = !empty($blogPosts) ? array_slice($blogPosts, 0, $maxBlogPosts) 
         <!-- Section Header -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 mb-lg-5 gap-3">
             <div>
-                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-semibold mb-2 d-inline-flex align-items-center gap-1.5">
+                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-semibold mb-2 d-inline-flex align-items-center gap-2">
                     <i class="bi bi-journal-richtext"></i>
                     <span>TRAVEL STORIES &amp; GUIDES</span>
                 </span>
@@ -90,11 +90,11 @@ $homeBlogPosts = !empty($blogPosts) ? array_slice($blogPosts, 0, $maxBlogPosts) 
                                 
                                 <!-- Meta Row: Date & Author -->
                                 <div class="theme-blog-meta">
-                                    <span class="d-inline-flex align-items-center gap-1.5">
+                                    <span class="d-inline-flex align-items-center gap-1">
                                         <i class="bi bi-calendar3 text-primary opacity-75"></i>
                                         <span><?= $date; ?></span>
                                     </span>
-                                    <span class="d-inline-flex align-items-center gap-1.5 ms-auto">
+                                    <span class="d-inline-flex align-items-center gap-1 ms-auto">
                                         <i class="bi bi-person text-secondary opacity-75"></i>
                                         <span><?= $author; ?></span>
                                     </span>
