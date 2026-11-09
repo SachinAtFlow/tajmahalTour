@@ -56,32 +56,6 @@ $proTips = $post['pro_tips'] ?? [
 
 <main id="single-blog-page">
 
-    <!-- 1. Breadcrumbs Navigation -->
-    <div class="bg-light border-bottom py-3" id="single-blog-breadcrumb">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0 small">
-                    <li class="breadcrumb-item">
-                        <a href="<?= theme_url('index.php'); ?>" class="text-decoration-none text-secondary">
-                            <i class="bi bi-house-door me-1"></i> Home
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="<?= theme_url('blog/index.php'); ?>" class="text-decoration-none text-secondary">
-                            Our Blog
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <span class="text-secondary"><?= htmlspecialchars($post['category'] ?? 'Travel'); ?></span>
-                    </li>
-                    <li class="breadcrumb-item active text-primary fw-semibold text-truncate" style="max-width: 260px;" aria-current="page">
-                        <?= htmlspecialchars($post['title'] ?? 'Guide'); ?>
-                    </li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-
     <!-- 2. Main Article Content Container -->
     <article class="py-5 bg-white" id="blog-article-content">
         <div class="container py-lg-3">

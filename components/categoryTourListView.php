@@ -21,18 +21,7 @@ $categoryTag = $categoryTag ?? 'EXPLORE NORTH INDIA';
 $categoryDescription = $categoryDescription ?? 'Discover handpicked itineraries and curated holiday packages with professional private chauffeurs.';
 ?>
 
-<!-- Breadcrumb Header -->
-<div class="bg-light border-bottom py-3">
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 small">
-                <li class="breadcrumb-item"><a href="<?= theme_url('index.php'); ?>" class="text-decoration-none text-secondary">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?= theme_url('tourPackage.php'); ?>" class="text-decoration-none text-secondary">Tour Packages</a></li>
-                <li class="breadcrumb-item active text-primary fw-semibold" aria-current="page"><?= htmlspecialchars($categoryTitle); ?></li>
-            </ol>
-        </nav>
-    </div>
-</div>
+
 
 <!-- Category Hero Header -->
 <section class="bg-white py-5 border-bottom position-relative">
@@ -162,11 +151,19 @@ $categoryDescription = $categoryDescription ?? 'Discover handpicked itineraries 
 <!-- Reusable Sections: Driver Safety Standards -->
 <?php require_once __DIR__ . '/safetyVarified.php'; ?>
 
+<!--gallery of Category -->
+<?php require_once __DIR__ . '/gallerySection.php'; ?>
+
+
 <!-- Reusable Sections: Testimonials -->
 <?php require_once __DIR__ . '/testimonials.php'; ?>
 
 <!-- Reusable Sections: FAQ Section -->
 <?php require_once __DIR__ . '/faq.php'; ?>
+
+<!--blog of Category -->
+<?php require_once __DIR__ . '/blog.php'; ?>
+
 
 <!-- Reusable Sections: Call to Action Banner -->
 <?php require_once __DIR__ . '/cta.php'; ?>

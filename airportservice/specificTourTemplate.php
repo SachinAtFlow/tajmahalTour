@@ -25,20 +25,6 @@ $otherAirport = $airportServices[$otherAirportSlug] ?? null;
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<!-- Breadcrumb Bar -->
-<div class="bg-light border-bottom py-3">
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 small">
-                <li class="breadcrumb-item"><a href="<?= theme_url('index.php'); ?>" class="text-decoration-none text-secondary">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?= theme_url('carRentalLocation.php'); ?>" class="text-decoration-none text-secondary">Car Rental</a></li>
-                <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none text-secondary">Airport Service</a></li>
-                <li class="breadcrumb-item active text-primary fw-semibold" aria-current="page"><?= htmlspecialchars($currentAirport['short_title']); ?></li>
-            </ol>
-        </nav>
-    </div>
-</div>
-
 <!-- Airport Detail Hero Banner -->
 <section class="bg-white py-4 py-lg-5 border-bottom position-relative" id="airport-detail-hero">
     <div class="container">

@@ -11,22 +11,9 @@ $page_title = "Outstation Cab Booking - Inter-City Chauffeurs & Round-Trip Taxis
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<!-- Breadcrumb Bar -->
-<div class="bg-light border-bottom py-3">
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 small">
-                <li class="breadcrumb-item"><a href="<?= theme_url('index.php'); ?>" class="text-decoration-none text-secondary">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?= theme_url('carRentalLocation.php'); ?>" class="text-decoration-none text-secondary">Car Rental</a></li>
-                <li class="breadcrumb-item active text-primary fw-semibold" aria-current="page">Outstation Cab</li>
-            </ol>
-        </nav>
-    </div>
-</div>
-
 <!-- Outstation Hero Section -->
-<section class="position-relative py-5 bg-dark text-white overflow-hidden" id="outstation-hero-banner" style="background: linear-gradient(135deg, #0b1120 0%, #1e293b 100%);">
-    <div class="position-absolute top-0 end-0 bottom-0 start-0 opacity-15" style="background-image: radial-gradient(#3B71FE 1px, transparent 1px); background-size: 26px 26px;"></div>
+<section class="position-relative py-5 bg-dark text-white overflow-hidden" id="outstation-hero-banner" style="background: linear-gradient(rgba(11, 17, 32, 0.78), rgba(15, 23, 42, 0.88)), url('<?= theme_url('assets/images/others/carOnRoad.avif'); ?>') center/cover no-repeat;">
+    <div class="position-absolute top-0 end-0 bottom-0 start-0 opacity-15" style="background-size: 26px 26px;"></div>
 
     <div class="container position-relative z-2 py-lg-4">
         <div class="row align-items-center g-5">
@@ -231,11 +218,18 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
 </section>
 
+<!--How it works-->
+<?php require_once __DIR__ . '/../components/howItWorks.php'; ?>
+
 <!-- Premade Reusable Section 2: Why Choose Us / Value Proposition -->
 <?php require_once __DIR__ . '/../components/whyUs.php'; ?>
 
 <!-- Premade Reusable Section 3: Driver Safety & Fleet Standards -->
 <?php require_once __DIR__ . '/../components/safetyVarified.php'; ?>
+
+<!--gallery-->
+<?php require_once __DIR__ . '/../components/gallerySection.php'; ?>
+
 
 <!-- Premade Reusable Section 4: Client Testimonials -->
 <?php require_once __DIR__ . '/../components/testimonials.php'; ?>

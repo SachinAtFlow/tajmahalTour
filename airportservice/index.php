@@ -11,22 +11,9 @@ require_once __DIR__ . '/data.php';
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<!-- Breadcrumb Bar -->
-<div class="bg-light border-bottom py-3">
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 small">
-                <li class="breadcrumb-item"><a href="<?= theme_url('index.php'); ?>" class="text-decoration-none text-secondary">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?= theme_url('carRentalLocation.php'); ?>" class="text-decoration-none text-secondary">Car Rental</a></li>
-                <li class="breadcrumb-item active text-primary fw-semibold" aria-current="page">Airport Service</li>
-            </ol>
-        </nav>
-    </div>
-</div>
-
 <!-- Airport Service Hero Banner -->
-<section class="position-relative py-5 bg-dark text-white overflow-hidden" id="airport-hero-banner" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
-    <div class="position-absolute top-0 end-0 bottom-0 start-0 opacity-20" style="background-image: radial-gradient(#3B71FE 1px, transparent 1px); background-size: 24px 24px;"></div>
+<section class="position-relative py-5 bg-dark text-white overflow-hidden" id="airport-hero-banner" style="background: linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.88)), url('<?= theme_url('assets/images/others/airplane.avif'); ?>') center/cover no-repeat;">
+    <div class="position-absolute top-0 end-0 bottom-0 start-0 opacity-20" style=" background-size: 24px 24px;"></div>
     
     <div class="container position-relative z-2 py-lg-4">
         <div class="row align-items-center g-5">
@@ -226,14 +213,24 @@ require_once __DIR__ . '/../includes/header.php';
 <!-- Outstation Car Rental Fleet -->
 <?php require_once __DIR__ . '/../components/outstationCarType.php'; ?>
 
+
+<?php require_once __DIR__ . '/../components/howItWorks.php'; ?>
+
+
 <!-- Reusable Section 1: Modern Airport Taxi Showcase (From Image Design) -->
 <?php require_once __DIR__ . '/../components/airportTaxi.php'; ?>
 
 <!-- Reusable Section 3: Driver Safety & Fleet Standards -->
 <?php require_once __DIR__ . '/../components/safetyVarified.php'; ?>
 
+<?php require_once __DIR__ . '/../components/gallerySection.php'; ?>
+
+
 <!-- Reusable Section 4: Client Testimonials -->
 <?php require_once __DIR__ . '/../components/testimonials.php'; ?>
+
+<?php require_once __DIR__ . '/../components/blog.php'; ?>
+
 
 <!-- Reusable Section 5: Frequently Asked Questions -->
 <?php require_once __DIR__ . '/../components/faq.php'; ?>

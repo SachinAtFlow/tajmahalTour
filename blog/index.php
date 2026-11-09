@@ -18,24 +18,6 @@ $allPosts = get_all_blog_posts();
 
 <main id="blog-master-page">
 
-    <!-- 1. Breadcrumb Bar -->
-    <div class="bg-light border-bottom py-3" id="blog-breadcrumb">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0 small">
-                    <li class="breadcrumb-item">
-                        <a href="<?= theme_url('index.php'); ?>" class="text-decoration-none text-secondary">
-                            <i class="bi bi-house-door me-1"></i> Home
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item active text-primary fw-semibold" aria-current="page">
-                        Our Blog
-                    </li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-
     <!-- 2. Main Blog Showcase Section (Matching Provided Design) -->
     <section class="py-5 bg-white" id="our-blog-showcase">
         <div class="container py-lg-3">

@@ -187,19 +187,6 @@ if (!function_exists('parseTourItineraryStep')) {
 }
 ?>
 
-<!-- Breadcrumb Header -->
-<div class="bg-light border-bottom py-3">
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 small">
-                <li class="breadcrumb-item"><a href="<?= theme_url('index.php'); ?>" class="text-decoration-none text-secondary">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?= theme_url('tourPackage.php'); ?>" class="text-decoration-none text-secondary">Tours</a></li>
-                <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none text-secondary"><?= htmlspecialchars($categoryTitle); ?></a></li>
-                <li class="breadcrumb-item active text-primary fw-semibold" aria-current="page"><?= htmlspecialchars($currentTour['title']); ?></li>
-            </ol>
-        </nav>
-    </div>
-</div>
 
 <!-- Tour Hero Header Section -->
 <section class="bg-white py-4 border-bottom">

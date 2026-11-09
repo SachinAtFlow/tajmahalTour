@@ -18,24 +18,6 @@ $initialBatch = 30; // Initial photos to show for optimal performance
 
 <main id="gallery-page">
 
-    <!-- 1. Breadcrumb Bar -->
-    <div class="bg-light border-bottom py-3" id="gallery-breadcrumb">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0 small">
-                    <li class="breadcrumb-item">
-                        <a href="<?= theme_url('index.php'); ?>" class="text-decoration-none text-secondary">
-                            <i class="bi bi-house-door me-1"></i> Home
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item active text-primary fw-semibold" aria-current="page">
-                        Tour & Fleet Gallery
-                    </li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-
     <!-- 2. Page Hero Banner -->
     <section class="position-relative py-5 bg-dark text-white text-center overflow-hidden" id="gallery-hero-banner" style="background: linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.88)), url('<?= theme_url('assets/images/uttarPradesh/tajmahal.avif'); ?>') center/cover no-repeat; min-height: 290px;">
         <div class="position-absolute top-0 end-0 bottom-0 start-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#3B71FE 1px, transparent 1px); background-size: 28px 28px;"></div>
