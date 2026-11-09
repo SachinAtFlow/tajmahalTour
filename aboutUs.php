@@ -40,7 +40,10 @@ require_once 'includes/header.php';
     <!-- 4. Client Testimonials & Experiences -->
     <?php require_once 'components/testimonials.php'; ?>
 
-    <!-- 5. Modern CTA Banner -->
+    <!-- 5. Tour Memories Marquee Strip -->
+    <?php require_once 'components/gallerySection.php'; ?>
+
+    <!-- 6. Modern CTA Banner -->
     <?php require_once 'components/cta.php'; ?>
 </main>
 

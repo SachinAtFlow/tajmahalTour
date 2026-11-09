@@ -31,7 +31,10 @@ require_once 'includes/header.php';
     <!-- 8. Frequently Asked Questions (FAQ) -->
     <?php require_once 'components/faq.php'; ?>
 
-    <!-- 9. Modern Call To Action Banner -->
+    <!-- 9. Tour Memories Marquee Strip -->
+    <?php require_once 'components/gallerySection.php'; ?>
+
+    <!-- 10. Modern Call To Action Banner -->
     <?php require_once 'components/cta.php'; ?>
 </main>
 

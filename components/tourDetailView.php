@@ -157,29 +157,52 @@ if (!empty($tours) && is_array($tours)) {
                 </div>
 
                 <!-- Detailed Itinerary Timeline -->
-                <div class="card border-0 rounded-4 shadow-sm p-4 mb-4 bg-white">
-                    <h3 class="fs-5 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
-                        <i class="bi bi-calendar3 text-primary"></i> Detailed Tour Itinerary
-                    </h3>
+                <div class="card border-0 rounded-4 shadow-sm p-4 mb-4 bg-white" id="detailed-tour-itinerary">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3 pb-2 border-bottom">
+                        <div>
+                            <h3 class="fs-5 fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                                <i class="bi bi-calendar3 text-primary"></i> Detailed Tour Itinerary
+                            </h3>
+                            <p class="text-secondary small mb-0 mt-1">Day-wise travel schedule with private AC vehicle, verified chauffeur & flexible stops.</p>
+                        </div>
+                        <?php if (!empty($currentTour['itinerary'])): ?>
+                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-1.5 fw-semibold small">
+                                <i class="bi bi-clock-history me-1"></i> <?= count($currentTour['itinerary']); ?> Planned Schedule Steps
+                            </span>
+                        <?php endif; ?>
+                    </div>
 
                     <?php if (!empty($currentTour['itinerary'])): ?>
-                        <div class="position-relative ps-3 ps-md-4 border-start border-2 border-primary border-opacity-25 ms-2">
-                            <?php foreach ($currentTour['itinerary'] as $step): ?>
-                                <div class="position-relative mb-4 pb-2">
+                        <div class="position-relative ps-3 ps-md-4 border-start border-2 border-primary border-opacity-25 ms-2 pt-2">
+                            <?php foreach ($currentTour['itinerary'] as $sIdx => $step): ?>
+                                <?php 
+                                    $timeBadge = !empty($step['time']) ? $step['time'] : (!empty($step['day']) ? $step['day'] : ('Day ' . sprintf('%02d', $sIdx + 1)));
+                                    $title = $step['title'] ?? '';
+                                    $desc = $step['desc'] ?? '';
+                                    $stay = $step['stay'] ?? '';
+                                ?>
+                                <div class="position-relative mb-4 pb-2 itinerary-day-node">
                                     <!-- Timeline Node Circle -->
-                                    <div class="position-absolute rounded-circle bg-primary" style="width: 14px; height: 14px; left: -24px; top: 5px; box-shadow: 0 0 0 4px rgba(59, 113, 254, 0.2);"></div>
+                                    <div class="position-absolute rounded-circle bg-primary" style="width: 14px; height: 14px; left: -24px; top: 6px; box-shadow: 0 0 0 4px rgba(59, 113, 254, 0.2);"></div>
                                     
-                                    <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
-                                        <?php if (!empty($step['time'])): ?>
-                                            <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-2.5 py-1 small fw-semibold">
-                                                <?= htmlspecialchars($step['time']); ?>
-                                            </span>
-                                        <?php endif; ?>
-                                        <h4 class="fs-6 fw-bold text-dark mb-0"><?= htmlspecialchars($step['title']); ?></h4>
+                                    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                        <span class="badge bg-primary text-white rounded-pill px-2.5 py-1 small fw-semibold shadow-xs">
+                                            <?= htmlspecialchars($timeBadge); ?>
+                                        </span>
+                                        <h4 class="fs-6 fw-bold text-dark mb-0"><?= htmlspecialchars($title); ?></h4>
                                     </div>
-                                    <p class="text-secondary small mb-0 lh-base">
-                                        <?= htmlspecialchars($step['desc']); ?>
-                                    </p>
+
+                                    <div class="text-secondary small mb-2 lh-base itinerary-desc">
+                                        <?= nl2br(htmlspecialchars($desc)); ?>
+                                    </div>
+
+                                    <?php if (!empty($stay)): ?>
+                                        <div class="mt-2">
+                                            <span class="badge bg-light text-dark border px-2.5 py-1 small">
+                                                <i class="bi bi-moon-stars-fill text-warning me-1"></i> <strong>Night Stay:</strong> <?= htmlspecialchars($stay); ?>
+                                            </span>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -321,7 +344,11 @@ if (!empty($tours) && is_array($tours)) {
 <?php require_once __DIR__ . '/safetyVarified.php'; ?>
 
 <!-- Reusable Sections: Customer Testimonials -->
-<?php require_once __DIR__ . '/testimonials.php'; ?>
+<?php //require_once __DIR__ . '/testimonials.php'; ?>
+
+<!-- Reusable Sections: Gallery Section -->
+<?php require_once __DIR__ . '/gallerySection.php'; ?>
+
 
 <!-- Reusable Sections: FAQ Section -->
 <?php require_once __DIR__ . '/faq.php'; ?>

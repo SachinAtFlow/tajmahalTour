@@ -38,6 +38,7 @@ if (!function_exists('theme_url')) {
                     <li><a href="<?= theme_url('aboutUs.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> About Us</a></li>
                     <li><a href="<?= theme_url('carRentalLocation.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Car Rental</a></li>
                     <li><a href="<?= theme_url('tourPackage.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Tour Packages</a></li>
+                    <li><a href="<?= theme_url('gallery.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Tour & Fleet Gallery</a></li>
                     <li><a href="<?= theme_url('blog/index.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Travel Blog</a></li>
                     <li><a href="<?= theme_url('index.php#why-us'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Why Choose Us</a></li>
                     <li><a href="<?= theme_url('contactUs.php'); ?>" class="text-white-50 text-decoration-none hover-white"><i class="bi bi-chevron-right text-warning small me-1"></i> Contact Us</a></li>

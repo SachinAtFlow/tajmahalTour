@@ -46,7 +46,10 @@ require_once 'includes/header.php';
     <!-- 10. Frequently Asked Questions (FAQ) -->
     <?php require_once 'components/faq.php'; ?>
 
-    <!-- 11. Final Call To Action Banner -->
+    <!-- 11. Tour Memories Marquee Strip -->
+    <?php require_once 'components/gallerySection.php'; ?>
+
+    <!-- 12. Final Call To Action Banner -->
     <?php require_once 'components/cta.php'; ?>
 </main>
 

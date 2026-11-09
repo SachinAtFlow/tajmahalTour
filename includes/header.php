@@ -191,6 +191,13 @@ if (!function_exists('theme_url')) {
 
                
 
+                <!-- Gallery -->
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'gallery.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('gallery.php'); ?>">
+                        Gallery
+                    </a>
+                </li>
+
                 <!-- Contact -->
                 <li class="nav-item">
                     <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'contactUs.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('contactUs.php'); ?>">
@@ -327,6 +334,11 @@ if (!function_exists('theme_url')) {
         <!-- Reviews -->
         <a href="<?php echo $homePrefix; ?>#testimonials" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
             <span>Reviews</span>
+        </a>
+
+        <!-- Gallery -->
+        <a href="<?= theme_url('gallery.php'); ?>" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
+            <span>Gallery</span>
         </a>
 
         <!-- Contact Us -->
