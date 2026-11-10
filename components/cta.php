@@ -9,10 +9,10 @@
 <section class="py-5 bg-white position-relative overflow-hidden" id="cta-section">
     <div class="container py-lg-3">
         
-        <div class="cta-banner-card shadow-sm text-center position-relative">
+        <div class="cta-banner-card shadow-sm text-center position-relative overflow-hidden">
             
             <!-- Professional Linear Architectural SVG Vector Background -->
-            <svg class="cta-linear-svg" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <svg class="cta-linear-svg position-absolute w-100 h-100 z-0" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                 <g opacity="0.35">
                     <!-- Flowing Linear Wave Lines -->
                     <path d="M-100 120 C 200 20, 450 250, 750 140 C 1050 30, 1200 180, 1350 120" stroke="#3B71FE" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.35"/>
@@ -30,8 +30,8 @@
             </svg>
 
             <!-- Soft Ambient Glows -->
-            <div class="cta-banner-glow"></div>
-            <div class="cta-banner-glow-2"></div>
+            <div class="cta-banner-glow position-absolute rounded-circle z-0"></div>
+            <div class="cta-banner-glow-2 position-absolute rounded-circle z-0"></div>
 
             <div class="position-relative z-1">
                 

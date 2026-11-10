@@ -68,14 +68,14 @@ $initialBatch = 30; // Initial photos to show for optimal performance
 
             <!-- Justified Linear Photo Wall Grid -->
             <?php if (!empty($galleryImages)): ?>
-                <div class="gallery-justified-container" id="photo-wall-grid">
+                <div class="gallery-justified-container d-flex flex-wrap" id="photo-wall-grid">
                     <?php foreach ($galleryImages as $index => $img): ?>
                         <?php 
                             $imgUrl = theme_url($img['url']);
                             $isExtra = ($index >= $initialBatch);
                             $extraClass = $isExtra ? 'd-none gallery-hidden-item' : '';
                         ?>
-                        <div class="gallery-justified-item <?= $extraClass; ?>"
+                        <div class="gallery-justified-item <?= $extraClass; ?> position-relative overflow-hidden w-100 h-100 d-block"
                              style="--aspect-ratio: <?= $img['ratio']; ?>;"
                              onclick="openGalleryModal(<?= $index; ?>)"
                              role="button"
@@ -90,11 +90,11 @@ $initialBatch = 30; // Initial photos to show for optimal performance
                                  onerror="this.onerror=null; this.src='<?= theme_url('assets/images/uttarPradesh/tajmahal.avif'); ?>';" />
                             
                             <!-- Hover Overlay -->
-                            <div class="gallery-hover-overlay">
-                                <span class="gallery-zoom-pill" title="View Fullscreen">
+                            <div class="gallery-hover-overlay position-absolute d-flex flex-column justify-content-between">
+                                <span class="gallery-zoom-pill rounded-circle d-flex align-items-center justify-content-center" title="View Fullscreen">
                                     <i class="bi bi-arrows-fullscreen"></i>
                                 </span>
-                                <span class="gallery-title-pill">
+                                <span class="gallery-title-pill fw-semibold">
                                     <?= htmlspecialchars($img['name']); ?>
                                 </span>
                             </div>
@@ -161,13 +161,13 @@ $initialBatch = 30; // Initial photos to show for optimal performance
      onclick="handleModalBackdropClick(event)">
     
     <!-- Top Counter Badge -->
-    <div class="gallery-modal-counter" id="modal-counter-badge">
+    <div class="gallery-modal-counter position-absolute fw-semibold" id="modal-counter-badge">
         Memory <span id="modal-current-idx">1</span> / <?= $totalCount; ?>
     </div>
 
     <!-- Floating Close Button -->
     <button type="button" 
-            class="gallery-modal-close" 
+            class="gallery-modal-close position-absolute rounded-circle d-flex align-items-center justify-content-center" 
             onclick="closeGalleryModal()" 
             aria-label="Close Lightbox">
         <i class="bi bi-x-lg"></i>
@@ -175,23 +175,23 @@ $initialBatch = 30; // Initial photos to show for optimal performance
 
     <!-- Previous Chevron Button -->
     <button type="button" 
-            class="gallery-modal-nav gallery-nav-prev" 
+            class="gallery-modal-nav gallery-nav-prev position-absolute rounded-circle d-flex align-items-center justify-content-center" 
             onclick="prevGalleryImage(event)" 
             aria-label="Previous Photo">
         <i class="bi bi-chevron-left"></i>
     </button>
 
     <!-- Enlarged Image Container -->
-    <div class="gallery-modal-img-wrapper" id="modal-img-card" onclick="event.stopPropagation()">
+    <div class="gallery-modal-img-wrapper position-relative d-flex align-items-center justify-content-center" id="modal-img-card" onclick="event.stopPropagation()">
         <img id="gallery-modal-active-img" 
              src="" 
              alt="Tour Memory Preview" 
-             class="gallery-modal-img" />
+             class="gallery-modal-img w-auto h-auto" />
     </div>
 
     <!-- Next Chevron Button -->
     <button type="button" 
-            class="gallery-modal-nav gallery-nav-next" 
+            class="gallery-modal-nav gallery-nav-next position-absolute rounded-circle d-flex align-items-center justify-content-center" 
             onclick="nextGalleryImage(event)" 
             aria-label="Next Photo">
         <i class="bi bi-chevron-right"></i>

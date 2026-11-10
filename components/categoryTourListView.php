@@ -94,10 +94,10 @@ $categoryDescription = $categoryDescription ?? 'Discover handpicked itineraries 
                 ?>
                 <div class="col-12 col-sm-6 col-lg-4">
                     <!-- Entire Card As Single Clickable Element with Featured Tour Dark Luxury Look -->
-                    <a href="<?= $tourUrl; ?>" class="dark-tour-card text-decoration-none d-flex flex-column h-100" title="<?= htmlspecialchars($tour['title']); ?>">
+                    <a href="<?= $tourUrl; ?>" class="dark-tour-card text-decoration-none d-flex flex-column h-100 overflow-hidden position-relative" title="<?= htmlspecialchars($tour['title']); ?>">
                         
                         <!-- Top Media Area with Floating Badges & Seamless Bottom Fade -->
-                        <div class="dark-tour-media">
+                        <div class="dark-tour-media position-relative overflow-hidden w-100 h-100">
                             
                             <!-- Floating Tag Badge (Top-Left) -->
                             <?php if (!empty($tag)): ?>
@@ -120,38 +120,38 @@ $categoryDescription = $categoryDescription ?? 'Discover handpicked itineraries 
                                 decoding="async"
                             >
                             <!-- Seamless Bottom Gradient Fade into Card Body -->
-                            <div class="dark-tour-fade"></div>
+                            <div class="dark-tour-fade position-absolute bottom-0 start-0 end-0 z-1"></div>
                         </div>
 
                         <!-- Card Content Body -->
-                        <div class="dark-tour-body">
+                        <div class="dark-tour-body d-flex flex-column flex-grow-1 justify-content-between position-relative z-2">
                             <div>
                                 <!-- Title -->
                                 <div class="mb-1">
-                                    <h3 class="dark-tour-title text-line-clamp-2">
+                                    <h3 class="dark-tour-title text-line-clamp-2 fw-bold m-0 text-decoration-none overflow-hidden">
                                         <?= htmlspecialchars($tour['title']); ?>
                                     </h3>
                                 </div>
 
                                 <!-- 2-Line Subtitle / Overview Description -->
-                                <p class="dark-tour-desc text-line-clamp-2">
+                                <p class="dark-tour-desc text-line-clamp-2 overflow-hidden">
                                     <?= htmlspecialchars($desc); ?>
                                 </p>
 
                                 <!-- Spec Pill Badges Row -->
-                                <div class="dark-tour-pills">
+                                <div class="dark-tour-pills d-flex align-items-center flex-wrap">
                                     <!-- Duration Pill -->
-                                    <span class="dark-tour-pill">
+                                    <span class="dark-tour-pill fw-medium d-inline-flex align-items-center">
                                         <i class="bi bi-clock-history opacity-75"></i>
                                         <span><?= htmlspecialchars($duration); ?></span>
                                     </span>
                                     <!-- Vehicle / Type Pill -->
-                                    <span class="dark-tour-pill">
+                                    <span class="dark-tour-pill fw-medium d-inline-flex align-items-center">
                                         <i class="bi bi-car-front opacity-75"></i>
                                         <span>Private Chauffeur</span>
                                     </span>
                                     <!-- Rating Pill -->
-                                    <span class="dark-tour-pill">
+                                    <span class="dark-tour-pill fw-medium d-inline-flex align-items-center">
                                         <i class="bi bi-star-fill text-warning"></i>
                                         <span><?= htmlspecialchars($rating); ?> (<?= htmlspecialchars($reviews); ?>)</span>
                                     </span>
@@ -160,7 +160,7 @@ $categoryDescription = $categoryDescription ?? 'Discover handpicked itineraries 
 
                             <!-- Solid White "Explore Itinerary" Full-Width CTA Button (Visual Trigger) -->
                             <div class="mt-auto pt-1">
-                                <span class="btn-dark-tour-cta d-inline-flex align-items-center justify-content-center gap-2">
+                                <span class="btn-dark-tour-cta d-inline-flex align-items-center justify-content-center gap-2 fw-bold text-center text-decoration-none d-block w-100 border-0">
                                     <span>Explore Itinerary</span>
                                     <i class="bi bi-arrow-right"></i>
                                 </span>

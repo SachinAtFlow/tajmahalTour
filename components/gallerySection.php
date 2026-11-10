@@ -70,8 +70,8 @@ $cardOffsets = [20, 8, -6, -14, 6, 22, 10, -6, -14, 8, 20, 8, -6, -12];
 
     <!-- Infinite Continuous Marquee Track -->
     <?php if (!empty($marqueePhotos)): ?>
-        <div class="memories-marquee" aria-label="Continuous Tour Photo Carousel">
-            <div class="memories-marquee-track">
+        <div class="memories-marquee position-relative w-100 overflow-hidden position-absolute top-0 bottom-0 start-0 end-0" aria-label="Continuous Tour Photo Carousel">
+            <div class="memories-marquee-track d-flex">
                 
                 <!-- Group 1 -->
                 <div class="d-flex align-items-center gap-4 pe-4 flex-shrink-0">
@@ -82,7 +82,7 @@ $cardOffsets = [20, 8, -6, -14, 6, 22, 10, -6, -14, 8, 20, 8, -6, -12];
                             $offset = $cardOffsets[$idx % count($cardOffsets)];
                         ?>
                         <a href="<?= theme_url('gallery.php'); ?>" 
-                           class="memory-card" 
+                           class="memory-card flex-shrink-0 position-relative overflow-hidden d-block text-decoration-none w-100 h-100" 
                            style="transform: rotate(<?= $tilt; ?>deg) translateY(<?= $offset; ?>px);"
                            title="<?= htmlspecialchars($photo['title']); ?> • <?= htmlspecialchars($photo['location']); ?>">
                             
@@ -92,7 +92,7 @@ $cardOffsets = [20, 8, -6, -14, 6, 22, 10, -6, -14, 8, 20, 8, -6, -12];
                                  decoding="async">
                             
                             <!-- Floating Location Pill on Hover -->
-                            <div class="memory-card-overlay">
+                            <div class="memory-card-overlay position-absolute d-flex align-items-end">
                                 <span class="badge bg-white text-dark rounded-pill px-3 py-1.5 small fw-bold shadow-sm d-inline-flex align-items-center">
                                     <i class="bi bi-geo-alt-fill text-primary me-1"></i>
                                     <span><?= htmlspecialchars($photo['location']); ?></span>
@@ -111,7 +111,7 @@ $cardOffsets = [20, 8, -6, -14, 6, 22, 10, -6, -14, 8, 20, 8, -6, -12];
                             $offset = $cardOffsets[$idx % count($cardOffsets)];
                         ?>
                         <a href="<?= theme_url('gallery.php'); ?>" 
-                           class="memory-card" 
+                           class="memory-card flex-shrink-0 position-relative overflow-hidden d-block text-decoration-none w-100 h-100" 
                            style="transform: rotate(<?= $tilt; ?>deg) translateY(<?= $offset; ?>px);"
                            tabindex="-1">
                             
@@ -121,7 +121,7 @@ $cardOffsets = [20, 8, -6, -14, 6, 22, 10, -6, -14, 8, 20, 8, -6, -12];
                                  decoding="async">
                             
                             <!-- Floating Location Pill on Hover -->
-                            <div class="memory-card-overlay">
+                            <div class="memory-card-overlay position-absolute d-flex align-items-end">
                                 <span class="badge bg-white text-dark rounded-pill px-3 py-1.5 small fw-bold shadow-sm d-inline-flex align-items-center">
                                     <i class="bi bi-geo-alt-fill text-primary me-1"></i>
                                     <span><?= htmlspecialchars($photo['location']); ?></span>

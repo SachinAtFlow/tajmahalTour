@@ -42,7 +42,7 @@
                         <!-- Feature 1: On-Time Guarantee -->
                         <div class="col-sm-6">
                             <div class="airport-feature-card h-100 d-flex align-items-center">
-                                <div class="airport-icon-box">
+                                <div class="airport-icon-box rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
                                     <i class="bi bi-clock-history"></i>
                                 </div>
                                 <div>
@@ -55,7 +55,7 @@
                         <!-- Feature 2: Safe & Comfortable Rides -->
                         <div class="col-sm-6">
                             <div class="airport-feature-card h-100 d-flex align-items-center">
-                                <div class="airport-icon-box">
+                                <div class="airport-icon-box rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
                                     <i class="bi bi-shield-check"></i>
                                 </div>
                                 <div>
@@ -68,7 +68,7 @@
                         <!-- Feature 3: Terminal Meet & Greet -->
                         <div class="col-sm-6">
                             <div class="airport-feature-card h-100 d-flex align-items-center">
-                                <div class="airport-icon-box">
+                                <div class="airport-icon-box rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
                                     <i class="bi bi-car-front-fill"></i>
                                 </div>
                                 <div>
@@ -81,7 +81,7 @@
                         <!-- Feature 4: Convenient & Verified -->
                         <div class="col-sm-6">
                             <div class="airport-feature-card h-100 d-flex align-items-center">
-                                <div class="airport-icon-box">
+                                <div class="airport-icon-box rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
                                     <i class="bi bi-person-check-fill"></i>
                                 </div>
                                 <div>
@@ -112,16 +112,16 @@
 
             <!-- Right Column: Visual Composition with Perfectly Anchored Flight SVG & Shapes -->
             <div class="col-lg-6">
-                <div class="airport-visual-wrapper position-relative">
+                <div class="airport-visual-wrapper position-relative mx-auto">
                     
                     
 
                     <!-- Decorative Organic Backdrop Shapes (Theme Gradient) -->
-                    <div class="airport-theme-blob d-none d-sm-block"></div>
-                    <div class="airport-theme-backdrop d-none d-sm-block"></div>
+                    <div class="airport-theme-blob d-none d-sm-block position-absolute rounded-circle z-1"></div>
+                    <div class="airport-theme-backdrop d-none d-sm-block position-absolute z-1"></div>
 
                     <!-- Main Image Frame -->
-                    <div class="airport-image-card">
+                    <div class="airport-image-card position-relative z-2 overflow-hidden w-100 d-block">
                         <img 
                             src="<?= function_exists('theme_url') ? theme_url('assets/images/cars/airport-taxi-terminal.jpg') : 'assets/images/cars/airport-taxi-terminal.jpg'; ?>" 
                             alt="Airport Taxi Service with Professional Chauffeur and Modern Terminal" 
@@ -130,8 +130,8 @@
                     </div>
 
                     <!-- Floating Badge 1: 100% Trusted Service (Top Right) -->
-                    <div class="airport-floating-trusted">
-                        <div class="airport-trusted-icon">
+                    <div class="airport-floating-trusted position-absolute z-3 d-flex align-items-center">
+                        <div class="airport-trusted-icon d-flex align-items-center justify-content-center">
                             <i class="bi bi-check-lg"></i>
                         </div>
                         <div>
@@ -141,8 +141,8 @@
                     </div>
 
                     <!-- Floating Badge 2: Thousands of Happy Travelers (Bottom Left) -->
-                    <div class="airport-floating-reviews">
-                        <div class="airport-reviews-icon">
+                    <div class="airport-floating-reviews position-absolute z-3 d-flex align-items-center">
+                        <div class="airport-reviews-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i class="bi bi-people-fill"></i>
                         </div>
                         <div>

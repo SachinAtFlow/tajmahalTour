@@ -110,7 +110,7 @@ $outstationCars = [
                                 <h6 class="fw-bold fs-6 mb-1 text-dark"><?php echo htmlspecialchars($car['title']); ?></h6>
                                 <span class="text-secondary small d-block mb-2"><?php echo htmlspecialchars($car['model']); ?></span>
 
-                                <p class="text-secondary small mb-2 line-clamp-2" style="font-size: 13px; line-height: 1.4; min-height: 36px;">
+                                <p class="text-secondary small mb-2 line-clamp-2 overflow-hidden" style="font-size: 13px; line-height: 1.4; min-height: 36px;">
                                     <?php echo htmlspecialchars($car['desc']); ?>
                                 </p>
 

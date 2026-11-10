@@ -4,41 +4,6 @@
  * File: data/headerNavigationData.php
  */
 
-$headerOffers = [
-    [
-        'id' => 1,
-        'badge' => 'SPECIAL OFFER',
-        'text' => 'Flat 15% OFF on Sunrise Taj Mahal Guided Tours',
-        'code' => 'TAJ15',
-        'btn' => 'Book Now',
-        'link' => '#booking'
-    ],
-    [
-        'id' => 2,
-        'badge' => 'COMPLIMENTARY',
-        'text' => 'Free Hotel Pickup & Drop on Same Day Agra Tours',
-        'code' => 'FREEPICKUP',
-        'btn' => 'Claim Offer',
-        'link' => '#booking'
-    ],
-    [
-        'id' => 3,
-        'badge' => 'HOLIDAY DEAL',
-        'text' => 'Save $50 on 4-Day Golden Triangle Delhi-Agra-Jaipur',
-        'code' => 'GOLDEN50',
-        'btn' => 'View Tour',
-        'link' => '#booking'
-    ],
-    [
-        'id' => 4,
-        'badge' => 'GROUP SPECIAL',
-        'text' => 'Up to 20% Discount for Family & Group Bookings (4+ Guests)',
-        'code' => 'GROUP20',
-        'btn' => 'Inquire Now',
-        'link' => '#booking'
-    ]
-];
-
 $carNavMenu = [
     [
         'title' => 'Agra Sightseeing Cabs',

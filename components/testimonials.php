@@ -26,7 +26,7 @@ $testimonialCount = !empty($testimonials) ? count($testimonials) : 0;
         </div>
 
         <!-- Swiper Container Card -->
-        <div class="swiper testimonial-swiper bg-white rounded-4 shadow-sm p-4 p-md-5 border border-light-subtle">
+        <div class="swiper testimonial-swiper bg-white rounded-4 shadow-sm p-4 p-md-5 border border-light-subtle position-relative overflow-hidden">
             <div class="swiper-wrapper">
                 <?php if (!empty($testimonials)): ?>
                     <?php foreach ($testimonials as $index => $item): ?>
@@ -53,7 +53,7 @@ $testimonialCount = !empty($testimonials) ? count($testimonials) : 0;
                                 <!-- Left Column: Circular User Avatar -->
                                 <div class="col-md-5 col-lg-4 text-center">
                                     <div class="position-relative d-inline-block">
-                                        <div class="testimonial-avatar-wrapper mx-auto">
+                                        <div class="testimonial-avatar-wrapper mx-auto rounded-circle">
                                             <img 
                                                 src="<?php echo htmlspecialchars($imgSrc); ?>" 
                                                 alt="<?php echo htmlspecialchars($authorName); ?>" 
@@ -116,7 +116,7 @@ $testimonialCount = !empty($testimonials) ? count($testimonials) : 0;
                                         </div>
 
                                         <!-- Pagination Bullets (Synchronized across all slides) -->
-                                        <div class="testimonial-pagination d-flex align-items-center gap-2 mt-4" role="tablist">
+                                        <div class="testimonial-pagination d-flex align-items-center gap-2 mt-4 rounded-circle" role="tablist">
                                             <?php for ($b = 0; $b < $testimonialCount; $b++): ?>
                                                 <span 
                                                     class="swiper-pagination-bullet <?= $b === 0 ? 'swiper-pagination-bullet-active' : ''; ?>" 
@@ -140,8 +140,8 @@ $testimonialCount = !empty($testimonials) ? count($testimonials) : 0;
 
         <!-- Write a Review on Google Action Button -->
         <div class="d-flex justify-content-center align-items-center text-center mt-4 pt-2">
-            <a href="https://share.google/YvijXnULif0EI5xRG" target="_blank" class="hc-btn-google" rel="noopener noreferrer">
-                <svg class="hc-btn-icon" width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <a href="https://share.google/YvijXnULif0EI5xRG" target="_blank" class="hc-btn-google d-inline-flex align-items-center justify-content-center rounded-pill text-decoration-none" rel="noopener noreferrer">
+                <svg class="hc-btn-icon flex-shrink-0" width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path fill="#EA4335" d="M24 9.5c3.1 0 5.8 1.1 7.9 2.9l5.9-5.9C34.2 3.4 29.4 1 24 1 14.9 1 7.2 6.5 3.8 14.3l6.9 5.4C12.4 13.4 17.7 9.5 24 9.5z"></path>
                     <path fill="#4285F4" d="M46.6 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.5 2.8-2.2 5.2-4.7 6.8l7.3 5.7c4.3-3.9 6.3-9.7 6.3-16.5z"></path>
                     <path fill="#FBBC05" d="M10.7 28.3C10.2 26.9 10 25.5 10 24s.2-2.9.7-4.3L3.8 14.3C2.1 17.6 1 21.2 1 24c0 2.8 1.1 6.4 2.8 9.7l6.9-5.4z"></path>

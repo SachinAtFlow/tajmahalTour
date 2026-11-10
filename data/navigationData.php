@@ -150,12 +150,9 @@ $carNavMenu = [
             ['name' => 'Car Rental In Delhi', 'link' => 'carRentalLocation.php?city=delhi'],
             ['name' => 'Car Rental In Gurgaon', 'link' => 'carRentalLocation.php?city=gurgaon'],
             ['name' => 'Car Rental In Noida', 'link' => 'carRentalLocation.php?city=noida'],
-            ['name' => 'Car Rental In Greater Noida', 'link' => 'carRentalLocation.php?city=noida'],
-            ['name' => 'Car Rental In Ghaziabad', 'link' => 'carRentalLocation.php?city=delhi-ncr'],
-            ['name' => 'Car Rental In Faridabad', 'link' => 'carRentalLocation.php?city=delhi-ncr'],
-            ['name' => 'Car Rental In Agra & Taj Mahal', 'link' => 'carRentalLocation.php?city=agra'],
-            ['name' => 'Car Rental In Jaipur', 'link' => 'carRentalLocation.php?city=jaipur'],
-            ['name' => 'Car Rental In Chandigarh', 'link' => 'carRentalLocation.php?city=chandigarh']
+            ['name' => 'Car Rental In Greater Noida', 'link' => 'carRentalLocation.php?city=greater-noida'],
+            ['name' => 'Car Rental In Ghaziabad', 'link' => 'carRentalLocation.php?city=ghaziabad'],
+            ['name' => 'Car Rental In Faridabad', 'link' => 'carRentalLocation.php?city=faridabad'],
         ]
     ],
     [

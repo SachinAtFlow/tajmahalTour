@@ -82,7 +82,7 @@ if (!function_exists('theme_url')) {
 </div>
 
 <!-- Main Navigation (Compact Height Bootstrap 5 Navbar) -->
-<nav id="site-smart-header" class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1 py-lg-2">
+<nav id="site-smart-header" class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1 py-lg-2 d-block position-absolute start-0 end-0 fw-medium">
     <div class="container d-flex align-items-center justify-content-between">
 
         <!-- Left: Mobile Toggle & Brand Logo -->
@@ -100,25 +100,25 @@ if (!function_exists('theme_url')) {
 
         <!-- Center: Desktop Navigation Links (Bootstrap 5 Utilities) -->
         <div class="d-none d-lg-flex align-items-center">
-            <ul class="navbar-nav align-items-center gap-1 gap-xl-2 mb-0">
+            <ul class="navbar-nav align-items-center gap-1 gap-xl-2 mb-0 rounded-pill">
                 
                 <!-- Home -->
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo $isHomeActive ? 'active' : 'text-dark'; ?>" href="<?= theme_url('index.php'); ?>">
+                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo $isHomeActive ? 'active' : 'text-dark'; ?> rounded-pill fw-medium position-relative d-inline-flex align-items-center" href="<?= theme_url('index.php'); ?>">
                         Home
                     </a>
                 </li>
 
                 <!-- About Us -->
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'aboutUs.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('aboutUs.php'); ?>">
+                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'aboutUs.php') ? 'active text-primary' : 'text-dark'; ?> rounded-pill fw-medium position-relative d-inline-flex align-items-center" href="<?= theme_url('aboutUs.php'); ?>">
                         About
                     </a>
                 </li>
 
                 <!-- Car Rental Multi-Level Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'carRentalLocation.php' || $currentPage === 'carRental.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('carRentalLocation.php'); ?>" role="button">
+                    <a class="nav-link dropdown-toggle fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'carRentalLocation.php' || $currentPage === 'carRental.php') ? 'active text-primary' : 'text-dark'; ?> rounded-pill fw-medium position-relative d-inline-flex align-items-center" href="<?= theme_url('carRentalLocation.php'); ?>" role="button">
                         Car Rental
                     </a>
                     <ul class="dropdown-menu shadow border-0 rounded-4 py-2">
@@ -126,12 +126,12 @@ if (!function_exists('theme_url')) {
                             <?php foreach ($carNavMenu as $cat): ?>
                                 <?php if (!empty($cat['sub'])): ?>
                                     <!-- Level 2 Submenu -->
-                                    <li class="dropdown-submenu">
+                                    <li class="dropdown-submenu position-relative d-block bottom-0">
                                         <a class="dropdown-item py-2 px-3 fw-medium d-flex align-items-center justify-content-between" href="<?php echo htmlspecialchars(theme_url($cat['link'])); ?>">
                                             <span><?php echo htmlspecialchars($cat['title']); ?></span>
                                             <i class="bi bi-chevron-right small text-muted ms-2"></i>
                                         </a>
-                                        <ul class="dropdown-menu dropdown-submenu-menu shadow border-0 rounded-4 py-2">
+                                        <ul class="dropdown-menu dropdown-submenu-menu shadow border-0 rounded-4 py-2 position-absolute top-0 m-0 bottom-0 d-block">
                                             <li class="dropdown-header text-primary fw-bold small text-uppercase px-3 py-1">
                                                 <?php echo htmlspecialchars($cat['title']); ?>
                                             </li>
@@ -159,18 +159,18 @@ if (!function_exists('theme_url')) {
 
                 <!-- Tour Packages Multi-Level Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'tourPackage.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('tourPackage.php'); ?>" role="button">
+                    <a class="nav-link dropdown-toggle fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'tourPackage.php') ? 'active text-primary' : 'text-dark'; ?> rounded-pill fw-medium position-relative d-inline-flex align-items-center" href="<?= theme_url('tourPackage.php'); ?>" role="button">
                         Tour Packages
                     </a>
                     <ul class="dropdown-menu shadow border-0 rounded-4 py-2">
                         <?php if (!empty($tourNavMenu)): ?>
                             <?php foreach ($tourNavMenu as $tCat): ?>
-                                <li class="dropdown-submenu">
+                                <li class="dropdown-submenu position-relative d-block bottom-0">
                                     <a class="dropdown-item py-2 px-3 fw-medium d-flex align-items-center justify-content-between" href="<?php echo htmlspecialchars(theme_url($tCat['link'])); ?>">
                                         <span><?php echo htmlspecialchars($tCat['title']); ?></span>
                                         <i class="bi bi-chevron-right small text-muted ms-2"></i>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-submenu-menu shadow border-0 rounded-4 py-2">
+                                    <ul class="dropdown-menu dropdown-submenu-menu shadow border-0 rounded-4 py-2 position-absolute top-0 m-0 bottom-0 d-block">
                                         <li class="dropdown-header text-primary fw-bold small text-uppercase px-3 py-1">
                                             <?php echo htmlspecialchars($tCat['title']); ?>
                                         </li>
@@ -189,25 +189,16 @@ if (!function_exists('theme_url')) {
                     </ul>
                 </li>
 
-               
-
-                <!-- Gallery -->
-                <li class="nav-item">
-                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'gallery.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('gallery.php'); ?>">
-                        Gallery
-                    </a>
-                </li>
-
                 <!-- Contact -->
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'contactUs.php') ? 'active text-primary' : 'text-dark'; ?>" href="<?= theme_url('contactUs.php'); ?>">
+                    <a class="nav-link fw-semibold px-2 px-xl-3 <?php echo ($currentPage === 'contactUs.php') ? 'active text-primary' : 'text-dark'; ?> rounded-pill fw-medium position-relative d-inline-flex align-items-center" href="<?= theme_url('contactUs.php'); ?>">
                         Contact
                     </a>
                 </li>
 
                 <!-- Payment -->
                 <li class="nav-item">
-                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3" href="<?= theme_url('payment.php'); ?>">
+                    <a class="nav-link text-dark fw-semibold px-2 px-xl-3 rounded-pill fw-medium position-relative d-inline-flex align-items-center" href="<?= theme_url('payment.php'); ?>">
                         Payment
                     </a>
                 </li>
@@ -325,11 +316,6 @@ if (!function_exists('theme_url')) {
                 <?php endif; ?>
             </div>
         </div>
-
-        <!-- Why Us -->
-        <a href="<?php echo $homePrefix; ?>#why-us" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">
-            <span>Why Choose Us</span>
-        </a>
 
         <!-- Reviews -->
         <a href="<?php echo $homePrefix; ?>#testimonials" class="d-flex align-items-center justify-content-between p-2 rounded-3 text-decoration-none fw-semibold text-dark mb-1">

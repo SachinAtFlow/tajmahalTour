@@ -21,7 +21,7 @@ $allLocations = getCarRentalCities();
                     Car Rental Hubs Across North India
                 </h2>
                 <p class="text-secondary mb-0" style="max-width: 640px;">
-                    Book reliable chauffeur cabs with doorstep pickup across Delhi NCR, Agra, Rajasthan, Punjab, Uttarakhand, and Himachal Pradesh.
+                    Book reliable chauffeur cabs with doorstep pickup across Delhi NCR, Delhi, Gurgaon, Noida, Greater Noida, Ghaziabad, and Faridabad.
                 </p>
             </div>
             
@@ -38,31 +38,31 @@ $allLocations = getCarRentalCities();
                     <a href="carRentalLocation.php?city=<?= urlencode($slug); ?>" class="text-decoration-none d-block h-100 group">
                         <div class="card h-100 border border-light-subtle rounded-4 overflow-hidden shadow-xs hover-lift bg-white">
                             <!-- Image Media -->
-                            <div class="position-relative overflow-hidden" style="height: 160px;">
+                            <div class="position-relative overflow-hidden bg-dark d-flex align-items-center justify-content-center" style="height: 160px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
                                 <img 
                                     src="<?= htmlspecialchars($loc['image']); ?>" 
                                     alt="<?= htmlspecialchars($loc['city_name']); ?>" 
-                                    class="w-100 h-100 object-fit-cover transition-transform" 
+                                    class="w-100 h-100 object-fit-cover transition-transform position-relative z-1" 
                                     style="transition: transform 0.4s ease;"
                                     loading="lazy"
+                                    onerror="this.style.display='none';"
                                 >
-                                <div class="position-absolute inset-0 bg-dark bg-opacity-25"></div>
-                                <span class="badge bg-dark bg-opacity-75 text-white position-absolute top-0 start-0 m-2.5 px-2.5 py-1 rounded-pill small" style="font-size: 11px;">
+                                <div class="position-absolute inset-0 d-flex flex-column align-items-center justify-content-center text-white-50 p-2 text-center z-0">
+                                    <i class="bi bi-car-front-fill text-primary fs-2 mb-1"></i>
+                                    <span class="small fw-semibold text-white"><?= htmlspecialchars($loc['city_name']); ?></span>
+                                </div>
+                                <div class="position-absolute inset-0 bg-dark bg-opacity-25 z-2 pointer-events-none"></div>
+                                <span class="badge bg-dark bg-opacity-75 text-white position-absolute top-0 start-0 mt-3 ms-3 px-3 py-1.5 rounded-pill small z-3" style="font-size: 11px; backdrop-filter: blur(4px);">
                                     <?= htmlspecialchars($loc['state']); ?>
                                 </span>
                             </div>
 
                             <!-- Content -->
-                            <div class="p-3">
-                                <h3 class="fw-bold fs-6 text-dark mb-1">
+                            <div class="p-3 d-flex justify-content-between align-items-center">
+                                <h3 class="fw-bold fs-6 text-dark mb-0">
                                     <?= htmlspecialchars($loc['city_name']); ?>
                                 </h3>
-                                <div class="d-flex justify-content-between align-items-center text-muted small mt-2 pt-2 border-top border-light-subtle">
-                                    <span class="text-primary fw-semibold" style="font-size: 12px;">
-                                        From <?= htmlspecialchars($loc['rates']['local']); ?>
-                                    </span>
-                                    <i class="bi bi-arrow-right text-secondary small"></i>
-                                </div>
+                                <i class="bi bi-arrow-right text-primary small"></i>
                             </div>
                         </div>
                     </a>

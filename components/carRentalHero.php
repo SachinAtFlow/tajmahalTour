@@ -5,10 +5,11 @@
  */
 $allCities = getCarRentalCities();
 $currentCitySlug = $cityData['slug'] ?? 'delhi-ncr';
+$heroBgImage = (!empty($cityData['image']) && $cityData['image'] !== '#') ? $cityData['image'] : 'assets/images/delhi/indiaGate.avif';
 ?>
 
 <!-- Car Rental Hero Banner -->
-<section id="car-rental-hero" class="position-relative text-white py-5 overflow-hidden" style="background: linear-gradient(rgba(15, 23, 42, 0.76), rgba(15, 23, 42, 0.84)), url('<?= htmlspecialchars($cityData['image']); ?>') center/cover no-repeat; min-height: 440px;">
+<section id="car-rental-hero" class="position-relative text-white py-5 overflow-hidden" style="background: linear-gradient(rgba(15, 23, 42, 0.76), rgba(15, 23, 42, 0.84)), url('<?= htmlspecialchars($heroBgImage); ?>') center/cover no-repeat; min-height: 440px;">
     <div class="container position-relative z-2 py-4 py-lg-5">
         
         <!-- Breadcrumb & Badge -->

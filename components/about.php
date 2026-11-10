@@ -3,7 +3,7 @@
     <div class="container py-lg-4">
         
         <!-- Main Card Wrapper Matching Reference Image Design -->
-        <div class="about-custom-card p-4 p-md-5 p-lg-5">
+        <div class="about-custom-card p-4 p-md-5 p-lg-5 position-relative overflow-hidden">
             
             <!-- Decorative Dashed Flight Trail SVG with Paper Airplane -->
             <svg class="position-absolute top-0 start-0 w-100 h-100 pointer-events-none" viewBox="0 0 1100 520" fill="none" xmlns="http://www.w3.org/2000/svg" style="z-index: 0; pointer-events: none;" preserveAspectRatio="none">
@@ -83,7 +83,7 @@
                         <img 
                             src="<?= function_exists('theme_url') ? theme_url('assets/images/uttarPradesh/tajmahal.avif') : 'assets/images/uttarPradesh/tajmahal.avif'; ?>" 
                             alt="Taj Mahal Agra Heritage Monument Tour" 
-                            class="about-img-base"
+                            class="about-img-base w-100 d-block"
                             loading="lazy"
                         >
 
@@ -91,7 +91,7 @@
                         <img 
                             src="<?= function_exists('theme_url') ? theme_url('assets/images/others/driving.avif') : 'assets/images/others/driving.avif'; ?>" 
                             alt="Private AC Chauffeur Road Trip Experience" 
-                            class="about-img-rotated"
+                            class="about-img-rotated position-absolute z-2"
                             loading="lazy"
                         >
 

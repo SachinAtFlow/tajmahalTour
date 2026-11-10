@@ -80,13 +80,13 @@ $exploreRegions = [
     </div>
 
     <!-- Infinite Marquee Track (Edge-to-Edge with Smooth Overflow) -->
-    <div class="region-marquee">
-        <div class="region-marquee-track" id="regionMarqueeTrack">
+    <div class="region-marquee position-relative w-100 overflow-hidden">
+        <div class="region-marquee-track d-flex" id="regionMarqueeTrack">
             <!-- Group 1 -->
             <div class="d-flex align-items-center flex-shrink-0">
                 <?php foreach ($exploreRegions as $region): ?>
                     <?php $regLink = function_exists('theme_url') ? theme_url($region['link']) : $region['link']; ?>
-                    <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card" title="Explore <?= htmlspecialchars($region['name']); ?>">
+                    <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card overflow-hidden position-relative text-decoration-none d-block w-100 h-100" title="Explore <?= htmlspecialchars($region['name']); ?>">
                         <!-- Background Image -->
                         <img 
                             src="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($region['image']) : $region['image']); ?>" 
@@ -94,7 +94,7 @@ $exploreRegions = [
                             loading="lazy"
                         >
                         <!-- Dark Gradient Overlay -->
-                        <div class="region-image-overlay"></div>
+                        <div class="region-image-overlay position-absolute"></div>
                         <!-- Card Content at Bottom -->
                         <div class="position-absolute bottom-0 start-0 end-0 p-3 z-2">
                             <h3 class="text-white fw-bold fs-5 mb-0 lh-sm"><?= htmlspecialchars($region['name']); ?></h3>
@@ -108,7 +108,7 @@ $exploreRegions = [
             <div class="d-flex align-items-center flex-shrink-0" aria-hidden="true">
                 <?php foreach ($exploreRegions as $region): ?>
                     <?php $regLink = function_exists('theme_url') ? theme_url($region['link']) : $region['link']; ?>
-                    <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card" tabindex="-1" title="Explore <?= htmlspecialchars($region['name']); ?>">
+                    <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card overflow-hidden position-relative text-decoration-none d-block w-100 h-100" tabindex="-1" title="Explore <?= htmlspecialchars($region['name']); ?>">
                         <!-- Background Image -->
                         <img 
                             src="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($region['image']) : $region['image']); ?>" 
@@ -116,7 +116,7 @@ $exploreRegions = [
                             loading="lazy"
                         >
                         <!-- Dark Gradient Overlay -->
-                        <div class="region-image-overlay"></div>
+                        <div class="region-image-overlay position-absolute"></div>
                         <!-- Card Content at Bottom -->
                         <div class="position-absolute bottom-0 start-0 end-0 p-3 z-2">
                             <h3 class="text-white fw-bold fs-5 mb-0 lh-sm"><?= htmlspecialchars($region['name']); ?></h3>

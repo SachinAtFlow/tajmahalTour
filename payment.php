@@ -34,7 +34,7 @@ require_once 'includes/header.php';
 
         <!-- 2. Milestone Stepper (Visual Progress Tracker) -->
         <div class="bg-white rounded-4 border border-light-subtle p-3 p-md-4 shadow-sm mb-4 mb-lg-5">
-            <div class="stepper-track position-relative d-flex justify-content-between align-items-center">
+            <div class="stepper-track position-relative d-flex justify-content-between align-items-center position-absolute z-1">
                 <!-- Step 1: Advance (Active) -->
                 <div class="stepper-step active position-relative z-2 d-flex flex-column align-items-center text-center">
                     <div class="stepper-node rounded-circle d-flex align-items-center justify-content-center fw-bold">1</div>
@@ -92,7 +92,7 @@ require_once 'includes/header.php';
                                 </div>
                                 <p class="text-secondary small mb-0">Google Pay, PhonePe, Paytm, BHIM</p>
                             </div>
-                            <div class="method-radio-indicator"></div>
+                            <div class="method-radio-indicator rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"></div>
                         </div>
                     </div>
 
@@ -108,7 +108,7 @@ require_once 'includes/header.php';
                                 </div>
                                 <p class="text-secondary small mb-0">ICICI Bank • NEFT / RTGS / IMPS</p>
                             </div>
-                            <div class="method-radio-indicator"></div>
+                            <div class="method-radio-indicator rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"></div>
                         </div>
                     </div>
 
@@ -125,7 +125,7 @@ require_once 'includes/header.php';
                                 </div>
                                 <p class="text-secondary small mb-0">Visa, Mastercard, Amex, PayPal</p>
                             </div>
-                            <div class="method-radio-indicator"></div>
+                            <div class="method-radio-indicator rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"></div>
                         </div>
                     </div>
 
@@ -141,7 +141,7 @@ require_once 'includes/header.php';
                                 </div>
                                 <p class="text-secondary small mb-0">Worldwide Cash Wire Transfer</p>
                             </div>
-                            <div class="method-radio-indicator"></div>
+                            <div class="method-radio-indicator rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"></div>
                         </div>
                     </div>
 
@@ -152,7 +152,7 @@ require_once 'includes/header.php';
                      ========================================== -->
 
                 <!-- PANE 1: UPI & QR CODES (Active by Default) -->
-                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4 active" id="pane-upi">
+                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4 active d-none d-block" id="pane-upi">
                     <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom border-light-subtle">
                         <div>
                             <h3 class="fw-bold text-dark fs-5 mb-1">
@@ -177,7 +177,7 @@ require_once 'includes/header.php';
                                     </div>
                                     <div class="qr-frame-modern bg-light border border-dashed rounded-4 p-3 my-3 position-relative overflow-hidden cursor-pointer" onclick="openPaymentQrModal('assets/images/others/payment/paytm.jpg', 'Paytm UPI QR Code')">
                                         <img src="assets/images/others/payment/paytm.jpg" alt="Paytm QR Code" loading="lazy" class="img-fluid">
-                                        <div class="qr-zoom-badge">
+                                        <div class="qr-zoom-badge position-absolute fw-semibold">
                                             <i class="bi bi-arrows-fullscreen me-1"></i> Click to Zoom
                                         </div>
                                     </div>
@@ -200,7 +200,7 @@ require_once 'includes/header.php';
                                     </div>
                                     <div class="qr-frame-modern bg-light border border-dashed rounded-4 p-3 my-3 position-relative overflow-hidden cursor-pointer" onclick="openPaymentQrModal('assets/images/others/payment/phonepay.jpg', 'PhonePe UPI QR Code')">
                                         <img src="assets/images/others/payment/phonepay.jpg" alt="PhonePe QR Code" loading="lazy" class="img-fluid">
-                                        <div class="qr-zoom-badge">
+                                        <div class="qr-zoom-badge position-absolute fw-semibold">
                                             <i class="bi bi-arrows-fullscreen me-1"></i> Click to Zoom
                                         </div>
                                     </div>
@@ -223,7 +223,7 @@ require_once 'includes/header.php';
                                     </div>
                                     <div class="qr-frame-modern bg-light border border-dashed rounded-4 p-3 my-3 position-relative overflow-hidden cursor-pointer" onclick="openPaymentQrModal('assets/images/others/payment/gpay.jpg', 'Google Pay QR Code')">
                                         <img src="assets/images/others/payment/gpay.jpg" alt="Google Pay QR Code" loading="lazy" class="img-fluid">
-                                        <div class="qr-zoom-badge">
+                                        <div class="qr-zoom-badge position-absolute fw-semibold">
                                             <i class="bi bi-arrows-fullscreen me-1"></i> Click to Zoom
                                         </div>
                                     </div>
@@ -257,7 +257,7 @@ require_once 'includes/header.php';
                 </div>
 
                 <!-- PANE 2: DIRECT BANK TRANSFER (ICICI BANK) -->
-                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4" id="pane-bank">
+                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4 d-none d-block" id="pane-bank">
                     <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom border-light-subtle">
                         <div>
                             <h3 class="fw-bold text-dark fs-5 mb-1">
@@ -271,15 +271,15 @@ require_once 'includes/header.php';
                     </div>
 
                     <!-- Virtual Banking Card Display (Styled to Match Dark Luxury Card Theme) -->
-                    <div class="virtual-bank-card w-75 mx-auto">
+                    <div class="virtual-bank-card w-75 mx-auto position-relative overflow-hidden position-absolute rounded-circle">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div class="virtual-card-chip"></div>
+                            <div class="virtual-card-chip position-relative"></div>
                             <span class="badge bg-white bg-opacity-20 text-black px-3 py-1 rounded-pill small fw-bold">
                                 ICICI BANK LIMITED
                             </span>
                         </div>
                         <div class="small text-white-50 text-uppercase" style="letter-spacing: 1px;">Account Number</div>
-                        <div class="virtual-card-number">1024 0150 3656</div>
+                        <div class="virtual-card-number fw-bold">1024 0150 3656</div>
                         <div class="row g-2 align-items-end">
                             <div class="col-6">
                                 <div class="small text-white-50 text-uppercase" style="font-size: 11px;">Account Holder</div>
@@ -345,7 +345,7 @@ require_once 'includes/header.php';
                 </div>
 
                 <!-- PANE 3: CARDS & PAYPAL (INTERNATIONAL) -->
-                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4" id="pane-paypal">
+                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4 d-none d-block" id="pane-paypal">
                     <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom border-light-subtle">
                         <div>
                             <h3 class="fw-bold text-dark fs-5 mb-1">
@@ -396,7 +396,7 @@ require_once 'includes/header.php';
                 </div>
 
                 <!-- PANE 4: WESTERN UNION TRANSFER -->
-                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4" id="pane-western">
+                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4 d-none d-block" id="pane-western">
                     <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom border-light-subtle">
                         <div>
                             <h3 class="fw-bold text-dark fs-5 mb-1">
@@ -598,8 +598,8 @@ require_once 'includes/header.php';
 </main>
 
 <!-- Lightbox Modal for QR Code Zoom -->
-<div id="paymentQrModal" class="payment-qr-modal" onclick="closePaymentQrModal(event)">
-    <div class="payment-qr-modal-content" onclick="event.stopPropagation()">
+<div id="paymentQrModal" class="payment-qr-modal d-none position-fixed align-items-center justify-content-center d-flex" onclick="closePaymentQrModal(event)">
+    <div class="payment-qr-modal-content w-100 text-center position-relative" onclick="event.stopPropagation()">
         <button type="button" class="btn-close position-absolute top-0 end-0 m-3" aria-label="Close" onclick="closePaymentQrModal()"></button>
         <h4 id="paymentQrModalTitle" class="fw-bold text-dark fs-5 mb-2">Scan &amp; Pay</h4>
         <img id="paymentQrModalImg" src="" alt="Enlarged QR Code" class="img-fluid rounded-3 mb-2" style="max-height: 280px; object-fit: contain;">

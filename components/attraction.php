@@ -138,7 +138,7 @@ html, body {
 
     <!-- 3D Coverflow Carousel Container -->
     <div class="w-100 position-relative" style="overflow: hidden !important; contain: paint; max-width: 100vw;">
-        <div class="swiper category-coverflow-swiper" id="<?= $swiper_id; ?>">
+        <div class="swiper category-coverflow-swiper w-100 position-relative z-2 overflow-hidden text-decoration-none d-block h-100" id="<?= $swiper_id; ?>">
             <div class="swiper-wrapper">
                 <?php if (!empty($resolved_items)): ?>
                     <?php foreach ($resolved_items as $item): ?>
@@ -165,7 +165,7 @@ html, body {
                                 >
                                 
                                 <!-- Cinematic Dark Overlay -->
-                                <div class="category-coverflow-overlay"></div>
+                                <div class="category-coverflow-overlay position-absolute"></div>
 
                                 <!-- Card Content at Bottom (Matching User Reference Image) -->
                                 <div class="position-absolute bottom-0 start-0 end-0 p-4 z-2">

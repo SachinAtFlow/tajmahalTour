@@ -61,10 +61,10 @@ $categoryTitle = $categoryTitle ?? 'Tour Packages';
                 ?>
                 <div class="col">
                     <!-- Dark Luxury Card (Matching Featured Tour Style) -->
-                    <div class="dark-tour-card h-100">
+                    <div class="dark-tour-card h-100 overflow-hidden d-flex flex-column position-relative">
                         
                         <!-- Top Media Area with Floating Bookmark & Seamless Bottom Fade -->
-                        <div class="dark-tour-media">
+                        <div class="dark-tour-media position-relative overflow-hidden w-100 h-100">
                             
                             <!-- Floating Tag Badge (Top-Left) -->
                             <?php if (!empty($tourTag)): ?>
@@ -74,7 +74,7 @@ $categoryTitle = $categoryTitle ?? 'Tour Packages';
                             <?php endif; ?>
 
                             <!-- Floating Bookmark Icon (Top-Right) -->
-                            <a href="<?= htmlspecialchars($fullTourUrl); ?>" class="dark-tour-bookmark" title="Save tour" aria-label="Save tour">
+                            <a href="<?= htmlspecialchars($fullTourUrl); ?>" class="dark-tour-bookmark position-absolute rounded-circle d-flex align-items-center justify-content-center z-3 text-decoration-none" title="Save tour" aria-label="Save tour">
                                 <i class="bi bi-bookmark"></i>
                             </a>
 
@@ -86,45 +86,45 @@ $categoryTitle = $categoryTitle ?? 'Tour Packages';
                                 >
                             </a>
                             <!-- Seamless Bottom Gradient Fade into Card Body -->
-                            <div class="dark-tour-fade"></div>
+                            <div class="dark-tour-fade position-absolute bottom-0 start-0 end-0 z-1"></div>
                         </div>
 
                         <!-- Card Content Body -->
-                        <div class="dark-tour-body">
+                        <div class="dark-tour-body d-flex flex-column flex-grow-1 justify-content-between position-relative z-2">
                             <div>
                                 <!-- Title & Price Capsule Row -->
                                 <div class="d-flex align-items-start justify-content-between gap-2 mb-1">
-                                    <h5 class="dark-tour-title line-clamp-2" style="min-height: 44px;">
+                                    <h5 class="dark-tour-title line-clamp-2 fw-bold m-0 text-decoration-none overflow-hidden" style="min-height: 44px;">
                                         <a href="<?= htmlspecialchars($fullTourUrl); ?>" title="<?= htmlspecialchars($tourTitle); ?>">
                                             <?= htmlspecialchars($tourTitle); ?>
                                         </a>
                                     </h5>
                                     <?php if (!empty($tourPrice)): ?>
-                                        <span class="dark-tour-price"><?= htmlspecialchars($tourPrice); ?></span>
+                                        <span class="dark-tour-price fw-bold flex-shrink-0"><?= htmlspecialchars($tourPrice); ?></span>
                                     <?php endif; ?>
                                 </div>
 
                                 <!-- 2-Line Subtitle / Overview -->
-                                <p class="dark-tour-desc">
+                                <p class="dark-tour-desc overflow-hidden">
                                     <?= htmlspecialchars($tourOverview); ?>
                                 </p>
 
                                 <!-- Spec Pill Badges Row -->
-                                <div class="dark-tour-pills">
-                                    <span class="dark-tour-pill">
+                                <div class="dark-tour-pills d-flex align-items-center flex-wrap">
+                                    <span class="dark-tour-pill fw-medium d-inline-flex align-items-center">
                                         <i class="bi bi-clock"></i> <?= htmlspecialchars($tourDuration); ?>
                                     </span>
-                                    <span class="dark-tour-pill">
+                                    <span class="dark-tour-pill fw-medium d-inline-flex align-items-center">
                                         <i class="bi bi-car-front"></i> Private Cab
                                     </span>
-                                    <span class="dark-tour-pill">
+                                    <span class="dark-tour-pill fw-medium d-inline-flex align-items-center">
                                         <i class="bi bi-star-fill text-warning"></i> <?= htmlspecialchars($tourRating); ?>
                                     </span>
                                 </div>
                             </div>
 
                             <!-- Solid White "Book now" Full-Width CTA Button -->
-                            <a href="<?= htmlspecialchars($fullTourUrl); ?>" class="btn-dark-tour-cta">
+                            <a href="<?= htmlspecialchars($fullTourUrl); ?>" class="btn-dark-tour-cta fw-bold text-center text-decoration-none d-block w-100 border-0">
                                 Book now
                             </a>
 

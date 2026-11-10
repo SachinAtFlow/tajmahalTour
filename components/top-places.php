@@ -78,7 +78,7 @@ $destinations = [
 
         <!-- INFINITE MARQUEE -->
         <div class="w-100 overflow-hidden destination-marquee">
-            <div class="destination-track">
+            <div class="destination-track d-flex">
 
                 <!-- FIRST GROUP -->
                 <div class="d-flex align-items-start flex-shrink-0 destination-group">

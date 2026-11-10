@@ -20,8 +20,8 @@ $company_address = "Fatehabad Road, Near Taj East Gate, Agra, Uttar Pradesh 2820
 <main id="terms-conditions-main">
 
     <!-- Terms & Conditions Hero Banner Section -->
-    <section id="terms-banner" class="policy-hero-banner text-center position-relative">
-        <div class="policy-hero-glow"></div>
+    <section id="terms-banner" class="policy-hero-banner text-center position-relative overflow-hidden">
+        <div class="policy-hero-glow position-absolute rounded-circle"></div>
         <div class="container position-relative py-lg-4">
             <h1 class="display-5 fw-bold text-white mb-3">
                 Terms & Conditions
@@ -42,52 +42,52 @@ $company_address = "Fatehabad Road, Near Taj East Gate, Agra, Uttar Pradesh 2820
 
                 <!-- Left Column: Sticky Table of Contents Navigation (Desktop) -->
                 <div class="col-lg-4 col-xl-3 d-none d-lg-block">
-                    <aside class="policy-sidebar">
+                    <aside class="policy-sidebar sticky-top">
                         <div class="bg-white rounded-4 border border-light-subtle p-3 shadow-xs mb-3">
                             <h6 class="text-uppercase text-secondary fw-bold small px-3 pt-2 mb-3 tracking-wider">
                                 Table of Contents
                             </h6>
                             <nav id="terms-nav" class="d-flex flex-column gap-1">
-                                <a class="policy-nav-link active" href="#welcome">
+                                <a class="policy-nav-link active d-block fw-medium text-decoration-none fw-semibold" href="#welcome">
                                     <i class="bi bi-info-circle me-1.5 opacity-75"></i> Welcome & Agreement
                                 </a>
-                                <a class="policy-nav-link" href="#sec-services">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-services">
                                     <i class="bi bi-compass me-1.5 opacity-75"></i> 1. Scope of Services
                                 </a>
-                                <a class="policy-nav-link" href="#sec-eligibility">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-eligibility">
                                     <i class="bi bi-person-check me-1.5 opacity-75"></i> 2. Eligibility & Bookings
                                 </a>
-                                <a class="policy-nav-link" href="#sec-inclusions">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-inclusions">
                                     <i class="bi bi-check2-square me-1.5 opacity-75"></i> 3. Inclusions & Exclusions
                                 </a>
-                                <a class="policy-nav-link" href="#sec-payment">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-payment">
                                     <i class="bi bi-credit-card me-1.5 opacity-75"></i> 4. Pricing & Payments
                                 </a>
-                                <a class="policy-nav-link" href="#sec-cancellation">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-cancellation">
                                     <i class="bi bi-arrow-counterclockwise me-1.5 opacity-75"></i> 5. Cancellation & Refunds
                                 </a>
-                                <a class="policy-nav-link" href="#sec-rescheduling">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-rescheduling">
                                     <i class="bi bi-calendar-range me-1.5 opacity-75"></i> 6. Traveller Rescheduling
                                 </a>
-                                <a class="policy-nav-link" href="#sec-company-changes">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-company-changes">
                                     <i class="bi bi-shield-exclamation me-1.5 opacity-75"></i> 7. Operational Changes
                                 </a>
-                                <a class="policy-nav-link" href="#sec-responsibilities">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-responsibilities">
                                     <i class="bi bi-person-arms-up me-1.5 opacity-75"></i> 8. Traveller Conduct
                                 </a>
-                                <a class="policy-nav-link" href="#sec-safety">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-safety">
                                     <i class="bi bi-shield-shaded me-1.5 opacity-75"></i> 9. Safety & Health
                                 </a>
-                                <a class="policy-nav-link" href="#sec-liability">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-liability">
                                     <i class="bi bi-exclamation-triangle me-1.5 opacity-75"></i> 10. Limitation of Liability
                                 </a>
-                                <a class="policy-nav-link" href="#sec-ip">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-ip">
                                     <i class="bi bi-c-circle me-1.5 opacity-75"></i> 11. Intellectual Property
                                 </a>
-                                <a class="policy-nav-link" href="#sec-jurisdiction">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-jurisdiction">
                                     <i class="bi bi-bank me-1.5 opacity-75"></i> 12. Governing Law
                                 </a>
-                                <a class="policy-nav-link" href="#sec-contact">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-contact">
                                     <i class="bi bi-headset me-1.5 opacity-75"></i> 13. Contact & Support
                                 </a>
                             </nav>

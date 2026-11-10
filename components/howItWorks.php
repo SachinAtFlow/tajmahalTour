@@ -90,12 +90,12 @@ $howItWorksSteps = [
             <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 bg-white p-3 ps-md-4 pe-md-3 rounded-4 rounded-md-pill border border-light-subtle shadow-xs mx-auto" style="max-width: 860px;">
                 <!-- Left: 24x7 Support & Payment Modes -->
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-start gap-2 gap-sm-3">
-                    <span class="text-dark small fw-semibold d-inline-flex align-items-center gap-1.5">
+                    <span class="text-dark small fw-semibold d-inline-flex align-items-center gap-2">
                         <i class="bi bi-patch-check-fill text-primary"></i>
                         <span>24x7 On-Call Support</span>
                     </span>
                     <span class="text-secondary opacity-50 d-none d-sm-inline">&bull;</span>
-                    <span class="text-dark small fw-semibold d-inline-flex align-items-center gap-1.5">
+                    <span class="text-dark small fw-semibold d-inline-flex align-items-center gap-2">
                         <i class="bi bi-credit-card-2-front-fill text-success"></i>
                         <span>Multiple Payment Modes</span>
                     </span>

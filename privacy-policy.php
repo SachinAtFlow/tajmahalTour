@@ -20,8 +20,8 @@ $company_address = "Fatehabad Road, Near Taj East Gate, Agra, Uttar Pradesh 2820
 <main id="privacy-policy-main">
 
     <!-- Privacy Policy Hero Banner Section -->
-    <section id="privacy-banner" class="policy-hero-banner text-center position-relative">
-        <div class="policy-hero-glow"></div>
+    <section id="privacy-banner" class="policy-hero-banner text-center position-relative overflow-hidden">
+        <div class="policy-hero-glow position-absolute rounded-circle"></div>
         <div class="container position-relative py-lg-4">
             
             <h1 class="display-5 fw-bold text-white mb-3">
@@ -43,43 +43,43 @@ $company_address = "Fatehabad Road, Near Taj East Gate, Agra, Uttar Pradesh 2820
 
                 <!-- Left Column: Sticky Table of Contents Navigation (Desktop) -->
                 <div class="col-lg-4 col-xl-3 d-none d-lg-block">
-                    <aside class="policy-sidebar">
+                    <aside class="policy-sidebar sticky-top">
                         <div class="bg-white rounded-4 border border-light-subtle p-3 shadow-xs mb-3">
                             <h6 class="text-uppercase text-secondary fw-bold small px-3 pt-2 mb-3 tracking-wider">
                                 Table of Contents
                             </h6>
                             <nav id="policy-nav" class="d-flex flex-column gap-1">
-                                <a class="policy-nav-link active" href="#overview">
+                                <a class="policy-nav-link active d-block fw-medium text-decoration-none fw-semibold" href="#overview">
                                     <i class="bi bi-info-circle me-1.5 opacity-75"></i> Overview & Scope
                                 </a>
-                                <a class="policy-nav-link" href="#section-1-collection">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-1-collection">
                                     <i class="bi bi-person-badge me-1.5 opacity-75"></i> 1. Data Collection
                                 </a>
-                                <a class="policy-nav-link" href="#section-2-purpose">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-2-purpose">
                                     <i class="bi bi-bullseye me-1.5 opacity-75"></i> 2. Purpose & Usage
                                 </a>
-                                <a class="policy-nav-link" href="#section-3-analytics">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-3-analytics">
                                     <i class="bi bi-bar-chart me-1.5 opacity-75"></i> 3. Non-Personal Data
                                 </a>
-                                <a class="policy-nav-link" href="#section-4-sharing">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-4-sharing">
                                     <i class="bi bi-share me-1.5 opacity-75"></i> 4. Sharing & Disclosure
                                 </a>
-                                <a class="policy-nav-link" href="#section-5-security">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-5-security">
                                     <i class="bi bi-shield-lock me-1.5 opacity-75"></i> 5. Data Security
                                 </a>
-                                <a class="policy-nav-link" href="#section-6-retention">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-6-retention">
                                     <i class="bi bi-hourglass-split me-1.5 opacity-75"></i> 6. Data Retention
                                 </a>
-                                <a class="policy-nav-link" href="#section-7-rights">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-7-rights">
                                     <i class="bi bi-check2-circle me-1.5 opacity-75"></i> 7. Your Privacy Rights
                                 </a>
-                                <a class="policy-nav-link" href="#section-8-cookies">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-8-cookies">
                                     <i class="bi bi-cookie me-1.5 opacity-75"></i> 8. Cookies Policy
                                 </a>
-                                <a class="policy-nav-link" href="#section-9-children">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-9-children">
                                     <i class="bi bi-people me-1.5 opacity-75"></i> 9. Children's Privacy
                                 </a>
-                                <a class="policy-nav-link" href="#section-10-grievance">
+                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-10-grievance">
                                     <i class="bi bi-envelope-at me-1.5 opacity-75"></i> 10. Grievance Officer
                                 </a>
                             </nav>

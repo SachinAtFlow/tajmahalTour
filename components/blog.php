@@ -59,18 +59,18 @@ $homeBlogPosts = !empty($blogPosts) ? array_slice($blogPosts, 0, $maxBlogPosts) 
                         $desc = htmlspecialchars($post['description'] ?? $post['subtitle'] ?? 'Discover essential tips, road timings, and cultural secrets for an unforgettable trip.');
                     ?>
                     <div class="col-12 col-sm-6 col-lg-3">
-                        <article class="theme-blog-card h-100">
+                        <article class="theme-blog-card h-100 overflow-hidden d-flex flex-column text-decoration-none">
                             
                             <!-- Media Thumbnail with Floating Badges -->
-                            <div class="theme-blog-media">
+                            <div class="theme-blog-media position-relative w-100 overflow-hidden h-100 d-block">
                                 <!-- Floating Category / Tag (Top-Left) -->
-                                <span class="theme-blog-category-badge">
-                                    <span class="badge-dot"></span>
+                                <span class="theme-blog-category-badge position-absolute z-3 fw-bold rounded-pill d-inline-flex align-items-center rounded-circle">
+                                    <span class="badge-dot rounded-circle"></span>
                                     <span><?= $tag; ?></span>
                                 </span>
 
                                 <!-- Floating Read Time (Top-Right) -->
-                                <span class="theme-blog-time-badge">
+                                <span class="theme-blog-time-badge position-absolute z-3 fw-semibold rounded-pill d-inline-flex align-items-center">
                                     <i class="bi bi-clock text-warning"></i>
                                     <span><?= $readTime; ?></span>
                                 </span>
@@ -86,10 +86,10 @@ $homeBlogPosts = !empty($blogPosts) ? array_slice($blogPosts, 0, $maxBlogPosts) 
                             </div>
 
                             <!-- Card Content Body -->
-                            <div class="theme-blog-body">
+                            <div class="theme-blog-body d-flex flex-column flex-grow-1">
                                 
                                 <!-- Meta Row: Date & Author -->
-                                <div class="theme-blog-meta">
+                                <div class="theme-blog-meta d-flex align-items-center justify-content-between">
                                     <span class="d-inline-flex align-items-center gap-1">
                                         <i class="bi bi-calendar3 text-primary opacity-75"></i>
                                         <span><?= $date; ?></span>
@@ -101,24 +101,24 @@ $homeBlogPosts = !empty($blogPosts) ? array_slice($blogPosts, 0, $maxBlogPosts) 
                                 </div>
 
                                 <!-- Post Title (Clamped to 2 lines) -->
-                                <h3 class="theme-blog-title text-line-clamp-2">
+                                <h3 class="theme-blog-title text-line-clamp-2 fw-bold overflow-hidden">
                                     <a href="<?= $postLink; ?>" class="text-decoration-none text-dark" title="<?= htmlspecialchars($post['title'] ?? ''); ?>">
                                         <?= htmlspecialchars($post['title'] ?? ''); ?>
                                     </a>
                                 </h3>
 
                                 <!-- Post Excerpt (Clamped to 2 lines) -->
-                                <p class="theme-blog-excerpt text-line-clamp-2">
+                                <p class="theme-blog-excerpt text-line-clamp-2 overflow-hidden">
                                     <?= $desc; ?>
                                 </p>
 
                                 <!-- Card Footer: Interactive CTA Link & Arrow Circle -->
-                                <div class="theme-blog-footer">
-                                    <a href="<?= $postLink; ?>" class="theme-blog-cta-text text-decoration-none" title="Read full guide">
+                                <div class="theme-blog-footer d-flex align-items-center justify-content-between">
+                                    <a href="<?= $postLink; ?>" class="theme-blog-cta-text text-decoration-none fw-bold d-inline-flex align-items-center" title="Read full guide">
                                         <span>Read Article</span>
                                         <i class="bi bi-arrow-right"></i>
                                     </a>
-                                    <a href="<?= $postLink; ?>" class="theme-blog-arrow-circle text-decoration-none" tabindex="-1" aria-hidden="true">
+                                    <a href="<?= $postLink; ?>" class="theme-blog-arrow-circle text-decoration-none rounded-circle d-inline-flex align-items-center justify-content-center" tabindex="-1" aria-hidden="true">
                                         <i class="bi bi-arrow-up-right"></i>
                                     </a>
                                 </div>

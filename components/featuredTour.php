@@ -124,18 +124,18 @@
 
                 <!-- Filter Tabs (Left-aligned) -->
                 <div class="d-flex flex-wrap align-items-center justify-content-start gap-2 mt-3" id="tour-filter-tabs">
-                    <button type="button" data-category="top" class="tour-filter-btn active">Top</button>
-                    <button type="button" data-category="delhi" class="tour-filter-btn">Delhi</button>
-                    <button type="button" data-category="uttar-pradesh" class="tour-filter-btn">Uttar Pradesh</button>
-                    <button type="button" data-category="rajasthan" class="tour-filter-btn">Rajasthan</button>
-                    <button type="button" data-category="himachal" class="tour-filter-btn">Himachal</button>
-                    <button type="button" data-category="uttarakhand" class="tour-filter-btn">Uttarakhand</button>
-                    <button type="button" data-category="punjab" class="tour-filter-btn">Punjab</button>
-                    <button type="button" data-category="gujarat" class="tour-filter-btn">Gujarat</button>
-                    <button type="button" data-category="nepal" class="tour-filter-btn">Nepal</button>
-                    <button type="button" data-category="spiritual" class="tour-filter-btn">Spiritual</button>
-                    <button type="button" data-category="wildlife" class="tour-filter-btn">Wildlife</button>
-                    <button type="button" data-category="weekend" class="tour-filter-btn">Weekend</button>
+                    <button type="button" data-category="top" class="tour-filter-btn active fw-semibold d-inline-flex align-items-center justify-content-center">Top</button>
+                    <button type="button" data-category="delhi" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Delhi</button>
+                    <button type="button" data-category="uttar-pradesh" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Uttar Pradesh</button>
+                    <button type="button" data-category="rajasthan" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Rajasthan</button>
+                    <button type="button" data-category="himachal" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Himachal</button>
+                    <button type="button" data-category="uttarakhand" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Uttarakhand</button>
+                    <button type="button" data-category="punjab" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Punjab</button>
+                    <button type="button" data-category="gujarat" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Gujarat</button>
+                    <button type="button" data-category="nepal" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Nepal</button>
+                    <button type="button" data-category="spiritual" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Spiritual</button>
+                    <button type="button" data-category="wildlife" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Wildlife</button>
+                    <button type="button" data-category="weekend" class="tour-filter-btn fw-semibold d-inline-flex align-items-center justify-content-center">Weekend</button>
                 </div>
             </div>
 
@@ -168,10 +168,10 @@
                             data-featured="<?= $isFeatured; ?>">
                             
                             <!-- Dark Luxury Card (Matching Provided Image Design) -->
-                            <div class="dark-tour-card">
+                            <div class="dark-tour-card overflow-hidden d-flex flex-column h-100 position-relative">
                                 
                                 <!-- Top Media Area with Floating Bookmark & Seamless Bottom Fade -->
-                                <div class="dark-tour-media">
+                                <div class="dark-tour-media position-relative overflow-hidden w-100 h-100">
                                     
                                     <!-- Floating Tag Badge (Top-Left) -->
                                     <?php if (!empty($tour['tag'])): ?>
@@ -188,15 +188,15 @@
                                         >
                                     </a>
                                     <!-- Seamless Bottom Gradient Fade into Card Body -->
-                                    <div class="dark-tour-fade"></div>
+                                    <div class="dark-tour-fade position-absolute bottom-0 start-0 end-0 z-1"></div>
                                 </div>
 
                                 <!-- Card Content Body -->
-                                <div class="dark-tour-body">
+                                <div class="dark-tour-body d-flex flex-column flex-grow-1 justify-content-between position-relative z-2">
                                     <div>
                                         <!-- Title & Price Capsule Row -->
                                         <div class="d-flex align-items-start justify-content-between gap-2 mb-1">
-                                            <h5 class="dark-tour-title text-truncate-2">
+                                            <h5 class="dark-tour-title text-truncate-2 fw-bold m-0 text-decoration-none">
                                                 <a href="<?= $tourLink; ?>" title="<?= htmlspecialchars($tour['title'] ?? ''); ?>">
                                                     <?= htmlspecialchars($tour['title'] ?? ''); ?>
                                                 </a>
@@ -205,26 +205,26 @@
                                         </div>
 
                                         <!-- 2-Line Subtitle / Description -->
-                                        <p class="dark-tour-desc">
+                                        <p class="dark-tour-desc overflow-hidden">
                                             <?= htmlspecialchars($desc); ?>
                                         </p>
 
                                         <!-- Spec Pill Badges Row -->
-                                        <div class="dark-tour-pills">
+                                        <div class="dark-tour-pills d-flex align-items-center flex-wrap">
                                             
                                             <!-- Type Pill -->
-                                            <span class="dark-tour-pill">
+                                            <span class="dark-tour-pill fw-medium d-inline-flex align-items-center">
                                                 <?= htmlspecialchars($tour['type'] ?? 'Private Trip'); ?>
                                             </span>
                                             <!-- Duration Pill -->
-                                            <span class="dark-tour-pill">
+                                            <span class="dark-tour-pill fw-medium d-inline-flex align-items-center">
                                                 <?= htmlspecialchars($tour['duration'] ?? '1 Day'); ?>
                                             </span>
                                         </div>
                                     </div>
 
                                     <!-- Solid White "Book now" Full-Width CTA Button -->
-                                    <a href="<?= $tourLink; ?>" class="btn-dark-tour-cta">
+                                    <a href="<?= $tourLink; ?>" class="btn-dark-tour-cta fw-bold text-center text-decoration-none d-block w-100 border-0">
                                         Book now
                                     </a>
 

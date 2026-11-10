@@ -317,27 +317,27 @@ if (!function_exists('parseTourItineraryStep')) {
                     </div>
 
                     <?php if (!empty($currentTour['itinerary'])): ?>
-                        <div class="itinerary-timeline-container">
+                        <div class="itinerary-timeline-container position-relative m-0">
                             <?php foreach ($currentTour['itinerary'] as $sIdx => $rawStep): ?>
                                 <?php 
                                     $step = parseTourItineraryStep($rawStep, $sIdx);
                                 ?>
-                                <div class="itinerary-day-wrapper">
+                                <div class="itinerary-day-wrapper position-relative position-absolute z-1 d-none">
                                     <!-- Timeline Node Marker -->
-                                    <div class="itinerary-timeline-marker"></div>
+                                    <div class="itinerary-timeline-marker position-absolute rounded-circle z-2"></div>
 
                                     <!-- Day Content Card Box -->
                                     <div class="itinerary-day-box">
                                         <!-- Header: Day Badge, Title & Distance -->
                                         <div class="itinerary-day-header d-flex flex-wrap align-items-center justify-content-between gap-2.5">
                                             <div class="d-flex flex-wrap align-items-center gap-2">
-                                                <span class="itinerary-day-badge">
+                                                <span class="itinerary-day-badge rounded-pill fw-bold text-uppercase d-inline-flex align-items-center flex-shrink-0">
                                                     <i class="bi bi-calendar-check-fill me-2"></i> <?= htmlspecialchars($step['timeBadge']); ?>
                                                 </span>
-                                                <h4 class="itinerary-day-title"><?= htmlspecialchars($step['title']); ?></h4>
+                                                <h4 class="itinerary-day-title fw-bold m-0"><?= htmlspecialchars($step['title']); ?></h4>
                                             </div>
                                             <?php if (!empty($step['distance'])): ?>
-                                                <span class="itinerary-dist-badge">
+                                                <span class="itinerary-dist-badge rounded-pill fw-semibold d-inline-flex align-items-center flex-shrink-0">
                                                     <i class="bi bi-speedometer2 text-primary"></i> <?= htmlspecialchars($step['distance']); ?>
                                                 </span>
                                             <?php endif; ?>
@@ -350,7 +350,7 @@ if (!function_exists('parseTourItineraryStep')) {
                                                     <span class="itinerary-point-bullet rounded-circle d-inline-flex align-items-center justify-content-center flex-shrink-0">
                                                         <i class="bi bi-geo-alt-fill"></i>
                                                     </span>
-                                                    <div class="itinerary-point-text flex-grow-1">
+                                                    <div class="itinerary-point-text flex-grow-1 fw-bold">
                                                         <?= $pt; ?>
                                                     </div>
                                                 </li>
@@ -360,7 +360,7 @@ if (!function_exists('parseTourItineraryStep')) {
                                         <!-- Night Stay / Overnight Indicator -->
                                         <?php if (!empty($step['stay'])): ?>
                                             <div class="itinerary-day-footer d-flex flex-wrap align-items-center justify-content-between gap-2">
-                                                <span class="itinerary-night-stay">
+                                                <span class="itinerary-night-stay rounded-pill fw-semibold d-inline-flex align-items-center">
                                                     <i class="bi bi-moon-stars-fill text-warning"></i>
                                                     <span><strong>Night Stay:</strong> <?= htmlspecialchars($step['stay']); ?></span>
                                                 </span>
@@ -419,7 +419,7 @@ if (!function_exists('parseTourItineraryStep')) {
 
             <!-- Right Column: Sticky Booking & Inquiry Form (4 Cols) -->
             <div class="col-lg-4 position-relative">
-                <div class="tour-sticky-sidebar sticky-top" style="top: 90px; z-index: 100;">
+                <div class="tour-sticky-sidebar sticky-top d-flex flex-column" style="top: 90px; z-index: 100;">
                     
                     <div class="card border-0 rounded-4 shadow-sm bg-white overflow-hidden p-4 mb-4" id="tour-inquiry-card">
                         
