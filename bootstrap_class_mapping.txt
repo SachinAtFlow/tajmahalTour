@@ -24,7 +24,6 @@ badge-dot                           - rounded-circle
 btn-dark-tour-cta                   - fw-bold, text-center, text-decoration-none, d-block, w-100, border-0
 category-coverflow-overlay          - position-absolute
 category-coverflow-swiper           - w-100, position-relative, z-2, overflow-hidden, text-decoration-none, d-block, h-100
-checkout-panel-card                 - d-none, d-block
 cta-banner-card                     - position-relative, overflow-hidden
 cta-banner-glow                     - position-absolute, rounded-circle, z-0
 cta-banner-glow-2                   - position-absolute, rounded-circle, z-0
@@ -34,17 +33,13 @@ dark-tour-bookmark                  - position-absolute, rounded-circle, d-flex,
 dark-tour-card                      - overflow-hidden, d-flex, flex-column, h-100, position-relative
 dark-tour-desc                      - overflow-hidden
 dark-tour-fade                      - position-absolute, bottom-0, start-0, end-0, z-1
-dark-tour-media                     - position-relative, overflow-hidden, w-100, h-100
 dark-tour-pill                      - fw-medium, d-inline-flex, align-items-center
 dark-tour-pills                     - d-flex, align-items-center, flex-wrap
 dark-tour-price                     - fw-bold, flex-shrink-0
 dark-tour-title                     - fw-bold, m-0, text-decoration-none
 destination-track                   - d-flex
-dropdown-submenu                    - position-relative, d-block, bottom-0
-dropdown-submenu-menu               - position-absolute, top-0, m-0, bottom-0, d-block
 gallery-hover-overlay               - position-absolute, d-flex, flex-column, justify-content-between
 gallery-justified-container         - d-flex, flex-wrap
-gallery-justified-item              - position-relative, overflow-hidden, w-100, h-100, d-block
 gallery-modal-close                 - position-absolute, rounded-circle, d-flex, align-items-center, justify-content-center
 gallery-modal-counter               - position-absolute, fw-semibold
 gallery-modal-img                   - w-auto, h-auto
@@ -56,7 +51,7 @@ hc-btn-google                       - d-inline-flex, align-items-center, justify
 hc-btn-icon                         - flex-shrink-0
 itinerary-day-badge                 - rounded-pill, fw-bold, text-uppercase, d-inline-flex, align-items-center, flex-shrink-0
 itinerary-day-title                 - fw-bold, m-0
-itinerary-day-wrapper               - position-relative, position-absolute, z-1, d-none
+itinerary-day-wrapper               - position-relative, d-none
 itinerary-day-wrapper.active        - fw-semibold, d-block, d-flex
 itinerary-dist-badge                - rounded-pill, fw-semibold, d-inline-flex, align-items-center, flex-shrink-0
 itinerary-night-stay                - rounded-pill, fw-semibold, d-inline-flex, align-items-center
@@ -66,14 +61,11 @@ itinerary-timeline-marker           - position-absolute, rounded-circle, z-2
 line-clamp-1                        - overflow-hidden
 line-clamp-2                        - overflow-hidden
 line-clamp-3                        - overflow-hidden
-memories-marquee                    - position-relative, w-100, overflow-hidden, position-absolute, top-0, bottom-0, start-0, end-0
 memories-marquee-section            - position-relative, overflow-hidden
 memories-marquee-track              - d-flex
-memory-card                         - flex-shrink-0, position-relative, overflow-hidden, d-block, text-decoration-none, w-100, h-100
 memory-card-overlay                 - position-absolute, d-flex, align-items-end
 method-radio-indicator              - rounded-circle, d-flex, align-items-center, justify-content-center, flex-shrink-0
 nav-link                            - rounded-pill, fw-medium, position-relative, d-inline-flex, align-items-center, fw-semibold
-navbar                              - d-block, position-absolute, start-0, end-0, fw-medium
 navbar-nav                          - rounded-pill
 payment-qr-modal                    - d-none, position-fixed, align-items-center, justify-content-center, d-flex
 payment-qr-modal-content            - w-100, text-center, position-relative
@@ -82,13 +74,11 @@ policy-hero-glow                    - position-absolute, rounded-circle
 policy-nav-link                     - d-block, fw-medium, text-decoration-none, fw-semibold
 policy-sidebar                      - sticky-top
 qr-zoom-badge                       - position-absolute, fw-semibold
-region-image-card                   - overflow-hidden, position-relative, text-decoration-none, d-block, w-100, h-100
 region-image-overlay                - position-absolute
 region-marquee                      - position-relative, w-100, overflow-hidden
 region-marquee-track                - d-flex
 stepper-node                        - rounded-circle, fw-bold, d-flex, align-items-center, justify-content-center
 stepper-step                        - position-relative, z-2
-stepper-track                       - position-relative, position-absolute, z-1
 testimonial-avatar-wrapper          - rounded-circle
 testimonial-pagination              - rounded-circle
 testimonial-swiper                  - position-relative, overflow-hidden
@@ -98,17 +88,15 @@ text-line-clamp-3                   - overflow-hidden
 theme-blog-arrow-circle             - rounded-circle, d-inline-flex, align-items-center, justify-content-center
 theme-blog-body                     - d-flex, flex-column, flex-grow-1
 theme-blog-card                     - overflow-hidden, h-100, d-flex, flex-column, text-decoration-none
-theme-blog-category-badge           - position-absolute, z-3, fw-bold, rounded-pill, d-inline-flex, align-items-center, rounded-circle
+theme-blog-category-badge           - position-absolute, z-3, fw-bold, rounded-pill, d-inline-flex, align-items-center
 theme-blog-cta-text                 - fw-bold, d-inline-flex, align-items-center
 theme-blog-footer                   - d-flex, align-items-center, justify-content-between
-theme-blog-media                    - position-relative, w-100, overflow-hidden, h-100, d-block
 theme-blog-meta                     - d-flex, align-items-center, justify-content-between
 theme-blog-time-badge               - position-absolute, z-3, fw-semibold, rounded-pill, d-inline-flex, align-items-center
 theme-blog-title                    - fw-bold
 tour-categories-showcase            - position-relative
 tour-filter-btn                     - fw-semibold, d-inline-flex, align-items-center, justify-content-center
 tour-sticky-sidebar                 - d-flex, flex-column
-virtual-bank-card                   - position-relative, overflow-hidden, position-absolute, rounded-circle
 virtual-card-chip                   - position-relative
 virtual-card-number                 - fw-bold
 

@@ -759,6 +759,13 @@ html, body {
     color: #ffffff !important;
 }
 
+.dropdown-submenu:hover > .dropdown-item,
+.dropdown-submenu.show > .dropdown-item {
+    background-color: rgba(59, 113, 254, 0.08) !important;
+    color: var(--primary-color) !important;
+    transform: translateX(2px);
+}
+
 .dropdown-submenu:hover > .dropdown-item i.bi-chevron-right {
     color: var(--primary-color) !important;
     transform: translateX(2px);

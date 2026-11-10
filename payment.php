@@ -240,17 +240,18 @@ require_once 'includes/header.php';
                     <!-- 3-Step Visual Micro-Guide -->
                     <div class="p-3 bg-light rounded-4 border border-light-subtle d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 text-secondary small">
                         <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-primary rounded-circle p-1" style="width: 22px; height: 22px;">1</span>
+                            <span class="badge bg-primary rounded-circle p-1 d-inline-flex justify-content-center align-items-center" style="width: 22px; height: 22px;">1</span>
                             <span>Open any UPI app</span>
                         </div>
                         <i class="bi bi-chevron-right text-muted d-none d-md-block"></i>
                         <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-primary rounded-circle p-1" style="width: 22px; height: 22px;">2</span>
+                            <span class="badge bg-primary rounded-circle p-1 d-inline-flex justify-content-center align-items-center"
+                                    style="width: 22px; height: 22px;">2</span>
                             <span>Scan QR / Enter number</span>
                         </div>
                         <i class="bi bi-chevron-right text-muted d-none d-md-block"></i>
                         <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-primary rounded-circle p-1" style="width: 22px; height: 22px;">3</span>
+                            <span class="badge bg-primary rounded-circle p-1 d-inline-flex justify-content-center align-items-center" style="width: 22px; height: 22px;">3</span>
                             <span>Share receipt on WhatsApp</span>
                         </div>
                     </div>
@@ -440,7 +441,7 @@ require_once 'includes/header.php';
                         <div class="col-md-5">
                             <div class="input-group">
                                 <input type="text" id="utr-input-field" class="form-control" placeholder="e.g. 412356789012" aria-label="UTR Number">
-                                <button class="btn btn-success fw-semibold d-inline-flex align-items-center gap-1" type="button" onclick="sendUtrToWhatsApp()">
+                                <button class="btn btn-primary fw-semibold d-inline-flex align-items-center gap-1" type="button" onclick="sendUtrToWhatsApp()">
                                     <i class="bi bi-whatsapp"></i>
                                     <span>Verify</span>
                                 </button>
@@ -536,19 +537,21 @@ require_once 'includes/header.php';
                         </label>
                         <div class="d-flex flex-column gap-2.5">
                             <div class="d-flex align-items-start gap-2 mb-2">
-                                <span class="badge bg-primary rounded-circle p-1 flex-shrink-0 mt-1" style="width: 20px; height: 20px; font-size: 10px;">1</span>
+                                <span class="badge bg-primary rounded-circle p-1 flex-shrink-0 mt-1 d-inline-flex justify-content-center align-items-center"
+                                style="width: 20px; height: 20px; font-size: 10px;">1</span>
                                 <div class="small text-secondary lh-sm">
                                     <strong class="text-dark">Save Receipt:</strong> Take a quick screenshot of the success screen or copy the 12-digit UTR / Ref Number.
                                 </div>
                             </div>
                             <div class="d-flex align-items-start gap-2 mb-2">
-                                <span class="badge bg-primary rounded-circle p-1 flex-shrink-0 mt-1" style="width: 20px; height: 20px; font-size: 10px;">2</span>
+                                <span class="badge bg-primary rounded-circle p-1 flex-shrink-0 mt-1 d-inline-flex justify-content-center align-items-center"
+                                style="width: 20px; height: 20px; font-size: 10px;">2</span>
                                 <div class="small text-secondary lh-sm">
                                     <strong class="text-dark">Send on WhatsApp:</strong> Share the payment proof or UTR with our desk at <strong>+91 98107 23370</strong>.
                                 </div>
                             </div>
                             <div class="d-flex align-items-start gap-2">
-                                <span class="badge bg-success rounded-circle p-1 flex-shrink-0 mt-1" style="width: 20px; height: 20px; font-size: 10px;">3</span>
+                                <span class="badge bg-primary rounded-circle p-1 flex-shrink-0 mt-1 d-inline-flex justify-content-center align-items-center" style="width: 20px; height: 20px; font-size: 10px;">3</span>
                                 <div class="small text-secondary lh-sm">
                                     <strong class="text-dark">Instant Voucher:</strong> Receive your confirmed booking voucher, GST invoice, and chauffeur details.
                                 </div>
@@ -559,7 +562,7 @@ require_once 'includes/header.php';
 
                     <!-- Instant WhatsApp Help Action -->
                     <div class="mb-3">
-                        <a href="https://wa.me/919810723370?text=Hi,%20I%20have%20completed%20the%20payment%20for%20my%20tour%20booking.%20Please%20find%20the%20details%20attached." target="_blank" class="btn btn-success w-100 py-2.5 fw-bold d-inline-flex align-items-center justify-content-center gap-2 shadow-sm">
+                        <a href="https://wa.me/919810723370?text=Hi,%20I%20have%20completed%20the%20payment%20for%20my%20tour%20booking.%20Please%20find%20the%20details%20attached." target="_blank" class="btn btn-primary w-100 py-2.5 fw-bold d-inline-flex align-items-center justify-content-center gap-2 shadow-sm">
                             <i class="bi bi-whatsapp fs-5"></i>
                             <span>Send Receipt on WhatsApp</span>
                         </a>
