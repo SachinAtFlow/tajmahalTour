@@ -64,7 +64,7 @@ $categoryTitle = $categoryTitle ?? 'Tour Packages';
                     <div class="dark-tour-card h-100 overflow-hidden d-flex flex-column position-relative">
                         
                         <!-- Top Media Area with Floating Bookmark & Seamless Bottom Fade -->
-                        <div class="dark-tour-media position-relative overflow-hidden w-100 h-100">
+                        <div class="dark-tour-media">
                             
                             <!-- Floating Tag Badge (Top-Left) -->
                             <?php if (!empty($tourTag)): ?>

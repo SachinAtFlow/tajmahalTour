@@ -82,7 +82,7 @@ if (!function_exists('theme_url')) {
 </div>
 
 <!-- Main Navigation (Compact Height Bootstrap 5 Navbar) -->
-<nav id="site-smart-header" class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1 py-lg-2 d-block position-absolute start-0 end-0 fw-medium">
+<nav id="site-smart-header" class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1 py-lg-2">
     <div class="container d-flex align-items-center justify-content-between">
 
         <!-- Left: Mobile Toggle & Brand Logo -->
@@ -126,12 +126,12 @@ if (!function_exists('theme_url')) {
                             <?php foreach ($carNavMenu as $cat): ?>
                                 <?php if (!empty($cat['sub'])): ?>
                                     <!-- Level 2 Submenu -->
-                                    <li class="dropdown-submenu position-relative d-block bottom-0">
+                                    <li class="dropdown-submenu">
                                         <a class="dropdown-item py-2 px-3 fw-medium d-flex align-items-center justify-content-between" href="<?php echo htmlspecialchars(theme_url($cat['link'])); ?>">
                                             <span><?php echo htmlspecialchars($cat['title']); ?></span>
                                             <i class="bi bi-chevron-right small text-muted ms-2"></i>
                                         </a>
-                                        <ul class="dropdown-menu dropdown-submenu-menu shadow border-0 rounded-4 py-2 position-absolute top-0 m-0 bottom-0 d-block">
+                                        <ul class="dropdown-menu dropdown-submenu-menu shadow border-0 rounded-4 py-2">
                                             <li class="dropdown-header text-primary fw-bold small text-uppercase px-3 py-1">
                                                 <?php echo htmlspecialchars($cat['title']); ?>
                                             </li>
@@ -165,12 +165,12 @@ if (!function_exists('theme_url')) {
                     <ul class="dropdown-menu shadow border-0 rounded-4 py-2">
                         <?php if (!empty($tourNavMenu)): ?>
                             <?php foreach ($tourNavMenu as $tCat): ?>
-                                <li class="dropdown-submenu position-relative d-block bottom-0">
+                                <li class="dropdown-submenu">
                                     <a class="dropdown-item py-2 px-3 fw-medium d-flex align-items-center justify-content-between" href="<?php echo htmlspecialchars(theme_url($tCat['link'])); ?>">
                                         <span><?php echo htmlspecialchars($tCat['title']); ?></span>
                                         <i class="bi bi-chevron-right small text-muted ms-2"></i>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-submenu-menu shadow border-0 rounded-4 py-2 position-absolute top-0 m-0 bottom-0 d-block">
+                                    <ul class="dropdown-menu dropdown-submenu-menu shadow border-0 rounded-4 py-2">
                                         <li class="dropdown-header text-primary fw-bold small text-uppercase px-3 py-1">
                                             <?php echo htmlspecialchars($tCat['title']); ?>
                                         </li>

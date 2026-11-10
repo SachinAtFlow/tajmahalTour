@@ -34,7 +34,7 @@ require_once 'includes/header.php';
 
         <!-- 2. Milestone Stepper (Visual Progress Tracker) -->
         <div class="bg-white rounded-4 border border-light-subtle p-3 p-md-4 shadow-sm mb-4 mb-lg-5">
-            <div class="stepper-track position-relative d-flex justify-content-between align-items-center position-absolute z-1">
+            <div class="stepper-track position-relative d-flex justify-content-between align-items-center">
                 <!-- Step 1: Advance (Active) -->
                 <div class="stepper-step active position-relative z-2 d-flex flex-column align-items-center text-center">
                     <div class="stepper-node rounded-circle d-flex align-items-center justify-content-center fw-bold">1</div>
@@ -152,7 +152,7 @@ require_once 'includes/header.php';
                      ========================================== -->
 
                 <!-- PANE 1: UPI & QR CODES (Active by Default) -->
-                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4 active d-none d-block" id="pane-upi">
+                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4 active" id="pane-upi">
                     <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom border-light-subtle">
                         <div>
                             <h3 class="fw-bold text-dark fs-5 mb-1">
@@ -257,7 +257,7 @@ require_once 'includes/header.php';
                 </div>
 
                 <!-- PANE 2: DIRECT BANK TRANSFER (ICICI BANK) -->
-                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4 d-none d-block" id="pane-bank">
+                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4" id="pane-bank">
                     <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom border-light-subtle">
                         <div>
                             <h3 class="fw-bold text-dark fs-5 mb-1">
@@ -271,9 +271,9 @@ require_once 'includes/header.php';
                     </div>
 
                     <!-- Virtual Banking Card Display (Styled to Match Dark Luxury Card Theme) -->
-                    <div class="virtual-bank-card w-75 mx-auto position-relative overflow-hidden position-absolute rounded-circle">
+                    <div class="virtual-bank-card w-75 mx-auto">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div class="virtual-card-chip position-relative"></div>
+                            <div class="virtual-card-chip"></div>
                             <span class="badge bg-white bg-opacity-20 text-black px-3 py-1 rounded-pill small fw-bold">
                                 ICICI BANK LIMITED
                             </span>
@@ -345,7 +345,7 @@ require_once 'includes/header.php';
                 </div>
 
                 <!-- PANE 3: CARDS & PAYPAL (INTERNATIONAL) -->
-                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4 d-none d-block" id="pane-paypal">
+                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4" id="pane-paypal">
                     <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom border-light-subtle">
                         <div>
                             <h3 class="fw-bold text-dark fs-5 mb-1">
@@ -396,7 +396,7 @@ require_once 'includes/header.php';
                 </div>
 
                 <!-- PANE 4: WESTERN UNION TRANSFER -->
-                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4 d-none d-block" id="pane-western">
+                <div class="checkout-panel-card bg-white rounded-4 border border-light-subtle p-4 p-md-5 shadow-sm mb-4" id="pane-western">
                     <div class="d-flex align-items-center justify-content-between mb-3 pb-3 border-bottom border-light-subtle">
                         <div>
                             <h3 class="fw-bold text-dark fs-5 mb-1">

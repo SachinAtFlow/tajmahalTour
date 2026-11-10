@@ -97,7 +97,7 @@ $categoryDescription = $categoryDescription ?? 'Discover handpicked itineraries 
                     <a href="<?= $tourUrl; ?>" class="dark-tour-card text-decoration-none d-flex flex-column h-100 overflow-hidden position-relative" title="<?= htmlspecialchars($tour['title']); ?>">
                         
                         <!-- Top Media Area with Floating Badges & Seamless Bottom Fade -->
-                        <div class="dark-tour-media position-relative overflow-hidden w-100 h-100">
+                        <div class="dark-tour-media">
                             
                             <!-- Floating Tag Badge (Top-Left) -->
                             <?php if (!empty($tag)): ?>

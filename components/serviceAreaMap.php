@@ -86,7 +86,7 @@ $exploreRegions = [
             <div class="d-flex align-items-center flex-shrink-0">
                 <?php foreach ($exploreRegions as $region): ?>
                     <?php $regLink = function_exists('theme_url') ? theme_url($region['link']) : $region['link']; ?>
-                    <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card overflow-hidden position-relative text-decoration-none d-block w-100 h-100" title="Explore <?= htmlspecialchars($region['name']); ?>">
+                    <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card" title="Explore <?= htmlspecialchars($region['name']); ?>">
                         <!-- Background Image -->
                         <img 
                             src="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($region['image']) : $region['image']); ?>" 
@@ -108,7 +108,7 @@ $exploreRegions = [
             <div class="d-flex align-items-center flex-shrink-0" aria-hidden="true">
                 <?php foreach ($exploreRegions as $region): ?>
                     <?php $regLink = function_exists('theme_url') ? theme_url($region['link']) : $region['link']; ?>
-                    <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card overflow-hidden position-relative text-decoration-none d-block w-100 h-100" tabindex="-1" title="Explore <?= htmlspecialchars($region['name']); ?>">
+                    <a href="<?= htmlspecialchars($regLink); ?>" class="region-image-card" tabindex="-1" title="Explore <?= htmlspecialchars($region['name']); ?>">
                         <!-- Background Image -->
                         <img 
                             src="<?= htmlspecialchars(function_exists('theme_url') ? theme_url($region['image']) : $region['image']); ?>" 

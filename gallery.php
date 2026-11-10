@@ -75,7 +75,7 @@ $initialBatch = 30; // Initial photos to show for optimal performance
                             $isExtra = ($index >= $initialBatch);
                             $extraClass = $isExtra ? 'd-none gallery-hidden-item' : '';
                         ?>
-                        <div class="gallery-justified-item <?= $extraClass; ?> position-relative overflow-hidden w-100 h-100 d-block"
+                        <div class="gallery-justified-item <?= $extraClass; ?>"
                              style="--aspect-ratio: <?= $img['ratio']; ?>;"
                              onclick="openGalleryModal(<?= $index; ?>)"
                              role="button"

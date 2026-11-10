@@ -171,7 +171,7 @@
                             <div class="dark-tour-card overflow-hidden d-flex flex-column h-100 position-relative">
                                 
                                 <!-- Top Media Area with Floating Bookmark & Seamless Bottom Fade -->
-                                <div class="dark-tour-media position-relative overflow-hidden w-100 h-100">
+                                <div class="dark-tour-media">
                                     
                                     <!-- Floating Tag Badge (Top-Left) -->
                                     <?php if (!empty($tour['tag'])): ?>

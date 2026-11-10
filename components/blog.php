@@ -62,9 +62,9 @@ $homeBlogPosts = !empty($blogPosts) ? array_slice($blogPosts, 0, $maxBlogPosts) 
                         <article class="theme-blog-card h-100 overflow-hidden d-flex flex-column text-decoration-none">
                             
                             <!-- Media Thumbnail with Floating Badges -->
-                            <div class="theme-blog-media position-relative w-100 overflow-hidden h-100 d-block">
+                            <div class="theme-blog-media">
                                 <!-- Floating Category / Tag (Top-Left) -->
-                                <span class="theme-blog-category-badge position-absolute z-3 fw-bold rounded-pill d-inline-flex align-items-center rounded-circle">
+                                <span class="theme-blog-category-badge position-absolute z-3 fw-bold rounded-pill d-inline-flex align-items-center">
                                     <span class="badge-dot rounded-circle"></span>
                                     <span><?= $tag; ?></span>
                                 </span>
