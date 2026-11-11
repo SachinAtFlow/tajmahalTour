@@ -1266,15 +1266,15 @@ body {
     -webkit-tap-highlight-color: transparent !important;
 }
 
-.category-coverflow-swiper .swiper-slide:not(.swiper-slide-active) {
-    opacity: 0.6;
-    filter: brightness(0.85);
+.category-coverflow-swiper .swiper-slide,
+.category-coverflow-swiper .swiper-slide:not(.swiper-slide-active),
+.category-coverflow-swiper .swiper-slide-active {
+    opacity: 1 !important;
+    filter: none !important;
     cursor: pointer;
 }
 
 .category-coverflow-swiper .swiper-slide-active {
-    opacity: 1;
-    filter: brightness(1);
     box-shadow: 0 25px 50px -10px rgba(15, 23, 42, 0.25), 0 10px 20px -5px rgba(59, 113, 254, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
@@ -2482,9 +2482,9 @@ body {
     .tour-sticky-sidebar {
         position: -webkit-sticky !important;
         position: sticky !important;
-        top: 90px !important;
+        top: 75px !important;
         z-index: 100 !important;
-        max-height: calc(100vh - 105px);
+        max-height: calc(100vh - 85px);
         overflow-y: auto;
         overscroll-behavior: contain;
         display: flex;
@@ -2508,6 +2508,54 @@ body {
     .tour-sticky-sidebar:hover::-webkit-scrollbar-thumb {
         background: rgba(0, 0, 0, 0.25);
     }
+}
+
+/* Tour Sidebar Direct CTA Buttons Responsive Sizing on Mobile */
+@media (max-width: 575.98px) {
+    .tour-sidebar-cta {
+        font-size: 13px !important;
+        padding-top: 7px !important;
+        padding-bottom: 7px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        letter-spacing: -0.01em;
+    }
+    .tour-sidebar-cta i {
+        font-size: 14px !important;
+    }
+}
+
+/* ==========================================================================
+   Service Locations Grid Square Cards (1:1 Ratio)
+   ========================================================================== */
+.location-square-card {
+    aspect-ratio: 1 / 1 !important;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.location-square-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08) !important;
+    border-color: rgba(59, 113, 254, 0.35) !important;
+}
+
+.location-square-card img {
+    transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.location-square-card:hover img {
+    transform: scale(1.06);
+}
+
+.location-square-card .btn-outline-primary {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.location-square-card:hover .btn-outline-primary {
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color) !important;
+    transform: translateX(2px);
 }
 
 /* ==========================================================================

@@ -43,7 +43,7 @@ $heroBgImage = (!empty($cityData['image']) && $cityData['image'] !== '#') ? $cit
         <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
             <?php foreach ($allCities as $slug => $c): ?>
                 <?php $isActive = ($slug === $currentCitySlug); ?>
-                <a href="carRentalLocation.php?city=<?= urlencode($slug); ?>" class="btn btn-sm rounded-pill px-3 py-1.5 fw-medium <?= $isActive ? 'btn-primary shadow-sm' : 'btn-outline-light text-white-50 border-secondary border-opacity-50 hover-white'; ?>">
+                <a href="carRentalLocation.php?city=<?= urlencode($slug); ?>" class="btn btn-sm rounded-pill px-3 py-1.5 fw-medium <?= $isActive ? 'btn-primary shadow-sm' : 'btn-outline-light text-white-50 border-secondary border-opacity-50'; ?>">
                     <?= htmlspecialchars($c['city_name']); ?>
                 </a>
             <?php endforeach; ?>

@@ -176,6 +176,10 @@ if (!function_exists('parseTourItineraryStep')) {
             $cleanPoints[] = $highlighted;
         }
 
+        if (empty($cleanPoints) && !empty($rawDesc)) {
+            $cleanPoints[] = htmlspecialchars(trim($rawDesc));
+        }
+
         return [
             'timeBadge' => $timeBadge,
             'title' => $cleanTitle,
@@ -211,11 +215,13 @@ if (!function_exists('parseTourItineraryStep')) {
                     <?= htmlspecialchars($currentTour['overview'] ?? 'Experience the rich culture and heritage of North India with our private guided tour.'); ?>
                 </p>
             </div>
-            <div class="col-lg-4 text-lg-end">
-                <div class="d-inline-flex flex-column align-items-lg-end">
-                    <span class="text-secondary small">Starting From</span>
-                    <span class="fs-3 fw-bold text-primary lh-1 mb-2"><?= htmlspecialchars($currentTour['price_start'] ?? '₹4,500'); ?></span>
-                    <a href="#tour-inquiry-card" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
+            <div class="col-lg-4 text-start text-lg-end mt-3 mt-lg-0">
+                <div class="d-inline-flex flex-wrap gap-2 align-items-center justify-content-lg-end">
+                    <a href="<?= function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606'; ?>" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold shadow-sm d-inline-flex align-items-center gap-2" title="Call Us to Ask Price">
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>Ask Price</span>
+                    </a>
+                    <a href="#tour-inquiry-card" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2">
                         <span>Book This Tour</span>
                         <i class="bi bi-arrow-right"></i>
                     </a>
@@ -322,7 +328,7 @@ if (!function_exists('parseTourItineraryStep')) {
                                 <?php 
                                     $step = parseTourItineraryStep($rawStep, $sIdx);
                                 ?>
-                                <div class="itinerary-day-wrapper position-relative position-absolute z-1 d-none">
+                                <div class="itinerary-day-wrapper position-relative">
                                     <!-- Timeline Node Marker -->
                                     <div class="itinerary-timeline-marker position-absolute rounded-circle z-2"></div>
 
@@ -419,81 +425,86 @@ if (!function_exists('parseTourItineraryStep')) {
 
             <!-- Right Column: Sticky Booking & Inquiry Form (4 Cols) -->
             <div class="col-lg-4 position-relative">
-                <div class="tour-sticky-sidebar sticky-top d-flex flex-column" style="top: 90px; z-index: 100;">
+                <div class="tour-sticky-sidebar sticky-top d-flex flex-column" style="top: 75px; z-index: 100;">
                     
                     <div class="card border-0 rounded-4 shadow-sm bg-white overflow-hidden p-4 mb-4" id="tour-inquiry-card">
                         
-                        <div class="d-flex justify-content-between align-items-center pb-3 border-bottom mb-3">
-                            <div>
-                                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-2.5 py-1 small fw-semibold">Instant Quote</span>
-                                <div class="fs-4 fw-bold text-dark mt-1"><?= htmlspecialchars($currentTour['price_start'] ?? '₹4,500'); ?></div>
-                            </div>
+                        <!-- Card Header -->
+                        <div class="d-flex align-items-center justify-content-between pb-3 border-bottom mb-3">
+                            <h3 class="fs-5 fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                                <i class="bi bi-calendar2-check-fill text-primary"></i>
+                                <span>Book This Tour</span>
+                            </h3>
                             <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-1.5 small fw-semibold">
-                                <i class="bi bi-check-circle-fill me-1"></i> Best Rate
+                                <i class="bi bi-shield-check me-1"></i> Best Rate
                             </span>
                         </div>
 
-                        <!-- Direct WhatsApp & Call Buttons -->
-                        <div class="d-flex flex-column gap-2 mb-3">
+                        <!-- Direct WhatsApp & Call Buttons (Clean Spacing & Responsive Mobile Sizing) -->
+                        <div class="d-flex gap-3 gap-sm-3.5 mb-3">
                             <a 
                                 href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hello, I am interested in booking: ' . ($currentTour['title'] ?? 'Tour')) : 'https://wa.me/918800722606'; ?>" 
                                 target="_blank" 
-                                class="btn btn-success rounded-pill w-100 py-2.5 fw-semibold d-flex align-items-center justify-content-center gap-2 shadow-xs"
+                                class="btn btn-success rounded-pill flex-grow-1 tour-sidebar-cta py-1.5 py-sm-2.5 px-2 px-sm-3 fw-semibold d-inline-flex align-items-center justify-content-center gap-2 gap-sm-2 shadow-xs"
                             >
-                                <i class="bi bi-whatsapp fs-5"></i>
-                                <span>Inquire on WhatsApp</span>
+                                <i class="bi bi-whatsapp"></i>
+                                <span>WhatsApp</span>
                             </a>
                             <a 
                                 href="<?= function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606'; ?>" 
-                                class="btn btn-outline-dark rounded-pill w-100 py-2 fw-semibold d-flex align-items-center justify-content-center gap-2"
+                                class="btn btn-outline-dark rounded-pill flex-grow-1 tour-sidebar-cta py-1.5 py-sm-2.5 px-2 px-sm-3 fw-semibold d-inline-flex align-items-center justify-content-center gap-2 gap-sm-2"
                             >
                                 <i class="bi bi-telephone-fill text-primary"></i>
-                                <span>Call: <?= function_exists('site_phone') ? site_phone(true) : '+91 88007 22606'; ?></span>
+                                <span>Call Us</span>
                             </a>
                         </div>
 
-                        <div class="text-center position-relative my-2">
-                            <hr class="text-muted">
-                            <span class="position-absolute top-50 start-50 translate-middle bg-white px-2 small text-muted">OR QUICK INQUIRY</span>
+                        <!-- Elegant Divider with Natural Spacing -->
+                        <div class="text-center position-relative my-3">
+                            <hr class="text-muted opacity-25 m-0">
+                            <span class="position-absolute top-50 start-50 translate-middle bg-white px-3 small text-muted text-uppercase fw-semibold" style="font-size: 0.72rem; letter-spacing: 0.05em;">Or Quick Inquiry</span>
                         </div>
 
-                        <!-- Fast Inquiry Form -->
-                        <form action="<?= theme_url('contactUs.php'); ?>" method="GET" class="mt-2">
+                        <!-- Fast Inquiry Form with Natural Whitespace -->
+                        <form action="<?= theme_url('contactUs.php'); ?>" method="GET" class="mt-3">
                             <input type="hidden" name="tour" value="<?= htmlspecialchars($currentTour['title']); ?>">
                             
-                            <div class="mb-2.5">
-                                <label class="form-label small fw-semibold text-dark mb-1">Your Name</label>
-                                <input type="text" name="name" class="form-control rounded-3 py-2 small" placeholder="Enter full name" required>
+                            <div class="mb-3">
+                                <label class="form-label small fw-semibold text-dark mb-1.5">Your Name</label>
+                                <input type="text" name="name" class="form-control rounded-3 py-2 px-3 small" placeholder="Enter full name" required>
                             </div>
                             
-                            <div class="mb-2.5">
-                                <label class="form-label small fw-semibold text-dark mb-1">Mobile / WhatsApp Number</label>
-                                <input type="tel" name="phone" class="form-control rounded-3 py-2 small" placeholder="+91 98765 43210" required>
+                            <div class="mb-3">
+                                <label class="form-label small fw-semibold text-dark mb-1.5">Mobile / WhatsApp Number</label>
+                                <input type="tel" name="phone" class="form-control rounded-3 py-2 px-3 small" placeholder="+91 98765 43210" required>
                             </div>
 
-                            <div class="row g-2 mb-2.5">
+                            <div class="row g-3 mb-3">
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold text-dark mb-1">Travel Date</label>
-                                    <input type="date" name="travel_date" class="form-control rounded-3 py-2 small" required>
+                                    <label class="form-label small fw-semibold text-dark mb-1.5">Travel Date</label>
+                                    <input type="date" name="travel_date" class="form-control rounded-3 py-2 px-3 small" required>
                                 </div>
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold text-dark mb-1">Total Guests</label>
-                                    <select name="guests" class="form-select rounded-3 py-2 small">
+                                    <label class="form-label small fw-semibold text-dark mb-1.5">Total Guests</label>
+                                    <select name="guests" class="form-select rounded-3 py-2 px-3 small">
                                         <option value="1">1 Person</option>
                                         <option value="2" selected>2 Persons</option>
                                         <option value="3-4">3-4 Persons</option>
-                                        <option value="5+">5+ Family/Group</option>
+                                        <option value="5+">5+ Group</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary rounded-pill w-100 py-2.5 fw-semibold shadow-sm mt-2">
-                                Send Tour Inquiry <i class="bi bi-arrow-right ms-1"></i>
+                            <!-- Submit Button: Clean, Bold & Highly Visible -->
+                            <button type="submit" class="btn btn-primary rounded-pill w-100 py-2.5 fw-bold text-white shadow-sm mt-2 d-flex align-items-center justify-content-center gap-2">
+                                <span>Send Tour Inquiry</span>
+                                <i class="bi bi-arrow-right"></i>
                             </button>
                         </form>
 
-                        <div class="mt-3 pt-3 border-top text-center text-secondary small">
-                            <i class="bi bi-shield-check text-success me-1"></i> 100% Verified Drivers • No Advance Fee
+                        <!-- Trust Footer -->
+                        <div class="mt-3 pt-3 border-top text-center text-muted small" style="font-size: 0.78rem;">
+                            <i class="bi bi-shield-check text-success me-1"></i> 100% Verified Drivers • No Advance Deposit
                         </div>
                     </div>
 

@@ -75,6 +75,14 @@ html, body {
     -webkit-tap-highlight-color: transparent !important;
 }
 
+/* Ensure all cards have full opacity 1 and zero filter */
+#<?= $section_id; ?> .swiper-slide,
+#<?= $section_id; ?> .swiper-slide:not(.swiper-slide-active),
+#<?= $section_id; ?> .swiper-slide-active {
+    opacity: 1 !important;
+    filter: none !important;
+}
+
 #<?= $section_id; ?> .swiper-slide img {
     user-select: none !important;
     -webkit-user-drag: none !important;
@@ -106,7 +114,7 @@ html, body {
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
             <div>
                 <?php if (!empty($resolved_eyebrow)): ?>
-                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-1.5">
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-2">
                         <i class="<?= htmlspecialchars($resolved_icon); ?>"></i>
                         <span><?= htmlspecialchars($resolved_eyebrow); ?></span>
                     </span>
@@ -216,6 +224,7 @@ html, body {
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 'auto',
+            spaceBetween: 32,
             initialSlide: 1,
             loop: <?= count($resolved_items) > 3 ? 'true' : 'false'; ?>,
             speed: 600,
@@ -230,7 +239,7 @@ html, body {
             coverflowEffect: {
                 rotate: 0,
                 stretch: 0,
-                depth: 180,
+                depth: 70,
                 modifier: 1,
                 slideShadows: false,
             },
@@ -244,24 +253,27 @@ html, body {
             },
             breakpoints: {
                 320: {
+                    spaceBetween: 16,
                     coverflowEffect: {
-                        depth: 80,
+                        depth: 35,
                         stretch: 0,
                         modifier: 1,
                         slideShadows: false,
                     }
                 },
                 768: {
+                    spaceBetween: 24,
                     coverflowEffect: {
-                        depth: 140,
+                        depth: 55,
                         stretch: 0,
                         modifier: 1,
                         slideShadows: false,
                     }
                 },
                 1024: {
+                    spaceBetween: 32,
                     coverflowEffect: {
-                        depth: 180,
+                        depth: 70,
                         stretch: 0,
                         modifier: 1,
                         slideShadows: false,

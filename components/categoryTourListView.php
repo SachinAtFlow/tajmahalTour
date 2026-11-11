@@ -69,9 +69,7 @@ $categoryDescription = $categoryDescription ?? 'Discover handpicked itineraries 
                 <h2 class="fs-4 fw-bold text-dark mb-1">Top <?= htmlspecialchars($categoryTitle); ?> Packages</h2>
                 <p class="text-secondary small mb-0">Select any package below to explore detailed day-wise itinerary and book online.</p>
             </div>
-            <span class="badge bg-primary rounded-pill px-3 py-2 fw-medium small">
-                Showing <?= count($tours); ?> Curated Tours
-            </span>
+            
         </div>
 
         <div class="row g-4">
@@ -103,13 +101,6 @@ $categoryDescription = $categoryDescription ?? 'Discover handpicked itineraries 
                             <?php if (!empty($tag)): ?>
                                 <span class="position-absolute top-0 start-0 m-3 z-3 badge rounded-pill bg-dark bg-opacity-75 text-white border border-light border-opacity-25 px-3 py-2 fw-semibold shadow-sm d-inline-flex align-items-center" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-size: 11px; letter-spacing: 0.05em;">
                                     <?= htmlspecialchars($tag); ?>
-                                </span>
-                            <?php endif; ?>
-
-                            <!-- Floating Price Badge (Top-Right) -->
-                            <?php if (!empty($price)): ?>
-                                <span class="position-absolute top-0 end-0 m-3 z-3 badge rounded-pill bg-primary text-white px-2.5 py-1.5 fw-bold shadow-sm d-inline-flex align-items-center" style="font-size: 12px;">
-                                    <?= htmlspecialchars($price); ?>
                                 </span>
                             <?php endif; ?>
 

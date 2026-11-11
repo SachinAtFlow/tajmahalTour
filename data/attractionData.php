@@ -17,7 +17,7 @@ if (!function_exists('getAttractionDataSets')) {
         return [
             // 1. Navbar Tour Categories (Default for Tour Packages Page)
             'tourCategories' => [
-                'eyebrow' => 'SIGNATURE CIRCUITS',
+                'eyebrow' => 'CURATED JOURNEYS',
                 'icon' => 'bi bi-compass-fill',
                 'title' => 'Explore By Tour Category',
                 'description' => 'Browse our handpicked North India tour circuits. Swipe and click any category to view curated itineraries.',

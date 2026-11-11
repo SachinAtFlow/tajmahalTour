@@ -23,7 +23,7 @@ $categoryTitle = $categoryTitle ?? 'Tour Packages';
         <!-- Section Header -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
             <div>
-                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-1.5">
+                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1.5 rounded-pill fw-semibold small text-uppercase mb-2 d-inline-flex align-items-center gap-2">
                     <i class="bi bi-compass-fill"></i>
                     <span>SIMILAR <?= strtoupper(htmlspecialchars($categoryTitle)); ?> CIRCUITS</span>
                 </span>
