@@ -224,23 +224,24 @@ html, body {
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 'auto',
-            spaceBetween: 32,
-            initialSlide: 1,
+            spaceBetween: 14,
+            initialSlide: 2,
             loop: <?= count($resolved_items) > 3 ? 'true' : 'false'; ?>,
             speed: 600,
-            slideToClickedSlide: false,
-            preventClicks: true,
+            slideToClickedSlide: true,
+            preventClicks: false,
             preventClicksPropagation: false,
             autoplay: {
-                delay: 3800,
+                delay: 4000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
             },
             coverflowEffect: {
                 rotate: 0,
                 stretch: 0,
-                depth: 70,
+                depth: 0,
                 modifier: 1,
+                scale: 0.82,
                 slideShadows: false,
             },
             navigation: {
@@ -253,29 +254,35 @@ html, body {
             },
             breakpoints: {
                 320: {
-                    spaceBetween: 16,
+                    spaceBetween: 8,
                     coverflowEffect: {
-                        depth: 35,
+                        rotate: 0,
                         stretch: 0,
+                        depth: 0,
                         modifier: 1,
+                        scale: 0.80,
                         slideShadows: false,
                     }
                 },
                 768: {
-                    spaceBetween: 24,
+                    spaceBetween: 12,
                     coverflowEffect: {
-                        depth: 55,
+                        rotate: 0,
                         stretch: 0,
+                        depth: 0,
                         modifier: 1,
+                        scale: 0.82,
                         slideShadows: false,
                     }
                 },
                 1024: {
-                    spaceBetween: 32,
+                    spaceBetween: 14,
                     coverflowEffect: {
-                        depth: 70,
+                        rotate: 0,
                         stretch: 0,
+                        depth: 0,
                         modifier: 1,
+                        scale: 0.82,
                         slideShadows: false,
                     }
                 }
@@ -293,13 +300,15 @@ html, body {
             }
         });
 
-        // Click Handler: Clicking any card opens its respective page
+        // Click Handler: Clicking active card opens link; clicking non-active card centers it
         coverflowSwiper.on('click', function(swiper, e) {
             const clickedSlide = swiper.clickedSlide;
             if (!clickedSlide) return;
-            const link = clickedSlide.querySelector('a');
-            if (link && link.href && link.href !== '#' && !link.href.endsWith('#')) {
-                window.location.href = link.href;
+            if (clickedSlide.classList.contains('swiper-slide-active')) {
+                const link = clickedSlide.querySelector('a');
+                if (link && link.href && link.href !== '#' && !link.href.endsWith('#')) {
+                    window.location.href = link.href;
+                }
             }
         });
     }

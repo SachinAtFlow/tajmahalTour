@@ -111,25 +111,25 @@
                 <div class="bg-white rounded-4 p-3 p-md-4 shadow-sm border border-light-subtle flex-grow-1">
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <div>
-                            <h5 class="fw-bold text-dark mb-0">Agra Operations Hub</h5>
-                            <span class="text-secondary small">Near Taj Mahal East Gate</span>
+                            <h5 class="fw-bold text-dark mb-0"><?= htmlspecialchars(getSiteContact('address', 'delhi')['title'] ?? 'Agra Head Office'); ?></h5>
+                            <span class="text-secondary small"><?= htmlspecialchars(getSiteContact('address', 'delhi')['line1'] ?? 'Krishna Nagar, New Delhi - 110051'); ?></span>
                         </div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Krishna%20Nagar%2C%20New%20Delhi%2C%20Delhi%20110051" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                        <a href="<?= htmlspecialchars(getSiteContact('address', 'delhi')['map_link'] ?? 'https://maps.app.goo.gl/pRwZnKFnjWYEqPZj8'); ?>" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm rounded-pill px-3">
                             Open in Maps
                         </a>
                     </div>
                     <div class="rounded-4 overflow-hidden border border-light-subtle shadow-xs" style="height: 310px;">
                         <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500!2d77.0!3d28.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x...%3A0x...!2s...!" 
-        width="100%" 
-        height="100%" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Taj Mahal Tour Agra Office Location">
-    </iframe>
-</div>
+                            src="https://maps.google.com/maps?q=Krishna+Nagar,+New+Delhi+-+110051&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Taj Mahal Tour Head Office Location">
+                        </iframe>
+                    </div>
                 </div>
 
                 <!-- Fast Direct Contact Card -->
@@ -142,9 +142,9 @@
                         Speak directly with our senior reservation desk or start an immediate WhatsApp chat for instant driver assignment.
                     </p>
                     <div class="d-flex flex-wrap gap-2">
-                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I need urgent cab/tour booking.') : 'https://wa.me/918800722606'; ?>" class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-xs fast-contact-btn">
+                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I need urgent cab/tour booking.') : 'https://wa.me/919810723370'; ?>" class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-xs fast-contact-btn">
                             <i class="bi bi-whatsapp"></i>
-                            <span>WhatsApp: <?= function_exists('site_whatsapp') ? site_whatsapp(true) : '+91 88007 22606'; ?></span>
+                            <span>WhatsApp: <?= function_exists('site_whatsapp') ? site_whatsapp(true) : '+91 98107 23370'; ?></span>
                         </a>
                         <a href="<?= function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606'; ?>" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 fast-contact-btn">
                             <i class="bi bi-telephone"></i>

@@ -417,7 +417,7 @@ require_once 'includes/header.php';
                             <li>Your reservation is confirmed immediately upon MTCN verification.</li>
                         </ol>
 
-                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, please share Western Union beneficiary details for my tour booking.') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-outline-dark w-100 py-2.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-2">
+                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, please share Western Union beneficiary details for my tour booking.') : 'https://wa.me/919810723370'; ?>" target="_blank" class="btn btn-outline-dark w-100 py-2.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-2">
                             <i class="bi bi-whatsapp text-success fs-5"></i>
                             <span>Get Beneficiary Details via WhatsApp</span>
                         </a>
@@ -562,7 +562,7 @@ require_once 'includes/header.php';
 
                     <!-- Instant WhatsApp Help Action -->
                     <div class="mb-3">
-                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I have completed the payment for my tour booking. Please find the details attached.') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-primary w-100 py-2.5 fw-bold d-inline-flex align-items-center justify-content-center gap-2 shadow-sm">
+                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I have completed the payment for my tour booking. Please find the details attached.') : 'https://wa.me/919810723370'; ?>" target="_blank" class="btn btn-primary w-100 py-2.5 fw-bold d-inline-flex align-items-center justify-content-center gap-2 shadow-sm">
                             <i class="bi bi-whatsapp fs-5"></i>
                             <span>Send Receipt on WhatsApp</span>
                         </a>
@@ -644,7 +644,7 @@ function sendUtrToWhatsApp() {
     } else {
         msg += ' Please find the payment screenshot attached.';
     }
-    const whatsappRaw = '<?= function_exists('getSiteContact') ? (getSiteContact('whatsapp', 'raw') ?: '918800722606') : '918800722606'; ?>';
+    const whatsappRaw = '<?= function_exists('getSiteContact') ? (getSiteContact('whatsapp', 'raw') ?: '919810723370') : '919810723370'; ?>';
     const whatsappUrl = `https://wa.me/${whatsappRaw}?text=${encodeURIComponent(msg)}`;
     window.open(whatsappUrl, '_blank');
 }

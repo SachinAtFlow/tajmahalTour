@@ -174,7 +174,7 @@ require_once __DIR__ . '/includes/header.php';
                             <i class="bi bi-telephone-fill text-primary me-1"></i> <?= function_exists('site_phone') ? site_phone(true) : '+91 88007 22606'; ?>
                         </a>
                         <span class="text-muted">&bull;</span>
-                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I need assistance on Taj Mahal Tour') : 'https://wa.me/918800722606'; ?>" target="_blank" rel="noopener noreferrer" class="text-success fw-bold text-decoration-none">
+                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I need assistance on Taj Mahal Tour') : 'https://wa.me/919810723370'; ?>" target="_blank" rel="noopener noreferrer" class="text-success fw-bold text-decoration-none">
                             <i class="bi bi-whatsapp me-1"></i> WhatsApp Support
                         </a>
                     </div>

@@ -18,61 +18,63 @@ if (!function_exists('getSiteContact')) {
 
             // Calling Phone Numbers
             'phone' => [
-                'raw'         => '+918800722606',
-                'display'     => '+91 88007 22606',
-                'tel_link'    => 'tel:+918800722606',
-                'alt_raw'     => '+919876543210',
-                'alt_display' => '+91 98765 43210',
-                'alt_tel'     => 'tel:+919876543210',
-                'toll_free'   => '1800 123 4567'
+                'call'         => '+918800722606',
+                'raw'          => '+918800722606',
+                'display'      => '+91 88007 22606',
+                'tel_link'     => 'tel:+918800722606',
+                'whatsapp'     => '+919810723370',
+                'alternate'    => '+91-9871777590',
+                'alt_display'  => '+91 98717 77590',
+                'alt_tel'      => 'tel:+919871777590',
+                'toll_free'    => '+91 88007 22606'
             ],
 
             // WhatsApp Direct Lines
             'whatsapp' => [
-                'raw'         => '918800722606',
-                'display'     => '+91 88007 22606',
-                'number'      => '+91 88007 22606',
+                'raw'         => '919810723370',
+                'display'     => '+91 98107 23370',
+                'number'      => '+91 98107 23370',
                 'default_msg' => 'Hello Taj Mahal Tour, I would like to inquire about your tour packages and cab booking services.',
-                'link'        => 'https://wa.me/918800722606?text=Hello%20Taj%20Mahal%20Tour,%20I%20would%20like%20to%20inquire%20about%20your%20tour%20packages%20and%20cab%20booking%20services.'
+                'link'        => 'https://wa.me/919810723370?text=Hello%20Taj%20Mahal%20Tour,%20I%20would%20like%20to%20inquire%20about%20your%20tour%20packages%20and%20cab%20booking%20services.'
             ],
 
             // Official Emails      
             'email' => [
-                'primary'     => 'info@tajmahaltour.com',
-                'booking'     => 'booking@tajmahaltour.com',
-                'support'     => 'support@tajmahaltour.com',
-                'privacy'     => 'privacy@tajmahaltour.com',
-                'mailto'      => 'mailto:info@tajmahaltour.com'
+                'primary'     => 'uniqueholidaytrip@gmail.com',
+                'booking'     => 'uniqueholidaytrip@gmail.com',
+                'support'     => 'uniqueholidaytrip@gmail.com',
+                'privacy'     => 'uniqueholidaytrip@gmail.com',
+                'mailto'      => 'mailto:uniqueholidaytrip@gmail.com'
             ],
 
             // Physical Office Addresses
             'address' => [
+                'delhi' => [
+                    'title'    => 'Agra Head Office',
+                    'subtitle' => 'Monument & Tour Operations',
+                    'line1'    => 'Krishna Nagar, New Delhi - 110051',
+                    'line2'    => 'Delhi, India',
+                    'full'     => 'Krishna Nagar, New Delhi - 110051, Delhi, India',
+                    'map_link' => 'https://maps.app.goo.gl/pRwZnKFnjWYEqPZj8'
+                ],
                 'agra' => [
                     'title'    => 'Agra Head Office',
                     'subtitle' => 'Monument & Tour Operations',
-                    'line1'    => 'Fatehabad Road, Near Taj East Gate',
-                    'line2'    => 'Agra, Uttar Pradesh - 282001',
-                    'full'     => 'Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India',
-                    'map_link' => 'https://maps.google.com/?q=Taj+Mahal+Agra'
+                    'line1'    => 'Krishna Nagar, New Delhi - 110051',
+                    'line2'    => 'Delhi, India',
+                    'full'     => 'Krishna Nagar, New Delhi - 110051, Delhi, India',
+                    'map_link' => 'https://maps.app.goo.gl/pRwZnKFnjWYEqPZj8'
                 ],
-                'delhi' => [
-                    'title'    => 'Delhi NCR Branch',
-                    'subtitle' => 'Fleet & Chauffeur Hub',
-                    'line1'    => 'Krishna Nagar, East Delhi',
-                    'line2'    => 'New Delhi - 110051, India',
-                    'full'     => 'Krishna Nagar, East Delhi, New Delhi - 110051, India',
-                    'map_link' => 'https://maps.google.com/?q=Krishna+Nagar+Delhi'
-                ]
             ],
 
             // Social Media Profiles
             'social' => [
-                'youtube'   => 'https://www.youtube.com/@tajmahaltour',
-                'x'         => 'https://x.com/tajmahaltour',
-                'twitter'   => 'https://x.com/tajmahaltour',
-                'facebook'  => 'https://www.facebook.com/tajmahaltour',
-                'linkedin'  => 'https://www.linkedin.com/company/tajmahaltour',
-                'instagram' => 'https://www.instagram.com/tajmahaltour'
+                'youtube'   => 'https://www.youtube.com/@AshuSharmauniqueholidaytrip',
+                'x'         => 'http://twitter.com/uniquetrip2012',
+                'twitter'   => 'http://twitter.com/uniquetrip2012',
+                'facebook'  => 'https://www.facebook.com/tajmahal.tour.agra.delhi.car.hire.taxi.rental/',
+                'linkedin'  => 'https://www.linkedin.com/in/delhi-outsation-car-hire-taxi-rental-service/',
+                'instagram' => 'https://www.facebook.com/tajmahal.tour.agra.delhi.car.hire.taxi.rental/'
             ],
 
             // Hours & Operations
@@ -101,31 +103,43 @@ $siteContact = getSiteContact();
 if (!function_exists('site_phone')) {
     function site_phone($display = true) {
         $contact = getSiteContact('phone');
-        return $display ? ($contact['display'] ?? '') : ($contact['tel_link'] ?? '');
+        if ($display === 'alt') {
+            return $contact['alternate'] ?? ($contact['alt_display'] ?? '+91-9871777590');
+        }
+        if ($display === 'alt_link') {
+            return $contact['alt_tel'] ?? 'tel:+919871777590';
+        }
+        if ($display) {
+            return $contact['display'] ?? ($contact['call'] ?? '+91 88007 22606');
+        }
+        return $contact['tel_link'] ?? ('tel:' . ($contact['call'] ?? '+918800722606'));
     }
 }
 
 if (!function_exists('site_whatsapp')) {
     function site_whatsapp($display = true) {
         $contact = getSiteContact('whatsapp');
-        return $display ? ($contact['display'] ?? '') : ($contact['link'] ?? '');
+        if ($display) {
+            return $contact['display'] ?? '+91 98107 23370';
+        }
+        return $contact['link'] ?? 'https://wa.me/919810723370';
     }
 }
 
 if (!function_exists('site_whatsapp_link')) {
     function site_whatsapp_link($customText = '') {
-        $raw = getSiteContact('whatsapp', 'raw') ?: '918800722606';
+        $raw = getSiteContact('whatsapp', 'raw') ?: '919810723370';
         if (!empty($customText)) {
             return 'https://wa.me/' . $raw . '?text=' . urlencode($customText);
         }
-        return getSiteContact('whatsapp', 'link');
+        return getSiteContact('whatsapp', 'link') ?: ('https://wa.me/' . $raw);
     }
 }
 
 if (!function_exists('site_email')) {
     function site_email($type = 'primary', $asMailto = false) {
         $emails = getSiteContact('email');
-        $addr = $emails[$type] ?? ($emails['primary'] ?? 'info@tajmahaltour.com');
+        $addr = is_array($emails) ? ($emails[$type] ?? ($emails['primary'] ?? 'uniqueholidaytrip@gmail.com')) : 'uniqueholidaytrip@gmail.com';
         return $asMailto ? ('mailto:' . $addr) : $addr;
     }
 }
@@ -133,7 +147,20 @@ if (!function_exists('site_email')) {
 if (!function_exists('site_social')) {
     function site_social($platform = 'facebook') {
         $socials = getSiteContact('social');
-        return $socials[strtolower($platform)] ?? '#';
+        $link = $socials[strtolower($platform)] ?? '#';
+        if ($link !== '#' && !preg_match('~^https?://~i', $link)) {
+            $link = 'https://' . ltrim($link, '/');
+        }
+        return $link;
     }
 }
 
+if (!function_exists('site_address')) {
+    function site_address($branch = 'delhi', $field = 'full') {
+        $address = getSiteContact('address', $branch);
+        if (!$address) {
+            $address = getSiteContact('address', 'delhi') ?? getSiteContact('address', 'agra');
+        }
+        return $address[$field] ?? ($address['full'] ?? 'Krishna Nagar, New Delhi - 110051, Delhi, India');
+    }
+}

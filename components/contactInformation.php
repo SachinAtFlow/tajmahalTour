@@ -16,31 +16,31 @@ $contactDetails = [
     [
         'icon' => 'bi-geo-alt-fill',
         'color' => 'primary',
-        'title' => $siteContact['address']['agra']['title'] ?? 'Agra Head Office',
-        'subtitle' => $siteContact['address']['agra']['subtitle'] ?? 'Monument & Tour Operations',
-        'line1' => $siteContact['address']['agra']['line1'] ?? 'Fatehabad Road, Near Taj East Gate',
-        'line2' => $siteContact['address']['agra']['line2'] ?? 'Agra, Uttar Pradesh - 282001',
-        'link' => $siteContact['address']['agra']['map_link'] ?? 'https://maps.google.com/?q=Taj+Mahal+Agra',
+        'title' => $siteContact['address']['delhi']['title'] ?? 'Agra Head Office',
+        'subtitle' => $siteContact['address']['delhi']['subtitle'] ?? 'Monument & Tour Operations',
+        'line1' => $siteContact['address']['delhi']['line1'] ?? 'Krishna Nagar, New Delhi - 110051',
+        'line2' => $siteContact['address']['delhi']['line2'] ?? 'Delhi, India',
+        'link' => $siteContact['address']['delhi']['map_link'] ?? 'https://maps.app.goo.gl/pRwZnKFnjWYEqPZj8',
         'link_text' => 'View on Map'
     ],
     [
         'icon' => 'bi-building-fill',
         'color' => 'success',
-        'title' => $siteContact['address']['delhi']['title'] ?? 'Delhi NCR Branch',
-        'subtitle' => $siteContact['address']['delhi']['subtitle'] ?? 'Fleet & Chauffeur Hub',
-        'line1' => $siteContact['address']['delhi']['line1'] ?? 'Krishna Nagar, East Delhi',
-        'line2' => $siteContact['address']['delhi']['line2'] ?? 'New Delhi - 110051, India',
-        'link' => $siteContact['address']['delhi']['map_link'] ?? 'https://maps.google.com/?q=Krishna+Nagar+Delhi',
-        'link_text' => 'Get Directions'
+        'title' => 'Tour Operations & Fleet Hub',
+        'subtitle' => 'North India & Golden Triangle',
+        'line1' => 'Delhi, Agra, Rajasthan & Punjab',
+        'line2' => '24/7 Verified Chauffeur Service',
+        'link' => function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606',
+        'link_text' => 'Call Operations'
     ],
     [
         'icon' => 'bi-telephone-fill',
         'color' => 'warning',
         'title' => '24/7 Helpline & WhatsApp',
         'subtitle' => 'Instant Booking Assistance',
-        'line1' => ($siteContact['whatsapp']['display'] ?? '+91 88007 22606') . ' (WhatsApp)',
-        'line2' => ($siteContact['phone']['alt_display'] ?? '+91 98765 43210') . ' (Direct Call)',
-        'link' => function_exists('site_whatsapp_link') ? site_whatsapp_link('Hello TajMahalTour, I would like to inquire about your tour and cab services.') : 'https://wa.me/918800722606',
+        'line1' => ($siteContact['whatsapp']['display'] ?? '+91 98107 23370') . ' (WhatsApp)',
+        'line2' => ($siteContact['phone']['display'] ?? '+91 88007 22606') . ' / ' . ($siteContact['phone']['alternate'] ?? '+91-9871777590'),
+        'link' => function_exists('site_whatsapp_link') ? site_whatsapp_link('Hello Taj Mahal Tour, I would like to inquire about your tour and cab services.') : 'https://wa.me/919810723370',
         'link_text' => 'Chat on WhatsApp'
     ],
     [
@@ -48,9 +48,9 @@ $contactDetails = [
         'color' => 'danger',
         'title' => 'Email Support',
         'subtitle' => 'Custom Itineraries & Quotes',
-        'line1' => $siteContact['email']['primary'] ?? 'info@tajmahaltour.com',
-        'line2' => $siteContact['email']['booking'] ?? 'booking@tajmahaltour.com',
-        'link' => function_exists('site_email') ? site_email('primary', true) : 'mailto:info@tajmahaltour.com',
+        'line1' => $siteContact['email']['primary'] ?? 'uniqueholidaytrip@gmail.com',
+        'line2' => '24/7 Dedicated Support',
+        'link' => function_exists('site_email') ? site_email('primary', true) : 'mailto:uniqueholidaytrip@gmail.com',
         'link_text' => 'Send Email'
     ]
 ];

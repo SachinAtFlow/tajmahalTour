@@ -10,11 +10,11 @@ require_once 'includes/header.php';
 $site_name       = function_exists('getSiteContact') ? getSiteContact('brand_name') : "Taj Mahal Tour";
 $site_url        = function_exists('getSiteContact') ? getSiteContact('website_url') : "www.tajmahaltour.com";
 $last_updated    = "10 November 2026";
-$contact_email   = function_exists('site_email') ? site_email('primary') : "info@tajmahaltour.com";
-$booking_email   = function_exists('site_email') ? site_email('booking') : "booking@tajmahaltour.com";
+$contact_email   = function_exists('site_email') ? site_email('primary') : "uniqueholidaytrip@gmail.com";
+$booking_email   = function_exists('site_email') ? site_email('booking') : "uniqueholidaytrip@gmail.com";
 $contact_phone   = function_exists('site_phone') ? site_phone(true) : "+91 88007 22606";
-$whatsapp_number = function_exists('getSiteContact') ? (getSiteContact('whatsapp', 'raw') ?: "918800722606") : "918800722606";
-$company_address = function_exists('getSiteContact') ? (getSiteContact('address', 'agra')['full'] ?? "Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India") : "Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India";
+$whatsapp_number = function_exists('getSiteContact') ? (getSiteContact('whatsapp', 'raw') ?: "919810723370") : "919810723370";
+$company_address = function_exists('site_address') ? site_address('delhi') : "Krishna Nagar, New Delhi - 110051, Delhi, India";
 ?>
 
 <main id="terms-conditions-main">
@@ -48,47 +48,61 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                                 Table of Contents
                             </h6>
                             <nav id="terms-nav" class="d-flex flex-column gap-1">
-                                <a class="policy-nav-link active d-block fw-medium text-decoration-none fw-semibold" href="#welcome">
-                                    <i class="bi bi-info-circle me-1.5 opacity-75"></i> Welcome & Agreement
+                                <a class="policy-nav-link active d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#welcome">
+                                    <i class="bi bi-info-circle flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>Welcome &amp; Agreement</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-services">
-                                    <i class="bi bi-compass me-1.5 opacity-75"></i> 1. Scope of Services
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-services">
+                                    <i class="bi bi-compass flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>1. Scope of Services</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-eligibility">
-                                    <i class="bi bi-person-check me-1.5 opacity-75"></i> 2. Eligibility & Bookings
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-eligibility">
+                                    <i class="bi bi-person-check flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>2. Eligibility &amp; Bookings</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-inclusions">
-                                    <i class="bi bi-check2-square me-1.5 opacity-75"></i> 3. Inclusions & Exclusions
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-inclusions">
+                                    <i class="bi bi-check2-square flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>3. Inclusions &amp; Exclusions</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-payment">
-                                    <i class="bi bi-credit-card me-1.5 opacity-75"></i> 4. Pricing & Payments
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-payment">
+                                    <i class="bi bi-credit-card flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>4. Pricing &amp; Payments</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-cancellation">
-                                    <i class="bi bi-arrow-counterclockwise me-1.5 opacity-75"></i> 5. Cancellation & Refunds
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-cancellation">
+                                    <i class="bi bi-arrow-counterclockwise flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>5. Cancellation &amp; Refunds</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-rescheduling">
-                                    <i class="bi bi-calendar-range me-1.5 opacity-75"></i> 6. Traveller Rescheduling
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-rescheduling">
+                                    <i class="bi bi-calendar-range flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>6. Traveller Rescheduling</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-company-changes">
-                                    <i class="bi bi-shield-exclamation me-1.5 opacity-75"></i> 7. Operational Changes
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-company-changes">
+                                    <i class="bi bi-shield-exclamation flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>7. Operational Changes</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-responsibilities">
-                                    <i class="bi bi-person-arms-up me-1.5 opacity-75"></i> 8. Traveller Conduct
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-responsibilities">
+                                    <i class="bi bi-person-arms-up flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>8. Traveller Conduct</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-safety">
-                                    <i class="bi bi-shield-shaded me-1.5 opacity-75"></i> 9. Safety & Health
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-safety">
+                                    <i class="bi bi-shield-shaded flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>9. Safety &amp; Health</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-liability">
-                                    <i class="bi bi-exclamation-triangle me-1.5 opacity-75"></i> 10. Limitation of Liability
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-liability">
+                                    <i class="bi bi-exclamation-triangle flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>10. Limitation of Liability</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-ip">
-                                    <i class="bi bi-c-circle me-1.5 opacity-75"></i> 11. Intellectual Property
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-ip">
+                                    <i class="bi bi-c-circle flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>11. Intellectual Property</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-jurisdiction">
-                                    <i class="bi bi-bank me-1.5 opacity-75"></i> 12. Governing Law
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-jurisdiction">
+                                    <i class="bi bi-bank flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>12. Governing Law</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#sec-contact">
-                                    <i class="bi bi-headset me-1.5 opacity-75"></i> 13. Contact & Support
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#sec-contact">
+                                    <i class="bi bi-headset flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>13. Contact &amp; Support</span>
                                 </a>
                             </nav>
                         </div>
@@ -175,11 +189,11 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                             <div class="row g-3 mb-0">
                                 <div class="col-md-6">
                                     <div class="p-3.5 bg-light rounded-3 border border-light-subtle h-100 p-3">
-                                        <h6 class="fw-bold text-success mb-2 d-flex align-items-center gap-1.5">
+                                        <h6 class="fw-bold text-success mb-2 d-flex align-items-center gap-2">
                                             <i class="bi bi-check-circle-fill"></i>
                                             <span>Typically Included</span>
                                         </h6>
-                                        <ul class="text-secondary small ps-3 d-flex flex-column gap-1.5 mb-0">
+                                        <ul class="text-secondary small ps-3 d-flex flex-column gap-2 mb-0">
                                             <li>Private air-conditioned vehicle as per chosen category (Sedan/SUV/Tempo).</li>
                                             <li>Fuel charges, state border road taxes, toll taxes, and parking fees.</li>
                                             <li>Professional, verified, English/Hindi speaking chauffeur.</li>
@@ -190,11 +204,11 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                                 </div>
                                 <div class="col-md-6">
                                     <div class="p-3.5 bg-light rounded-3 border border-light-subtle h-100 p-3">
-                                        <h6 class="fw-bold text-danger mb-2 d-flex align-items-center gap-1.5">
+                                        <h6 class="fw-bold text-danger mb-2 d-flex align-items-center gap-2">
                                             <i class="bi bi-x-circle-fill"></i>
                                             <span>Typically Excluded</span>
                                         </h6>
-                                        <ul class="text-secondary small ps-3 d-flex flex-column gap-1.5 mb-0">
+                                        <ul class="text-secondary small ps-3 d-flex flex-column gap-2 mb-0">
                                             <li>Monument entrance tickets (unless explicitly listed in custom all-inclusive quotes).</li>
                                             <li>Personal meals, beverages, alcoholic drinks, and laundry charges.</li>
                                             <li>Gratuities/tips for chauffeur and tour guide (optional & at discretion).</li>
@@ -300,7 +314,7 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                             <p class="text-secondary leading-relaxed mb-3">
                                 In rare events of unforeseen road closures, extreme fog during North Indian winters, political rallies, landmark closure directives by authorities (e.g. Taj Mahal Friday closure for prayers, VIP security protocols), or mechanical breakdowns:
                             </p>
-                            <ul class="text-secondary small ps-3 d-flex flex-column gap-1.5 mb-0">
+                            <ul class="text-secondary small ps-3 d-flex flex-column gap-2 mb-0">
                                 <li><strong>Vehicle Breakdown Guarantee:</strong> In the unlikely event of vehicle mechanical failure during a journey, an equivalent replacement vehicle will be arranged promptly at no extra charge.</li>
                                 <li><strong>Force Majeure:</strong> Neither party is liable for failure or delay in performance caused by natural disasters, strikes, pandemic quarantine restrictions, or government decrees. An alternate date or credit voucher will be provided.</li>
                             </ul>
@@ -315,7 +329,7 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                             <p class="text-secondary leading-relaxed mb-3">
                                 To ensure a serene and respectable travel environment for all parties, travellers agree to:
                             </p>
-                            <ul class="text-secondary small ps-3 d-flex flex-column gap-1.5 mb-3">
+                            <ul class="text-secondary small ps-3 d-flex flex-column gap-2 mb-3">
                                 <li>Carry original government identification/passports during travels as required by police checkpoints and monument authorities.</li>
                                 <li>Treat chauffeurs, tour guides, monument custodians, and fellow passengers with dignity and courtesy.</li>
                                 <li>Strictly refrain from consuming illegal narcotics, smoking inside non-smoking tourist vehicles, or carrying unauthorized weapons.</li>
@@ -345,7 +359,7 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                             <p class="text-secondary leading-relaxed mb-3">
                                 To the maximum extent permitted by applicable Indian laws:
                             </p>
-                            <ul class="text-secondary small ps-3 d-flex flex-column gap-1.5 mb-3">
+                            <ul class="text-secondary small ps-3 d-flex flex-column gap-2 mb-3">
                                 <li>We are not liable for delayed flights, missed trains, or lost personal baggage left unattended in hotel lobbies or sightseeing spots.</li>
                                 <li>We are not responsible for injuries or illnesses sustained by travellers participating in independent optional activities not part of our scheduled itinerary.</li>
                                 <li>The company's aggregate cumulative liability for any proven claim arising out of a booking shall be strictly capped at the total amount paid by the customer for that specific booking.</li>

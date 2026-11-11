@@ -11,10 +11,10 @@ $site_name       = function_exists('getSiteContact') ? getSiteContact('brand_nam
 $site_url        = function_exists('getSiteContact') ? getSiteContact('website_url') : "www.tajmahaltour.com";
 $last_updated    = "10 November 2026";
 $officer_name    = "Grievance & Data Privacy Officer";
-$contact_email   = function_exists('site_email') ? site_email('privacy') : "privacy@tajmahaltour.com";
-$support_email   = function_exists('site_email') ? site_email('primary') : "info@tajmahaltour.com";
+$contact_email   = function_exists('site_email') ? site_email('privacy') : "uniqueholidaytrip@gmail.com";
+$support_email   = function_exists('site_email') ? site_email('primary') : "uniqueholidaytrip@gmail.com";
 $contact_phone   = function_exists('site_phone') ? site_phone(true) : "+91 88007 22606";
-$company_address = function_exists('getSiteContact') ? (getSiteContact('address', 'agra')['full'] ?? "Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India") : "Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India";
+$company_address = function_exists('site_address') ? site_address('delhi') : "Krishna Nagar, New Delhi - 110051, Delhi, India";
 ?>
 
 <main id="privacy-policy-main">
@@ -49,38 +49,49 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                                 Table of Contents
                             </h6>
                             <nav id="policy-nav" class="d-flex flex-column gap-1">
-                                <a class="policy-nav-link active d-block fw-medium text-decoration-none fw-semibold" href="#overview">
-                                    <i class="bi bi-info-circle me-1.5 opacity-75"></i> Overview & Scope
+                                <a class="policy-nav-link active d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#overview">
+                                    <i class="bi bi-info-circle flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>Overview &amp; Scope</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-1-collection">
-                                    <i class="bi bi-person-badge me-1.5 opacity-75"></i> 1. Data Collection
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#section-1-collection">
+                                    <i class="bi bi-person-badge flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>1. Data Collection</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-2-purpose">
-                                    <i class="bi bi-bullseye me-1.5 opacity-75"></i> 2. Purpose & Usage
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#section-2-purpose">
+                                    <i class="bi bi-bullseye flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>2. Purpose &amp; Usage</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-3-analytics">
-                                    <i class="bi bi-bar-chart me-1.5 opacity-75"></i> 3. Non-Personal Data
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#section-3-analytics">
+                                    <i class="bi bi-bar-chart flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>3. Non-Personal Data</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-4-sharing">
-                                    <i class="bi bi-share me-1.5 opacity-75"></i> 4. Sharing & Disclosure
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#section-4-sharing">
+                                    <i class="bi bi-share flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>4. Sharing &amp; Disclosure</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-5-security">
-                                    <i class="bi bi-shield-lock me-1.5 opacity-75"></i> 5. Data Security
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#section-5-security">
+                                    <i class="bi bi-shield-lock flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>5. Data Security</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-6-retention">
-                                    <i class="bi bi-hourglass-split me-1.5 opacity-75"></i> 6. Data Retention
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#section-6-retention">
+                                    <i class="bi bi-hourglass-split flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>6. Data Retention</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-7-rights">
-                                    <i class="bi bi-check2-circle me-1.5 opacity-75"></i> 7. Your Privacy Rights
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#section-7-rights">
+                                    <i class="bi bi-check2-circle flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>7. Your Privacy Rights</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-8-cookies">
-                                    <i class="bi bi-cookie me-1.5 opacity-75"></i> 8. Cookies Policy
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#section-8-cookies">
+                                    <i class="bi bi-cookie flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>8. Cookies Policy</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-9-children">
-                                    <i class="bi bi-people me-1.5 opacity-75"></i> 9. Children's Privacy
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#section-9-children">
+                                    <i class="bi bi-people flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>9. Children's Privacy</span>
                                 </a>
-                                <a class="policy-nav-link d-block fw-medium text-decoration-none fw-semibold" href="#section-10-grievance">
-                                    <i class="bi bi-envelope-at me-1.5 opacity-75"></i> 10. Grievance Officer
+                                <a class="policy-nav-link d-flex align-items-start gap-2 text-decoration-none fw-semibold" href="#section-10-grievance">
+                                    <i class="bi bi-envelope-at flex-shrink-0 mt-1 opacity-75"></i>
+                                    <span>10. Grievance Officer</span>
                                 </a>
                             </nav>
                         </div>
@@ -90,7 +101,7 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                             <i class="bi bi-chat-heart text-primary fs-3 mb-2 d-inline-block"></i>
                             <h6 class="fw-bold text-dark mb-1">Have Any Questions?</h6>
                             <p class="text-secondary small mb-3">Our support team is here to clarify any aspect of our privacy practices.</p>
-                            <a href="https://wa.me/918800722606?text=Hello%20TajMahalTour,%20I%20have%20a%20privacy%20question." target="_blank" class="btn btn-outline-primary btn-sm rounded-pill w-100 fw-semibold d-inline-flex align-items-center justify-content-center gap-2">
+                            <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hello Taj Mahal Tour, I have a privacy question.') : 'https://wa.me/919810723370'; ?>" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill w-100 fw-semibold d-inline-flex align-items-center justify-content-center gap-2">
                                 <i class="bi bi-whatsapp"></i>
                                 <span>WhatsApp Privacy Desk</span>
                             </a>
@@ -120,11 +131,11 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                                     <i class="bi bi-patch-check-fill text-primary"></i>
                                     <span>Our Core Privacy Principles:</span>
                                 </h6>
-                                <ul class="list-unstyled mb-0 text-secondary small d-flex flex-column gap-1.5">
+                                <ul class="list-unstyled mb-0 text-secondary small d-flex flex-column gap-2">
                                     <li><i class="bi bi-check2 text-primary me-2"></i><strong>Zero Data Selling:</strong> We never sell, rent, or lease your personal information to third-party advertisers.</li>
                                     <li><i class="bi bi-check2 text-primary me-2"></i><strong>Strict Encryption:</strong> All sensitive transactions are protected with SSL/TLS 256-bit encryption.</li>
                                     <li><i class="bi bi-check2 text-primary me-2"></i><strong>Complete Control:</strong> You have the right to inspect, update, or request the deletion of your data at any time.</li>
-                                </ul>
+                                </ul>       
                             </div>
 
                             <p class="text-muted small mb-0">
@@ -145,11 +156,11 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6">
                                     <div class="p-3.5 bg-light rounded-3 border border-light-subtle h-100 p-3">
-                                        <h6 class="fw-bold text-dark mb-2 d-flex align-items-center gap-1.5">
+                                        <h6 class="fw-bold text-dark mb-2 d-flex align-items-center gap-2">
                                             <i class="bi bi-person-lines-fill text-primary"></i>
                                             <span>a. Information Provided Directly</span>
                                         </h6>
-                                        <ul class="text-secondary small mb-0 ps-3 d-flex flex-column gap-1.5">
+                                        <ul class="text-secondary small mb-0 ps-3 d-flex flex-column gap-2">
                                             <li><strong>Contact Info:</strong> Full name, email address, mobile number, and city of residence.</li>
                                             <li><strong>Itinerary Particulars:</strong> Travel dates, flight/train numbers for airport or railway transfers, and hotel pickup addresses.</li>
                                             <li><strong>Identity Proof:</strong> Government-issued ID details (Passport, Aadhaar, or Driving License) when strictly required for skip-the-line monument permits (ASI) or interstate border crossings.</li>
@@ -159,11 +170,11 @@ $company_address = function_exists('getSiteContact') ? (getSiteContact('address'
                                 </div>
                                 <div class="col-md-6">
                                     <div class="p-3.5 bg-light rounded-3 border border-light-subtle h-100 p-3">
-                                        <h6 class="fw-bold text-dark mb-2 d-flex align-items-center gap-1.5">
+                                        <h6 class="fw-bold text-dark mb-2 d-flex align-items-center gap-2">
                                             <i class="bi bi-laptop text-primary"></i>
                                             <span>b. Information Collected Automatically</span>
                                         </h6>
-                                        <ul class="text-secondary small mb-0 ps-3 d-flex flex-column gap-1.5">
+                                        <ul class="text-secondary small mb-0 ps-3 d-flex flex-column gap-2">
                                             <li><strong>Technical & Device Data:</strong> IP address, browser type, operating system, language preferences, and device specifications.</li>
                                             <li><strong>Usage Metrics:</strong> Pages viewed, time spent on tour packages, search queries, and referring website links.</li>
                                             <li><strong>Operational Location Data:</strong> Live GPS location shared during active chauffeur trips solely for safety, coordination, and emergency tracking.</li>

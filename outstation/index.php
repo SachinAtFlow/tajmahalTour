@@ -54,7 +54,7 @@ require_once __DIR__ . '/../includes/header.php';
                         <span>View Fleet &amp; Per-Km Fares</span>
                         <i class="bi bi-arrow-down"></i>
                     </a>
-                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book an Outstation Cab') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-outline-light rounded-pill px-4 py-2.5 fw-semibold d-inline-flex align-items-center gap-2">
+                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book an Outstation Cab') : 'https://wa.me/919810723370'; ?>" target="_blank" class="btn btn-outline-light rounded-pill px-4 py-2.5 fw-semibold d-inline-flex align-items-center gap-2">
                         <i class="bi bi-whatsapp text-success"></i>
                         <span>Instant WhatsApp Booking</span>
                     </a>
@@ -149,7 +149,7 @@ require_once __DIR__ . '/../includes/header.php';
                 </h2>
                 <p class="text-secondary mb-0">Pre-estimated fixed package rates including interstate tax, tolls, and driver allowance.</p>
             </div>
-            <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want custom outstation itinerary') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2 flex-shrink-0">
+            <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want custom outstation itinerary') : 'https://wa.me/919810723370'; ?>" target="_blank" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2 flex-shrink-0">
                 <span>Custom Route Inquiry</span>
                 <i class="bi bi-arrow-right"></i>
             </a>
@@ -170,7 +170,7 @@ require_once __DIR__ . '/../includes/header.php';
                         <li><i class="bi bi-check2 text-primary me-2"></i><strong>Expressway Toll:</strong> Included in package</li>
                         <li><i class="bi bi-check2 text-primary me-2"></i><strong>Monuments:</strong> Taj Mahal, Agra Fort, Mehtab Bagh</li>
                     </ul>
-                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book Delhi to Agra Cab') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-primary rounded-pill w-100 py-2 fw-semibold">
+                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book Delhi to Agra Cab') : 'https://wa.me/919810723370'; ?>" target="_blank" class="btn btn-primary rounded-pill w-100 py-2 fw-semibold">
                         Book Delhi-Agra Cab
                     </a>
                 </div>
@@ -189,7 +189,7 @@ require_once __DIR__ . '/../includes/header.php';
                         <li><i class="bi bi-check2 text-primary me-2"></i><strong>Driver:</strong> Rajasthan route expert</li>
                         <li><i class="bi bi-check2 text-primary me-2"></i><strong>Options:</strong> 1-Way Drop or 2–3 Days Return</li>
                     </ul>
-                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book Delhi to Jaipur Cab') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-primary rounded-pill w-100 py-2 fw-semibold">
+                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book Delhi to Jaipur Cab') : 'https://wa.me/919810723370'; ?>" target="_blank" class="btn btn-primary rounded-pill w-100 py-2 fw-semibold">
                         Book Delhi-Jaipur Cab
                     </a>
                 </div>
@@ -208,7 +208,7 @@ require_once __DIR__ . '/../includes/header.php';
                         <li><i class="bi bi-check2 text-primary me-2"></i><strong>Comfort:</strong> Hill-certified chauffeurs</li>
                         <li><i class="bi bi-check2 text-primary me-2"></i><strong>Popular:</strong> 2–3 Days Spiritual Retreat</li>
                     </ul>
-                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book Delhi to Haridwar Cab') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-primary rounded-pill w-100 py-2 fw-semibold">
+                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book Delhi to Haridwar Cab') : 'https://wa.me/919810723370'; ?>" target="_blank" class="btn btn-primary rounded-pill w-100 py-2 fw-semibold">
                         Book Haridwar Cab
                     </a>
                 </div>

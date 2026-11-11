@@ -53,14 +53,14 @@ if (!function_exists('getAttractionDataSets')) {
                     [
                         'title' => 'Uttarakhand Tour',
                         'subtitle' => 'Rishikesh, Mussoorie, Nainital & Auli',
-                        'image' => 'assets/images/uttrakhand/uttrakhand.avif',
+                        'image' => 'assets/images/uttrakhand/uttrakhand1.avif',
                         'link' => 'uttarakhandtour/index.php',
                         'category' => 'uttarakhand',
                     ],
                     [
                         'title' => 'Punjab Tour',
                         'subtitle' => 'Amritsar, Golden Temple & Wagah Border',
-                        'image' => 'assets/images/punjab/goldenTemple.avif',
+                        'image' => 'assets/images/punjab/punjab.avif',
                         'link' => 'punjabtour/index.php',
                         'category' => 'punjab',
                     ],
@@ -81,7 +81,7 @@ if (!function_exists('getAttractionDataSets')) {
                     [
                         'title' => 'Nepal Tour',
                         'subtitle' => 'Kathmandu, Pokhara & Everest Flights',
-                        'image' => 'assets/images/nepal/nepal.avif',
+                        'image' => 'assets/images/nepal/nepalTour.avif',
                         'link' => 'nepaltour/index.php',
                         'category' => 'nepal',
                     ],

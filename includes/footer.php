@@ -33,7 +33,6 @@ if (!function_exists('theme_url')) {
                 </p>
                 <div class="d-flex gap-2 mt-3">
                     <a href="<?= site_social('facebook'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="<?= site_social('instagram'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                     <a href="<?= site_social('x'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="X / Twitter"><i class="bi bi-twitter-x"></i></a>
                     <a href="<?= site_social('youtube'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
                     <a href="<?= site_social('linkedin'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -68,11 +67,13 @@ if (!function_exists('theme_url')) {
 
             <!-- Contact Information -->
             <div class="col-lg-3 col-md-6" id="contact">
-                <h6 class="text-white fw-semibold mb-3">Contact Agra Office</h6>
+                <h6 class="text-white fw-semibold mb-3">Contact Our Office</h6>
                 <ul class="list-unstyled small text-white-50 d-flex flex-column gap-2 mb-0">
                     <li class="d-flex align-items-start">
                         <i class="bi bi-geo-alt-fill text-primary me-2 mt-1"></i>
-                        <span><?= htmlspecialchars(getSiteContact('address', 'agra')['full'] ?? 'Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India'); ?></span>
+                        <a href="<?= htmlspecialchars(getSiteContact('address', 'delhi')['map_link'] ?? 'https://maps.app.goo.gl/pRwZnKFnjWYEqPZj8'); ?>" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none hover-white" title="Open Office Location in Google Maps">
+                            <?= htmlspecialchars(getSiteContact('address', 'delhi')['full'] ?? 'Krishna Nagar, New Delhi - 110051, Delhi, India'); ?>
+                        </a>
                     </li>
                     <li class="d-flex align-items-center">
                         <i class="bi bi-telephone-fill text-primary me-2"></i>

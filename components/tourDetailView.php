@@ -443,7 +443,7 @@ if (!function_exists('parseTourItineraryStep')) {
                         <!-- Direct WhatsApp & Call Buttons (Clean Spacing & Responsive Mobile Sizing) -->
                         <div class="d-flex gap-3 gap-sm-3.5 mb-3">
                             <a 
-                                href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hello, I am interested in booking: ' . ($currentTour['title'] ?? 'Tour')) : 'https://wa.me/918800722606'; ?>" 
+                                href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hello, I am interested in booking: ' . ($currentTour['title'] ?? 'Tour')) : 'https://wa.me/919810723370'; ?>" 
                                 target="_blank" 
                                 class="btn btn-success rounded-pill flex-grow-1 tour-sidebar-cta py-1.5 py-sm-2.5 px-2 px-sm-3 fw-semibold d-inline-flex align-items-center justify-content-center gap-2 gap-sm-2 shadow-xs"
                             >

@@ -82,7 +82,7 @@ $outstationCars = [
         <div class="row g-4">
             <?php foreach ($outstationCars as $car): ?>
                 <?php 
-                    $waUrl = 'https://wa.me/918800722606?text=' . urlencode($car['wa_text']);
+                    $waUrl = function_exists('site_whatsapp_link') ? site_whatsapp_link($car['wa_text']) : ('https://wa.me/919810723370?text=' . urlencode($car['wa_text']));
                 ?>
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="card h-100 border border-light-subtle rounded-4 overflow-hidden shadow-xs hover-lift d-flex flex-column justify-content-between bg-white">

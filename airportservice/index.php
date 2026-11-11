@@ -37,7 +37,7 @@ require_once __DIR__ . '/../includes/header.php';
                         <span>Select Your Airport</span>
                         <i class="bi bi-arrow-down"></i>
                     </a>
-                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book an Airport Taxi') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-outline-light rounded-pill px-4 py-2.5 fw-semibold d-inline-flex align-items-center gap-2">
+                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book an Airport Taxi') : 'https://wa.me/919810723370'; ?>" target="_blank" class="btn btn-outline-light rounded-pill px-4 py-2.5 fw-semibold d-inline-flex align-items-center gap-2">
                         <i class="bi bi-whatsapp text-success"></i>
                         <span>Instant WhatsApp Booking</span>
                     </a>
@@ -194,7 +194,7 @@ require_once __DIR__ . '/../includes/header.php';
                                     <i class="bi bi-arrow-right"></i>
                                 </a>
 
-                                <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to inquire about ' . $airport['title']) : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-outline-success rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width: 42px; height: 42px;" title="Chat on WhatsApp">
+                                <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to inquire about ' . $airport['title']) : 'https://wa.me/919810723370'; ?>" target="_blank" class="btn btn-outline-success rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width: 42px; height: 42px;" title="Chat on WhatsApp">
                                     <i class="bi bi-whatsapp fs-5"></i>
                                 </a>
                             </div>
