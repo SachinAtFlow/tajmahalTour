@@ -60,7 +60,7 @@
                     </a>
                     
                     <a 
-                        href="https://wa.me/918800722606?text=Hello%20TajMahalTour,%20I%20want%20to%20plan%20my%20North%20India%20trip%20and%20cab%20service." 
+                        href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hello TajMahalTour, I want to plan my North India trip and cab service.') : 'https://wa.me/918800722606'; ?>" 
                         target="_blank" 
                         class="btn btn-light border border-primary border-opacity-25 text-dark rounded-pill px-3 py-2 px-md-4 py-md-3 small fs-md-6 fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
                     >

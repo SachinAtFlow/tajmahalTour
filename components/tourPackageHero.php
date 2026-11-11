@@ -34,53 +34,7 @@
             </p>
         </div>
 
-        <!-- Floating Quick Search & Filter Bar -->
-        <div class="row justify-content-center mt-4">
-            <div class="col-lg-10 col-xl-9">
-                <div class="bg-white rounded-4 shadow-lg p-3 p-md-4 text-dark border border-light-subtle">
-                    <form action="tourPackage.php#featured-tours" method="GET" class="row g-2 g-md-3 align-items-end" id="tourQuickFilterForm">
-                        
-                        <!-- Destination Field -->
-                        <div class="col-12 col-md-4">
-                            <label class="form-label small fw-semibold text-secondary mb-1">
-                                <i class="bi bi-geo-alt-fill text-primary me-1"></i> Destination
-                            </label>
-                            <select class="form-select bg-light border-light-subtle py-2.5 rounded-3 fw-medium" id="tourFilterDestination">
-                                <option value="all">All North India Regions</option>
-                                <option value="uttar-pradesh">Agra &amp; Taj Mahal (UP)</option>
-                                <option value="delhi">Delhi Sightseeing &amp; NCR</option>
-                                <option value="rajasthan">Rajasthan Royal Palaces</option>
-                                <option value="himachal">Himachal Hills &amp; Valleys</option>
-                                <option value="uttarakhand">Uttarakhand &amp; Rishikesh</option>
-                                <option value="gujarat">Gujarat Heritage</option>
-                                <option value="nepal">Nepal Scenic Tours</option>
-                            </select>
-                        </div>
-
-                        <!-- Duration Field -->
-                        <div class="col-12 col-md-4">
-                            <label class="form-label small fw-semibold text-secondary mb-1">
-                                <i class="bi bi-clock-history text-primary me-1"></i> Tour Duration
-                            </label>
-                            <select class="form-select bg-light border-light-subtle py-2.5 rounded-3 fw-medium" id="tourFilterDuration">
-                                <option value="any">Any Duration</option>
-                                <option value="sameday">Same Day (8&ndash;12 Hours)</option>
-                                <option value="weekend">2&ndash;3 Days (Short Break)</option>
-                                <option value="extended">4&ndash;7 Days (Holiday Tour)</option>
-                            </select>
-                        </div>
-
-                        <!-- Action Button -->
-                        <div class="col-12 col-md-4">
-                            <button type="button" id="tourSearchBtn" class="btn btn-primary w-100 py-2.5 rounded-3 fw-semibold shadow-xs d-flex align-items-center justify-content-center gap-2">
-                                <i class="bi bi-search"></i>
-                                <span>Find Tour Packages</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        
 
         <!-- Trust Badges Strip -->
         <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 gap-md-4 mt-4 pt-2 text-white-50 small">

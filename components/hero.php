@@ -1,29 +1,75 @@
-<!-- Hero Section (Elementor Structure with 50% Overlapping Banner Search Form) -->
-<section id="hero-banner" class="elementor-section elementor-top-section elementor-element elementor-element-6c6f2387 elementor-section-boxed elementor-section-height-default elementor-section-height-default hero-section text-white d-flex align-items-center position-relative py-5" data-id="6c6f2387" data-element_type="section" data-e-type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-    <div class="container text-center py-5 my-auto">
-        
-        <!-- Heading Container -->
-        <div class="elementor-container elementor-column-gap-default mb-4">
-            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-25295251" data-id="25295251" data-element_type="column" data-e-type="column">
-                <div class="elementor-widget-wrap elementor-element-populated">
-                    <div class="elementor-element elementor-element-307d81ea elementor-widget elementor-widget-heading" data-id="307d81ea" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
-                        <div class="elementor-widget-container">
-                            <h2 class="elementor-heading-title elementor-size-default display-4 fw-bold text-white mb-2">Explore India’s Best Tours & Car Rentals</h2>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-2d6e755a elementor-widget elementor-widget-heading" data-id="2d6e755a" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
-                        <div class="elementor-widget-container">
-                            <p class="elementor-heading-title elementor-size-default lead text-light mb-0">Reliable private cabs and custom holiday packages for Delhi, Agra, Rajasthan, Himachal & Wildlife.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<?php
+/**
+ * Hero Section with Swiper Carousel & Modern Left Whitish Gradient Overlay
+ * File: components/hero.php
+ * Hero Carousel Images: India Gate, Rajasthan, Taj Mahal, Car Rental
+ */
 
+$heroSlides = [
+    [
+        'image' => 'assets/images/heroImages/indiaGate.jpg',
+        'alt'   => 'India Gate Delhi Sightseeing Tour'
+    ],
+    [
+        'image' => 'assets/images/heroImages/rajasthanhero.png',
+        'alt'   => 'Royal Rajasthan Heritage Forts & Palaces'
+    ],
+    [
+        'image' => 'assets/images/heroImages/tajmahalhero.png',
+        'alt'   => 'Iconic Taj Mahal Agra Guided Tour'
+    ],
+    [
+        'image' => 'assets/images/heroImages/carRentalHero.png',
+        'alt'   => 'Executive Chauffeur Car Rental North India'
+    ]
+];
+?>
+
+<!-- Hero Section with Swiper Carousel & Left Whitish Gradient -->
+<section id="hero-banner" class="hero-section position-relative d-flex flex-column align-items-start justify-content-start align-items-lg-center justify-content-lg-center overflow-visible pt-3 pt-sm-4 pt-lg-5 pb-4 pb-lg-5">
+    
+    <!-- Swiper Carousel Background -->
+    <div class="swiper hero-swiper position-absolute top-0 start-0 w-100 h-100 z-1">
+        <div class="swiper-wrapper">
+            <?php foreach ($heroSlides as $idx => $slide): ?>
+                <?php 
+                    $resolvedImg = function_exists('theme_url') ? theme_url($slide['image']) : $slide['image']; 
+                    $altText = htmlspecialchars($slide['alt']);
+                ?>
+                <div class="swiper-slide">
+                    <img 
+                        src="<?= htmlspecialchars($resolvedImg); ?>" 
+                        class="hero-carousel-img w-100 h-100 object-fit-cover" 
+                        alt="<?= $altText; ?>"
+                        loading="<?= $idx === 0 ? 'eager' : 'lazy'; ?>"
+                    >
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 
-    <!-- Banner Search Form (Positioned Absolute: 50% inside Hero bottom, 50% outside) -->
-    <div class="elementor-container elementor-column-gap-default position-absolute top-100 start-50 translate-middle w-100 px-3 z-3" style="max-width: 1170px;">
+    <!-- Whitish Gradient Overlay on Left Side (Matching Provided Reference Image) -->
+    <div class="hero-whitish-overlay position-absolute top-0 start-0 w-100 h-100 z-2 pointer-events-none"></div>
+
+    <!-- Hero Content Container (Positioned on Left over Whitish Gradient) -->
+    <div class="container position-relative z-3 pt-1 pt-sm-2 pt-lg-5 pb-0 pb-lg-5 my-0 my-lg-auto">
+        <div class="row align-items-center">
+            <div class="col-lg-7 col-xl-6 text-start">
+                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1.5 rounded-pill fw-semibold small mb-2 mb-sm-3 d-inline-flex align-items-center gap-2 shadow-xs">
+                    <i class="bi bi-compass-fill"></i> North India Premier Tour &amp; Cab Service
+                </span>
+                <h1 class="display-5 fw-bold text-dark mb-2 mb-lg-3 lh-sm">
+                    Explore India’s Best Tours &amp; Car Rentals
+                </h1>
+                <p class="lead text-secondary mb-0 mb-lg-4 fs-6 fs-md-5 fw-normal">
+                    Reliable private cabs and custom holiday packages for Delhi, Agra, Rajasthan, Himachal &amp; Wildlife.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner Search Form (Desktop: 50% bottom overlap | Phone: In-flow directly below content) -->
+    <div class="elementor-container elementor-column-gap-default hero-search-wrapper w-100 px-3 z-3" style="max-width: 1170px;">
         <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7992d52a" data-id="7992d52a" data-element_type="column" data-e-type="column">
             <div class="elementor-widget-wrap elementor-element-populated">
                 <div class="elementor-element elementor-element-56787504 elementor-widget elementor-widget-st_banner_form" data-id="56787504" data-element_type="widget" data-e-type="widget" data-settings="{&quot;style&quot;:&quot;style_2&quot;,&quot;type_form&quot;:&quot;single&quot;}" data-widget_type="st_banner_form.default">
@@ -137,4 +183,28 @@
         </div>
     </div>
 </section>
+
+<!-- Hero Background Swiper Initialization -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const heroSwiperEl = document.querySelector('.hero-swiper');
+    if (heroSwiperEl && typeof Swiper !== 'undefined') {
+        new Swiper(heroSwiperEl, {
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            loop: true,
+            speed: 1200,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false
+            },
+            allowTouchMove: true,
+            observer: true,
+            observeParents: true
+        });
+    }
+});
+</script>
 

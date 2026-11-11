@@ -7,14 +7,14 @@ $page_title = "Terms & Conditions - Taj Mahal Tour | Booking Policies & Service 
 require_once 'includes/header.php';
 
 // Site Configuration
-$site_name       = "Taj Mahal Tour";
-$site_url        = "www.tajmahaltour.com";
-$last_updated    = "04 November 2026";
-$contact_email   = "info@tajmahaltour.com";
-$booking_email   = "booking@tajmahaltour.com";
-$contact_phone   = "+91 98765 43210";
-$whatsapp_number = "918800722606";
-$company_address = "Fatehabad Road, Near Taj East Gate, Agra, Uttar Pradesh 282001, India";
+$site_name       = function_exists('getSiteContact') ? getSiteContact('brand_name') : "Taj Mahal Tour";
+$site_url        = function_exists('getSiteContact') ? getSiteContact('website_url') : "www.tajmahaltour.com";
+$last_updated    = "10 November 2026";
+$contact_email   = function_exists('site_email') ? site_email('primary') : "info@tajmahaltour.com";
+$booking_email   = function_exists('site_email') ? site_email('booking') : "booking@tajmahaltour.com";
+$contact_phone   = function_exists('site_phone') ? site_phone(true) : "+91 88007 22606";
+$whatsapp_number = function_exists('getSiteContact') ? (getSiteContact('whatsapp', 'raw') ?: "918800722606") : "918800722606";
+$company_address = function_exists('getSiteContact') ? (getSiteContact('address', 'agra')['full'] ?? "Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India") : "Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India";
 ?>
 
 <main id="terms-conditions-main">

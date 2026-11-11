@@ -417,7 +417,7 @@ require_once 'includes/header.php';
                             <li>Your reservation is confirmed immediately upon MTCN verification.</li>
                         </ol>
 
-                        <a href="https://wa.me/919810723370?text=Hi,%20please%20share%20Western%20Union%20beneficiary%20details%20for%20my%20tour%20booking." target="_blank" class="btn btn-outline-dark w-100 py-2.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-2">
+                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, please share Western Union beneficiary details for my tour booking.') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-outline-dark w-100 py-2.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-2">
                             <i class="bi bi-whatsapp text-success fs-5"></i>
                             <span>Get Beneficiary Details via WhatsApp</span>
                         </a>
@@ -547,7 +547,7 @@ require_once 'includes/header.php';
                                 <span class="badge bg-primary rounded-circle p-1 flex-shrink-0 mt-1 d-inline-flex justify-content-center align-items-center"
                                 style="width: 20px; height: 20px; font-size: 10px;">2</span>
                                 <div class="small text-secondary lh-sm">
-                                    <strong class="text-dark">Send on WhatsApp:</strong> Share the payment proof or UTR with our desk at <strong>+91 98107 23370</strong>.
+                                    <strong class="text-dark">Send on WhatsApp:</strong> Share the payment proof or UTR with our desk at <strong><?= function_exists('site_whatsapp') ? site_whatsapp(true) : '+91 88007 22606'; ?></strong>.
                                 </div>
                             </div>
                             <div class="d-flex align-items-start gap-2">
@@ -562,7 +562,7 @@ require_once 'includes/header.php';
 
                     <!-- Instant WhatsApp Help Action -->
                     <div class="mb-3">
-                        <a href="https://wa.me/919810723370?text=Hi,%20I%20have%20completed%20the%20payment%20for%20my%20tour%20booking.%20Please%20find%20the%20details%20attached." target="_blank" class="btn btn-primary w-100 py-2.5 fw-bold d-inline-flex align-items-center justify-content-center gap-2 shadow-sm">
+                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I have completed the payment for my tour booking. Please find the details attached.') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-primary w-100 py-2.5 fw-bold d-inline-flex align-items-center justify-content-center gap-2 shadow-sm">
                             <i class="bi bi-whatsapp fs-5"></i>
                             <span>Send Receipt on WhatsApp</span>
                         </a>
@@ -571,7 +571,7 @@ require_once 'includes/header.php';
                     <!-- 24/7 Telephone Direct Dial -->
                     <div class="text-center small text-secondary mb-3">
                         <span>Direct Booking Desk: </span>
-                        <a href="tel:+919810723370" class="text-dark fw-bold text-decoration-none">+91 98107 23370</a>
+                        <a href="<?= function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606'; ?>" class="text-dark fw-bold text-decoration-none"><?= function_exists('site_phone') ? site_phone(true) : '+91 88007 22606'; ?></a>
                     </div>
 
                     <!-- Trust Seals List -->
@@ -644,7 +644,8 @@ function sendUtrToWhatsApp() {
     } else {
         msg += ' Please find the payment screenshot attached.';
     }
-    const whatsappUrl = `https://wa.me/919810723370?text=${encodeURIComponent(msg)}`;
+    const whatsappRaw = '<?= function_exists('getSiteContact') ? (getSiteContact('whatsapp', 'raw') ?: '918800722606') : '918800722606'; ?>';
+    const whatsappUrl = `https://wa.me/${whatsappRaw}?text=${encodeURIComponent(msg)}`;
     window.open(whatsappUrl, '_blank');
 }
 

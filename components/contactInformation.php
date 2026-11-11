@@ -2,26 +2,35 @@
 /**
  * Contact Information Component
  * 4 Responsive Cards with direct click-to-call, email, and location details.
+ * Sourced directly from central data/contactData.php
  */
+if (!function_exists('getSiteContact')) {
+    $contactDataPath = __DIR__ . '/../data/contactData.php';
+    if (file_exists($contactDataPath)) {
+        require_once $contactDataPath;
+    }
+}
+$siteContact = function_exists('getSiteContact') ? getSiteContact() : [];
+
 $contactDetails = [
     [
         'icon' => 'bi-geo-alt-fill',
         'color' => 'primary',
-        'title' => 'Agra Head Office',
-        'subtitle' => 'Monument & Tour Operations',
-        'line1' => 'Fatehabad Road, Near Taj East Gate',
-        'line2' => 'Agra, Uttar Pradesh - 282001',
-        'link' => 'https://maps.google.com/?q=Taj+Mahal+Agra',
+        'title' => $siteContact['address']['agra']['title'] ?? 'Agra Head Office',
+        'subtitle' => $siteContact['address']['agra']['subtitle'] ?? 'Monument & Tour Operations',
+        'line1' => $siteContact['address']['agra']['line1'] ?? 'Fatehabad Road, Near Taj East Gate',
+        'line2' => $siteContact['address']['agra']['line2'] ?? 'Agra, Uttar Pradesh - 282001',
+        'link' => $siteContact['address']['agra']['map_link'] ?? 'https://maps.google.com/?q=Taj+Mahal+Agra',
         'link_text' => 'View on Map'
     ],
     [
         'icon' => 'bi-building-fill',
         'color' => 'success',
-        'title' => 'Delhi NCR Branch',
-        'subtitle' => 'Fleet & Chauffeur Hub',
-        'line1' => 'Krishna Nagar, East Delhi',
-        'line2' => 'New Delhi - 110051, India',
-        'link' => 'https://maps.google.com/?q=Krishna+Nagar+Delhi',
+        'title' => $siteContact['address']['delhi']['title'] ?? 'Delhi NCR Branch',
+        'subtitle' => $siteContact['address']['delhi']['subtitle'] ?? 'Fleet & Chauffeur Hub',
+        'line1' => $siteContact['address']['delhi']['line1'] ?? 'Krishna Nagar, East Delhi',
+        'line2' => $siteContact['address']['delhi']['line2'] ?? 'New Delhi - 110051, India',
+        'link' => $siteContact['address']['delhi']['map_link'] ?? 'https://maps.google.com/?q=Krishna+Nagar+Delhi',
         'link_text' => 'Get Directions'
     ],
     [
@@ -29,9 +38,9 @@ $contactDetails = [
         'color' => 'warning',
         'title' => '24/7 Helpline & WhatsApp',
         'subtitle' => 'Instant Booking Assistance',
-        'line1' => '+91 8800722606 (WhatsApp)',
-        'line2' => '+91 98765 43210 (Direct Call)',
-        'link' => 'https://wa.me/918800722606?text=' . urlencode('Hello TajMahalTour, I would like to inquire about your tour and cab services.'),
+        'line1' => ($siteContact['whatsapp']['display'] ?? '+91 88007 22606') . ' (WhatsApp)',
+        'line2' => ($siteContact['phone']['alt_display'] ?? '+91 98765 43210') . ' (Direct Call)',
+        'link' => function_exists('site_whatsapp_link') ? site_whatsapp_link('Hello TajMahalTour, I would like to inquire about your tour and cab services.') : 'https://wa.me/918800722606',
         'link_text' => 'Chat on WhatsApp'
     ],
     [
@@ -39,9 +48,9 @@ $contactDetails = [
         'color' => 'danger',
         'title' => 'Email Support',
         'subtitle' => 'Custom Itineraries & Quotes',
-        'line1' => 'info@tajmahaltour.com',
-        'line2' => 'uniqueholidaytrip@gmail.com',
-        'link' => 'mailto:info@tajmahaltour.com',
+        'line1' => $siteContact['email']['primary'] ?? 'info@tajmahaltour.com',
+        'line2' => $siteContact['email']['booking'] ?? 'booking@tajmahaltour.com',
+        'link' => function_exists('site_email') ? site_email('primary', true) : 'mailto:info@tajmahaltour.com',
         'link_text' => 'Send Email'
     ]
 ];

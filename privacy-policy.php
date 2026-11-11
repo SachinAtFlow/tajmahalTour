@@ -7,14 +7,14 @@ $page_title = "Privacy Policy - Taj Mahal Tour | Data Protection & Terms";
 require_once 'includes/header.php';
 
 // Site Configuration
-$site_name       = "Taj Mahal Tour";
-$site_url        = "www.tajmahaltour.com";
-$last_updated    = "04 November 2026";
+$site_name       = function_exists('getSiteContact') ? getSiteContact('brand_name') : "Taj Mahal Tour";
+$site_url        = function_exists('getSiteContact') ? getSiteContact('website_url') : "www.tajmahaltour.com";
+$last_updated    = "10 November 2026";
 $officer_name    = "Grievance & Data Privacy Officer";
-$contact_email   = "privacy@tajmahaltour.com";
-$support_email   = "info@tajmahaltour.com";
-$contact_phone   = "+91 98765 43210";
-$company_address = "Fatehabad Road, Near Taj East Gate, Agra, Uttar Pradesh 282001, India";
+$contact_email   = function_exists('site_email') ? site_email('privacy') : "privacy@tajmahaltour.com";
+$support_email   = function_exists('site_email') ? site_email('primary') : "info@tajmahaltour.com";
+$contact_phone   = function_exists('site_phone') ? site_phone(true) : "+91 88007 22606";
+$company_address = function_exists('getSiteContact') ? (getSiteContact('address', 'agra')['full'] ?? "Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India") : "Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India";
 ?>
 
 <main id="privacy-policy-main">

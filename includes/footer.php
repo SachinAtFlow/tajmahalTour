@@ -1,5 +1,14 @@
 <?php
 $rootPrefix = !file_exists('assets/css/style.css') ? '../' : '';
+
+// Ensure Centralized Contact & Social Data is loaded
+if (!function_exists('getSiteContact')) {
+    $contactDataPath = __DIR__ . '/../data/contactData.php';
+    if (file_exists($contactDataPath)) {
+        require_once $contactDataPath;
+    }
+}
+
 if (!function_exists('theme_url')) {
     function theme_url($url = '') {
         global $rootPrefix;
@@ -23,10 +32,11 @@ if (!function_exists('theme_url')) {
                     We offer premier guided tours to the world-renowned Taj Mahal and heritage sites in Agra. Enjoy private AC transport, expert local historians, skip-the-line monument entries, and memorable experiences.
                 </p>
                 <div class="d-flex gap-2 mt-3">
-                    <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="<?= site_social('facebook'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="<?= site_social('instagram'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="<?= site_social('x'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a href="<?= site_social('youtube'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="<?= site_social('linkedin'); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm rounded-circle text-white" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
 
@@ -62,15 +72,19 @@ if (!function_exists('theme_url')) {
                 <ul class="list-unstyled small text-white-50 d-flex flex-column gap-2 mb-0">
                     <li class="d-flex align-items-start">
                         <i class="bi bi-geo-alt-fill text-primary me-2 mt-1"></i>
-                        <span>Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India</span>
+                        <span><?= htmlspecialchars(getSiteContact('address', 'agra')['full'] ?? 'Fatehabad Road, Near Taj East Gate, Agra, UP 282001, India'); ?></span>
                     </li>
                     <li class="d-flex align-items-center">
                         <i class="bi bi-telephone-fill text-primary me-2"></i>
-                        <span>+91 98765 43210</span>
+                        <a href="<?= site_phone(false); ?>" class="text-white-50 text-decoration-none hover-white"><?= site_phone(true); ?></a>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <i class="bi bi-whatsapp text-success me-2"></i>
+                        <a href="<?= site_whatsapp(false); ?>" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none hover-white"><?= site_whatsapp(true); ?> (WhatsApp)</a>
                     </li>
                     <li class="d-flex align-items-center">
                         <i class="bi bi-envelope-fill text-primary me-2"></i>
-                        <span>info@tajmahaltour.com</span>
+                        <a href="<?= site_email('primary', true); ?>" class="text-white-50 text-decoration-none hover-white"><?= site_email(); ?></a>
                     </li>
                     <li class="d-flex align-items-center">
                         <i class="bi bi-shield-check text-primary me-2"></i>

@@ -170,11 +170,11 @@ require_once __DIR__ . '/includes/header.php';
                             <span class="badge bg-success rounded-circle p-1 d-inline-block"></span>
                             <span>24/7 Chauffeur Helpline:</span>
                         </div>
-                        <a href="tel:+919876543210" class="text-dark fw-bold text-decoration-none hover-primary">
-                            <i class="bi bi-telephone-fill text-primary me-1"></i> +91 98765 43210
+                        <a href="<?= function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606'; ?>" class="text-dark fw-bold text-decoration-none hover-primary">
+                            <i class="bi bi-telephone-fill text-primary me-1"></i> <?= function_exists('site_phone') ? site_phone(true) : '+91 88007 22606'; ?>
                         </a>
                         <span class="text-muted">&bull;</span>
-                        <a href="https://api.whatsapp.com/send?phone=919876543210&text=Hi,%20I%20need%20assistance%20on%20Taj%20Mahal%20Tour" target="_blank" rel="noopener noreferrer" class="text-success fw-bold text-decoration-none">
+                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I need assistance on Taj Mahal Tour') : 'https://wa.me/918800722606'; ?>" target="_blank" rel="noopener noreferrer" class="text-success fw-bold text-decoration-none">
                             <i class="bi bi-whatsapp me-1"></i> WhatsApp Support
                         </a>
                     </div>

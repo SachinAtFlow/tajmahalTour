@@ -100,7 +100,7 @@
                             <i class="bi bi-arrow-right"></i>
                         </a>
 
-                        <a href="https://wa.me/918800722606?text=Hi%2C%20I%20want%20to%20inquire%20about%20Airport%20Taxi%20Service" target="_blank" class="btn btn-success rounded-pill px-4 py-2.5 fw-semibold shadow-sm d-inline-flex align-items-center justify-content-center gap-2">
+                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to inquire about Airport Taxi Service') : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-success rounded-pill px-4 py-2.5 fw-semibold shadow-sm d-inline-flex align-items-center justify-content-center gap-2">
                             <i class="bi bi-whatsapp"></i>
                             <span>WhatsApp Booking</span>
                         </a>

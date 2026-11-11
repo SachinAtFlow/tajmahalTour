@@ -5,6 +5,26 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
+    // 0. TOP SPECIAL OFFERS SWIPER CAROUSEL (Smooth Auto-Transition)
+    // =========================================================================
+    const topOffersEl = document.querySelector('.top-offers-swiper');
+    if (topOffersEl && typeof Swiper !== 'undefined') {
+        new Swiper(topOffersEl, {
+            direction: 'vertical',
+            loop: true,
+            speed: 500,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
+            allowTouchMove: true,
+            observer: true,
+            observeParents: true
+        });
+    }
+
+    // =========================================================================
     // 1. DESKTOP HOVER DROPDOWNS WITH GRACEFUL 250ms CLOSE DELAY
     // =========================================================================
     if (window.innerWidth >= 992) {

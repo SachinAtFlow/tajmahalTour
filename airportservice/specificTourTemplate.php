@@ -71,11 +71,11 @@ require_once __DIR__ . '/../includes/header.php';
             <!-- Fast Contact CTA Buttons -->
             <div class="col-lg-4 text-lg-end">
                 <div class="d-flex flex-column flex-sm-row flex-lg-column gap-2 justify-content-lg-end">
-                    <a href="https://wa.me/918800722606?text=Hi%2C%20I%20want%20to%20book%20taxi%20for%20<?= urlencode($currentAirport['title']); ?>" target="_blank" class="btn btn-success rounded-pill px-4 py-2.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-2 shadow-sm">
+                    <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I want to book taxi for ' . ($currentAirport['title'] ?? 'Airport')) : 'https://wa.me/918800722606'; ?>" target="_blank" class="btn btn-success rounded-pill px-4 py-2.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-2 shadow-sm">
                         <i class="bi bi-whatsapp fs-5"></i>
                         <span>WhatsApp Quick Booking</span>
                     </a>
-                    <a href="tel:000999656888" class="btn btn-outline-primary rounded-pill px-4 py-2.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-2">
+                    <a href="<?= function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606'; ?>" class="btn btn-outline-primary rounded-pill px-4 py-2.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-2">
                         <i class="bi bi-telephone-fill"></i>
                         <span>Call Airport Desk</span>
                     </a>
@@ -262,7 +262,7 @@ require_once __DIR__ . '/../includes/header.php';
                         <!-- Compact Support & Guarantees Footer -->
                         <div class="mt-2.5 pt-2.5 border-top d-flex align-items-center justify-content-between text-secondary" style="font-size: 11px;">
                             <span><i class="bi bi-shield-check text-success me-1"></i> Tolls Included</span>
-                            <a href="https://wa.me/918800722606?text=Hi%2C%20I%20need%20urgent%20airport%20taxi" target="_blank" class="text-success fw-bold text-decoration-none d-inline-flex align-items-center gap-1">
+                            <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I need urgent airport taxi') : 'https://wa.me/918800722606'; ?>" target="_blank" class="text-success fw-bold text-decoration-none d-inline-flex align-items-center gap-1">
                                 <i class="bi bi-whatsapp"></i> Quick WhatsApp
                             </a>
                         </div>

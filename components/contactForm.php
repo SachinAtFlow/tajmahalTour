@@ -142,13 +142,13 @@
                         Speak directly with our senior reservation desk or start an immediate WhatsApp chat for instant driver assignment.
                     </p>
                     <div class="d-flex flex-wrap gap-2">
-                        <a href="https://wa.me/918800722606?text=Hi%2C+I+need+urgent+cab%2Ftour+booking." class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-xs fast-contact-btn">
+                        <a href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hi, I need urgent cab/tour booking.') : 'https://wa.me/918800722606'; ?>" class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-xs fast-contact-btn">
                             <i class="bi bi-whatsapp"></i>
-                            <span>WhatsApp: +91 8800722606</span>
+                            <span>WhatsApp: <?= function_exists('site_whatsapp') ? site_whatsapp(true) : '+91 88007 22606'; ?></span>
                         </a>
-                        <a href="tel:+919876543210" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 fast-contact-btn">
+                        <a href="<?= function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606'; ?>" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 fast-contact-btn">
                             <i class="bi bi-telephone"></i>
-                            <span>Call: +91 98765 43210</span> 
+                            <span>Call: <?= function_exists('site_phone') ? site_phone(true) : '+91 88007 22606'; ?></span> 
                         </a>    
                     </div>
                 </div>

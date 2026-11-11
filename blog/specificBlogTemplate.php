@@ -327,7 +327,7 @@ $proTips = $post['pro_tips'] ?? [
                                 <a href="<?= theme_url('index.php#booking'); ?>" class="btn btn-primary rounded-pill px-4 py-2.5 fw-bold shadow-sm text-nowrap">
                                     Book Tour Cab &rarr;
                                 </a>
-                                <a href="tel:+919876543210" class="btn btn-outline-light rounded-pill px-3 py-2.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-2 text-nowrap">
+                                <a href="<?= function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606'; ?>" class="btn btn-outline-light rounded-pill px-3 py-2.5 fw-semibold d-inline-flex align-items-center justify-content-center gap-2 text-nowrap">
                                     <i class="bi bi-telephone-fill text-warning"></i>
                                     <span>Call Support</span>
                                 </a>
@@ -347,7 +347,7 @@ $proTips = $post['pro_tips'] ?? [
                             <a href="https://api.whatsapp.com/send?text=<?= urlencode(($post['title'] ?? '') . ' - ' . (isset($_SERVER['HTTP_HOST']) ? 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] : '')); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-success rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;" title="Share on WhatsApp">
                                 <i class="bi bi-whatsapp"></i>
                             </a>
-                            <a href="tel:+919876543210" class="btn btn-sm btn-outline-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;" title="Call Helpline">
+                            <a href="<?= function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606'; ?>" class="btn btn-sm btn-outline-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;" title="Call Helpline">
                                 <i class="bi bi-telephone"></i>
                             </a>
                         </div>

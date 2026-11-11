@@ -436,7 +436,7 @@ if (!function_exists('parseTourItineraryStep')) {
                         <!-- Direct WhatsApp & Call Buttons -->
                         <div class="d-flex flex-column gap-2 mb-3">
                             <a 
-                                href="https://wa.me/918800722606?text=<?= urlencode('Hello, I am interested in booking: ' . $currentTour['title']); ?>" 
+                                href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hello, I am interested in booking: ' . ($currentTour['title'] ?? 'Tour')) : 'https://wa.me/918800722606'; ?>" 
                                 target="_blank" 
                                 class="btn btn-success rounded-pill w-100 py-2.5 fw-semibold d-flex align-items-center justify-content-center gap-2 shadow-xs"
                             >
@@ -444,11 +444,11 @@ if (!function_exists('parseTourItineraryStep')) {
                                 <span>Inquire on WhatsApp</span>
                             </a>
                             <a 
-                                href="tel:000999656888" 
+                                href="<?= function_exists('site_phone') ? site_phone(false) : 'tel:+918800722606'; ?>" 
                                 class="btn btn-outline-dark rounded-pill w-100 py-2 fw-semibold d-flex align-items-center justify-content-center gap-2"
                             >
                                 <i class="bi bi-telephone-fill text-primary"></i>
-                                <span>Call: (000) 999 -656 -888</span>
+                                <span>Call: <?= function_exists('site_phone') ? site_phone(true) : '+91 88007 22606'; ?></span>
                             </a>
                         </div>
 

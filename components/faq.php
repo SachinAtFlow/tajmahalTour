@@ -64,7 +64,7 @@ require_once __DIR__ . '/../data/faqData.php';
                     <h6 class="fw-bold text-dark mb-1">Still have questions about your journey?</h6>
                     <p class="text-secondary small mb-3">Our dedicated travel desk is available 24/7 to assist with itineraries and questions.</p>
                     <a 
-                        href="https://wa.me/918800722606?text=Hello%20TajMahalTour,%20I%20have%20a%20question%20about%20your%20tours." 
+                        href="<?= function_exists('site_whatsapp_link') ? site_whatsapp_link('Hello TajMahalTour, I have a question about your tours.') : 'https://wa.me/918800722606'; ?>" 
                         target="_blank" 
                         class="btn btn-primary btn-sm rounded-pill px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2 shadow-sm"
                     >

@@ -6,9 +6,9 @@
    ========================================================================== */
 :root {
     /* Fonts */
-    --font-main: 'DM Sans', sans-serif; 
+    --font-main: 'DM Sans', sans-serif;
     --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-    
+
     /* Editorial Gallery Theme Tokens */
     --gallery-bg: #ded7cc;
     --gallery-text: #171513;
@@ -17,7 +17,7 @@
     --gallery-item-height-mobile: 115px;
     --gallery-item-height-sm: 155px;
     --gallery-item-height-base: 190px;
-    
+
     /* Brand Colors */
     --primary-color: #3B71FE;
     --primary-hover: #2655d4;
@@ -29,6 +29,11 @@
     --accent-orange-border: rgba(255, 94, 20, 0.22);
     --accent-blue-subtle: #eef5ff;
     --accent-blue-border: rgba(59, 113, 254, 0.18);
+
+    /* Top Special Offers Bar Tokens */
+    --offer-amber: #FFB547;
+    --offer-amber-hover: #ffca7a;
+    --offer-amber-shadow: rgba(255, 181, 71, 0.35);
 
     /* Font Weights */
     --font-weight-normal: 400;
@@ -52,7 +57,7 @@
     --dark-card-pill: rgba(255, 255, 255, 0.12);
     --dark-card-pill-border: rgba(255, 255, 255, 0.08);
     --dark-card-text-muted: #94a3b8;
-    
+
     /* Shadows */
     --shadow-card: 0 15px 40px rgba(0, 0, 0, 0.18);
     --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.15);
@@ -74,7 +79,8 @@
 }
 
 /* Base Font & Strict Global Scroll Containment (Clip prevents horizontal overflow without breaking position: sticky) */
-html, body {
+html,
+body {
     overflow-x: clip;
     max-width: 100vw;
     position: relative;
@@ -89,21 +95,103 @@ html, body {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
     background-color: var(--primary-hover) !important;
     border-color: var(--primary-hover) !important;
 }
+
 .text-primary {
     color: var(--primary-color) !important;
 }
 
-/* Hero Section Background */
+/* Hero Section with Swiper Carousel & Left Whitish Fade */
 .hero-section {
-    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), 
-                url('https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    min-height: 65vh;
+    position: relative;
+    min-height: 540px;
+    background-color: #ffffff;
+    overflow: visible;
+}
+
+@media (max-width: 991.98px) {
+    .hero-section {
+        min-height: auto;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-section {
+        min-height: 580px;
+    }
+}
+
+.hero-swiper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-swiper .swiper-slide {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #f1f5f9;
+}
+
+.hero-carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    transform: scale(1);
+    transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-swiper .swiper-slide-active .hero-carousel-img {
+    transform: scale(1.05);
+}
+
+/* Whitish Gradient Overlay on Left Side (Matching Provided Reference Image) */
+.hero-whitish-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.98) 22%,
+        rgba(255, 255, 255, 0.88) 36%,
+        rgba(255, 255, 255, 0.55) 52%,
+        rgba(255, 255, 255, 0.18) 68%,
+        rgba(255, 255, 255, 0) 84%
+    );
+}
+
+@media (max-width: 991.98px) {
+    .hero-whitish-overlay {
+        background: linear-gradient(
+            180deg,
+            #ffffff 0%,
+            rgba(255, 255, 255, 0.96) 45%,
+            rgba(255, 255, 255, 0.75) 75%,
+            rgba(255, 255, 255, 0.25) 100%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.92) 0%,
+            rgba(255, 255, 255, 0.6) 100%
+        );
+    }
 }
 
 /* Reusable Interactive Utilities */
@@ -114,6 +202,7 @@ html, body {
 .hover-lift {
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
 .hover-lift:hover {
     transform: translateY(-5px);
     box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08) !important;
@@ -124,13 +213,37 @@ html, body {
     color: var(--accent-orange) !important;
 }
 
+/* Hero Search Form Responsive Positioning (Desktop: Overlap bottom edge | Mobile: In-flow directly below content) */
+.hero-search-wrapper {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    z-index: 3;
+}
+
+@media (min-width: 992px) {
+    .hero-search-wrapper {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
 /* Spacing for Section Directly Following Overlapping Hero Search Bar */
 .section-after-hero {
     padding-top: 90px !important;
 }
+
 @media (max-width: 991.98px) {
     .section-after-hero {
-        padding-top: 220px !important;
+        padding-top: 2.75rem !important;
     }
 }
 
@@ -169,6 +282,7 @@ html, body {
     from {
         transform: translateX(0);
     }
+
     to {
         transform: translateX(-50%);
     }
@@ -183,6 +297,7 @@ html, body {
         flex-basis: 190px;
         width: 190px;
     }
+
     .destination-img {
         width: 150px;
         height: 150px;
@@ -194,6 +309,7 @@ html, body {
         flex-basis: 165px;
         width: 165px;
     }
+
     .destination-img {
         width: 125px;
         height: 125px;
@@ -221,12 +337,14 @@ html, body {
     white-space: nowrap;
     line-height: 1.35;
 }
+
 .tour-filter-btn:hover {
     background-color: #2d3446;
     color: #ffffff;
     border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-1px);
 }
+
 .tour-filter-btn.active {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
@@ -420,6 +538,7 @@ html, body {
         max-width: 100%;
         height: 260px;
     }
+
     .about-img-rotated {
         width: 170px;
         height: 190px;
@@ -444,6 +563,7 @@ html, body {
     .about-counter-num {
         font-size: 1.65rem;
     }
+
     .about-counter-label {
         font-size: 0.68rem !important;
         letter-spacing: 0.02em !important;
@@ -477,8 +597,7 @@ html, body {
     left: -12px !important;
 }
 
-.testimonial-swiper {
-}
+.testimonial-swiper {}
 
 .testimonial-swiper .swiper-slide {
     opacity: 0 !important;
@@ -543,10 +662,154 @@ html, body {
     height: 20px;
 }
 
+/* ==========================================================================
+   TOP SPECIAL OFFERS ANNOUNCEMENT BAR (Bootstrap 5 Enhanced)
+   ========================================================================== */
+.top-offers-swiper {
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    border: none !important;
+    outline: none !important;
+}
+
+.top-offers-swiper .swiper-wrapper {
+    border: none !important;
+    outline: none !important;
+}
+
+.top-offers-swiper .swiper-slide {
+    height: 30px;
+    overflow: hidden;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+}
+
+/* Eliminate Swiper default slide shadow & ruler artifacts */
+.top-offers-swiper [class*="swiper-slide-shadow"],
+.top-offers-swiper .swiper-slide-shadow-top,
+.top-offers-swiper .swiper-slide-shadow-bottom {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Base clickable offer slide link: reset outlines & borders */
+.offer-slide-link,
+.offer-slide-link:focus,
+.offer-slide-link:active,
+.offer-slide-link:focus-visible,
+.offer-slide-link:visited {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Amber/Gold Megaphone Pill Badge with #FFB547 */
+.offer-pill-badge {
+    background: var(--offer-amber);
+    background: linear-gradient(135deg, var(--offer-amber) 0%, #e09628 100%);
+    color: #0f172a !important;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    padding: 2px 10px;
+    line-height: 1.4;
+    box-shadow: 0 2px 6px var(--offer-amber-shadow);
+}
+
+.offer-pill-badge i {
+    font-size: 10px;
+    transform: rotate(-10deg);
+}
+
+/* Highlight Text with #FFB547 */
+.offer-highlight {
+    color: var(--offer-amber) !important;
+}
+
+/* Main Offer Headline */
+.offer-headline-text {
+    font-size: 12px;
+    color: #f8fafc;
+    line-height: 1.35;
+    outline: none !important;
+    border: none !important;
+}
+
+/* CTA "View Details →" Text */
+.offer-action-btn {
+    color: var(--offer-amber);
+    font-size: 12px;
+    transition: color 0.2s ease;
+}
+
+.offer-slide-link:hover .offer-action-btn {
+    color: var(--offer-amber-hover);
+    text-decoration: underline !important;
+}
+
+.offer-slide-link:hover .offer-action-btn i {
+    transform: translateX(3px);
+}
+
+.offer-action-btn i {
+    transition: transform 0.2s ease;
+}
+
+@media (max-width: 575.98px) {
+    .top-offers-swiper {
+        height: 26px;
+    }
+
+    .top-offers-swiper .swiper-slide {
+        height: 26px;
+    }
+
+    .offer-headline-text {
+        font-size: 10.5px;
+        letter-spacing: 0;
+    }
+
+    .offer-pill-badge {
+        font-size: 8.5px;
+        padding: 1.5px 7px;
+        margin-right: 6px;
+    }
+
+    .offer-pill-badge i {
+        font-size: 8.5px;
+    }
+
+    /* Header "Book Now" Button Compact Size on Phone Screen */
+    #header-book-now-btn {
+        font-size: 12px !important;
+        padding: 4px 12px !important;
+        min-height: 28px;
+        line-height: 1.25;
+    }
+}
+
 /* ==========================================
    SMART HEADER & PILL NAVIGATION (Matching Image Design)
    ========================================== */
+#site-master-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1030;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
 @media (min-width: 992px) {
+
     /* Navbar Capsule Pill Bar */
     #site-smart-header .navbar-nav {
         background-color: #f8fafc;
@@ -612,8 +875,8 @@ html, body {
         height: 14px;
     }
 
-    .navbar .dropdown:hover > .dropdown-menu,
-    .navbar .dropdown.show > .dropdown-menu {
+    .navbar .dropdown:hover>.dropdown-menu,
+    .navbar .dropdown.show>.dropdown-menu {
         display: block;
         opacity: 1;
         visibility: visible;
@@ -651,8 +914,8 @@ html, body {
         width: 12px;
     }
 
-    .dropdown-submenu:hover > .dropdown-submenu-menu,
-    .dropdown-submenu.show > .dropdown-submenu-menu {
+    .dropdown-submenu:hover>.dropdown-submenu-menu,
+    .dropdown-submenu.show>.dropdown-submenu-menu {
         display: block;
         opacity: 1;
         visibility: visible;
@@ -660,7 +923,7 @@ html, body {
     }
 
     /* Smart fallback: Align bottom edge for items near bottom of long dropdown */
-    .dropdown-submenu:nth-last-child(-n+5) > .dropdown-submenu-menu {
+    .dropdown-submenu:nth-last-child(-n+5)>.dropdown-submenu-menu {
         top: auto;
         bottom: 0;
     }
@@ -694,14 +957,14 @@ html, body {
     color: #ffffff !important;
 }
 
-.dropdown-submenu:hover > .dropdown-item,
-.dropdown-submenu.show > .dropdown-item {
+.dropdown-submenu:hover>.dropdown-item,
+.dropdown-submenu.show>.dropdown-item {
     background-color: rgba(59, 113, 254, 0.08) !important;
     color: var(--primary-color) !important;
     transform: translateX(2px);
 }
 
-.dropdown-submenu:hover > .dropdown-item i.bi-chevron-right {
+.dropdown-submenu:hover>.dropdown-item i.bi-chevron-right {
     color: var(--primary-color) !important;
     transform: translateX(2px);
     transition: transform 0.2s ease;
@@ -749,6 +1012,32 @@ html, body {
 
 .accordion-chevron.is-rotated {
     transform: rotate(180deg);
+}
+
+/* Mobile Drawer Footer Contact CTAs (Minimalist & Modern) */
+.mobile-drawer-cta {
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    background-color: #ffffff;
+    font-size: 13px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-drawer-cta:hover,
+.mobile-drawer-cta:active {
+    background-color: var(--accent-blue-subtle) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(59, 113, 254, 0.12) !important;
+}
+
+.mobile-drawer-cta i {
+    font-size: 13px;
+    transition: transform 0.2s ease;
+}
+
+.mobile-drawer-cta:hover i {
+    transform: scale(1.12);
 }
 
 /* ==========================================
@@ -863,6 +1152,7 @@ html, body {
     from {
         transform: translateX(0);
     }
+
     to {
         transform: translateX(-50%);
     }
@@ -1047,6 +1337,7 @@ html, body {
     .tour-categories-showcase {
         padding: 3.5rem 0 2.5rem;
     }
+
     .category-coverflow-swiper .swiper-slide {
         width: 270px;
         height: 380px;
@@ -1081,8 +1372,7 @@ html, body {
     z-index: 1;
 }
 
-.stepper-step {
-}
+.stepper-step {}
 
 .stepper-node {
     width: 48px;
@@ -1115,6 +1405,7 @@ html, body {
         right: 20px;
         top: 18px;
     }
+
     .stepper-node {
         width: 36px;
         height: 36px;
@@ -1184,8 +1475,15 @@ html, body {
 }
 
 @keyframes panelFadeIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* QR Code Hover Zoom & Zoom Badge */
@@ -1314,13 +1612,27 @@ html, body {
 }
 
 @keyframes toastFadeIn {
-    from { bottom: 10px; opacity: 0; }
-    to { bottom: 30px; opacity: 1; }
+    from {
+        bottom: 10px;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
 }
 
 @keyframes toastFadeOut {
-    from { bottom: 30px; opacity: 1; }
-    to { bottom: 10px; opacity: 0; }
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 10px;
+        opacity: 0;
+    }
 }
 
 /* QR Lightbox Modal */
@@ -1346,8 +1658,15 @@ html, body {
 }
 
 @keyframes qrZoomIn {
-    from { transform: scale(0.92); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+        transform: scale(0.92);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* ==========================================================================
@@ -1355,8 +1674,8 @@ html, body {
    ========================================================================== */
 #airport-taxi-service {
     background: radial-gradient(circle at 10% 20%, rgba(59, 113, 254, 0.05) 0%, transparent 45%),
-                radial-gradient(circle at 90% 85%, rgba(59, 113, 254, 0.04) 0%, transparent 40%),
-                #ffffff;
+        radial-gradient(circle at 90% 85%, rgba(59, 113, 254, 0.04) 0%, transparent 40%),
+        #ffffff;
     position: relative;
     overflow: hidden;
 }
@@ -1486,8 +1805,15 @@ html, body {
 }
 
 @keyframes floatSlow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
 }
 
 @media (max-width: 991px) {
@@ -1495,10 +1821,12 @@ html, body {
         right: 10px;
         top: 15px;
     }
+
     .airport-floating-reviews {
         left: 10px;
         bottom: 15px;
     }
+
     .airport-image-card img {
         height: 320px;
     }
@@ -1508,6 +1836,7 @@ html, body {
     .airport-feature-card {
         padding: 12px 14px;
     }
+
     .airport-image-card img {
         height: 270px;
     }
@@ -1519,16 +1848,19 @@ html, body {
 .gallery-justified-container {
     gap: 10px;
 }
+
 @media (max-width: 575.98px) {
     .gallery-justified-container {
         gap: 6px;
     }
 }
+
 @media (min-width: 640px) {
     .gallery-justified-container {
         gap: 12px;
     }
 }
+
 @media (min-width: 1200px) {
     .gallery-justified-container {
         gap: 14px;
@@ -1547,6 +1879,7 @@ html, body {
     transform: translateZ(0);
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
 }
+
 @media (max-width: 575.98px) {
     .gallery-justified-item {
         height: var(--gallery-item-height-mobile, 115px);
@@ -1554,6 +1887,7 @@ html, body {
         border-radius: 8px;
     }
 }
+
 @media (min-width: 576px) and (max-width: 639.98px) {
     .gallery-justified-item {
         height: var(--gallery-item-height-sm, 155px);
@@ -1561,6 +1895,7 @@ html, body {
         border-radius: 12px;
     }
 }
+
 @media (min-width: 640px) {
     .gallery-justified-item {
         height: 220px;
@@ -1568,6 +1903,7 @@ html, body {
         border-radius: 16px;
     }
 }
+
 @media (min-width: 1024px) {
     .gallery-justified-item {
         height: 250px;
@@ -1575,6 +1911,7 @@ html, body {
         border-radius: 18px;
     }
 }
+
 @media (min-width: 1440px) {
     .gallery-justified-item {
         height: 280px;
@@ -1608,6 +1945,7 @@ html, body {
     height: 0;
     visibility: hidden;
 }
+
 @media (max-width: 575.98px) {
     .gallery-justified-container::after {
         min-width: 60px;
@@ -1623,6 +1961,7 @@ html, body {
     padding: 14px;
     pointer-events: none;
 }
+
 @media (max-width: 575.98px) {
     .gallery-hover-overlay {
         padding: 6px;
@@ -1643,6 +1982,7 @@ html, body {
     transform: scale(0.85);
     transition: transform 0.25s ease;
 }
+
 @media (max-width: 575.98px) {
     .gallery-zoom-pill {
         width: 26px;
@@ -1660,6 +2000,7 @@ html, body {
     color: #ffffff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
+
 @media (max-width: 575.98px) {
     .gallery-title-pill {
         font-size: 10px;
@@ -1754,6 +2095,7 @@ html, body {
 .gallery-nav-prev {
     left: 16px;
 }
+
 @media (min-width: 768px) {
     .gallery-nav-prev {
         left: 28px;
@@ -1763,6 +2105,7 @@ html, body {
 .gallery-nav-next {
     right: 16px;
 }
+
 @media (min-width: 768px) {
     .gallery-nav-next {
         right: 28px;
@@ -1818,6 +2161,7 @@ html, body {
     from {
         transform: translateX(0);
     }
+
     to {
         transform: translateX(-50%);
     }
@@ -1899,10 +2243,12 @@ html, body {
     z-index: 10;
     pointer-events: none;
 }
+
 .memories-marquee::before {
     left: 0;
     background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
 }
+
 .memories-marquee::after {
     right: 0;
     background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
@@ -1912,12 +2258,14 @@ html, body {
 .memories-marquee-section.bg-light .memories-marquee::before {
     background: linear-gradient(to right, #f8f9fa 0%, rgba(248, 249, 250, 0) 100%);
 }
+
 .bg-light .memories-marquee::after,
 .memories-marquee-section.bg-light .memories-marquee::after {
     background: linear-gradient(to left, #f8f9fa 0%, rgba(248, 249, 250, 0) 100%);
 }
 
 @media (min-width: 768px) {
+
     .memories-marquee::before,
     .memories-marquee::after {
         width: 150px;
@@ -1936,12 +2284,15 @@ html, body {
 .itinerary-timeline-container {
     padding-left: 36px;
 }
+
 .itinerary-day-wrapper {
     margin-bottom: 22px;
 }
+
 .itinerary-day-wrapper:last-child {
     margin-bottom: 0;
 }
+
 /* Connecting vertical segment between consecutive nodes */
 .itinerary-day-wrapper::before {
     content: '';
@@ -1953,9 +2304,11 @@ html, body {
     background: linear-gradient(180deg, var(--primary-color) 0%, rgba(59, 113, 254, 0.3) 100%);
     z-index: 1;
 }
+
 .itinerary-day-wrapper:last-child::before {
     display: none;
 }
+
 /* Timeline Marker Dot: Centered horizontally at left -28px and vertically at 26px */
 .itinerary-timeline-marker {
     width: 16px;
@@ -1967,6 +2320,7 @@ html, body {
     box-shadow: 0 0 0 4px rgba(59, 113, 254, 0.22);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
 .itinerary-day-box {
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
@@ -1975,21 +2329,25 @@ html, body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
+
 .itinerary-day-box:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.07);
     border-color: rgba(59, 113, 254, 0.35);
 }
+
 .itinerary-day-wrapper:hover .itinerary-timeline-marker {
     transform: scale(1.2);
     box-shadow: 0 0 0 6px rgba(59, 113, 254, 0.35);
 }
+
 /* Day Header inside box */
 .itinerary-day-header {
     padding-bottom: 12px;
     margin-bottom: 14px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
+
 .itinerary-day-badge {
     background-color: var(--primary-color);
     color: #ffffff;
@@ -1999,11 +2357,13 @@ html, body {
     box-shadow: 0 2px 6px rgba(59, 113, 254, 0.25);
     line-height: 1.2;
 }
+
 .itinerary-day-title {
     color: #0f172a;
     font-size: 1.05rem;
     line-height: 1.35;
 }
+
 .itinerary-dist-badge {
     background: #f8fafc;
     color: #475569;
@@ -2014,13 +2374,16 @@ html, body {
     white-space: nowrap;
     line-height: 1.2;
 }
+
 /* Points List & Item */
 .itinerary-points-list {
     gap: 10px;
 }
+
 .itinerary-point-item {
     gap: 12px;
 }
+
 .itinerary-point-bullet {
     width: 22px;
     height: 22px;
@@ -2031,25 +2394,30 @@ html, body {
     margin-top: 2px;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
+
 .itinerary-day-box:hover .itinerary-point-bullet {
     background: var(--primary-color);
     color: #ffffff;
 }
+
 .itinerary-point-text {
     color: #334155;
     font-size: 0.925rem;
     line-height: 1.6;
 }
+
 .itinerary-point-text strong {
     color: #0f172a !important;
     font-weight: 700;
 }
+
 /* Night Stay Footer */
 .itinerary-day-footer {
     margin-top: 14px;
     padding-top: 12px;
     border-top: 1px dashed rgba(0, 0, 0, 0.08);
 }
+
 .itinerary-night-stay {
     background: #fffbeb;
     color: #92400e;
@@ -2059,15 +2427,18 @@ html, body {
     gap: 6px;
     line-height: 1.2;
 }
+
 @media (max-width: 576px) {
     .itinerary-timeline-container {
         padding-left: 24px;
     }
+
     .itinerary-day-wrapper::before {
         left: -17px;
         top: 28px;
         bottom: -20px;
     }
+
     .itinerary-timeline-marker {
         left: -24px;
         top: 21px;
@@ -2075,23 +2446,29 @@ html, body {
         height: 14px;
         border-width: 2px;
     }
+
     .itinerary-day-box {
         padding: 16px 14px;
         border-radius: 14px;
     }
+
     .itinerary-day-wrapper {
         margin-bottom: 18px;
     }
+
     .itinerary-day-title {
         font-size: 0.95rem;
     }
+
     .itinerary-dist-badge {
         font-size: 0.75rem;
         padding: 3px 10px;
     }
+
     .itinerary-points-list {
         gap: 8px;
     }
+
     .itinerary-point-text {
         font-size: 0.875rem;
         line-height: 1.55;
@@ -2113,17 +2490,21 @@ html, body {
         display: flex;
         flex-direction: column;
     }
+
     /* Subtle custom scrollbar if content exceeds viewport on small laptop screens */
     .tour-sticky-sidebar::-webkit-scrollbar {
         width: 4px;
     }
+
     .tour-sticky-sidebar::-webkit-scrollbar-track {
         background: transparent;
     }
+
     .tour-sticky-sidebar::-webkit-scrollbar-thumb {
         background: rgba(0, 0, 0, 0.12);
         border-radius: 4px;
     }
+
     .tour-sticky-sidebar:hover::-webkit-scrollbar-thumb {
         background: rgba(0, 0, 0, 0.25);
     }
@@ -2139,6 +2520,7 @@ html, body {
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 }
+
 .line-clamp-2,
 .text-line-clamp-2 {
     display: -webkit-box;
@@ -2146,6 +2528,7 @@ html, body {
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 }
+
 .line-clamp-3,
 .text-line-clamp-3 {
     display: -webkit-box;
@@ -2290,6 +2673,7 @@ html, body {
 .hover-white {
     transition: color 0.2s ease;
 }
+
 .hover-white:hover {
     color: #ffffff !important;
 }
@@ -2298,6 +2682,7 @@ html, body {
 .fast-contact-btn {
     font-size: var(--fs-fast-contact-desktop);
 }
+
 @media (max-width: 575.98px) {
     .fast-contact-btn {
         font-size: var(--fs-fast-contact-mobile) !important;
@@ -2310,6 +2695,7 @@ html, body {
 .fast-contact-btn {
     font-size: var(--fs-fast-contact-desktop);
 }
+
 @media (max-width: 575.98px) {
     .fast-contact-btn {
         font-size: var(--fs-fast-contact-mobile) !important;

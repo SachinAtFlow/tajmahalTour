@@ -15,6 +15,20 @@ if (file_exists($headerNavDataPath)) {
     require_once $headerNavDataPath;
 }
 
+// Load Top Header Special Offers Data
+$offersDataPath = __DIR__ . '/../data/offersData.php';
+if (file_exists($offersDataPath)) {
+    require_once $offersDataPath;
+}
+$headerOffers = function_exists('getHeaderOffers') ? getHeaderOffers() : [];
+
+// Load Centralized Site Contact & Social Media Data
+$contactDataPath = __DIR__ . '/../data/contactData.php';
+if (file_exists($contactDataPath)) {
+    require_once $contactDataPath;
+}
+$siteContact = function_exists('getSiteContact') ? getSiteContact() : [];
+
 if (!isset($rootPrefix)) {
     $rootPrefix = !file_exists('assets/css/style.css') ? '../' : '';
 }
@@ -54,35 +68,62 @@ if (!function_exists('theme_url')) {
 </head>
 <body>
 
-<!-- Top Info Bar (Original Classic Style Built with Bootstrap 5 Utility Classes) -->
-<div class="bg-dark text-white-50 py-1 py-md-2 small d-none d-md-block border-bottom border-secondary border-opacity-25">
-    <div class="container d-flex justify-content-between align-items-center">
-        <!-- Left: Phone and Email -->
-        <div class="d-flex align-items-center gap-2">
-            <a href="tel:000999656888" class="text-white-50 text-decoration-none d-inline-flex align-items-center">
-                <i class="bi bi-telephone text-primary me-2"></i> (000) 999 -656 -888
-            </a>
-            <span class="text-secondary opacity-50 mx-2">|</span>
-            <a href="mailto:travelerwp@gmail.com" class="text-white-50 text-decoration-none d-inline-flex align-items-center">
-                <i class="bi bi-envelope text-primary me-2"></i> travelerwp@gmail.com
-            </a>
-        </div>
+<!-- Top Special Offers Announcement Bar (Scrolls away on scroll) -->
+<?php if (!empty($headerOffers)): ?>
+<div id="top-special-offers-bar" class="bg-black text-white border-bottom border-dark border-opacity-50 py-1 position-relative">
+    <div class="container px-2 px-sm-3">
+        <div class="swiper top-offers-swiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($headerOffers as $offer): ?>
+                    <?php 
+                        $badge = htmlspecialchars($offer['badge'] ?? 'SPECIAL OFFER');
+                        $highlight = htmlspecialchars($offer['highlight'] ?? '');
+                        $text = htmlspecialchars($offer['text'] ?? '');
+                        $link = theme_url($offer['link'] ?? '#');
+                        $btn = htmlspecialchars($offer['btn'] ?? 'View Details');
+                    ?>
+                    <div class="swiper-slide d-flex align-items-center justify-content-center h-100">
+                        <a href="<?= $link; ?>" class="offer-slide-link text-decoration-none text-white d-flex align-items-center justify-content-center gap-2 gap-sm-2 gap-md-3 flex-nowrap w-100 h-100" title="<?= htmlspecialchars(trim($highlight . ' ' . $text)); ?>">
+                            <!-- Megaphone Pill Badge with #FFB547 -->
+                            <span class="badge rounded-pill offer-pill-badge d-inline-flex align-items-center gap-1 flex-shrink-0 fw-bold me-1 me-sm-0">
+                                <i class="bi bi-megaphone-fill"></i>
+                                <span class="d-none d-sm-inline"><?= $badge; ?></span>
+                                <span class="d-inline d-sm-none">DEAL</span>
+                            </span>
 
-        <!-- Right: Social Media Icons with Separators -->
-        <div class="d-flex align-items-center gap-2">
-            <a href="#" class="text-white-50 text-decoration-none" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <span class="text-secondary opacity-50 mx-1">|</span>
-            <a href="#" class="text-white-50 text-decoration-none" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <span class="text-secondary opacity-50 mx-1">|</span>
-            <a href="#" class="text-white-50 text-decoration-none" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <span class="text-secondary opacity-50 mx-1">|</span>
-            <a href="#" class="text-white-50 text-decoration-none" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                            <!-- Vertical Divider -->
+                            <span class="text-white-50 opacity-25 d-none d-sm-inline">|</span>
+
+                            <!-- Offer Main Details Text -->
+                            <span class="offer-headline-text text-truncate text-white">
+                                <?php if (!empty($highlight)): ?>
+                                    <strong class="offer-highlight fw-bold"><?= $highlight; ?></strong>
+                                <?php endif; ?>
+                                <?= !empty($highlight) ? ' ' : ''; ?><?= $text; ?>
+                            </span>
+
+                            <!-- Vertical Divider (Hidden on phone screen) -->
+                            <span class="text-white-50 opacity-25 d-none d-sm-inline">|</span>
+
+                            <!-- Action CTA Link (Hidden on phone screen per user request) -->
+                            <span class="offer-action-btn fw-bold d-none d-sm-inline-flex align-items-center flex-shrink-0 small">
+                                <span><?= $btn; ?></span>
+                                <i class="bi bi-arrow-right ms-1"></i>
+                            </span>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </div>
+<?php endif; ?>
+
+<!-- Master Sticky Header (Main Navigation - Sticky on each page) -->
+<header id="site-master-header" class="sticky-top w-100">
 
 <!-- Main Navigation (Compact Height Bootstrap 5 Navbar) -->
-<nav id="site-smart-header" class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-1 py-lg-2">
+<nav id="site-smart-header" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-1 py-lg-2">
     <div class="container d-flex align-items-center justify-content-between">
 
         <!-- Left: Mobile Toggle & Brand Logo -->
@@ -207,14 +248,14 @@ if (!function_exists('theme_url')) {
 
         <!-- Right: "Book Now" Button Only (Clean & Direct) -->
         <div class="d-flex align-items-center">
-            <a href="<?php echo $bookNowUrl; ?>" class="btn btn-primary btn-sm px-3 px-sm-4 py-2 fw-semibold rounded-pill shadow-sm d-inline-flex align-items-center gap-2">
+            <a href="<?php echo $bookNowUrl; ?>" id="header-book-now-btn" class="btn btn-primary btn-sm px-2.5 px-sm-4 py-1.5 py-sm-2 fw-semibold rounded-pill shadow-sm d-inline-flex align-items-center justify-content-center">
                 <span>Book Now</span>
-                <i class="bi bi-arrow-right small"></i>
             </a>
         </div>
 
     </div>
 </nav>
+</header>
 
 <!-- Mobile Navigation Drawer Overlay & Backdrop -->
 <div id="mobile-menu-backdrop"></div>
@@ -333,11 +374,27 @@ if (!function_exists('theme_url')) {
         </a>
     </div>
 
-    <!-- Drawer Footer: Quick Action -->
-    <div class="p-3 border-top bg-light">
-        <a href="<?php echo $bookNowUrl; ?>" class="btn btn-primary w-100 rounded-pill py-2 fw-semibold d-flex align-items-center justify-content-center gap-2 shadow-sm">
+    <!-- Drawer Footer: Quick Action & Direct Contact CTAs -->
+    <div id="mobile-drawer-footer" class="p-3 border-top bg-light">
+        <a href="<?php echo $bookNowUrl; ?>" class="btn btn-primary w-100 rounded-pill py-2 fw-semibold d-flex align-items-center justify-content-center gap-2 shadow-sm mb-2">
             <span>Book Now</span>
             <i class="bi bi-arrow-right"></i>
         </a>
+
+        <!-- Minimalist & Modern Contact CTAs (Phone & Mail) -->
+        <div id="mobile-drawer-contact-ctas" class="row g-2">
+            <div class="col-6">
+                <a href="<?= site_phone(false); ?>" class="mobile-drawer-cta btn btn-white bg-white border text-dark py-2 px-2 rounded-3 d-flex align-items-center justify-content-center gap-2 w-100 text-decoration-none shadow-xs">
+                    <i class="bi bi-telephone-fill text-primary"></i>
+                    <span class="fw-semibold small">Call Us</span>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="<?= site_email('primary', true); ?>" class="mobile-drawer-cta btn btn-white bg-white border text-dark py-2 px-2 rounded-3 d-flex align-items-center justify-content-center gap-2 w-100 text-decoration-none shadow-xs">
+                    <i class="bi bi-envelope-fill text-primary"></i>
+                    <span class="fw-semibold small">Email Us</span>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
